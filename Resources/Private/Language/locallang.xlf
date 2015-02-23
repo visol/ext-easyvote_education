@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-23T14:38:44Z" product-name="easyvote_education">
+		<header/>
+		<body>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel">
+				<source>Panel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.organization">
+				<source>Organization</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.class">
+				<source>Class</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.number_of_participants">
+				<source>Number Of Participants</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
+				<source>Terms Accepted</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.votings">
+				<source>Votings</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
+				<source>Voting</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.short">
+				<source>Short</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_visible">
+				<source>Is Visible</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_voting_enabled">
+				<source>Is Voting Enabled</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_duration">
+				<source>Voting Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
+				<source>Voting Options</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption">
+				<source>Voting Option</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.style">
+				<source>Style</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_votes">
+				<source>Cached Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_rank">
+				<source>Cached Rank</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.votes">
+				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_vote">
+				<source>Vote</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

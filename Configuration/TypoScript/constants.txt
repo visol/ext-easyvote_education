@@ -1,0 +1,15 @@
+
+plugin.tx_easyvoteeducation {
+	view {
+		# cat=plugin.tx_easyvoteeducation/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:easyvote_education/Resources/Private/Templates/
+		# cat=plugin.tx_easyvoteeducation/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:easyvote_education/Resources/Private/Partials/
+		# cat=plugin.tx_easyvoteeducation/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:easyvote_education/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_easyvoteeducation//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

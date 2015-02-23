@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-23T14:38:44Z" product-name="easyvote_education">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="short.description">
+				<source>Short title</source>
+			</trans-unit>
+			<trans-unit id="is_visible.description">
+				<source>Is visible</source>
+			</trans-unit>
+			<trans-unit id="is_voting_enabled.description">
+				<source>Is voting enabled?</source>
+			</trans-unit>
+			<trans-unit id="voting_duration.description">
+				<source>Voting duration</source>
+			</trans-unit>
+			<trans-unit id="voting_options.description">
+				<source>Voting Options</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

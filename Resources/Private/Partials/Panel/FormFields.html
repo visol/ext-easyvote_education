@@ -1,0 +1,37 @@
+
+<label for="title">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.title" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="title" /><br />
+<label for="description">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.description" />
+</label><br />
+	<f:form.textarea property="description" cols="40" rows="15" /><br />
+<label for="date">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.date" />
+</label><br />
+	<f:form.textfield property="date"  value="{panel.date->f:format.date()}" /><br />
+<label for="room">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.room" />
+</label><br />
+	<f:form.textfield property="room" /><br />
+<label for="address">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.address" />
+</label><br />
+	<f:form.textfield property="address" /><br />
+<label for="organization">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
+</label><br />
+	<f:form.textfield property="organization" /><br />
+<label for="class">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.class" />
+</label><br />
+	<f:form.textfield property="class" /><br />
+<label for="numberOfParticipants">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.number_of_participants" />
+</label><br />
+	<f:form.textfield property="numberOfParticipants" /><br />
+<label for="termsAccepted">
+	<f:translate key="tx_easyvoteeducation_domain_model_panel.terms_accepted" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.checkbox property="termsAccepted" value="1" /><br />
