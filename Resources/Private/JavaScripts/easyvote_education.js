@@ -1,6 +1,5 @@
 var $body = $('body');
 
-
 $(function() {
 
 	var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
@@ -8,20 +7,10 @@ $(function() {
 	// Load dashboard on startup
 	if ($easyvoteEducationContentContainer.length) {
 		if (document.location.hash) {
-			// If a specific action is requested, load it
-			var hash = document.location.hash;
-			var actionName = hash.substr(1);
-			var actionUri = EasyvoteEducationActionUris[actionName];
-			EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
-				$easyvoteEducationContentContainer.html(data);
-				Easyvote.bindPostalCodeSelection();
-			});
+			EasyvoteEducation.callHashRequestedAction();
 		} else {
 			// Fall back to dashboard
-			EasyvoteEducation.loadAjaxContent(EasyvoteEducationActionUris.dashboard).done(function(data) {
-				$easyvoteEducationContentContainer.html(data);
-				Easyvote.bindPostalCodeSelection();
-			});
+			EasyvoteEducation.loadAction('dashboard');
 		}
 	}
 
@@ -29,18 +18,8 @@ $(function() {
 	$body.on('click', "a[data-role='ajax']", function(e) {
 		e.preventDefault();
 		var $this = $(this);
-		var currentUrl = document.location.href.match(/(^[^#]*)/)[0];
 		var actionName = $this.attr('data-actionname');
-		var hash = '#' + actionName;
-		if (Modernizr.history) {
-			window.history.pushState(null, '', currentUrl + hash);
-		}
-		var actionUri = EasyvoteEducationActionUris[actionName];
-		EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
-			$easyvoteEducationContentContainer.html(data);
-			Easyvote.bindPostalCodeSelection();
-			Easyvote.bindModals();
-		});
+		EasyvoteEducation.loadAction(actionName);
 	});
 
 	// Implement object-based AJAX actions
@@ -48,48 +27,27 @@ $(function() {
 		e.stopPropagation();
 		e.preventDefault();
 		var $this = $(this);
-		//var currentUrl = document.location.href.match(/(^[^#]*)/)[0];
 		var actionName = $this.attr('data-actionname');
 		var objectName = $this.attr('data-object');
 		var objectUid = $this.attr('data-uid');
+		EasyvoteEducation.pushHistoryState(actionName, objectName, objectUid);
+
 		var confirmAction = $this.attr('data-confirm') === 'true';
 		if (confirmAction) {
 			// open a modal and wait for confirmation to continue
 			Easyvote.displayModal($this.parent().find('.ajaxobject-confirm').html(), function(status) {
-				var actionUri = EasyvoteEducationActionUris[actionName];
-				EasyvoteEducation.loadAjaxObjectContent(objectName, objectUid, actionUri).done(function (data) {
-					jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-					if (jsonData.hasOwnProperty('redirectToAction')) {
-						EasyvoteEducation.loadAction(jsonData.redirectToAction);
-					} else {
-						$easyvoteEducationContentContainer.html(data);
-						Easyvote.bindPostalCodeSelection();
-					}
-				});
+				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid);
 			})
 		} else {
 			// no confirmation needed, call the action right away
-			var actionUri = EasyvoteEducationActionUris[actionName];
-			EasyvoteEducation.loadAjaxObjectContent(objectName, objectUid, actionUri).done(function (data) {
-				jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-				if (jsonData.hasOwnProperty('redirectToAction')) {
-					EasyvoteEducation.loadAction(jsonData.redirectToAction);
-				} else {
-					$easyvoteEducationContentContainer.html(data);
-					Easyvote.bindPostalCodeSelection();
-				}
-			});		}
+			EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid);
+		}
 	});
 
 	// React on history changes
 	if (Modernizr.history) {
-		window.onpopstate = function (e) {
-			var hash = document.location.hash;
-			var actionName = hash.substr(1);
-			var actionUri = EasyvoteEducationActionUris[actionName];
-			EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
-				$easyvoteEducationContentContainer.html(data);
-			});
+		window.onpopstate = function () {
+			EasyvoteEducation.callHashRequestedAction();
 		};
 	}
 
@@ -182,6 +140,8 @@ var EasyvoteEducation = {
 		var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
 		EasyvoteEducation.loadAjaxContent(EasyvoteEducationActionUris[actionName]).done(function(data) {
 			$easyvoteEducationContentContainer.html(data);
+			EasyvoteEducation.pushHistoryState(actionName);
+			Easyvote.bindPostalCodeSelection();
 		});
 	},
 
@@ -196,12 +156,62 @@ var EasyvoteEducation = {
 		});
 	},
 
+	performAjaxObjectAction: function(actionName, objectName, objectUid) {
+		var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
+		var actionUri = EasyvoteEducationActionUris[actionName];
+		EasyvoteEducation.loadAjaxObjectContent(objectName, objectUid, actionUri).done(function (data) {
+			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
+			if (jsonData.hasOwnProperty('redirectToAction')) {
+				EasyvoteEducation.loadAction(jsonData.redirectToAction);
+			} else {
+				$easyvoteEducationContentContainer.html(jsonData.content);
+				Easyvote.bindPostalCodeSelection();
+			}
+		});
+
+	},
+
 	postForm: function(data, uri) {
 		return $.ajax({
 			type: "POST",
 			url: uri,
 			data: data
 		});
+	},
+
+	pushHistoryState: function(actionName, objectName, objectUid) {
+		if (Modernizr.history) {
+			var currentUrl = document.location.href.match(/(^[^#]*)/)[0];
+			var hash = '#' + actionName;
+			if (objectName) {
+				hash += '/' + objectName + '/' + objectUid;
+			}
+			window.history.pushState(null, '', currentUrl + hash);
+		}
+	},
+
+	callHashRequestedAction: function() {
+		var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
+		// If a specific action is requested, load it
+		// hash might be: "actionName" or "actionName/objectName/objectUid"
+		var hashData = document.location.hash.substr(1).split('/');
+		if (hashData.length > 1) {
+			// ajax object action
+			var allowedActions = ['edit', 'editVotings'];
+			if ($.inArray(hashData[0], allowedActions) !== -1) {
+				var actionName = hashData[0];
+				var objectName = hashData[1];
+				var objectUid = hashData[2];
+				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid)
+			} else {
+				// disallowed action, fall back to dashboard
+				EasyvoteEducation.loadAction('dashboard');
+			}
+		} else {
+			// action without an object involved
+			// hashData[0] --> actionName
+			EasyvoteEducation.loadAction(hashData[0])
+		}
 	}
 
 
