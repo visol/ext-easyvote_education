@@ -1,0 +1,11 @@
+<f:render partial="Panel/MainNavigation.html" />
+
+<h2>{panel.title}</h2>
+
+<f:for each="{panel.votings}" as="voting">
+	<ul>
+		<li>
+			{voting.title}
+		</li>
+	</ul>
+</f:for>

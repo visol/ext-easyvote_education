@@ -123,11 +123,12 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 *
 	 * @param Panel $panel
 	 * @ignorevalidation $panel
-	 * @return void
+	 * @return string
 	 */
 	public function editAction(Panel $panel) {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$this->view->assign('panel', $panel);
+			return json_encode(array('content' => $this->view->render()));
 		} else {
 			// todo permission denied
 		}
@@ -203,6 +204,19 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			// todo permission denied
 		}
 
+	}
+
+	/**
+	 *
+	 *
+	 * @param Panel $panel
+	 * @return string
+	 */
+	public function editVotingsAction(Panel $panel) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			$this->view->assign('panel', $panel);
+			return json_encode(array('content' => $this->view->render()));
+		}
 	}
 
 	/**

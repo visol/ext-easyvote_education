@@ -7,11 +7,11 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Managepanels',
 	array(
-		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate',
+		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings',
 		
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate',
+		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings',
 	)
 );
