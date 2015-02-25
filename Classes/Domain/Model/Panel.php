@@ -107,7 +107,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * City
 	 *
-	 * @var \Visol\Easyvote\Domain\Model\City
+	 * @var \Visol\Easyvote\Domain\Model\City|NULL
 	 */
 	protected $city = NULL;
 
@@ -206,7 +206,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \DateTime $date
 	 * @return void
 	 */
-	public function setDate(\DateTime $date) {
+	public function setDate(\DateTime $date = NULL) {
 		$this->date = $date;
 	}
 
@@ -348,7 +348,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Visol\Easyvote\Domain\Model\City $city
 	 * @return void
 	 */
-	public function setCity(\Visol\Easyvote\Domain\Model\City $city) {
+	public function setCity(\Visol\Easyvote\Domain\Model\City $city = NULL) {
 		$this->city = $city;
 	}
 
