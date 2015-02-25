@@ -36,6 +36,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Panel identifier
 	 *
 	 * @var string
+	 * @copy ignore
 	 */
 	protected $panelId = '';
 
@@ -44,6 +45,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var string
 	 * @validate NotEmpty
+	 * @copy clone
 	 */
 	protected $title = '';
 
@@ -51,6 +53,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Description
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $description = '';
 
@@ -58,6 +61,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Date/Time
 	 *
 	 * @var \DateTime
+	 * @copy clone
 	 */
 	protected $date = NULL;
 
@@ -65,6 +69,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Room
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $room = '';
 
@@ -72,6 +77,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Address
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $address = '';
 
@@ -79,6 +85,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Organization
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $organization = '';
 
@@ -86,6 +93,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Class
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $class = '';
 
@@ -93,6 +101,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Number of participants (approx.)
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $numberOfParticipants = '';
 
@@ -101,6 +110,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var boolean
 	 * @validate NotEmpty
+	 * @copy clone
 	 */
 	protected $termsAccepted = FALSE;
 
@@ -108,6 +118,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * City
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\City|NULL
+	 * @copy reference
 	 */
 	protected $city = NULL;
 
@@ -115,6 +126,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Image
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\FileReference
+	 * @copy clone
 	 */
 	protected $image = NULL;
 
@@ -122,6 +134,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * CommunityUser (owner)
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @copy reference
 	 */
 	protected $communityUser = NULL;
 
@@ -130,6 +143,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Voting>
 	 * @cascade remove
+	 * @copy clone
 	 */
 	protected $votings = NULL;
 

@@ -37,6 +37,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var string
 	 * @validate NotEmpty
+	 * @copy clone
 	 */
 	protected $title = '';
 
@@ -44,6 +45,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Short title
 	 *
 	 * @var string
+	 * @copy clone
 	 */
 	protected $short = '';
 
@@ -51,6 +53,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Is visible
 	 *
 	 * @var boolean
+	 * @copy clone
 	 */
 	protected $isVisible = FALSE;
 
@@ -58,6 +61,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Is voting enabled?
 	 *
 	 * @var boolean
+	 * @copy clone
 	 */
 	protected $isVotingEnabled = FALSE;
 
@@ -65,6 +69,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Voting duration
 	 *
 	 * @var integer
+	 * @copy clone
 	 */
 	protected $votingDuration = 0;
 
@@ -74,6 +79,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\VotingOption>
 	 * @cascade remove
 	 * @lazy
+	 * @copy clone
 	 */
 	protected $votingOptions = NULL;
 

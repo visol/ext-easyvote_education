@@ -37,6 +37,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var string
 	 * @validate NotEmpty
+	 * @copy clone
 	 */
 	protected $title = '';
 
@@ -44,6 +45,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Style
 	 *
 	 * @var integer
+	 * @copy clone
 	 */
 	protected $style = 0;
 
@@ -51,6 +53,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Cached votes
 	 *
 	 * @var integer
+	 * @copy ignore
 	 */
 	protected $cachedVotes = 0;
 
@@ -58,6 +61,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Cached rank
 	 *
 	 * @var integer
+	 * @copy ignore
 	 */
 	protected $cachedRank = 0;
 
@@ -65,6 +69,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Image
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\FileReference
+	 * @copy clone
 	 */
 	protected $image = NULL;
 
@@ -74,6 +79,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Vote>
 	 * @cascade remove
 	 * @lazy
+	 * @copy ignore
 	 */
 	protected $votes = NULL;
 
