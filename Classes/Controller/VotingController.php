@@ -30,7 +30,7 @@ namespace Visol\EasyvoteEducation\Controller;
 /**
  * VotingController
  */
-class VotingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
 	 * votingRepository

@@ -1,0 +1,24 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<div class="content-box">
+		<div id="easyvoteeducation-content"></div>
+	</div>
+	<script>
+		var EasyvoteEducationActionUris = {
+			dashboard: '<h:uri.ajaxAction controller="Panel" action="dashboard" absolute="TRUE" />',
+			startPanel: '<h:uri.ajaxAction controller="Panel" action="startPanel" absolute="TRUE" />',
+			managePanels: '<h:uri.ajaxAction controller="Panel" action="managePanels" absolute="TRUE" />',
+			new: '<h:uri.ajaxAction controller="Panel" action="new" absolute="TRUE" />',
+			create: '<h:uri.ajaxAction controller="Panel" action="create" absolute="TRUE" />',
+			edit: '<h:uri.ajaxAction controller="Panel" action="edit" absolute="TRUE" />',
+			update: '<h:uri.ajaxAction controller="Panel" action="update" absolute="TRUE" />',
+			delete: '<h:uri.ajaxAction controller="Panel" action="delete" absolute="TRUE" />',
+			duplicate: '<h:uri.ajaxAction controller="Panel" action="duplicate" absolute="TRUE" />'
+		}
+	</script>
+
+</f:section>

@@ -3,48 +3,111 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-23T14:38:44Z" product-name="easyvote_education">
 		<header/>
 		<body>
-			<trans-unit id="tx_easyvoteeducation_domain_model_panel">
-				<source>Panel</source>
+			<trans-unit id="panel.managePanels.dashboard">
+				<source>Dashboard</source>
 			</trans-unit>
+			<trans-unit id="panel.managePanels.startPanel">
+				<source>Podium starten</source>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.managePanels">
+				<source>Podien verwalten</source>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.newPanel">
+				<source>Neues Podium erstellen</source>
+			</trans-unit>
+
+			<trans-unit id="panel.new.title">
+				<source>Neues Podium</source>
+			</trans-unit>
+			<trans-unit id="panel.new.create">
+				<source>Podium anlegen</source>
+			</trans-unit>
+
+			<trans-unit id="panel.edit.title">
+				<source>Podium bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="panel.edit.update">
+				<source>Podium speichern</source>
+			</trans-unit>
+
+			<trans-unit id="panel.actions.create.success">
+				<source>Das Podium "%s" wurde erstellt.</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.editVotings">
+				<source>Votings bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.edit">
+				<source>Podium bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.update.success">
+				<source>Das Podium "%s" wurde aktualisiert.</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.confirmationText">
+				<source>Wollen Sie dieses Podium und dessen Abstimmungen löschen?</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.confirm">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.success">
+				<source>Das Podium "%s" wurde gelöscht.</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate">
+				<source>duplizieren</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.start">
+				<source>starten</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate.success">
+				<source>Das Podium "%s" wurde dupliziert.</source>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate.copyOf">
+				<source>Kopie von</source>
+			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
-				<source>Title</source>
+				<source>Thema</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
-				<source>Description</source>
+				<source>Beschreibung</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
-				<source>Date</source>
+				<source>Datum und Zeit</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
-				<source>Room</source>
+				<source>Veranstaltungsort</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.address">
-				<source>Address</source>
+				<source>Adresse</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.organization">
-				<source>Organization</source>
+				<source>Schule/Institution</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.class">
-				<source>Class</source>
+				<source>Klasse</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.number_of_participants">
-				<source>Number Of Participants</source>
+				<source>Ungefähre Anzahl der Teilnehmenden</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
-				<source>Terms Accepted</source>
+				<source>Ich akzeptiere die Nutzungsbedingungen.</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
-				<source>City</source>
+				<source>PLZ/Ort</source>
 			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
 				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_panel.creator">
-				<source>Creator</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.votings">
 				<source>Votings</source>
 			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
 				<source>Voting</source>
 			</trans-unit>

@@ -26,11 +26,15 @@ namespace Visol\EasyvoteEducation\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Visol\Easyvote\Utility\Algorithms;
+use Visol\EasyvoteEducation\Domain\Model\Panel;
 
 /**
  * PanelController
  */
-class PanelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
 	 * panelRepository
@@ -39,6 +43,12 @@ class PanelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * @inject
 	 */
 	protected $panelRepository = NULL;
+
+	/**
+	 * @var \Visol\Easyvote\Service\CloneService
+	 * @inject
+	 */
+	public $cloneService;
 
 	/**
 	 * action list
@@ -53,78 +63,202 @@ class PanelController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action show
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
+	 * @param Panel $panel
 	 * @return void
 	 */
-	public function showAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
+	public function showAction(Panel $panel) {
 		$this->view->assign('panel', $panel);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $newPanel
+	 * @param Panel $newPanel
 	 * @ignorevalidation $newPanel
 	 * @return void
 	 */
-	public function newAction(\Visol\EasyvoteEducation\Domain\Model\Panel $newPanel = NULL) {
-		$this->view->assign('newPanel', $newPanel);
+	public function newAction(Panel $newPanel = NULL) {
+		if ($this->getLoggedInUser()) {
+			$this->view->assign('newPanel', $newPanel);
+		} else {
+			// todo access denied
+		}
+	}
+
+	/**
+	 * Correct parsing of datetime-local input
+	 */
+	protected function initializeCreateAction(){
+		$propertyMappingConfiguration = $this->arguments['newPanel']->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->forProperty('date')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'Y-m-d\TH:i');
 	}
 
 	/**
 	 * action create
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $newPanel
-	 * @return void
+	 * @param Panel $newPanel
+	 * @return string
 	 */
-	public function createAction(\Visol\EasyvoteEducation\Domain\Model\Panel $newPanel) {
-		$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->panelRepository->add($newPanel);
-		$this->redirect('list');
+	public function createAction(Panel $newPanel) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			do {
+				$panelId = Algorithms::generateRandomString(8, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
+			} while ($this->panelRepository->findOneByPanelId($panelId) instanceof Panel);
+			$newPanel->setPanelId($panelId);
+			$newPanel->setCommunityUser($communityUser);
+			$this->panelRepository->add($newPanel);
+			$this->persistenceManager->persistAll();
+			$message = LocalizationUtility::translate('panel.actions.create.success', $this->request->getControllerExtensionName(), array($newPanel->getTitle()));
+			$this->addFlashMessage($message, '', AbstractMessage::OK);
+			return json_encode(array(
+				'redirectToAction' => 'managePanels'
+			));
+		} else {
+			// TODO no user logged in
+		}
 	}
 
 	/**
 	 * action edit
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
+	 * @param Panel $panel
 	 * @ignorevalidation $panel
 	 * @return void
 	 */
-	public function editAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
-		$this->view->assign('panel', $panel);
+	public function editAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$this->view->assign('panel', $panel);
+		} else {
+			// todo permission denied
+		}
 	}
 
 	/**
 	 * action update
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
-	 * @return void
+	 * @param Panel $panel
+	 * @return string
 	 */
-	public function updateAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
-		$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->panelRepository->update($panel);
-		$this->redirect('list');
+	public function updateAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$message = LocalizationUtility::translate('panel.actions.update.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
+			$this->addFlashMessage($message, '', AbstractMessage::OK);
+			$this->panelRepository->update($panel);
+			$this->persistenceManager->persistAll();
+			return json_encode(array(
+				'redirectToAction' => 'managePanels'
+			));
+		} else {
+			// todo permission denied
+		}
 	}
 
 	/**
 	 * action delete
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
-	 * @return void
+	 * @param Panel $panel
+	 * @return string
 	 */
-	public function deleteAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
-		$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->panelRepository->remove($panel);
-		$this->redirect('list');
+	public function deleteAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$message = LocalizationUtility::translate('panel.actions.delete.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
+			$this->addFlashMessage($message, '', AbstractMessage::OK);
+			$this->panelRepository->remove($panel);
+			$this->persistenceManager->persistAll();
+			return json_encode(array(
+				'redirectToAction' => 'managePanels'
+			));
+		} else {
+			// todo permission denied
+		}
 	}
 
 	/**
-	 * action listForCurrentUser
+	 * action duplicate
+	 *
+	 * @param Panel $panel
+	 * @return string
+	 */
+	public function duplicateAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$message = LocalizationUtility::translate('panel.actions.duplicate.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
+			$this->addFlashMessage($message, '', AbstractMessage::OK);
+			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $duplicatePanel */
+			$duplicatePanel = $this->cloneService->copy($panel);
+			// generate a new panelId
+			do {
+				$panelId = Algorithms::generateRandomString(8, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
+			} while ($this->panelRepository->findOneByPanelId($panelId) instanceof Panel);
+			$duplicatePanel->setPanelId($panelId);
+			// Prefix "Copy of" to duplicated panel
+			$copyOfText = LocalizationUtility::translate('panel.actions.duplicate.copyOf', $this->request->getControllerExtensionName());
+			$duplicatePanel->setTitle($copyOfText . ' ' . $panel->getTitle());
+
+			$this->panelRepository->add($duplicatePanel);
+			$this->persistenceManager->persistAll();
+			return json_encode(array(
+				'redirectToAction' => 'managePanels'
+			));
+		} else {
+			// todo permission denied
+		}
+
+	}
+
+	/**
+	 * action startup
+	 */
+	public function startupAction() {
+	}
+
+	/**
+	 * action dashboard
+	 */
+	public function dashboardAction() {
+	}
+
+	/**
+	 * action managePanels
 	 *
 	 * @return void
 	 */
-	public function listForCurrentUserAction() {
-		
+	public function managePanelsAction() {
+		if ($communityUser = $this->getLoggedInUser()) {
+			$this->view->assign('panels', $this->panelRepository->findByCommunityUser($communityUser));
+		} else {
+			// todo no user logged in
+		}
+	}
+
+	/**
+	 * action startPanel
+	 *
+	 * @return void
+	 */
+	public function startPanelAction() {
+		if ($communityUser = $this->getLoggedInUser()) {
+			$this->view->assign('panels', $communityUser->getPanels());
+		} else {
+			// todo no user logged in
+		}
+	}
+
+	/**
+	 * Check if the currently logged in user is the owner of a panel
+	 *
+	 * @param Panel $panel
+	 * @return bool
+	 */
+	public function isCurrentUserOwnerOfPanel(Panel $panel) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			if ($panel->getCommunityUser() === $communityUser) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
 	}
 
 }

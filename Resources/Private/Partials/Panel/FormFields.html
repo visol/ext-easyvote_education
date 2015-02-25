@@ -1,37 +1,73 @@
+<div class="form-group">
+	<label for="title">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.title" />
+	</label>
+	<f:form.textfield id="title" class="form-control" required="TRUE" property="title" />
+</div>
+<div class="form-group">
+	<label for="description">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.description" />
+	</label>
+	<f:form.textarea id="description" class="form-control" property="description" cols="40" rows="15" />
+</div>
+<div class="form-group">
+	<label for="date">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.date" />
+	</label>
+	<f:form.textfield type="datetime-local" id="date" class="form-control easyvoteEducation-date" property="date"  value="{panel.date->f:format.date()}" />
+</div>
+<div class="form-group">
+	<label for="room">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.room" />
+	</label>
+	<f:form.textfield id="room" class="form-control" property="room" />
+</div>
+<div class="form-group">
+	<label for="address">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.address" />
+	</label>
+	<f:form.textfield id="address" class="form-control" property="address" />
+</div>
+<div class="form-group">
+	<label>
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.city" />
+	</label>
+	<f:if condition="{panel.city}">
+		<input type="text" class="form-control cityOutput" readonly value="{panel.city.postalCode} {panel.city.name} ({panel.city.kanton.name})" />
+	</f:if>
+	<f:form.textfield class="form-control citySelection" property="city" />
+</div>
+<div class="form-group">
+	<label for="organization">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
+	</label>
+	<f:form.textfield id="organization" class="form-control" property="organization" />
+</div>
+<div class="form-group">
+	<label for="class">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.class" />
+	</label>
+	<f:form.textfield id="class" class="form-control" property="class" />
+</div>
+<div class="form-group">
+	<label for="numberOfParticipants">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.number_of_participants" />
+	</label>
+	<f:form.textfield id="numberOfParticipants" class="form-control" property="numberOfParticipants" />
+</div>
+<div class="checkbox">
+	<label for="termsAccepted">
+		<f:form.checkbox additionalAttributes="{required: required}" id="termsAccepted" property="termsAccepted" value="1" /> <f:translate key="tx_easyvoteeducation_domain_model_panel.terms_accepted" />
+	</label>
+</div>
+<script>
+	var postalCodeServiceUrl = "{f:uri.action(controller: 'City', action:'listCitiesByPostalCode', pluginName: 'communityAjax', extensionName: 'easyvote', absolute: 'TRUE', noCacheHash: 'TRUE', pageType: 999, pageUid: settings.communityAjaxPid)}";
+</script>
 
-<label for="title">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.title" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="title" /><br />
-<label for="description">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.description" />
-</label><br />
-	<f:form.textarea property="description" cols="40" rows="15" /><br />
-<label for="date">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.date" />
-</label><br />
-	<f:form.textfield property="date"  value="{panel.date->f:format.date()}" /><br />
-<label for="room">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.room" />
-</label><br />
-	<f:form.textfield property="room" /><br />
-<label for="address">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.address" />
-</label><br />
-	<f:form.textfield property="address" /><br />
-<label for="organization">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
-</label><br />
-	<f:form.textfield property="organization" /><br />
-<label for="class">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.class" />
-</label><br />
-	<f:form.textfield property="class" /><br />
-<label for="numberOfParticipants">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.number_of_participants" />
-</label><br />
-	<f:form.textfield property="numberOfParticipants" /><br />
-<label for="termsAccepted">
-	<f:translate key="tx_easyvoteeducation_domain_model_panel.terms_accepted" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.checkbox property="termsAccepted" value="1" /><br />
+
+
+
+
+
+
+

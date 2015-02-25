@@ -14,6 +14,12 @@ plugin.tx_easyvoteeducation {
 	}
 }
 
+plugin.tx_easyvoteeducation {
+	settings {
+		panelOrganizerGroupUid = 8
+	}
+}
+
 plugin.tx_easyvoteeducation._CSS_DEFAULT_STYLE (
 	textarea.f3-form-error {
 		background-color:#FF9F9F;

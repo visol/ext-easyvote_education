@@ -1,26 +1,12 @@
+<f:render partial="Panel/MainNavigation.html" />
 
-<f:layout name="Default" />
-
-This template displays a NEW form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        New.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
-<f:section name="main">
-<h1>New Panel</h1>
+<h2><f:translate key="panel.new.title" /></h2>
 
 <f:flashMessages renderMode="div" />
 
 <f:render partial="FormErrors" arguments="{object:Panel}" />
 
-<f:form action="create"  name="newPanel" object="{newPanel}">
+<f:form action="create" id="newPanel" name="newPanel" object="{newPanel}">
 <f:render partial="Panel/FormFields" />
-	<f:form.submit value="Create new" />
+	<button type="submit" class="btn btn-primary"><f:translate key="panel.new.create" /></button>
 </f:form>
-</f:section>
