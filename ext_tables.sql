@@ -6,6 +6,7 @@ CREATE TABLE tx_easyvoteeducation_domain_model_panel (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+	panel_id varchar(255) DEFAULT '' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
 	date datetime DEFAULT '0000-00-00 00:00:00',

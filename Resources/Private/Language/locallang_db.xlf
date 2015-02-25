@@ -6,6 +6,9 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel">
 				<source>Panel</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.panel_id">
+				<source>Panel ID</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
 				<source>Title</source>
 			</trans-unit>

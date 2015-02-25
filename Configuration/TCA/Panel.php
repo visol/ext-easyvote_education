@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 	'ctrl' => $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date, room, address, organization, class, number_of_participants, terms_accepted, city, image, creator, votings',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, panel_id, title, description, date, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, date, room, address, organization, class, number_of_participants, terms_accepted, city, image, creator, votings, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, panel_id, title, description, date, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -88,6 +88,15 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 			),
 		),
 
+		'panel_id' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.panel_id',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'title' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.title',

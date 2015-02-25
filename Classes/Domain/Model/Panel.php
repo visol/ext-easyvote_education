@@ -33,6 +33,13 @@ namespace Visol\EasyvoteEducation\Domain\Model;
 class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
+	 * Panel identifier
+	 *
+	 * @var string
+	 */
+	protected $panelId = '';
+
+	/**
 	 * Title
 	 *
 	 * @var string
@@ -420,6 +427,22 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setVotings(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $votings) {
 		$this->votings = $votings;
+	}
+
+
+
+	/**
+	 * @return string
+	 */
+	public function getPanelId() {
+		return $this->panelId;
+	}
+
+	/**
+	 * @param string $panelId
+	 */
+	public function setPanelId($panelId) {
+		$this->panelId = $panelId;
 	}
 
 }
