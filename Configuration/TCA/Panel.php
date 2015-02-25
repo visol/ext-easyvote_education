@@ -208,18 +208,6 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				'maxitems' => 1,
 			), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
 		),
-		'creator' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.creator',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'fe_users',
-				//'readOnly' => 1,
-				'items'   => array(
-					array('', ''),
-				),
-			),
-		),
 		'votings' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.votings',
@@ -239,8 +227,15 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 			),
 		),
 		'community_user' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.community_user',
 			'config' => array(
-				'type' => 'passthrough',
+				'type' => 'select',
+				'foreign_table' => 'fe_users',
+				//'readOnly' => 1,
+				'items'   => array(
+					array('', ''),
+				),
 			),
 		),
 	),

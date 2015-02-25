@@ -119,11 +119,11 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $image = NULL;
 
 	/**
-	 * Creator
+	 * CommunityUser (owner)
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
 	 */
-	protected $creator = NULL;
+	protected $communityUser = NULL;
 
 	/**
 	 * Votings
@@ -372,25 +372,6 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Returns the creator
-	 *
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser $creator
-	 */
-	public function getCreator() {
-		return $this->creator;
-	}
-
-	/**
-	 * Sets the creator
-	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $creator
-	 * @return void
-	 */
-	public function setCreator(\Visol\Easyvote\Domain\Model\CommunityUser $creator) {
-		$this->creator = $creator;
-	}
-
-	/**
 	 * Adds a Voting
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
@@ -429,7 +410,19 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->votings = $votings;
 	}
 
+	/**
+	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
+	 */
+	public function getCommunityUser() {
+		return $this->communityUser;
+	}
 
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function setCommunityUser($communityUser) {
+		$this->communityUser = $communityUser;
+	}
 
 	/**
 	 * @return string

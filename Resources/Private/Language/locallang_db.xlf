@@ -42,8 +42,8 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
 				<source>Image</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_panel.creator">
-				<source>Creator</source>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.community_user">
+				<source>Community User/Owner</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.votings">
 				<source>Votings</source>
