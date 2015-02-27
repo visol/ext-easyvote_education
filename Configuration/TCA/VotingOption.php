@@ -155,7 +155,7 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 				'foreign_field' => 'votingoption',
 				'maxitems'      => 9999,
 				'appearance' => array(
-					'collapseAll' => 0,
+					'collapseAll' => 1,
 					'levelLinksPosition' => 'top',
 					'showSynchronizationLink' => 1,
 					'showPossibleLocalizationRecords' => 1,
@@ -166,8 +166,14 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 		),
 		
 		'voting' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.voting',
 			'config' => array(
-				'type' => 'passthrough',
+				'type' => 'select',
+				'foreign_table' => 'tx_easyvoteeducation_domain_model_voting',
+				'items'   => array(
+					array('', ''),
+				),
 			),
 		),
 	),
