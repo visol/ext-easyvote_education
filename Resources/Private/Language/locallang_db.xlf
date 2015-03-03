@@ -69,6 +69,9 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
 				<source>Voting Options</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.panel">
+				<source>Voting Options</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption">
 				<source>Voting Option</source>
 			</trans-unit>
@@ -88,6 +91,9 @@
 				<source>Image</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.votes">
+				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.voting">
 				<source>Votes</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_vote">

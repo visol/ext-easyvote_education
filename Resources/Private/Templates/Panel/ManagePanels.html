@@ -2,21 +2,23 @@
 
 <f:for each="{panels}" as="panel">
 	<ul class="panel-items">
-		<li class="panel-item">
-			{panel.title} | <span class="panel-id">{panel.panelId}</span><br />
-			<f:if condition="{panel.date}">
-				(<f:format.date format="%d.%m.%y, %H:%m Uhr">{panel.date}</f:format.date>)
-			</f:if>
-			<div class="panel-item-toolbar">
-				<ul>
+		<li class="panel-item expandable-item">
+			<div class="item-header">
+				{panel.title} | <span class="panel-id">{panel.panelId}</span><br />
+				<f:if condition="{panel.date}">
+					(<f:format.date format="%d.%m.%y, %H:%m Uhr">{panel.date}</f:format.date>)
+				</f:if>
+			</div>
+			<div class="item-content">
+				<ul class="item-toolbar">
 					<li>
-						<a class="btn btn-primary btn-sm" data-role="ajaxobject" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
 					</li>
 					<li>
-						<a class="btn btn-primary btn-sm" data-role="ajaxobject" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
 					</li>
 					<li>
-						<a class="btn btn-primary btn-sm" data-role="ajaxobject" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
 						<div class="hidden ajaxobject-confirm">
 							<p><f:translate key="panel.actions.delete.confirmationText" /></p>
 							<button class="pull-left btn btn-primary button-cancel"><f:translate key="panel.actions.delete.cancel" /></button>
@@ -24,10 +26,10 @@
 						</div>
 					</li>
 					<li>
-						<a class="btn btn-primary btn-sm" data-role="ajaxobject" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="duplicate"><f:translate key="panel.actions.duplicate" /></a>
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="duplicate"><f:translate key="panel.actions.duplicate" /></a>
 					</li>
 					<li>
-						<a class="btn btn-primary btn-sm" data-role="ajaxobject" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="start"><f:translate key="panel.actions.start" /></a>
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="start"><f:translate key="panel.actions.start" /></a>
 					</li>
 				</ul>
 			</div>

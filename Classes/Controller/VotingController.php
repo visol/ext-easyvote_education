@@ -26,6 +26,9 @@ namespace Visol\EasyvoteEducation\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Visol\EasyvoteEducation\Domain\Model\Panel;
 
 /**
  * VotingController
@@ -33,12 +36,15 @@ namespace Visol\EasyvoteEducation\Controller;
 class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
-	 * votingRepository
-	 *
-	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingRepository
-	 * @inject
+	 * @param Panel $panel
+	 * @return string
 	 */
-	protected $votingRepository = NULL;
+	public function listForCurrentUserAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$this->view->assign('panel', $panel);
+			return json_encode(array('content' => $this->view->render()));
+		}
+	}
 
 	/**
 	 * action list
@@ -54,33 +60,81 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	 * action show
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
-	 * @return void
+	 * @return string
 	 */
 	public function showAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		$this->view->assign('voting', $voting);
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			$this->view->assign('voting', $voting);
+			return json_encode(array('content' => $this->view->render()));
+		}
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $newVoting
-	 * @ignorevalidation $newVoting
-	 * @return void
+	 * @param Panel $panel
+	 * @param string $selection (1=yesNoAbstention,2=freeText,3=images,4=empty)
+	 * @return string
 	 */
-	public function newAction(\Visol\EasyvoteEducation\Domain\Model\Voting $newVoting = NULL) {
-		$this->view->assign('newVoting', $newVoting);
-	}
-
-	/**
-	 * action create
-	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $newVoting
-	 * @return void
-	 */
-	public function createAction(\Visol\EasyvoteEducation\Domain\Model\Voting $newVoting) {
-		$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+	public function newAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel, $selection = '') {
+		/** @var \Visol\EasyvoteEducation\Domain\Model\Voting $newVoting */
+		$newVoting = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Voting');
+		$newVotingTitle = LocalizationUtility::translate('voting.actions.new.dummyText.newVoting', $this->request->getControllerExtensionName());
+		$newVoting->setTitle($newVotingTitle);
+		$newVoting->setIsVisible(TRUE);
+		switch ((int)$selection) {
+			case 1:
+				// YesNoAbstention
+				/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionYes */
+				$votingOptionYes = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+				$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.yes', $this->request->getControllerExtensionName());
+				$votingOptionYes->setTitle($votingOptionDummyText);
+				$this->votingOptionRepository->add($votingOptionYes);
+				$newVoting->addVotingOption($votingOptionYes);
+				/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionNo */
+				$votingOptionNo = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+				$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.no', $this->request->getControllerExtensionName());
+				$votingOptionNo->setTitle($votingOptionDummyText);
+				$this->votingOptionRepository->add($votingOptionNo);
+				$newVoting->addVotingOption($votingOptionNo);
+				/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionAbstention */
+				$votingOptionAbstention = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+				$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.abstention', $this->request->getControllerExtensionName());
+				$votingOptionAbstention->setTitle($votingOptionDummyText);
+				$this->votingOptionRepository->add($votingOptionAbstention);
+				$newVoting->addVotingOption($votingOptionAbstention);
+				break;
+			case 2:
+				// Free text
+				$randomColors = $this->dummyDataService->getRandomColors(3);
+				for ($i = 0; $i < 3; $i++) {
+					/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
+					$votingOption = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+					$votingOption->setTitle($randomColors[$i]);
+					$this->votingOptionRepository->add($votingOption);
+					$newVoting->addVotingOption($votingOption);
+				}
+				break;
+			case 3:
+				// Text and Images
+				$randomNames = $this->dummyDataService->getRandomNames(3);
+				for ($i = 0; $i < 3; $i++) {
+					/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
+					$votingOption = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+					$votingOption->setTitle($randomNames[$i]);
+					// todo add dummy images
+					$this->votingOptionRepository->add($votingOption);
+					$newVoting->addVotingOption($votingOption);
+				}
+				break;
+			default:
+				break;
+		}
 		$this->votingRepository->add($newVoting);
-		$this->redirect('list');
+		$panel->addVoting($newVoting);
+		$this->panelRepository->update($panel);
+		$this->persistenceManager->persistAll();
+		return json_encode(array('reloadVotings' => $panel->getUid()));
 	}
 
 	/**
@@ -88,34 +142,82 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
 	 * @ignorevalidation $voting
-	 * @return void
+	 * @return string
 	 */
 	public function editAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		$this->view->assign('voting', $voting);
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			$this->view->assign('voting', $voting);
+			return json_encode(array('content' => $this->view->render()));
+		}
 	}
 
 	/**
 	 * action update
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
-	 * @return void
+	 * @return string
 	 */
 	public function updateAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->votingRepository->update($voting);
-		$this->redirect('list');
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			$this->votingRepository->update($voting);
+			$this->persistenceManager->persistAll();
+			return json_encode(array('success' => TRUE));
+		} else {
+			return json_encode(array('success' => FALSE, 'message' => 'Access denied.'));
+		}
 	}
 
 	/**
 	 * action delete
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
-	 * @return void
+	 * @ignorevalidation $voting
+	 * @return string
 	 */
 	public function deleteAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->votingRepository->remove($voting);
-		$this->redirect('list');
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			$this->votingRepository->remove($voting);
+			$this->persistenceManager->persistAll();
+			return json_encode(array('removeElement' => TRUE));
+		}
 	}
 
+	/**
+	 * action duplicate
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
+	 * @return string
+	 */
+	public function duplicateAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $duplicateVoting */
+			$duplicateVoting = $this->cloneService->copy($voting);
+			$copyOfText = LocalizationUtility::translate('voting.actions.duplicate.copyOf', $this->request->getControllerExtensionName());
+			$duplicateVoting->setTitle($copyOfText . ' ' . $voting->getTitle());
+			$this->votingRepository->add($duplicateVoting);
+			$voting->getPanel()->addVoting($duplicateVoting);
+			$this->persistenceManager->persistAll();
+			return json_encode(array('reloadVotings' => $voting->getPanel()->getUid()));
+		}
+	}
+
+	/**
+	 * action sort
+	 *
+	 * @param Panel $panel
+	 * @param array $sorting
+	 * @return string
+	 */
+	public function sortAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel, $sorting) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$votings = $this->votingRepository->findByPanel($panel);
+			foreach ($votings as $voting) {
+				/** @var $voting \Visol\EasyvoteEducation\Domain\Model\Voting */
+				$voting->setSorting((int)$sorting[$voting->getUid()]);
+				$this->votingRepository->update($voting);
+			}
+			$this->persistenceManager->persistAll();
+			return json_encode(array('success' => TRUE));
+		}
+	}
 }

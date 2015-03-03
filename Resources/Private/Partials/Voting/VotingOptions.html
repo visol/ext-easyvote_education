@@ -1,0 +1,38 @@
+<ul>
+	<f:for each="{voting.votingOptions}" as="votingOption">
+		<li class="votingOption-item votingOption-item-{votingOption.uid} expandable-item" data-uid="{votingOption.uid}">
+			<div class="item-header">
+				<f:if condition="{votingOption.image}">
+					<div class="voting-option-image">
+						<f:image src="{votingOption.image.uid}" treatIdAsReference="1" width="50" height="50c"/>
+					</div>
+				</f:if>
+				{votingOption.title}
+				| <f:count>{votingOption.votes}</f:count> <f:translate key="votingOption.votes" />
+			</div>
+			<div class="item-content">
+				<f:form class="editVotingOption" action="update" name="votingOption" object="{votingOption}" enctype="multipart/form-data" additionalAttributes="{data-parentobjectname: 'voting', data-parentobjectuid: '{voting.uid}'}" >
+					<f:render partial="VotingOption/FormFields" arguments="{votingOption:votingOption}" />
+					<f:form.submit class="btn btn-primary btn-sm" value="{f:translate(key: 'votingOption.actions.save')}" />
+				</f:form>
+				<ul class="item-toolbar">
+					<li>
+						<a class="btn btn-primary btn-sm" data-role="genericobjectaction" data-confirm="true" data-object="votingOption" data-uid="{votingOption.uid}" data-actionname="deleteVotingOption"><f:translate key="votingOption.actions.delete" /></a>
+						<div class="hidden ajaxobject-confirm">
+							<p><f:translate key="votingOption.actions.delete.confirmationText" /></p>
+							<button class="pull-left btn btn-primary button-cancel"><f:translate key="votingOption.actions.delete.cancel" /></button>
+							<button class="pull-right btn btn-primary button-returntrue"><f:translate key="votingOption.actions.delete.confirm" /></button>
+						</div>
+					</li>
+					<li>
+						<a class="btn btn-primary btn-sm action-movedown" data-role="movegenericobject" data-direction="down" data-object="votingOption" data-uid="{votingOption.uid}" data-parentobject="voting" data-parentuid="{votingOption.voting.uid}" data-actionname="sortVotingOptions"><f:translate key="votingOption.actions.movedown" /></a>
+					</li>
+					<li>
+						<a class="btn btn-primary btn-sm action-moveup" data-role="movegenericobject" data-direction="up" data-object="votingOption" data-uid="{votingOption.uid}" data-parentobject="voting" data-parentuid="{votingOption.voting.uid}" data-actionname="sortVotingOptions"><f:translate key="votingOption.actions.moveup" /></a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</f:for>
+</ul>
+<a class="btn btn-primary btn-sm" data-role="genericobjectaction" data-confirm="false" data-object="voting" data-uid="{voting.uid}" data-actionname="newVotingOption"><f:translate key="votingOption.actions.new" /></a>

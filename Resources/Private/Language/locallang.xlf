@@ -70,6 +70,138 @@
 				<source>Kopie von</source>
 			</trans-unit>
 
+			<trans-unit id="voting.votingDuration">
+				<source>Abstimmungszeit</source>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.seconds">
+				<source>Sekunden</source>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.infinite">
+				<source>keine Abstimmungszeit gesetzt</source>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.setInfinite">
+				<source>keine Abstimmungszeit setzen</source>
+			</trans-unit>
+			<trans-unit id="voting.hidden">
+				<source>verborgen</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.save">
+				<source>speichern</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.create.success">
+				<source>Das Voting "%s" wurde erstellt.</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.update.success">
+				<source>Das Voting "%s" wurde aktualisiert.</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.confirmationText">
+				<source>Wollen Sie dieses Voting und dessen Stimmen löschen?</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.confirm">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.success">
+				<source>Das Voting "%s" wurde gelöscht.</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate">
+				<source>duplizieren</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate.success">
+				<source>Das Voting "%s" wurde dupliziert.</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate.copyOf">
+				<source>Kopie von</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.moveup">
+				<source>nach oben</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.movedown">
+				<source>nach unten</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new">
+				<source>Neues Voting</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.yesNoAbstention">
+				<source>Ja/Nein/Enthaltung</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.text">
+				<source>Freier Text</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.images">
+				<source>Text und Bilder</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.empty">
+				<source>Leeres Voting</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.newVoting">
+				<source>[Neues Voting]</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.yes">
+				<source>ja</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.no">
+				<source>nein</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.abstention">
+				<source>Enthaltung</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.firstNames">
+				<source>Nicola,Silvan,Fabien,Lorenz,Alexandra,Maurus,Ariane,Sarah,Mario,Zoë,Jonas,Lea,Diego,Michael,Anne,Luisa,Luzia,Adil,Alissa,Anaïs,Aurélia,Benjamin,Dominic,Giorgio,Jochanan,Loic,Melanie,Stefan</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.lastNames">
+				<source>Jorio,Zemp,Udriot,Ulrich,Molinaro,Blumenthal,Bahri,Eggo,Stübi,Maire,Hirschi,Thommen,Bigger,Felder,Kneer,Hafner,Iseli,Koller,Bizzozero,Franck,Buchs,Jakob,Hauser,Tresoldi,Harari,Muhlemann,Eberhard,Germann</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.colors">
+				<source>blau,grün,gelb,rot,ocker,pink,rosa,schwarz,weiss,gold</source>
+			</trans-unit>
+
+			<trans-unit id="voting.votingOptions">
+				<source>Antwortmöglichkeiten</source>
+			</trans-unit>
+
+			<trans-unit id="votingOption.votes">
+				<source>Stimmen</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.new.dummyText.newVotingOption">
+				<source>[Neue Antwortmöglichkeit]</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.confirmationText">
+				<source>Wollen Sie diese Antwortmöglichkeit löschen?</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.confirm">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.success">
+				<source>Die Antwortmöglichkeit "%s" wurde gelöscht.</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.moveup">
+				<source>nach oben</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.movedown">
+				<source>nach unten</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.new">
+				<source>Neue Antwortmöglichkeit</source>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.save">
+				<source>speichern</source>
+			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
 				<source>Thema</source>
 			</trans-unit>
@@ -112,47 +244,38 @@
 				<source>Voting</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.title">
-				<source>Title</source>
+				<source>Frage</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.short">
 				<source>Short</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_visible">
-				<source>Is Visible</source>
+				<source>Frage ist aktiv</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_voting_enabled">
 				<source>Is Voting Enabled</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_duration">
-				<source>Voting Duration</source>
+				<source>Abstimmungszeit in Sekunden</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
 				<source>Voting Options</source>
 			</trans-unit>
+
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption">
 				<source>Voting Option</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.title">
-				<source>Title</source>
+				<source>Antwort</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.style">
 				<source>Style</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_votes">
-				<source>Cached Votes</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_rank">
-				<source>Cached Rank</source>
-			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image">
-				<source>Image</source>
+				<source>Bild</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.votes">
-				<source>Votes</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_vote">
-				<source>Vote</source>
-			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

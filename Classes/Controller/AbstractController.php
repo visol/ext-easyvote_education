@@ -25,6 +25,7 @@ namespace Visol\EasyvoteEducation\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Visol\EasyvoteEducation\Domain\Model\Panel;
 
 /**
  *
@@ -43,6 +44,44 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $communityUserRepository;
 
 	/**
+	 * panelRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelRepository
+	 * @inject
+	 */
+	protected $panelRepository = NULL;
+
+	/**
+	 * votingRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingRepository
+	 * @inject
+	 */
+	protected $votingRepository = NULL;
+
+	/**
+	 * votingOptionRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingOptionRepository
+	 * @inject
+	 */
+	protected $votingOptionRepository = NULL;
+
+	/**
+	 * dummyDataService
+	 *
+	 * @var \Visol\EasyvoteEducation\Service\DummyDataService
+	 * @inject
+	 */
+	protected $dummyDataService = NULL;
+
+	/**
+	 * @var \Visol\Easyvote\Service\CloneService
+	 * @inject
+	 */
+	public $cloneService;
+
+	/**
 	 * persistenceManager
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -58,6 +97,24 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			$communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
 			if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
 				return $communityUser;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	 * Check if the currently logged in user is the owner of a panel
+	 *
+	 * @param Panel $panel
+	 * @return bool
+	 */
+	public function isCurrentUserOwnerOfPanel(Panel $panel) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			if ($panel->getCommunityUser() === $communityUser) {
+				return TRUE;
 			} else {
 				return FALSE;
 			}

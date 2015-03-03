@@ -2,10 +2,10 @@
 
 <h2>{panel.title}</h2>
 
-<f:for each="{panel.votings}" as="voting">
-	<ul>
-		<li>
-			{voting.title}
-		</li>
-	</ul>
-</f:for>
+<div class="votings-content">
+	<script>
+		var panelUid = "{panel.uid}";
+		EasyvoteEducation.performAjaxObjectAction('listForCurrentUser', 'panel', panelUid, '.votings-content');
+	</script>
+</div>
+

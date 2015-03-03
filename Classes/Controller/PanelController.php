@@ -37,20 +37,6 @@ use Visol\EasyvoteEducation\Domain\Model\Panel;
 class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
-	 * panelRepository
-	 *
-	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelRepository
-	 * @inject
-	 */
-	protected $panelRepository = NULL;
-
-	/**
-	 * @var \Visol\Easyvote\Service\CloneService
-	 * @inject
-	 */
-	public $cloneService;
-
-	/**
 	 * action list
 	 *
 	 * @return void
@@ -213,7 +199,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 * @return string
 	 */
 	public function editVotingsAction(Panel $panel) {
-		if ($communityUser = $this->getLoggedInUser()) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$this->view->assign('panel', $panel);
 			return json_encode(array('content' => $this->view->render()));
 		}
@@ -254,24 +240,6 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$this->view->assign('panels', $communityUser->getPanels());
 		} else {
 			// todo no user logged in
-		}
-	}
-
-	/**
-	 * Check if the currently logged in user is the owner of a panel
-	 *
-	 * @param Panel $panel
-	 * @return bool
-	 */
-	public function isCurrentUserOwnerOfPanel(Panel $panel) {
-		if ($communityUser = $this->getLoggedInUser()) {
-			if ($panel->getCommunityUser() === $communityUser) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
 		}
 	}
 

@@ -1,0 +1,17 @@
+{namespace vi=Visol\Easyvote\ViewHelpers}
+
+<div class="form-group">
+	<label for="votingOption{votingOption.uid}-title">
+		<f:translate key="tx_easyvoteeducation_domain_model_votingoption.title" />
+	</label>
+	<f:form.textfield class="form-control" id="votingOption{votingOption.uid}-title" property="title" />
+</div>
+<div class="form-group">
+	<label for="votingOption{votingOption.uid}-image">
+		<f:translate key="tx_easyvoteeducation_domain_model_votingoption.image" />
+	</label>
+	<div class="clearfix">
+		<img class="votingOption-image-preview" id="votingOption{votingOption.uid}-image-preview" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" />
+	</div>
+	<vi:form.upload id="votingOption{votingOption.uid}-image" class="votingOption-image" property="image" />
+</div>

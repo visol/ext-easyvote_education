@@ -22,19 +22,138 @@
 			.panel-id {
 				font-family: "monotype", "courier new", sans-serif;
 			}
-			.panel-item-toolbar {
+		}
+	}
+
+	.expandable-item {
+		.item-header {
+			.clearfix();
+			font-weight: bold;
+		}
+		.item-content {
+			.clearfix();
+			display: none;
+			.item-toolbar {
 				.clearfix();
-				display: none;
-				ul {
-					list-style: none;
-					margin: 0;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					float: left;
 					padding: 0;
-					li {
-						float: left;
-						padding: 0;
-						margin: 0 10px 0 0;
+					margin: 0 10px 0 0;
+					opacity: 0.5;
+					&:hover {
+						opacity: 1;
 					}
 				}
+			}
+		}
+	}
+
+	.voting-items {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		.voting-item {
+			background: white;
+			padding: 5px;
+			margin: 0 0 10px 0;
+			cursor: pointer;
+			.item-content {
+				margin: 20px 0 0 10px;
+				.editVoting {
+					margin-bottom: 20px;
+					label {
+						font-weight: bold;
+					}
+					input[type=text] {
+						border: 1px solid @dark-blue;
+					}
+					.votingDuration-display {
+						&.votingDuration-display-hidden {
+							display: none;
+						}
+					}
+				}
+				.votingOptions-content {
+					margin-bottom: 20px;
+					ul {
+						list-style: none;
+						margin: 0;
+						padding: 0;
+						li {
+							background: @box-background;
+							padding: 5px;
+							margin: 0 0 5px 0;
+							.item-header {
+								.voting-option-image {
+									float: left;
+									margin-right: 10px;
+								}
+							}
+							.item-content {
+								.votingOption-image-preview {
+									height: 50px;
+									width: 50px;
+								}
+								.item-toolbar {
+									margin-left: -10px;
+									.action-moveup {
+										display: inline-block;
+									}
+									.action-movedown {
+										display: inline-block;
+									}
+								}
+							}
+							&:first-child {
+								.item-content {
+									.item-toolbar {
+										.action-moveup {
+											display: none;
+										}
+									}
+								}
+							}
+							&:last-child {
+								.item-content {
+									.item-toolbar {
+										.action-movedown {
+											display: none;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.item-toolbar {
+					margin-left: -10px;
+				}
+			}
+			&:first-child {
+				.item-content {
+					.item-toolbar {
+						.action-moveup {
+							display: none;
+						}
+					}
+				}
+			}
+			&:last-child {
+				.item-content {
+					.item-toolbar {
+						.action-movedown {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		.voting-item-hidden {
+			.item-header {
+				opacity: 0.5;
 			}
 		}
 	}
