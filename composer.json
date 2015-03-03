@@ -1,0 +1,8 @@
+{
+	"name": "visol/easyvote-education",
+	"type": "typo3-cms-extension",
+	"description": "Organize and manage panels",
+	"homepage": "https://github.com/visol/ext-easyvote_education",
+	"license": ["GPL-2.0+"],
+	"version": "1.0.0"
+}
