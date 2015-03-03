@@ -138,6 +138,7 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_easyvoteeducation_domain_model_votingoption',
 				'foreign_field' => 'voting',
+				'foreign_sortby' => 'sorting',
 				'maxitems'      => 9999,
 				'appearance' => array(
 					'collapseAll' => 1,
@@ -160,6 +161,14 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 					array('', ''),
 				),
 			),
+		),
+		'sorting' => array(
+			'config' => array(
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int',
+				'readOnly' => 1
+			)
 		),
 	),
 );

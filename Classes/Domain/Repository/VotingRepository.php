@@ -32,5 +32,9 @@ namespace Visol\EasyvoteEducation\Domain\Repository;
  */
 class VotingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	
+	protected $defaultOrderings = array(
+		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+	);
+
 }

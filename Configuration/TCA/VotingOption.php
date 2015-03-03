@@ -176,5 +176,13 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 				),
 			),
 		),
+		'sorting' => array(
+			'config' => array(
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int',
+				'readOnly' => 1
+			)
+		),
 	),
 );

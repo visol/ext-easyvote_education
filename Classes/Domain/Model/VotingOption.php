@@ -69,7 +69,7 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Image
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\FileReference
-	 * @copy clone
+	 * @copy reference
 	 */
 	protected $image = NULL;
 
@@ -82,6 +82,18 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @copy ignore
 	 */
 	protected $votes = NULL;
+
+	/**
+	 * Voting (parent)
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Model\Voting
+	 */
+	protected $voting = NULL;
+
+	/**
+	 * @var integer
+	 */
+	protected $sorting = 9999;
 
 	/**
 	 * __construct
@@ -235,6 +247,34 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setVotes(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $votes) {
 		$this->votes = $votes;
+	}
+
+	/**
+	 * @return Voting
+	 */
+	public function getVoting() {
+		return $this->voting;
+	}
+
+	/**
+	 * @param Voting $voting
+	 */
+	public function setVoting($voting) {
+		$this->voting = $voting;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getSorting() {
+		return $this->sorting;
+	}
+
+	/**
+	 * @param int $sorting
+	 */
+	public function setSorting($sorting) {
+		$this->sorting = $sorting;
 	}
 
 }

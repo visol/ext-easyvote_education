@@ -84,6 +84,20 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $votingOptions = NULL;
 
 	/**
+	 * Panel (parent)
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Model\Panel
+	 * @copy reference
+	 */
+	protected $panel = NULL;
+
+	/**
+	 * @var integer
+	 * @copy clone
+	 */
+	protected $sorting = 9999;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -253,6 +267,34 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setVotingOptions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $votingOptions) {
 		$this->votingOptions = $votingOptions;
+	}
+
+	/**
+	 * @return Panel
+	 */
+	public function getPanel() {
+		return $this->panel;
+	}
+
+	/**
+	 * @param Panel $panel
+	 */
+	public function setPanel($panel) {
+		$this->panel = $panel;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getSorting() {
+		return $this->sorting;
+	}
+
+	/**
+	 * @param int $sorting
+	 */
+	public function setSorting($sorting) {
+		$this->sorting = $sorting;
 	}
 
 }
