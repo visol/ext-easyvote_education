@@ -36,6 +36,14 @@ $(function() {
 		EasyvoteEducation.loadAction(actionName);
 	});
 
+	// AJAX-based voting actions
+	$body.on('click', "a[data-role='votingaction']", function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var actionarguments = $this.attr('data-actionarguments');
+		EasyvoteEducation.loadVotingAction(actionarguments);
+	});
+
 	// AJAX-based actions for panels
 	$body.on('click', "a[data-role='panelaction']", function(e) {
 		e.stopPropagation();
@@ -303,6 +311,24 @@ var EasyvoteEducation = {
 	},
 
 	/**
+	 * Load a votingaction and write its result to a container
+	 *
+	 * @param actionName Name of the action, an URI with the same name must be defined
+	 * @param contentContainerSelector
+	 */
+	loadVotingAction: function(actionArguments, contentContainerSelector) {
+		if (typeof(contentContainerSelector) === 'string') {
+			var $container = $(contentContainerSelector);
+		} else {
+			var $container = $('#easyvoteeducation-content');
+		}
+		var actionUri = '/routing/votings/' + actionArguments;
+		EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
+			$container.html(data);
+		});
+	},
+
+	/**
 	 * @param objectName
 	 * @param objectUid
 	 * @param uri
@@ -421,7 +447,7 @@ var EasyvoteEducation = {
 		var hashData = document.location.hash.substr(1).split('/');
 		if (hashData.length > 1) {
 			// ajax object action
-			var allowedActions = ['edit', 'editVotings'];
+			var allowedActions = ['edit', 'editVotings', 'execute'];
 			if ($.inArray(hashData[0], allowedActions) !== -1) {
 				var actionName = hashData[0];
 				var objectName = hashData[1];

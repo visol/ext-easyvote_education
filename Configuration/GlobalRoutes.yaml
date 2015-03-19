@@ -1,0 +1,12 @@
+#####################
+# easyvote Education
+#####################
+-
+  name: 'List all Voting Points'
+  uriPattern: 'votings/{actionarguments}'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Managepanels'
+    '@controller': 'Panel'
+    '@action':     'votingStep'
+  httpMethods: ['GET']

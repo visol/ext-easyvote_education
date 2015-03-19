@@ -37,4 +37,39 @@ class VotingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 	);
 
+	/**
+	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
+	 * @return \Visol\EasyvoteEducation\Domain\Model\Voting
+	 */
+	public function findFirstVotingByPanel(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('panel', $panel),
+				$query->equals('isVisible', TRUE)
+			)
+		);
+		$query->setOrderings(array(
+			'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+			'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+		));
+		return $query->execute()->getFirst();
+	}
+
+	public function findNextVotingByPanelAndCurrentVoting(\Visol\EasyvoteEducation\Domain\Model\Panel $panel, \Visol\EasyvoteEducation\Domain\Model\Voting $currentVoting) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->greaterThan('sorting', $currentVoting->getSorting()),
+				$query->equals('panel', $panel),
+				$query->equals('isVisible', TRUE)
+			)
+		);
+		$query->setOrderings(array(
+			'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+			'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+		));
+		return $query->execute()->getFirst();
+	}
+
 }

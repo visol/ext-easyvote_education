@@ -1,0 +1,30 @@
+<f:render partial="Panel/MainNavigation.html" />
+
+<h2><f:translate key="panel.execute.title" /> "{panel.title}"</h2>
+
+<f:flashMessages renderMode="div" />
+
+<h3><f:translate key="panel.execute.presentationViewTitle" /></h3>
+<p><f:translate key="panel.execute.presentationViewIntroduction" /></p>
+<p><a href="#"><f:translate key="panel.execute.presentationViewLinkText" /></a></p>
+
+<h3><f:translate key="panel.execute.guestViewTitle" /></h3>
+<p><f:translate key="panel.execute.guestViewIntroduction" /></p>
+<p><a href="#"><f:translate key="panel.execute.guestViewLinkText" /></a></p>
+<f:comment>
+	<p><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={guestViewUri}&choe=UTF-8" /></p>
+</f:comment>
+
+<f:if condition="{panel.currentState}">
+	<f:then>
+		<p><f:translate key="panel.execute.panelStartedBeforeInformation" /></p>
+		<p>
+			<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.currentVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.execute.continuePanelButtonText" /></a>
+			<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.restartPanelButtonText" /></a>
+		</p>
+	</f:then>
+	<f:else>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.startPanelButtonText" /></a></p>
+	</f:else>
+</f:if>
+

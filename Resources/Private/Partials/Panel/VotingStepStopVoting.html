@@ -1,0 +1,10 @@
+<h2>{panel.currentVoting.title}</h2>
+<p>TODO Auswertung</p>
+<f:if condition="{panel.nextVoting}">
+	<f:then>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.nextVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.votingStep.displayNextVotingButtonText" /></a></p>
+	</f:then>
+	<f:else>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-stopPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.votingStep.stopPanelButtonText" /></a></p>
+	</f:else>
+</f:if>

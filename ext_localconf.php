@@ -7,15 +7,18 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Managepanels',
 	array(
-		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings',
+		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort'
 
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings',
+		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort',
 	)
 );
+
+// Register global route
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['routing']['globalRoutes'][] = 'EXT:easyvote_education/Configuration/GlobalRoutes.yaml';

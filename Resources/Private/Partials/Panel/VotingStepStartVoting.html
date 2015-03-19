@@ -1,0 +1,29 @@
+<h2>{panel.currentVoting.title}</h2>
+<ul>
+	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
+		<li>{votingOption.title}</li>
+	</f:for>
+</ul>
+
+<f:if condition="{panel.currentVoting.votingDuration}">
+	<f:then>
+		<p><strong><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></strong></p>
+		<script>
+			var count = {panel.currentVoting.votingDuration};
+			var counter = setInterval(timer, 1000);
+
+			function timer() {
+				count = count - 1;
+				if (count <= 0) {
+					clearInterval(counter);
+					$('#stopVotingButton').trigger('click');
+				}
+				$('#timer').html(count);
+			}
+		</script>
+	</f:then>
+	<f:else>
+		<p><em><f:translate key="panel.votingStep.noVotingDurationNotice" /></em></p>
+	</f:else>
+</f:if>
+<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-stopVoting-{panel.currentVoting.uid}" href="#" class="btn btn-primary" id="stopVotingButton"><f:translate key="panel.votingStep.deactivateButtonText" /></a></p>

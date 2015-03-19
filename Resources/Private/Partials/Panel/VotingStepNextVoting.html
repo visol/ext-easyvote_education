@@ -1,0 +1,16 @@
+<h2>{panel.currentVoting.title}</h2>
+<ul>
+	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
+		<li>{votingOption.title}</li>
+	</f:for>
+</ul>
+
+<f:if condition="{panel.currentVoting.votingDuration}">
+	<f:then>
+		<p><em><f:translate key="voting.votingDuration" />: {panel.currentVoting.votingDuration} <f:translate key="voting.votingDuration.seconds" /></em></p>
+	</f:then>
+	<f:else>
+		<p><em><f:translate key="voting.votingDuration.infinite" /></em></p>
+	</f:else>
+</f:if>
+<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startVoting-{panel.currentVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.votingStep.activateButtonText" /></a></p>

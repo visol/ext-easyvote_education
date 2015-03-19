@@ -26,11 +26,18 @@ namespace Visol\EasyvoteEducation\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Panel
  */
 class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	/**
+	 * @var \Visol\EasyvoteEducation\Service\VotingService
+	 * @inject
+	 */
+	protected $votingService;
 
 	/**
 	 * Panel identifier
@@ -106,6 +113,14 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $numberOfParticipants = '';
 
 	/**
+	 * Current state of panel
+	 *
+	 * @var string
+	 * @copy ignore
+	 */
+	protected $currentState = '';
+
+	/**
 	 * Terms accepted
 	 *
 	 * @var boolean
@@ -146,6 +161,22 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @copy clone
 	 */
 	protected $votings = NULL;
+
+	/**
+	 * The next voting
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Model\Voting|NULL
+	 * @transient
+	 */
+	protected $nextVoting = NULL;
+
+	/**
+	 * The current voting
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Model\Voting|NULL
+	 * @transient
+	 */
+	protected $currentVoting = NULL;
 
 	/**
 	 * __construct
@@ -444,12 +475,39 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function getPanelId() {
 		return $this->panelId;
 	}
-
 	/**
 	 * @param string $panelId
 	 */
 	public function setPanelId($panelId) {
 		$this->panelId = $panelId;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCurrentState() {
+		return $this->currentState;
+	}
+
+	/**
+	 * @param string $currentState
+	 */
+	public function setCurrentState($currentState) {
+		$this->currentState = $currentState;
+	}
+
+	/**
+	 * @return NULL|Voting
+	 */
+	public function getNextVoting() {
+		return $this->votingService->getNextVoting($this);
+	}
+
+	/**
+	 * @return NULL|Voting
+	 */
+	public function getCurrentVoting() {
+		return $this->votingService->getCurrentVoting($this->currentState);
 	}
 
 }

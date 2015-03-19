@@ -27,6 +27,7 @@ namespace Visol\EasyvoteEducation\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Utility\Algorithms;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
@@ -202,6 +203,97 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$this->view->assign('panel', $panel);
 			return json_encode(array('content' => $this->view->render()));
+		} else {
+			// todo permission denied
+		}
+	}
+
+	/**
+	 * @param Panel $panel
+	 * @return string
+	 */
+	public function executeAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			$this->view->assign('panel', $panel);
+			$guestViewUri = $this->uriBuilder->setCreateAbsoluteUri(TRUE)->build();
+			$this->view->assign('guestViewUri', urlencode($guestViewUri));
+			return json_encode(array('content' => $this->view->render()));
+		} else {
+			// todo permission denied
+		}
+	}
+
+	/**
+	 * @param string $actionarguments The action arguments
+	 * @return string
+	 */
+	public function votingStepAction($actionarguments) {
+		$actionArgumentsArray = GeneralUtility::trimExplode('-', $actionarguments);
+		$protectedActions = array('startPanel', 'nextVoting', 'startVoting', 'stopVoting', 'stopPanel');
+		$publicActions = array('currentVoting', 'finishedVoting');
+
+		if (count($actionArgumentsArray === 4)) {
+			// we need four parts in the array for the request to be valid
+			list($unusedPanelObjectName, $panelUid, $votingStepAction, $votingUid) = $actionArgumentsArray;
+			if (in_array($votingStepAction, $protectedActions)) {
+				// action can only be performed by the owner of the panel, security check
+				/* @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+				$panel = $this->panelRepository->findByUid((int)$panelUid);
+				if ($this->isCurrentUserOwnerOfPanel($panel)) {
+					// the owner is making the request, so it is valid
+					switch ($votingStepAction) {
+						case 'startPanel':
+							$panel->setCurrentState('');
+							break;
+
+						case 'nextVoting':
+							// TODO emit event
+							$panel->setCurrentState('pendingVoting-' . $votingUid);
+							break;
+
+						case 'startVoting':
+							// TODO emit event
+
+							// set voting to enabled
+							$panel->getCurrentVoting()->setIsVotingEnabled(TRUE);
+							$this->votingRepository->update($panel->getCurrentVoting());
+
+							$panel->setCurrentState('currentVoting-' . $votingUid);
+							break;
+
+						case 'stopVoting':
+							// TODO emit event
+
+							// set voting to disabled
+							$panel->getCurrentVoting()->setIsVotingEnabled(FALSE);
+							$this->votingRepository->update($panel->getCurrentVoting());
+
+							$panel->setCurrentState('finishedVoting-' . $votingUid);
+							break;
+
+						case 'stopPanel':
+							// TODO emit event
+							$panel->setCurrentState('');
+							break;
+					}
+
+					$this->panelRepository->update($panel);
+					$this->persistenceManager->persistAll();
+
+					$this->view->assign('votingStepAction', $votingStepAction);
+					$this->view->assign('panel', $panel);
+					return $this->view->render();
+				} else {
+					// todo permission denied
+				}
+			} elseif (in_array($votingStepAction, $publicActions)) {
+				// action can be performed anonymously, proceed
+				// TODO!!!
+			} else {
+				// todo action not allowed
+			}
+		} else {
+			// todo invalid request
 		}
 	}
 

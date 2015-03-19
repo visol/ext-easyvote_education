@@ -15,6 +15,7 @@ CREATE TABLE tx_easyvoteeducation_domain_model_panel (
 	organization varchar(255) DEFAULT '' NOT NULL,
 	class varchar(255) DEFAULT '' NOT NULL,
 	number_of_participants varchar(255) DEFAULT '' NOT NULL,
+	current_state varchar(255) DEFAULT '' NOT NULL,
 	terms_accepted tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	city int(11) unsigned DEFAULT '0',
 	image int(11) unsigned DEFAULT '0',

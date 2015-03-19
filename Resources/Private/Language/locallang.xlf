@@ -69,6 +69,70 @@
 			<trans-unit id="panel.actions.duplicate.copyOf">
 				<source>Kopie von</source>
 			</trans-unit>
+			<trans-unit id="panel.execute.title">
+				<source>Podium</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewTitle">
+				<source>Präsentationsansicht</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewIntroduction">
+				<source>
+					Die Präsentationsansicht ist eine Vollbild-Darstellung, auf der die Fragen, die verbleibende Zeit und die Auswertung angezeigt werden.
+					Sie kann in einem separaten Browser-Fenster oder auf einem separaten Computer per Beamer projiziert wird. Die Präsentationsansicht ist
+					eine reine Darstellungsansicht - die Steuerung der Präsentation erfolgt auf der aktuellen Oberfläche.
+				</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewLinkText">
+				<source>Präsentationsansicht</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewTitle">
+				<source>Teilnahmeansicht</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewIntroduction">
+				<source>
+					Die Teilnahmeansicht wird von den Teilnehmern des Podiums aufgerufen, idealerweise auf einem Mobiltelefon. Sie ermöglicht die Anzeige der
+					Fragen und Teilnahme an Abstimmungen. Der Podiums-Code bzw. ein QR-Code zum Direktaufruf der Teilnahmeansicht wird jetzt in der
+					Präsentationsansicht angezeigt.
+				</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewLinkText">
+				<source>Teilnahmeansicht</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.panelStartedBeforeInformation">
+				<source>Dieses Podium wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder das Podium nochmals von vorne starten.</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.startPanelButtonText">
+				<source>Podium starten</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.restartPanelButtonText">
+				<source>Podium neu starten</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.continuePanelButtonText">
+				<source>Podium fortsetzen</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
+				<source>Erste Voting-Frage anzeigen</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.displayNextVotingButtonText">
+				<source>Nächste Voting-Frage anzeigen</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.stopPanelButtonText">
+				<source>Podium beenden</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.activateButtonText">
+				<source>Voting aktivieren</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.noVotingDurationNotice">
+				<source>Für dieses Voting wurde keine Abstimmungszeit gesetzt. Das Voting ist aktiv, bis es manuell beendet wird.</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.deactivateButtonText">
+				<source>Voting beenden</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.timeLeft">
+				<source><![CDATA[
+					Noch <span id="timer">%s</span> Sekunden.
+				]]></source>
+			</trans-unit>
 
 			<trans-unit id="voting.votingDuration">
 				<source>Abstimmungszeit</source>

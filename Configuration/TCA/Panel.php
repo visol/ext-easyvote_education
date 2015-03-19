@@ -173,6 +173,15 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				'eval' => 'trim'
 			),
 		),
+		'current_state' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.current_state',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'terms_accepted' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.terms_accepted',

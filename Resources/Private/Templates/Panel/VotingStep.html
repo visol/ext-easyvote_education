@@ -1,0 +1,21 @@
+<f:switch expression="{votingStepAction}">
+	<f:case value="startPanel">
+		<f:render partial="Panel/VotingStepStartPanel" arguments="{_all}" />
+	</f:case>
+	<f:case value="nextVoting">
+		<f:render partial="Panel/VotingStepNextVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="startVoting">
+		<f:render partial="Panel/VotingStepStartVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="stopVoting">
+		<f:render partial="Panel/VotingStepStopVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="stopPanel">
+		<f:render partial="Panel/VotingStepStopPanel" arguments="{_all}" />
+	</f:case>
+</f:switch>
+
+
+
+
