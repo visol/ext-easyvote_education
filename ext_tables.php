@@ -9,9 +9,14 @@ if (!defined('TYPO3_MODE')) {
 	'easyvote Education: Podien verwalten'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Guestview',
+	'easyvote Education: Podiumsteilnahme'
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote Education');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvoteeducation_domain_model_panel', 'EXT:easyvote_education/Resources/Private/Language/locallang_csh_tx_easyvoteeducation_domain_model_panel.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_panel');
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 	'ctrl' => array(
@@ -37,7 +42,6 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 	),
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvoteeducation_domain_model_voting', 'EXT:easyvote_education/Resources/Private/Language/locallang_csh_tx_easyvoteeducation_domain_model_voting.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_voting');
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 	'ctrl' => array(
@@ -64,7 +68,6 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 	),
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvoteeducation_domain_model_votingoption', 'EXT:easyvote_education/Resources/Private/Language/locallang_csh_tx_easyvoteeducation_domain_model_votingoption.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_votingoption');
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 	'ctrl' => array(
@@ -91,7 +94,6 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 	),
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvoteeducation_domain_model_vote', 'EXT:easyvote_education/Resources/Private/Language/locallang_csh_tx_easyvoteeducation_domain_model_vote.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_vote');
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_vote'] = array(
 	'ctrl' => array(
