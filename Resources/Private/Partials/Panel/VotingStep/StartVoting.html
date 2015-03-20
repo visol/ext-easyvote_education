@@ -1,25 +1,13 @@
 <h2>{panel.currentVoting.title}</h2>
-<ul>
-	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
-		<li>{votingOption.title}</li>
-	</f:for>
-</ul>
+<f:render partial="Voting/VotingOptionsReadonly" arguments="{_all}" />
 
 <f:if condition="{panel.currentVoting.votingDuration}">
 	<f:then>
 		<p><strong><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></strong></p>
 		<script>
-			var count = {panel.currentVoting.votingDuration};
-			var counter = setInterval(timer, 1000);
-
-			function timer() {
-				count = count - 1;
-				if (count <= 0) {
-					clearInterval(counter);
-					$('#stopVotingButton').trigger('click');
-				}
-				$('#timer').html(count);
-			}
+			// 2 additional seconds of voting time due to SSE latency
+			var count = {panel.currentVoting.votingDuration} + 2;
+			var counter = setInterval(EasyvoteEducation.timer, 1000);
 		</script>
 	</f:then>
 	<f:else>

@@ -33,6 +33,9 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.number_of_participants">
 				<source>Number Of Participants</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.current_state">
+				<source>Current state</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
 				<source>Terms Accepted</source>
 			</trans-unit>
@@ -86,6 +89,9 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_rank">
 				<source>Cached Rank</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.cached_voting_result">
+				<source>Cached Voting Result</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image">
 				<source>Image</source>

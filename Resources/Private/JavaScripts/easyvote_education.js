@@ -37,9 +37,13 @@ $(function() {
 	});
 
 	// AJAX-based voting actions
-	$body.on('click', "a[data-role='votingaction']", function(e) {
-		e.preventDefault();
+	$body.on('click', "[data-role='votingaction']", function(e) {
 		var $this = $(this);
+		e.preventDefault();
+		if ($this.prop('tagName') === 'BUTTON') {
+			$this.closest('ul').find('button.votingOption').attr('disabled', 'disabled');
+			$this.attr('disabled', 'disabled').addClass('selected');
+		}
 		var actionarguments = $this.attr('data-actionarguments');
 		EasyvoteEducation.loadVotingAction(actionarguments);
 	});
@@ -462,6 +466,15 @@ var EasyvoteEducation = {
 			// hashData[0] --> actionName
 			EasyvoteEducation.loadAction(hashData[0])
 		}
+	},
+
+	timer: function() {
+		count = count - 1;
+		if (count <= 0) {
+			clearInterval(counter);
+			$('#stopVotingButton').trigger('click');
+		}
+		$('#timer').html(count);
 	}
 
 };

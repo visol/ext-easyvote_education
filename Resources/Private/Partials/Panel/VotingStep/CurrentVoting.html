@@ -1,0 +1,29 @@
+<h2>{panel.currentVoting.title}</h2>
+<ul class="votingoptions">
+	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
+		<f:if condition="{votingOption.image}">
+			<f:then>
+				<li class="votingoption-image">
+					<button type="button" class="votingOption" data-role="votingaction" data-actionarguments="panel-{panel.uid}-castVote-{votingOption.uid}" style="background-image: url({f:uri.image(src: votingOption.image.uid, treatIdAsReference: 'TRUE', width: '300', height: '300c')})"><span class="votingoption-caption">{votingOption.title}</span></button>
+				</li>
+			</f:then>
+			<f:else>
+				<li class="votingoption-text">
+					<button type="button" class="votingOption" data-role="votingaction" data-actionarguments="panel-{panel.uid}-castVote-{votingOption.uid}">{votingOption.title}</button>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>
+
+<f:if condition="{panel.currentVoting.votingDuration}">
+	<f:then>
+		<p><strong><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></strong></p>
+		<script>
+			var count = {panel.currentVoting.votingDuration};
+			var counter = setInterval(EasyvoteEducation.timer, 1000);
+		</script>
+	</f:then>
+	<f:else>
+	</f:else>
+</f:if>

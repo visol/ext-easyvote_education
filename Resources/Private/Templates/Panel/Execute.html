@@ -17,11 +17,21 @@
 
 <f:if condition="{panel.currentState}">
 	<f:then>
-		<p><f:translate key="panel.execute.panelStartedBeforeInformation" /></p>
-		<p>
-			<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.currentVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.execute.continuePanelButtonText" /></a>
-			<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.restartPanelButtonText" /></a>
-		</p>
+		<f:if condition="{panel.currentState} == 'finishedPanel-0">
+			<f:then>
+				<p><f:translate key="panel.execute.panelFinishedBeforeInformation" /></p>
+				<p>
+					<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.restartPanelButtonText" /></a>
+				</p>
+			</f:then>
+			<f:else>
+				<p><f:translate key="panel.execute.panelStartedBeforeInformation" /></p>
+				<p>
+					<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.currentVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.execute.continuePanelButtonText" /></a>
+					<a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.restartPanelButtonText" /></a>
+				</p>
+			</f:else>
+		</f:if>
 	</f:then>
 	<f:else>
 		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-startPanel-0" href="#" class="btn btn-primary"><f:translate key="panel.execute.startPanelButtonText" /></a></p>

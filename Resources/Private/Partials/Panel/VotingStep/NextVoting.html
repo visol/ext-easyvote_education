@@ -1,9 +1,5 @@
 <h2>{panel.currentVoting.title}</h2>
-<ul>
-	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
-		<li>{votingOption.title}</li>
-	</f:for>
-</ul>
+<f:render partial="Voting/VotingOptionsReadonly" arguments="{_all}" />
 
 <f:if condition="{panel.currentVoting.votingDuration}">
 	<f:then>

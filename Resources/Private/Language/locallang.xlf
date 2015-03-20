@@ -101,6 +101,9 @@
 			<trans-unit id="panel.execute.panelStartedBeforeInformation">
 				<source>Dieses Podium wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder das Podium nochmals von vorne starten.</source>
 			</trans-unit>
+			<trans-unit id="panel.execute.panelFinishedBeforeInformation">
+				<source>Dieses Podium wurde bereits zuvor komplett durchgeführt. Sie können das Podium erneut durchführen, die bisherigen Stimmen bleiben aber erhalten. Hinweis: Benutzen Sie die "Duplizieren"-Funktion, um ein neues, leeres Podium mit denselben Votings zu erstellen.</source>
+			</trans-unit>
 			<trans-unit id="panel.execute.startPanelButtonText">
 				<source>Podium starten</source>
 			</trans-unit>
@@ -132,6 +135,31 @@
 				<source><![CDATA[
 					Noch <span id="timer">%s</span> Sekunden.
 				]]></source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.nextVoting">
+				<source>Nächstes Voting</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.castVoteThanks">
+				<source>Danke für deine Stimme!</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.finishedPanelThanks">
+				<source>Das Podium wurde beendet. Vielen Dank für deine Teilnahme!</source>
+			</trans-unit>
+
+			<trans-unit id="panel.guestView.title">
+				<source>An Podium teilnehmen</source>
+			</trans-unit>
+			<trans-unit id="panel.guestView.idLabel">
+				<source>Podiums-ID</source>
+			</trans-unit>
+			<trans-unit id="panel.guestView.participateButtonText">
+				<source>Teilnehmen</source>
+			</trans-unit>
+			<trans-unit id="panel.guestView.panelNotFound">
+				<source>Podium wurde nicht gefunden.</source>
+			</trans-unit>
+			<trans-unit id="panel.guestView.participationInformation">
+				<source>Diese Ansicht wird automatisch aktualisiert.</source>
 			</trans-unit>
 
 			<trans-unit id="voting.votingDuration">

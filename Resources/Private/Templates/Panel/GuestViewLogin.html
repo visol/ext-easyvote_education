@@ -1,0 +1,17 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<h2><f:translate key="panel.guestView.title" /></h2>
+
+	<f:flashMessages renderMode="div" />
+
+	<f:form action="guestViewParticipation" name="panel">
+		<div class="form-group">
+			<label for="panelId">
+				<f:translate key="panel.guestView.idLabel" />
+			</label>
+			<f:form.textfield id="panelId" class="form-control" name="panelId" />
+		</div>
+		<button type="submit" class="btn btn-primary"><f:translate key="panel.guestView.participateButtonText" /></button>
+	</f:form>
+</f:section>

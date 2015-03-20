@@ -68,6 +68,14 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $votingOptionRepository = NULL;
 
 	/**
+	 * voteRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\VoteRepository
+	 * @inject
+	 */
+	protected $voteRepository = NULL;
+
+	/**
 	 * dummyDataService
 	 *
 	 * @var \Visol\EasyvoteEducation\Service\DummyDataService
@@ -80,6 +88,12 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * @inject
 	 */
 	public $cloneService;
+
+	/**
+	 * @var \Visol\EasyvoteEducation\Service\VotingService
+	 * @inject
+	 */
+	protected $votingService;
 
 	/**
 	 * persistenceManager

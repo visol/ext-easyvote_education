@@ -1,5 +1,6 @@
 <?php
 namespace Visol\EasyvoteEducation\Service;
+use Visol\EasyvoteEducation\Domain\Model\Panel;
 
 
 /***************************************************************
@@ -38,10 +39,26 @@ class VotingService  {
 	protected $votingRepository = NULL;
 
 	/**
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
+	 * votingOptionRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingOptionRepository
+	 * @inject
+	 */
+	protected $votingOptionRepository = NULL;
+
+	/**
+	 * persistenceManager
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+	 * @inject
+	 */
+	protected $persistenceManager;
+
+	/**
+	 * @param Panel $panel
 	 * @return \Visol\EasyvoteEducation\Domain\Model\Voting
 	 */
-	public function getNextVoting(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
+	public function getNextVoting(Panel $panel) {
 		if (!$panel->getCurrentVoting() instanceof \Visol\EasyvoteEducation\Domain\Model\Voting) {
 			// We have no current state, so we're at the beginning of the panel and need the first voting
 			return $this->votingRepository->findFirstVotingByPanel($panel);
@@ -63,6 +80,45 @@ class VotingService  {
 			return NULL;
 		}
 
+	}
+
+	/**
+	 * @param Panel $panel
+	 * @return string
+	 */
+	public function getViewNameForCurrentPanelState(Panel $panel) {
+		// currentState is in format action/uid
+		$currentStateArray = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode('-', $panel->getCurrentState(), TRUE);
+		if (count($currentStateArray) === 2) {
+			return $currentStateArray[0];
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * @param Panel $panel
+	 */
+	public function processVotingResult(Panel $panel) {
+		$voting = $panel->getCurrentVoting();
+		$votesCount = 0;
+		foreach ($voting->getVotingOptions() as $votingOption) {
+			/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
+			$votesCountForVotingOption = $votingOption->getVotes()->count();
+			$votingOption->setCachedVotes($votesCountForVotingOption);
+			$votesCount = $votesCount + $votesCountForVotingOption;
+			$this->votingOptionRepository->update($votingOption);
+		}
+		$this->persistenceManager->persistAll();
+
+		// $votesCount is complete
+		foreach ($voting->getVotingOptions() as $votingOption) {
+			/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
+			$votingResult = round($votingOption->getCachedVotes() / $votesCount, 5) * 100;
+			$votingOption->setCachedVotingResult((int)$votingResult);
+			$this->votingOptionRepository->update($votingOption);
+		}
+		$this->persistenceManager->persistAll();
 	}
 
 }

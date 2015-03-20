@@ -158,3 +158,146 @@
 		}
 	}
 }
+
+.votingoptions-readonly {
+	.clearfix();
+	list-style: none;
+	padding: 0;
+	margin: 0 -10px;
+	.votingoption-image {
+		float: left;
+		width: 33%;
+		padding: 0 10px;
+		margin-bottom: 10px;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.votingoption-text {
+		width: 50%;
+		max-width: 300px;
+		background-color: @blue;
+		text-transform: uppercase;
+		color: @white !important;
+		font-size: 16px;
+		padding: 5px;
+		margin: 0 0 10px 10px;
+	}
+}
+
+.votingoptions {
+	.clearfix();
+	list-style: none;
+	padding: 0;
+	margin: 0 -10px;
+	.votingoption-image {
+		float: left;
+		width: 33%;
+		padding: 0 10px;
+		margin-bottom: 10px;
+
+		button {
+			width: 100%;
+			height: 0;
+			padding-bottom: 100%;
+			border: 0;
+			text-align: left;
+			position: relative;
+			background-size: cover;
+			.votingoption-caption {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background-color: @white;
+				padding: 5px;
+			}
+			&.selected {
+				.votingoption-caption {
+					background-color: @pink;
+					color: @white;
+				}
+			}
+		}
+	}
+	.votingoption-text {
+		button {
+			text-align: left;
+			border: 0;
+			width: 50%;
+			max-width: 300px;
+			background-color: @blue;
+			text-transform: uppercase;
+			color: @white !important;
+			font-size: 16px;
+			padding: 5px;
+			margin: 0 0 10px 10px;
+			&.selected {
+				background-color: @pink;
+			}
+		}
+	}
+}
+
+.votingresults {
+	.clearfix();
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	li {
+		margin-bottom: 10px;
+		&.votingresult-image {
+			float: left;
+			width: 33%;
+			padding: 0 10px;
+			margin-bottom: 10px;
+			img {
+				width: 100%;
+				height: auto;
+			}
+			.progress-easyvote {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.progress-easyvote {
+	position: relative;
+	background: @blue;
+	color: @white;
+	height: 30px;
+	.progress-bar {
+		background: @pink;
+	}
+	.progress-text {
+		position: absolute;
+		left: 10px;
+		top: 0px;
+		line-height: 30px;
+	}
+}
+
+@media (max-width: @screen-xs-max) {
+	.votingoptions-readonly {
+		.votingoption-image {
+			width: 50%;
+		}
+		.votingoption-text {
+			width: 90%;
+		}
+	}
+	.votingoptions {
+		.votingoption-image {
+			width: 50%;
+		}
+		.votingoption-text {
+			width: 90%;
+		}
+	}
+	.votingresults {
+		li.votingresult-image {
+			width: 50%;
+		}
+	}
+}

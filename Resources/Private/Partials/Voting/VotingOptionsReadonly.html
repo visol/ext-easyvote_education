@@ -1,0 +1,17 @@
+<ul class="votingoptions-readonly">
+	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
+		<f:if condition="{votingOption.image}">
+			<f:then>
+				<li class="votingoption-image">
+					<f:image src="{votingOption.image.uid}" treatIdAsReference="1" width="300" height="300c"/>
+					<div class="votingoption-caption">{votingOption.title}</div>
+				</li>
+			</f:then>
+			<f:else>
+				<li class="votingoption-text">
+					{votingOption.title}
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>

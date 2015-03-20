@@ -96,6 +96,11 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $sorting = 9999;
 
 	/**
+	 * @var integer
+	 */
+	protected $cachedVotingResult = 0;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -275,6 +280,20 @@ class VotingOption extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setSorting($sorting) {
 		$this->sorting = $sorting;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedVotingResult() {
+		return $this->cachedVotingResult;
+	}
+
+	/**
+	 * @param int $cachedVotingResult
+	 */
+	public function setCachedVotingResult($cachedVotingResult) {
+		$this->cachedVotingResult = $cachedVotingResult;
 	}
 
 }

@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 	'ctrl' => $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, style, cached_votes, cached_rank, image, votes',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, style, cached_votes, cached_rank, cached_voting_result, image, votes',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'hidden;;1, title, style, cached_votes, cached_rank, image, votes, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'hidden;;1, title, style, cached_votes, cached_rank, cached_voting_result, image, votes, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -123,6 +123,16 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 		'cached_rank' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_votingoption.cached_rank',
+			'config' => array(
+				'readOnly' => 1,
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int'
+			)
+		),
+		'cached_voting_result' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_votingoption.cached_voting_result',
 			'config' => array(
 				'readOnly' => 1,
 				'type' => 'input',

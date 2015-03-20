@@ -230,15 +230,15 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function votingStepAction($actionarguments) {
 		$actionArgumentsArray = GeneralUtility::trimExplode('-', $actionarguments);
 		$protectedActions = array('startPanel', 'nextVoting', 'startVoting', 'stopVoting', 'stopPanel');
-		$publicActions = array('currentVoting', 'finishedVoting');
+		$publicActions = array('guestViewContent', 'castVote');
 
 		if (count($actionArgumentsArray === 4)) {
 			// we need four parts in the array for the request to be valid
 			list($unusedPanelObjectName, $panelUid, $votingStepAction, $votingUid) = $actionArgumentsArray;
+			/* @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			$panel = $this->panelRepository->findByUid((int)$panelUid);
 			if (in_array($votingStepAction, $protectedActions)) {
 				// action can only be performed by the owner of the panel, security check
-				/* @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
-				$panel = $this->panelRepository->findByUid((int)$panelUid);
 				if ($this->isCurrentUserOwnerOfPanel($panel)) {
 					// the owner is making the request, so it is valid
 					switch ($votingStepAction) {
@@ -247,13 +247,10 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 							break;
 
 						case 'nextVoting':
-							// TODO emit event
 							$panel->setCurrentState('pendingVoting-' . $votingUid);
 							break;
 
 						case 'startVoting':
-							// TODO emit event
-
 							// set voting to enabled
 							$panel->getCurrentVoting()->setIsVotingEnabled(TRUE);
 							$this->votingRepository->update($panel->getCurrentVoting());
@@ -262,18 +259,15 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 							break;
 
 						case 'stopVoting':
-							// TODO emit event
-
 							// set voting to disabled
 							$panel->getCurrentVoting()->setIsVotingEnabled(FALSE);
 							$this->votingRepository->update($panel->getCurrentVoting());
-
+							$this->votingService->processVotingResult($panel);
 							$panel->setCurrentState('finishedVoting-' . $votingUid);
 							break;
 
 						case 'stopPanel':
-							// TODO emit event
-							$panel->setCurrentState('');
+							$panel->setCurrentState('finishedPanel-0');
 							break;
 					}
 
@@ -288,13 +282,84 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				}
 			} elseif (in_array($votingStepAction, $publicActions)) {
 				// action can be performed anonymously, proceed
-				// TODO!!!
+				if ($votingStepAction === 'castVote') {
+					// for this function, $votingUid contains the uid of the chosen votingOption
+					$votingOption = $this->votingOptionRepository->findByUid((int)$votingUid);
+					if ($votingOption instanceof \Visol\EasyvoteEducation\Domain\Model\VotingOption) {
+						if ($votingOption->getVoting()->getIsVotingEnabled()) {
+							/** @var \Visol\EasyvoteEducation\Domain\Model\Vote $newVote */
+							$newVote = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Vote');
+							$this->voteRepository->add($newVote);
+							$votingOption->addVote($newVote);
+							$this->votingOptionRepository->update($votingOption);
+							$this->persistenceManager->persistAll();
+						}
+					}
+				} else {
+					$votingStepAction = $this->votingService->getViewNameForCurrentPanelState($panel);
+				}
+				$this->view->assign('votingStepAction', $votingStepAction);
+				$this->view->assign('panel', $panel);
+				return $this->view->render();
 			} else {
 				// todo action not allowed
 			}
 		} else {
 			// todo invalid request
 		}
+	}
+
+	/**
+	 * action guestViewLogin
+	 */
+	public function guestViewLoginAction() {
+	}
+
+	/**
+	 * Check if panel is available
+	 *
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+	 */
+	public function initializeGuestViewParticipationAction() {
+		if ($this->request->hasArgument('panelId')) {
+			// check if there is a panel with this ID
+			$panelId = $this->request->getArgument('panelId');
+			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			$panel = $this->panelRepository->findOneByPanelId($panelId);
+			if (!$panel instanceof \Visol\EasyvoteEducation\Domain\Model\Panel) {
+				$message = LocalizationUtility::translate('panel.guestView.panelNotFound', $this->request->getControllerExtensionName());
+				$this->flashMessageContainer->add($message, '', AbstractMessage::ERROR);
+				$this->redirect('guestViewLogin');
+			}
+		}
+	}
+
+	/**
+	 * action guestViewParticipation
+	 * @param string $panelId
+	 */
+	public function guestViewParticipationAction($panelId) {
+		/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+		$panel = $this->panelRepository->findOneByPanelId($panelId);
+		$this->view->assign('panel', $panel);
+	}
+
+	/**
+	 * @param Panel $panel
+	 */
+	public function guestViewEventStreamAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
+		// TODO move to a EID
+		$this->response->setHeader('Content-Type', 'text/event-stream', TRUE);
+		$this->response->setHeader('Cache-Control', 'no-cache', TRUE);
+		$this->response->sendHeaders();
+		echo "retry: 2000" . PHP_EOL;
+		echo "id: " . time() . PHP_EOL;
+		echo "data: " . $panel->getCurrentState() . PHP_EOL;
+		echo "event: currentState" . PHP_EOL;
+		echo PHP_EOL;
+		ob_flush();
+		flush();
+		exit();
 	}
 
 	/**

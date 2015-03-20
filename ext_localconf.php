@@ -20,5 +20,18 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Guestview',
+	array(
+		'Panel' => 'guestViewLogin, guestViewParticipation, guestViewEventStream',
+
+	),
+	// non-cacheable actions
+	array(
+		'Panel' => 'guestViewParticipation, guestViewEventStream',
+	)
+);
+
 // Register global route
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['routing']['globalRoutes'][] = 'EXT:easyvote_education/Configuration/GlobalRoutes.yaml';

@@ -1,0 +1,36 @@
+<f:layout name="default" />
+
+<f:section name="main">
+	<h2>{panel.title}</h2>
+	<p>{panel.description}</p>
+	<hr />
+
+	<div id="panel-votingcontainer"></div>
+
+	<script>
+		// this is the standard EventSource api...
+		var panelUid = {panel.uid};
+		var source = new EventSource('/routing/guestview/' + panelUid);
+		var currentState = '';
+		source.addEventListener('currentState', function(e) {
+			if (e.data !== currentState) {
+				currentState = e.data;
+				EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-guestViewContent-0', '#panel-votingcontainer');
+			}
+		}, false);
+
+		source.addEventListener('open', function(e) {
+			// Connection was opened.
+		}, false);
+
+		source.addEventListener('error', function(e) {
+			if (e.readyState == EventSource.CLOSED) {
+				// Connection was closed.
+			}
+		}, false);
+	</script>
+
+	<hr />
+
+	<p><em><f:translate key="panel.guestView.participationInformation" /></em></p>
+</f:section>

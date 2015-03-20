@@ -1,18 +1,35 @@
 <f:switch expression="{votingStepAction}">
 	<f:case value="startPanel">
-		<f:render partial="Panel/VotingStepStartPanel" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/StartPanel" arguments="{_all}" />
 	</f:case>
 	<f:case value="nextVoting">
-		<f:render partial="Panel/VotingStepNextVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/NextVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="startVoting">
-		<f:render partial="Panel/VotingStepStartVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/StartVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="stopVoting">
-		<f:render partial="Panel/VotingStepStopVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/StopVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="stopPanel">
-		<f:render partial="Panel/VotingStepStopPanel" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/StopPanel" arguments="{_all}" />
+	</f:case>
+	<f:case value="pendingVoting">
+		<f:render partial="Panel/VotingStep/PendingVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="currentVoting">
+		<f:render partial="Panel/VotingStep/CurrentVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="castVote">
+		<f:render partial="Panel/VotingStep/CastVote" arguments="{_all}" />
+	</f:case>
+	<f:case value="finishedVoting">
+		<f:render partial="Panel/VotingStep/FinishedVoting" arguments="{_all}" />
+	</f:case>
+	<f:case value="finishedPanel">
+		<f:render partial="Panel/VotingStep/FinishedPanel" arguments="{_all}" />
+	</f:case>
+	<f:case default="TRUE">
 	</f:case>
 </f:switch>
 

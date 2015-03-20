@@ -1,0 +1,33 @@
+<h2>{panel.currentVoting.title}</h2>
+<ul class="votingresults">
+	<f:for each="{panel.currentVoting.votingOptions}" as="votingOption">
+		<f:if condition="{votingOption.image}">
+			<f:then>
+				<li class="votingresult-image">
+					<f:image src="{votingOption.image.uid}" treatIdAsReference="1" width="300" height="300c"/>
+					<div class="votingoption-caption">{votingOption.title}</div>
+					<div class="progress progress-easyvote">
+						<div class="progress-bar" role="progressbar" aria-valuenow="{votingOption.cachedVotingResult}"
+							 aria-valuemin="0" aria-valuemax="100" style="width:{votingOption.cachedVotingResult}%">
+						</div>
+						<div class="progress-text">
+							{votingOption.cachedVotingResult}% ({votingOption.cachedVotes})
+						</div>
+					</div>
+				</li>
+			</f:then>
+			<f:else>
+				<li class="votingresult-text">
+					<div class="progress progress-easyvote">
+						<div class="progress-bar" role="progressbar" aria-valuenow="{votingOption.cachedVotingResult}"
+							 aria-valuemin="0" aria-valuemax="100" style="width:{votingOption.cachedVotingResult}%">
+						</div>
+						<div class="progress-text">
+							{votingOption.cachedVotingResult}% {votingOption.title} ({votingOption.cachedVotes})
+						</div>
+					</div>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>
