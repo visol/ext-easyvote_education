@@ -15,28 +15,28 @@
 	</div>
 
 	<script>
-		$('body').addClass('presentation-view');
+		$(function() {
+			$('body').addClass('presentation-view');
+			var panelUid = {panel.uid};
+			var baseUri = [location.protocol, '//', location.host, location.pathname].join('');
+			var source = new EventSource(baseUri + '?eID=easyvoteeducation&panelUid=' + panelUid);
+			var currentState = 'init';
+			source.addEventListener('currentState', function(e) {
+				if (e.data !== currentState) {
+					currentState = e.data;
+					EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
+				}
+			}, false);
 
-		// this is the standard EventSource api...
-		var panelUid = {panel.uid};
-		var baseUri = [location.protocol, '//', location.host, location.pathname].join('');
-		var source = new EventSource(baseUri + '?eID=easyvoteeducation&panelUid=' + panelUid);
-		var currentState = 'init';
-		source.addEventListener('currentState', function(e) {
-			if (e.data !== currentState) {
-				currentState = e.data;
-				EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
-			}
-		}, false);
+			source.addEventListener('open', function(e) {
+				// Connection was opened.
+			}, false);
 
-		source.addEventListener('open', function(e) {
-			// Connection was opened.
-		}, false);
-
-		source.addEventListener('error', function(e) {
-			if (e.readyState == EventSource.CLOSED) {
-				// Connection was closed.
-			}
-		}, false);
+			source.addEventListener('error', function(e) {
+				if (e.readyState == EventSource.CLOSED) {
+					// Connection was closed.
+				}
+			}, false);
+		});
 	</script>
 </f:section>
