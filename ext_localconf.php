@@ -24,12 +24,25 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Guestview',
 	array(
-		'Panel' => 'guestViewLogin, guestViewParticipation, guestViewEventStream',
+		'Panel' => 'guestViewLogin, guestViewParticipation, viewEventStream',
 
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'guestViewParticipation, guestViewEventStream',
+		'Panel' => 'guestViewParticipation, viewEventStream',
+	)
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Presentationview',
+	array(
+		'Panel' => 'presentationViewLogin, presentationViewParticipation, viewEventStream',
+
+	),
+	// non-cacheable actions
+	array(
+		'Panel' => 'presentationViewParticipation, viewEventStream',
 	)
 );
 

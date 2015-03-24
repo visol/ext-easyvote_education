@@ -230,7 +230,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function votingStepAction($actionarguments) {
 		$actionArgumentsArray = GeneralUtility::trimExplode('-', $actionarguments);
 		$protectedActions = array('startPanel', 'nextVoting', 'startVoting', 'stopVoting', 'stopPanel');
-		$publicActions = array('guestViewContent', 'castVote');
+		$publicActions = array('guestViewContent', 'presentationViewContent', 'castVote');
 
 		if (count($actionArgumentsArray === 4)) {
 			// we need four parts in the array for the request to be valid
@@ -296,7 +296,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 						}
 					}
 				} else {
-					$votingStepAction = $this->votingService->getViewNameForCurrentPanelState($panel);
+					$this->view->assign('originalVotingStepAction', ucfirst($votingStepAction));
+					$votingStepAction = $this->votingService->getViewNameForCurrentPanelState($panel, $votingStepAction);
 				}
 				$this->view->assign('votingStepAction', $votingStepAction);
 				$this->view->assign('panel', $panel);
@@ -347,7 +348,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * @param Panel $panel
 	 */
-	public function guestViewEventStreamAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
+	public function viewEventStreamAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
 		// TODO move to a EID
 		$this->response->setHeader('Content-Type', 'text/event-stream', TRUE);
 		$this->response->setHeader('Cache-Control', 'no-cache', TRUE);
@@ -361,6 +362,43 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		flush();
 		exit();
 	}
+
+	/**
+	 * action presentationView
+	 */
+	public function presentationViewLoginAction() {
+
+	}
+
+	/**
+	 * Check if panel is available
+	 *
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+	 */
+	public function initializePresentationViewParticipationAction() {
+		if ($this->request->hasArgument('panelId')) {
+			// check if there is a panel with this ID
+			$panelId = $this->request->getArgument('panelId');
+			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			$panel = $this->panelRepository->findOneByPanelId($panelId);
+			if (!$panel instanceof \Visol\EasyvoteEducation\Domain\Model\Panel) {
+				$message = LocalizationUtility::translate('panel.guestView.panelNotFound', $this->request->getControllerExtensionName());
+				$this->flashMessageContainer->add($message, '', AbstractMessage::ERROR);
+				$this->redirect('guestViewLogin');
+			}
+		}
+	}
+
+	/**
+	 * action guestViewParticipation
+	 * @param string $panelId
+	 */
+	public function presentationViewParticipationAction($panelId) {
+		/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+		$panel = $this->panelRepository->findOneByPanelId($panelId);
+		$this->view->assign('panel', $panel);
+	}
+
 
 	/**
 	 * action startup

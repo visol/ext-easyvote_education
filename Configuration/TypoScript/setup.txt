@@ -17,6 +17,8 @@ plugin.tx_easyvoteeducation {
 plugin.tx_easyvoteeducation {
 	settings {
 		panelOrganizerGroupUid = 8
+		guestViewPid = 301
+		presentationViewPid = 302
 	}
 }
 

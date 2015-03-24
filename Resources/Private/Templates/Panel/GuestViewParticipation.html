@@ -11,7 +11,7 @@
 		// this is the standard EventSource api...
 		var panelUid = {panel.uid};
 		var source = new EventSource('/routing/guestview/' + panelUid);
-		var currentState = '';
+		var currentState = 'init';
 		source.addEventListener('currentState', function(e) {
 			if (e.data !== currentState) {
 				currentState = e.data;

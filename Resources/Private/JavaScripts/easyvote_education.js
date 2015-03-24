@@ -470,11 +470,11 @@ var EasyvoteEducation = {
 
 	timer: function() {
 		count = count - 1;
-		if (count <= 0) {
+		if (count <= 1) {
 			clearInterval(counter);
 			$('#stopVotingButton').trigger('click');
 		}
-		$('#timer').html(count);
+		$('.timer').html(count);
 	}
 
 };

@@ -1,0 +1,12 @@
+<div class="row presentation-view">
+	<div class="col-md-4 presentation-view-sidebar">
+		<div class="voting-timer"></div>
+		<f:render partial="Panel/VotingStep/PresentationViewContent/Navigation" arguments="{_all}" />
+	</div>
+	<div class="col-md-8 presentation-view-content">
+		<h3><f:translate key="panel.votingStep.nextVoting" /></h3>
+		<h2>{panel.currentVoting.title}</h2>
+		<f:render partial="Voting/VotingOptionsReadonly" arguments="{_all}" />
+	</div>
+</div>
+

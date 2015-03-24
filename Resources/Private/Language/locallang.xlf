@@ -133,7 +133,7 @@
 			</trans-unit>
 			<trans-unit id="panel.votingStep.timeLeft">
 				<source><![CDATA[
-					Noch <span id="timer">%s</span> Sekunden.
+					Noch <span class="timer">%s</span> Sekunden.
 				]]></source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.nextVoting">
@@ -144,6 +144,21 @@
 			</trans-unit>
 			<trans-unit id="panel.votingStep.finishedPanelThanks">
 				<source>Das Podium wurde beendet. Vielen Dank für deine Teilnahme!</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.endOfPanelTitle">
+				<source>Ende des Podiums</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.endOfPanelText">
+				<source>Vielen Dank für deine Teilnahme!</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.voting">
+				<source>Voting</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.navigation.presentationViewContent">
+				<source>Einleitung</source>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.navigation.finishedPanel">
+				<source>Ende</source>
 			</trans-unit>
 
 			<trans-unit id="panel.guestView.title">
@@ -160,6 +175,9 @@
 			</trans-unit>
 			<trans-unit id="panel.guestView.participationInformation">
 				<source>Diese Ansicht wird automatisch aktualisiert.</source>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.panelId">
+				<source>Podiums-ID:</source>
 			</trans-unit>
 
 			<trans-unit id="voting.votingDuration">

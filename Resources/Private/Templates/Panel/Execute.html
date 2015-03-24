@@ -6,14 +6,19 @@
 
 <h3><f:translate key="panel.execute.presentationViewTitle" /></h3>
 <p><f:translate key="panel.execute.presentationViewIntroduction" /></p>
-<p><a href="#"><f:translate key="panel.execute.presentationViewLinkText" /></a></p>
+<p>
+	<f:link.action pageUid="{settings.presentationViewPid}" controller="Panel" action="presentationViewParticipation" arguments="{panelId: panel.panelId}" target="_blank">
+		<f:translate key="panel.execute.presentationViewLinkText" />
+	</f:link.action>
+</p>
 
 <h3><f:translate key="panel.execute.guestViewTitle" /></h3>
 <p><f:translate key="panel.execute.guestViewIntroduction" /></p>
-<p><a href="#"><f:translate key="panel.execute.guestViewLinkText" /></a></p>
-<f:comment>
-	<p><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={guestViewUri}&choe=UTF-8" /></p>
-</f:comment>
+<p>
+	<f:link.action pageUid="{settings.guestViewPid}" controller="Panel" action="guestViewParticipation" arguments="{panelId: panel.panelId}" target="_blank">
+		<f:translate key="panel.execute.guestViewLinkText" />
+	</f:link.action>
+</p>
 
 <f:if condition="{panel.currentState}">
 	<f:then>

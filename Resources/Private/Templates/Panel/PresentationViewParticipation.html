@@ -1,0 +1,41 @@
+<f:layout name="default" />
+
+<f:section name="main">
+	<div id="panel-votingcontainer">
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-8 logo-easyvote">
+			<div class="panel-id">
+				<f:translate key="panel.presentationView.panelId" />
+				{panel.panelId}
+			</div>
+			<f:image src="EXT:usereasyvotetemplate/Resources/Public/Images/logo_easyvote.png" alt="easyvote" />
+		</div>
+	</div>
+
+	<script>
+		$('body').addClass('presentation-view');
+
+		// this is the standard EventSource api...
+		var panelUid = {panel.uid};
+		var source = new EventSource('/routing/presentationview/' + panelUid);
+		var currentState = 'init';
+		source.addEventListener('currentState', function(e) {
+			if (e.data !== currentState) {
+				currentState = e.data;
+				EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
+			}
+		}, false);
+
+		source.addEventListener('open', function(e) {
+			// Connection was opened.
+		}, false);
+
+		source.addEventListener('error', function(e) {
+			if (e.readyState == EventSource.CLOSED) {
+				// Connection was closed.
+			}
+		}, false);
+	</script>
+</f:section>

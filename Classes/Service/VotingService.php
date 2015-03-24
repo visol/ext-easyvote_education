@@ -84,15 +84,17 @@ class VotingService  {
 
 	/**
 	 * @param Panel $panel
+	 * @param $votingStepAction
 	 * @return string
 	 */
-	public function getViewNameForCurrentPanelState(Panel $panel) {
+	public function getViewNameForCurrentPanelState(Panel $panel, $votingStepAction) {
 		// currentState is in format action/uid
 		$currentStateArray = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode('-', $panel->getCurrentState(), TRUE);
 		if (count($currentStateArray) === 2) {
 			return $currentStateArray[0];
 		} else {
-			return '';
+			// if no currentState is set, keep the passed $votingStepAction
+			return $votingStepAction;
 		}
 	}
 

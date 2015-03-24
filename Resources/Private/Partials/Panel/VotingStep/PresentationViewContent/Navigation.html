@@ -1,0 +1,29 @@
+<ul class="voting-navigation">
+	<f:if condition="{votingStepAction} == 'presentationViewContent'">
+		<f:then>
+			<li class="active"><f:translate key="panel.votingStep.navigation.presentationViewContent" /></li>
+		</f:then>
+		<f:else>
+			<li><f:translate key="panel.votingStep.navigation.presentationViewContent" /></li>
+		</f:else>
+	</f:if>
+	<f:for each="{panel.votings}" as="voting" iteration="iterator">
+		<f:if condition="{panel.currentVoting.uid} == {voting.uid}">
+			<f:then>
+				<li class="active"><f:translate key="panel.votingStep.voting" /> {iterator.cycle}</li>
+			</f:then>
+			<f:else>
+				<li><f:translate key="panel.votingStep.voting" /> {iterator.cycle}</li>
+			</f:else>
+		</f:if>
+	</f:for>
+	<f:if condition="{votingStepAction} == 'finishedPanel'">
+		<f:then>
+			<li class="active"><f:translate key="panel.votingStep.navigation.finishedPanel" /></li>
+		</f:then>
+		<f:else>
+			<li><f:translate key="panel.votingStep.navigation.finishedPanel" /></li>
+		</f:else>
+	</f:if>
+</ul>
+

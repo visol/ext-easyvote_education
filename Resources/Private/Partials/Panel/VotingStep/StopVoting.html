@@ -1,5 +1,5 @@
 <h2>{panel.currentVoting.title}</h2>
-<p>TODO Auswertung</p>
+<f:render partial="Panel/VotingResults" arguments="{_all}" />
 <f:if condition="{panel.nextVoting}">
 	<f:then>
 		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.nextVoting.uid}" href="#" class="btn btn-primary"><f:translate key="panel.votingStep.displayNextVotingButtonText" /></a></p>

@@ -1,0 +1,22 @@
+<div class="row presentation-view">
+	<div class="col-md-4 presentation-view-sidebar">
+		<f:if condition="{panel.currentVoting.votingDuration}">
+			<f:then>
+				<div class="voting-timer"><i class="evicon-wecker"></i><div class="text"><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></div></div>
+				<script>
+					var count = {panel.currentVoting.votingDuration};
+					var counter = setInterval(EasyvoteEducation.timer, 1000);
+				</script>
+			</f:then>
+			<f:else>
+				<div class="voting-timer"></div>
+			</f:else>
+		</f:if>
+		<f:render partial="Panel/VotingStep/PresentationViewContent/Navigation" arguments="{_all}" />
+	</div>
+	<div class="col-md-8 presentation-view-content">
+		<h2>{panel.currentVoting.title}</h2>
+		<f:render partial="Voting/VotingOptionsReadonly" arguments="{_all}" />
+	</div>
+</div>
+

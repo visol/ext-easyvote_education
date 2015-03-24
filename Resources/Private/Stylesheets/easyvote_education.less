@@ -278,6 +278,84 @@
 	}
 }
 
+.presentation-view {
+	.presentation-view-sidebar {
+		.voting-timer {
+			.clearfix();
+			color: @pink;
+			height: 150px;
+			font-size: 20px;
+			text-transform: uppercase;
+			i {
+				display: block;
+				float: left;
+				font-size: 120px;
+				line-height: 120px;
+				&:before {
+					margin: 0 25px 0 0;
+					width: auto;
+				}
+			}
+			.text {
+				float: left;
+			}
+			.timer {
+				display: block;
+				font-size: 60px;
+				line-height: 60px;
+			}
+		}
+		.voting-navigation {
+			.clearfix();
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li {
+				text-transform: uppercase;
+				font-size: 20px;
+				margin-bottom: 10px;
+				&.active {
+					color: @pink;
+				}
+			}
+		}
+	}
+	.presentation-view-content {
+		background-color: @box-background;
+		padding: 40px;
+		.rounded-corners();
+		min-height: 400px;
+		h2 {
+			font-size: 30px;
+		}
+		p {
+			font-size: 18px;
+		}
+		.votingoption-caption {
+			font-size: 18  px;
+			font-weight: 600;
+		}
+		.panel-id {
+			font-size: 22px;
+			font-weight: bold;
+		}
+	}
+	.logo-easyvote {
+		.panel-id {
+			margin-top: 10px;
+			float: left;
+			font-size: 18px;
+		}
+		img {
+			float: right;
+			width: 200px;
+			height: auto;
+		}
+	}
+}
+
+
+
 @media (max-width: @screen-xs-max) {
 	.votingoptions-readonly {
 		.votingoption-image {
