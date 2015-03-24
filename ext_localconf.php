@@ -24,12 +24,12 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Guestview',
 	array(
-		'Panel' => 'guestViewLogin, guestViewParticipation, viewEventStream',
+		'Panel' => 'guestViewLogin, guestViewParticipation',
 
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'guestViewParticipation, viewEventStream',
+		'Panel' => 'guestViewParticipation',
 	)
 );
 
@@ -37,14 +37,17 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Presentationview',
 	array(
-		'Panel' => 'presentationViewLogin, presentationViewParticipation, viewEventStream',
+		'Panel' => 'presentationViewLogin, presentationViewParticipation',
 
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'presentationViewParticipation, viewEventStream',
+		'Panel' => 'presentationViewParticipation',
 	)
 );
 
 // Register global route
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['routing']['globalRoutes'][] = 'EXT:easyvote_education/Configuration/GlobalRoutes.yaml';
+
+// Register EID for EventStream
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['easyvoteeducation'] = 'EXT:easyvote_education/Resources/Private/Eid/EventStream.php';

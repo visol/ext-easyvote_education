@@ -10,21 +10,3 @@
     '@controller': 'Panel'
     '@action':     'votingStep'
   httpMethods: ['GET']
--
-  name: 'GuestView'
-  uriPattern: 'guestview/{panel}'
-  defaults:
-    '@package':    'Visol.Easyvote_education'
-    '@plugin':     'Guestview'
-    '@controller': 'Panel'
-    '@action':     'viewEventStream'
-  httpMethods: ['GET']
--
-  name: 'PresentationView'
-  uriPattern: 'presentationview/{panel}'
-  defaults:
-    '@package':    'Visol.Easyvote_education'
-    '@plugin':     'Presentationview'
-    '@controller': 'Panel'
-    '@action':     'viewEventStream'
-  httpMethods: ['GET']

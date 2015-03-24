@@ -346,24 +346,6 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * @param Panel $panel
-	 */
-	public function viewEventStreamAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel) {
-		// TODO move to a EID
-		$this->response->setHeader('Content-Type', 'text/event-stream', TRUE);
-		$this->response->setHeader('Cache-Control', 'no-cache', TRUE);
-		$this->response->sendHeaders();
-		echo "retry: 2000" . PHP_EOL;
-		echo "id: " . time() . PHP_EOL;
-		echo "data: " . $panel->getCurrentState() . PHP_EOL;
-		echo "event: currentState" . PHP_EOL;
-		echo PHP_EOL;
-		ob_flush();
-		flush();
-		exit();
-	}
-
-	/**
 	 * action presentationView
 	 */
 	public function presentationViewLoginAction() {

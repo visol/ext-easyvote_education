@@ -10,7 +10,8 @@
 	<script>
 		// this is the standard EventSource api...
 		var panelUid = {panel.uid};
-		var source = new EventSource('/routing/guestview/' + panelUid);
+		var baseUri = [location.protocol, '//', location.host, location.pathname].join('');
+		var source = new EventSource(baseUri + '/?eID=easyvoteeducation&panelUid=' + panelUid);
 		var currentState = 'init';
 		source.addEventListener('currentState', function(e) {
 			if (e.data !== currentState) {
