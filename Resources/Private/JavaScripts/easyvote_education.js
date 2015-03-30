@@ -39,15 +39,17 @@ $(function() {
 	// AJAX-based voting actions
 	$body.on('click', "[data-role='votingaction']", function(e) {
 		var $this = $(this);
+		var targetContainer = null;
 		e.preventDefault();
 		if ($this.prop('tagName') === 'BUTTON') {
 			$this.closest('ul').find('button.votingOption').attr('disabled', 'disabled');
 			$this.attr('disabled', 'disabled').addClass('selected');
+			targetContainer = '#votecast-message';
 		}
 		var actionarguments = $this.attr('data-actionarguments');
 		// set a cookie about voteCast to prevent double-casting (is checked again on server side, so not security relevant)
 		$.cookie('easyvoteeducation-voteCast', actionarguments);
-		EasyvoteEducation.loadVotingAction(actionarguments);
+		EasyvoteEducation.loadVotingAction(actionarguments, targetContainer);
 	});
 
 	// AJAX-based actions for panels
@@ -319,7 +321,7 @@ var EasyvoteEducation = {
 	/**
 	 * Load a votingaction and write its result to a container
 	 *
-	 * @param actionName Name of the action, an URI with the same name must be defined
+	 * @param actionArguments Name of the action, an URI with the same name must be defined
 	 * @param contentContainerSelector
 	 */
 	loadVotingAction: function(actionArguments, contentContainerSelector) {
