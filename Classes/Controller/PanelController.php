@@ -38,6 +38,16 @@ use Visol\EasyvoteEducation\Domain\Model\Panel;
 class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
+	 * @var \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication frontendUserAuthentication
+	*/
+	protected $frontendUserAuthentication;
+
+	public function __construct() {
+		parent::__construct();
+		$this->frontendUserAuthentication = $GLOBALS['TSFE']->fe_user;
+	}
+
+	/**
 	 * action list
 	 *
 	 * @return void
@@ -287,12 +297,19 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 					$votingOption = $this->votingOptionRepository->findByUid((int)$votingUid);
 					if ($votingOption instanceof \Visol\EasyvoteEducation\Domain\Model\VotingOption) {
 						if ($votingOption->getVoting()->getIsVotingEnabled()) {
-							/** @var \Visol\EasyvoteEducation\Domain\Model\Vote $newVote */
-							$newVote = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Vote');
-							$this->voteRepository->add($newVote);
-							$votingOption->addVote($newVote);
-							$this->votingOptionRepository->update($votingOption);
-							$this->persistenceManager->persistAll();
+							$condensedVotingName = 'panel-' . $panel->getUid() . '-castVote' . $votingOption->getUid();
+							if ($this->frontendUserAuthentication->getSessionData('easyvoteeducation-castVote') !== $condensedVotingName) {
+								/** @var \Visol\EasyvoteEducation\Domain\Model\Vote $newVote */
+								$newVote = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Vote');
+								$this->voteRepository->add($newVote);
+								$votingOption->addVote($newVote);
+								$this->votingOptionRepository->update($votingOption);
+								$this->persistenceManager->persistAll();
+								// save information about cast vote to session to prevent double-casting
+								$this->frontendUserAuthentication->setAndSaveSessionData('easyvoteeducation-castVote', $condensedVotingName);
+							} else {
+								// TODO do nothing - vote was cast before for user
+							}
 						}
 					}
 				} else {

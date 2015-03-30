@@ -45,6 +45,8 @@ $(function() {
 			$this.attr('disabled', 'disabled').addClass('selected');
 		}
 		var actionarguments = $this.attr('data-actionarguments');
+		// set a cookie about voteCast to prevent double-casting (is checked again on server side, so not security relevant)
+		$.cookie('easyvoteeducation-voteCast', actionarguments);
 		EasyvoteEducation.loadVotingAction(actionarguments);
 	});
 
@@ -329,6 +331,7 @@ var EasyvoteEducation = {
 		var actionUri = '/routing/votings/' + actionArguments;
 		EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
 			$container.html(data);
+			EasyvoteEducation.disableVotingIfAlreadyVoted();
 		});
 	},
 
@@ -475,6 +478,21 @@ var EasyvoteEducation = {
 			$('#stopVotingButton').trigger('click');
 		}
 		$('.timer').html(count);
+	},
+
+	/**
+	 * Check if there is a cookie for the last vote cast
+	 * If there is and a votingOption with the same ID is found on the page, prevent voting again
+	 * A similar check is done on server-side to prevent casting double votes
+	 */
+	disableVotingIfAlreadyVoted: function() {
+		if ($.cookie('easyvoteeducation-voteCast') !== null) {
+			var usedVotingOption = $('[data-actionarguments="' + $.cookie('easyvoteeducation-voteCast') + '"]');
+			if (usedVotingOption.prop('tagName') === 'BUTTON') {
+				usedVotingOption.closest('ul').find('button.votingOption').attr('disabled', 'disabled');
+				usedVotingOption.attr('disabled', 'disabled').addClass('selected');
+			}
+		}
 	}
 
 };
