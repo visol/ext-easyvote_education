@@ -25,6 +25,10 @@
 				if (e.data !== currentState) {
 					currentState = e.data;
 					EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
+					if (counter) {
+						// clearInterval of currently running counter if applicable
+						clearInterval(counter);
+					}
 				}
 			}, false);
 
