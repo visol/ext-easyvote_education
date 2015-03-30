@@ -15,15 +15,3 @@
 		</f:if>
 	</f:for>
 </ul>
-
-<f:if condition="{panel.currentVoting.votingDuration}">
-	<f:then>
-		<p><strong><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></strong></p>
-		<script>
-			var count = {panel.currentVoting.votingDuration};
-			var counter = setInterval(EasyvoteEducation.timer, 1000);
-		</script>
-	</f:then>
-	<f:else>
-	</f:else>
-</f:if>
