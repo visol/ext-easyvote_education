@@ -116,8 +116,12 @@ class VotingService  {
 		// $votesCount is complete
 		foreach ($voting->getVotingOptions() as $votingOption) {
 			/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
-			$votingResult = round($votingOption->getCachedVotes() / $votesCount, 5) * 100;
-			$votingOption->setCachedVotingResult((int)$votingResult);
+			if ($votesCount > 0) {
+				$votingResult = round($votingOption->getCachedVotes() / $votesCount, 5) * 100;
+				$votingOption->setCachedVotingResult((int)$votingResult);
+			} else {
+				$votingOption->setCachedVotingResult(0);
+			}
 			$this->votingOptionRepository->update($votingOption);
 		}
 		$this->persistenceManager->persistAll();
