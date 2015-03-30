@@ -7,6 +7,9 @@
 		<script>
 			// 2 additional seconds of voting time due to SSE latency
 			var count = {panel.currentVoting.votingDuration} + 2;
+			if (counter) {
+				clearInterval(counter);
+			}
 			var counter = setInterval(EasyvoteEducation.timer, 1000);
 		</script>
 	</f:then>

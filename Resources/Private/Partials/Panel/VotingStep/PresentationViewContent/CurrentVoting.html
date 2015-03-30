@@ -5,6 +5,9 @@
 				<div class="voting-timer"><i class="evicon-wecker"></i><div class="text"><f:translate key="panel.votingStep.timeLeft" arguments="{0: panel.currentVoting.votingDuration}" /></div></div>
 				<script>
 					var count = {panel.currentVoting.votingDuration};
+					if (counter) {
+						clearInterval(counter);
+					}
 					var counter = setInterval(EasyvoteEducation.timer, 1000);
 				</script>
 			</f:then>
