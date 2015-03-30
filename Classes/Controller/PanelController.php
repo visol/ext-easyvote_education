@@ -89,7 +89,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function createAction(Panel $newPanel) {
 		if ($communityUser = $this->getLoggedInUser()) {
 			do {
-				$panelId = Algorithms::generateRandomString(8, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
+				$panelId = Algorithms::generateRandomString(4, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
 			} while ($this->panelRepository->findOneByPanelId($panelId) instanceof Panel);
 			$newPanel->setPanelId($panelId);
 			$newPanel->setCommunityUser($communityUser);
