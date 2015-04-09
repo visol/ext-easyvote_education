@@ -319,7 +319,13 @@
 				<source>Beschreibung</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
-				<source>Datum und Zeit</source>
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.from_time">
+				<source>Zeit Beginn</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.to_time">
+				<source>Zeit Ende</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
 				<source>Veranstaltungsort</source>

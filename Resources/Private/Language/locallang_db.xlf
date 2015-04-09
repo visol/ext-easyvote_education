@@ -18,6 +18,12 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
 				<source>Date</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.from_time">
+				<source>Startzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.to_time">
+				<source>Endzeit</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
 				<source>Room</source>
 			</trans-unit>

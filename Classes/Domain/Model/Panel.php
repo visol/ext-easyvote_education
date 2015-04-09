@@ -65,12 +65,28 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $description = '';
 
 	/**
-	 * Date/Time
+	 * Date
 	 *
 	 * @var \DateTime
 	 * @copy clone
 	 */
 	protected $date = NULL;
+
+	/**
+	 * From time
+	 *
+	 * @var integer
+	 * @copy clone
+	 */
+	protected $fromTime = NULL;
+
+	/**
+	 * To time
+	 *
+	 * @var integer
+	 * @copy clone
+	 */
+	protected $toTime = NULL;
 
 	/**
 	 * Room
@@ -253,6 +269,34 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setDate(\DateTime $date = NULL) {
 		$this->date = $date;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getFromTime() {
+		return $this->fromTime;
+	}
+
+	/**
+	 * @param integer $fromTime
+	 */
+	public function setFromTime($fromTime) {
+		$this->fromTime = $fromTime;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getToTime() {
+		return $this->toTime;
+	}
+
+	/**
+	 * @param integer $toTime
+	 */
+	public function setToTime($toTime) {
+		$this->toTime = $toTime;
 	}
 
 	/**

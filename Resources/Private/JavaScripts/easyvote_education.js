@@ -244,45 +244,6 @@ $(function() {
 		Easyvote.readFile(this, '#' + imagePreviewSelector);
 	});
 
-	// Datepicker field
-	if ($.fn.datetimepicker) {
-		$('.easyvoteEducation-date').each(function() {
-			var $this = $(this);
-			// stop javascript datepicker, if browser supports type="date" or "datetime-local" or "time"
-			if ($this.prop('type') === 'date' || $this.prop('type') === 'datetime-local' || $this.prop('type') === 'time') {
-				if ($this.data('datepicker-force')) {
-					// rewrite input type
-					$this.prop('type', 'text');
-				} else {
-					// stop js datepicker
-					return;
-				}
-			}
-
-			var datepickerStatus = true;
-			var timepickerStatus = true;
-			if ($this.data('datepicker-settings') === 'date') {
-				timepickerStatus = false;
-			} else if ($this.data('datepicker-settings') === 'time') {
-				datepickerStatus = false;
-			}
-
-			// create datepicker
-			$this.datetimepicker({
-				format: $this.data('datepicker-format'),
-				timepicker: timepickerStatus,
-				datepicker: datepickerStatus,
-				lang: 'en',
-				i18n:{
-					en:{
-						months: $this.data('datepicker-months').split(','),
-						dayOfWeek: $this.data('datepicker-days').split(',')
-					}
-				}
-			});
-		});
-	}
-
 });
 
 
@@ -315,6 +276,7 @@ var EasyvoteEducation = {
 			$container.html(data);
 			EasyvoteEducation.pushHistoryState(actionName);
 			Easyvote.bindPostalCodeSelection();
+			EasyvoteGeneral.bindDateTime();
 		});
 	},
 
@@ -386,6 +348,7 @@ var EasyvoteEducation = {
 			} else {
 				$container.html(jsonData.content);
 				Easyvote.bindPostalCodeSelection();
+				EasyvoteGeneral.bindDateTime();
 				if (callback) {
 					callback();
 				}
@@ -461,7 +424,9 @@ var EasyvoteEducation = {
 				var actionName = hashData[0];
 				var objectName = hashData[1];
 				var objectUid = hashData[2];
-				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid)
+				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, null, null, function() {
+					EasyvoteGeneral.bindDateTime();
+				})
 			} else {
 				// disallowed action, fall back to dashboard
 				EasyvoteEducation.loadAction('dashboard');
