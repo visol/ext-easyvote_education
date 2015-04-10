@@ -253,7 +253,7 @@
 				<source>Freier Text</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.images">
-				<source>Text und Bilder</source>
+				<source>Bild-Antworten</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.empty">
 				<source>Leeres Voting</source>
@@ -395,7 +395,10 @@
 				<source>Style</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image">
-				<source>Bild</source>
+				<source>Bild (optional)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image.select">
+				<source>auswählen</source>
 			</trans-unit>
 
 		</body>

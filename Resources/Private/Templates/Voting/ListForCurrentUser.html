@@ -1,15 +1,14 @@
-<ul class="voting-items">
+<div class="voting-items">
 	<f:for each="{panel.votings}" as="voting" iteration="votingIterator">
-		<li class="voting-item voting-item-{voting.uid} expandable-item {f:if(condition: voting.isVisible, else: 'voting-item-hidden')}" data-uid="{voting.uid}">
+		<div class="content-box content-box-expandable voting-item voting-item-{voting.uid} {f:if(condition: voting.isVisible, else: 'voting-item-hidden')}" data-uid="{voting.uid}">
 			<f:render partial="Voting/ShowEdit" arguments="{voting:voting, votingIterator:votingIterator}" />
-		</li>
+		</div>
 	</f:for>
-</ul>
-<a class="btn btn-primary" data-role="genericobjectaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="newVoting"><f:translate key="voting.actions.new" /></a>
+</div>
+<a class="btn btn-primary btn-fullwidth" data-role="genericobjectaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="newVoting"><f:translate key="voting.actions.new" /></a>
 <div class="hidden ajaxobject-confirm">
-	<button class="pull-left btn btn-primary button-cancel"><f:translate key="voting.actions.new.cancel" /></button>
-	<button class="pull-right btn btn-primary button-returntrue" data-selection="1"><f:translate key="voting.actions.new.yesNoAbstention" /></button>
-	<button class="pull-right btn btn-primary button-returntrue" data-selection="2"><f:translate key="voting.actions.new.text" /></button>
-	<button class="pull-right btn btn-primary button-returntrue" data-selection="3"><f:translate key="voting.actions.new.images" /></button>
-	<button class="pull-right btn btn-primary button-returntrue" data-selection="4"><f:translate key="voting.actions.new.empty" /></button>
+	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="1"><f:translate key="voting.actions.new.yesNoAbstention" /></button><br />
+	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="2"><f:translate key="voting.actions.new.text" /></button><br />
+	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="3"><f:translate key="voting.actions.new.images" /></button><br />
+	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="4"><f:translate key="voting.actions.new.empty" /></button>
 </div>

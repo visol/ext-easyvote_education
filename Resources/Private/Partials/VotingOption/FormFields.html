@@ -1,17 +1,39 @@
 {namespace vi=Visol\Easyvote\ViewHelpers}
 
-<div class="form-group">
-	<label for="votingOption{votingOption.uid}-title">
-		<f:translate key="tx_easyvoteeducation_domain_model_votingoption.title" />
-	</label>
-	<f:form.textfield class="form-control" id="votingOption{votingOption.uid}-title" property="title" />
-</div>
-<div class="form-group">
-	<label for="votingOption{votingOption.uid}-image">
-		<f:translate key="tx_easyvoteeducation_domain_model_votingoption.image" />
-	</label>
-	<div class="clearfix">
-		<img class="votingOption-image-preview" id="votingOption{votingOption.uid}-image-preview" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" />
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label for="votingOption{votingOption.uid}-title">
+				<f:translate key="tx_easyvoteeducation_domain_model_votingoption.title" />
+			</label>
+			<f:form.textfield class="form-control" id="votingOption{votingOption.uid}-title" property="title" />
+		</div>
 	</div>
-	<vi:form.upload id="votingOption{votingOption.uid}-image" class="votingOption-image" property="image" />
+	<div class="col-md-4">
+		<div class="form-group">
+			<label for="votingOption{votingOption.uid}-image">
+				<f:translate key="tx_easyvoteeducation_domain_model_votingoption.image" />
+			</label>
+			<div class="voting-option-image">
+				<f:if condition="{votingOption.image}">
+					<f:then>
+						<f:image src="{votingOption.image.uid}" class="votingOption-image-preview" id="votingOption{votingOption.uid}-image-preview" treatIdAsReference="1" width="50" height="50c" additionalAttributes="{data-target:'#votingOption{votingOption.uid}-image'}" />
+					</f:then>
+					<f:else>
+						<img src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" class="votingOption-image-preview" id="votingOption{votingOption.uid}-image-preview" data-target="#votingOption{votingOption.uid}-image" />
+					</f:else>
+				</f:if>
+			</div>
+			<vi:form.upload id="votingOption{votingOption.uid}-image" class="votingOption-image" property="image" />
+			<button class="btn btn-primary btn-sm triggeruploadbutton" type="button" data-target="#votingOption{votingOption.uid}-image"><f:translate key="tx_easyvoteeducation_domain_model_votingoption.image.select" /></button>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<a class="votingoption-delete" data-role="genericobjectaction" data-confirm="true" data-object="votingOption" data-uid="{votingOption.uid}" data-actionname="deleteVotingOption" title="{f:translate(key:'votingOption.actions.delete')}"><i class="evicon-trash"></i></a>
+		<div class="hidden ajaxobject-confirm">
+			<p><f:translate key="votingOption.actions.delete.confirmationText" /></p>
+			<button class="pull-left btn btn-primary button-cancel"><f:translate key="votingOption.actions.delete.cancel" /></button>
+			<button class="pull-right btn btn-primary button-returntrue"><f:translate key="votingOption.actions.delete.confirm" /></button>
+		</div>
+	</div>
 </div>

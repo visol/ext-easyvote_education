@@ -168,7 +168,7 @@ $(function() {
 			if (jsonData.hasOwnProperty('success') && jsonData.success === true) {
 				EasyvoteEducation.performAjaxObjectAction('editVoting', objectName, objectUid, targetSelector, null, function() {
 					// open the edited voting
-					$(targetSelector + ' > .item-header').trigger('click');
+					EasyvoteEducation.openVoting(targetSelector);
 				});
 			} else {
 				// todo meaningful and usable error
@@ -198,7 +198,7 @@ $(function() {
 			if (jsonData.hasOwnProperty('success') && jsonData.success === true) {
 				EasyvoteEducation.performAjaxObjectAction('editVoting', parentObjectName, parentObjectUid, targetSelector, null, function() {
 					// open voting
-					$(targetSelector + ' > .item-header').trigger('click');
+					EasyvoteEducation.openVoting(targetSelector);
 				});
 			} else {
 				// todo meaningful and usable error
@@ -236,6 +236,27 @@ $(function() {
 		var imagePreviewSelector = $this.parent().find('.votingOption-image-preview').attr('id');
 		Easyvote.readFile(this, '#' + imagePreviewSelector);
 	});
+
+	// Trigger file upload selector on clicking button
+	$body.on('click', '.triggeruploadbutton', function() {
+		var $this = $(this);
+		$($this.attr('data-target')).trigger('click');
+	})
+
+	// Trigger file upload selector on clicking current picture
+	$body.on('click', '.votingOption-image-preview', function(e) {
+		e.stopPropagation();
+		var $this = $(this);
+		$($this.attr('data-target')).trigger('click');
+	})
+
+	// Save all forms (voting and votingOptions)
+	$body.on('click', '.voting-save', function(e) {
+		e.stopPropagation();
+		$this = $(this);
+		disableReopenExpandableContentBox = true;
+		$this.closest('.box-content').find('form').trigger('submit');
+	})
 
 });
 
@@ -452,6 +473,17 @@ var EasyvoteEducation = {
 				usedVotingOption.closest('ul').find('button.votingOption').attr('disabled', 'disabled');
 				usedVotingOption.attr('disabled', 'disabled').addClass('selected');
 			}
+		}
+	},
+
+	/**
+	 * Reopen voting after saving voting or votingOption
+	 * 
+	 * @param targetSelector
+	 */
+	openVoting: function(targetSelector) {
+		if (disableReopenExpandableContentBox === false) {
+			$(targetSelector).find('.toggle i').trigger('click');
 		}
 	}
 

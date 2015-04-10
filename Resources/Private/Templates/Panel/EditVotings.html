@@ -1,6 +1,17 @@
 <f:render partial="Panel/MainNavigation.html" />
 
-<h2>{panel.title}</h2>
+<div class="content-box">
+	<span>
+		<f:if condition="{panel.date}">
+			<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+		</f:if>
+		<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
+		<f:if condition="{panel.city}">
+			| {panel.city.name}
+		</f:if>
+	</span>
+	<h2>{panel.title}</h2>
+</div>
 
 <div class="votings-content">
 	<script>

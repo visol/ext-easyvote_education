@@ -48,115 +48,119 @@
 		margin-bottom: 15px;
 	}
 
-	.voting-items {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		.voting-item {
-			background: white;
-			padding: 5px;
-			margin: 0 0 10px 0;
-			cursor: pointer;
-			.item-content {
-				margin: 20px 0 0 10px;
-				.editVoting {
-					margin-bottom: 20px;
-					label {
-						font-weight: bold;
-					}
-					input[type=text] {
-						border: 1px solid @dark-blue;
-					}
-					.votingDuration-display {
-						&.votingDuration-display-hidden {
-							display: none;
-						}
+	.voting-item {
+		.box-content {
+			.editVoting {
+				margin-bottom: 20px;
+				label {
+					font-weight: bold;
+				}
+				.votingDuration-display {
+					&.votingDuration-display-hidden {
+						display: none;
 					}
 				}
-				.votingOptions-content {
-					margin-bottom: 20px;
-					ul {
-						list-style: none;
-						margin: 0;
-						padding: 0;
-						li {
-							background: @box-background;
-							padding: 5px;
-							margin: 0 0 5px 0;
-							.item-header {
-								.voting-option-image {
-									float: left;
-									margin-right: 10px;
-								}
+				input[type=submit] {
+					position: absolute;
+					left: -99999px;
+				}
+			}
+			.votingOptions-content {
+				margin-bottom: 20px;
+				ul {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li {
+						background: lighten(@box-background, 5%);
+						.rounded-corners();
+						padding: 10px;
+						margin: 0 0 5px 0;
+						form {
+							margin-bottom: 0;
+							.form-group {
+								margin-bottom: 0;
 							}
+						}
+						.voting-option-image {
+							margin-bottom: 5px;
+						}
+						.votingOption-image-preview {
+							height: 50px;
+							width: 50px;
+						}
+						.votingoption-delete {
+							float: right;
+						}
+/*
+						.item-toolbar {
+							margin-left: -10px;
+							.action-moveup {
+								display: inline-block;
+							}
+							.action-movedown {
+								display: inline-block;
+							}
+						}
+						&:first-child {
 							.item-content {
-								.votingOption-image-preview {
-									height: 50px;
-									width: 50px;
-								}
 								.item-toolbar {
-									margin-left: -10px;
 									.action-moveup {
-										display: inline-block;
+										display: none;
 									}
+								}
+							}
+						}
+						&:last-child {
+							.item-content {
+								.item-toolbar {
 									.action-movedown {
-										display: inline-block;
-									}
-								}
-							}
-							&:first-child {
-								.item-content {
-									.item-toolbar {
-										.action-moveup {
-											display: none;
-										}
-									}
-								}
-							}
-							&:last-child {
-								.item-content {
-									.item-toolbar {
-										.action-movedown {
-											display: none;
-										}
+										display: none;
 									}
 								}
 							}
 						}
+*/
 					}
 				}
-				.item-toolbar {
-					margin-left: -10px;
+				.votingOption-image {
+					position: absolute;
+					left: -99999px;
+				}
+				input[type=submit] {
+					position: absolute;
+					left: -99999px;
 				}
 			}
-			&:first-child {
-				.item-content {
-					.item-toolbar {
-						.action-moveup {
-							display: none;
-						}
-					}
-				}
-			}
-			&:last-child {
-				.item-content {
-					.item-toolbar {
-						.action-movedown {
-							display: none;
-						}
-					}
-				}
+			.item-toolbar {
+				margin-left: -10px;
 			}
 		}
-		.voting-item-hidden {
-			.item-header {
-				opacity: 0.5;
+		&:first-child {
+			.action-moveup {
+				display: none;
+			}
+		}
+		&:last-child {
+			.action-movedown {
+				display: none;
 			}
 		}
 	}
+	.voting-item-hidden {
+		.item-header {
+			opacity: 0.5;
+		}
+	}
+
 	.automatic-reload-indicator {
 		margin-top: 20px;
 	}
+}
+
+button.newvoting-button {
+	margin-bottom: 5px;
+	width: 100%;
 }
 
 .votingoptions-readonly {

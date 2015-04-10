@@ -4,11 +4,14 @@
 	</label>
 	<f:form.textfield class="form-control" id="voting{voting.uid}-title" property="title" />
 </div>
-<div class="checkbox">
-	<label for="voting{voting.uid}-isVisible">
-		<f:form.checkbox id="voting{voting.uid}-isVisible" property="isVisible" value="1" /> <f:translate key="tx_easyvoteeducation_domain_model_voting.is_visible" />
-	</label>
-</div>
+<f:comment>
+	<div class="checkbox">
+		<label for="voting{voting.uid}-isVisible">
+			<f:form.checkbox id="voting{voting.uid}-isVisible" property="isVisible" value="1" /> <f:translate key="tx_easyvoteeducation_domain_model_voting.is_visible" />
+		</label>
+	</div>
+</f:comment>
+<f:form.hidden id="voting{voting.uid}-isVisible" property="isVisible" value="1" />
 <div class="form-group">
 	<label for="voting{voting.uid}-votingDuration">
 		<f:translate key="tx_easyvoteeducation_domain_model_voting.voting_duration" />

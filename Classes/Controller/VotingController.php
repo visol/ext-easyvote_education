@@ -185,6 +185,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	/**
 	 * action duplicate
 	 *
+	 * @unused Currently not used and maintained
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
 	 * @return string
 	 */
