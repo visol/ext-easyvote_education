@@ -173,10 +173,15 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panelinvitation'] = array(
 				),
 			),
 		),
-		
 		'panel' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.panel',
 			'config' => array(
-				'type' => 'passthrough',
+				'type' => 'select',
+				'foreign_table' => 'tx_easyvoteeducation_domain_model_panel',
+				'items'   => array(
+					array('', ''),
+				),
 			),
 		),
 	),

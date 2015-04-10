@@ -10,3 +10,12 @@
     '@controller': 'Panel'
     '@action':     'votingStep'
   httpMethods: ['GET']
+-
+  name: 'AvailablePartiesForPanel'
+  uriPattern: 'getavailablepartiesforpanel/{panel}'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Managepanels'
+    '@controller': 'PanelInvitation'
+    '@action':     'getAvailablePartiesForPanel'
+  httpMethods: ['GET']

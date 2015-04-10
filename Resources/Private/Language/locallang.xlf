@@ -42,6 +42,9 @@
 			<trans-unit id="panel.actions.editVotings">
 				<source>Votings bearbeiten</source>
 			</trans-unit>
+			<trans-unit id="panel.actions.editPanelInvitations">
+				<source>Politiker einladen</source>
+			</trans-unit>
 			<trans-unit id="panel.actions.edit">
 				<source>Podium bearbeiten</source>
 			</trans-unit>
@@ -316,6 +319,43 @@
 			</trans-unit>
 			<trans-unit id="votingOption.actions.save">
 				<source>speichern</source>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.panelInvitations">
+				<source>Podiums-Einladungen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.politician">
+				<source>Teilnehmende/r Politiker/in</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.maximumReached">
+				<source>Sie können maximal 6 PolitikerInnen einladen.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.description">
+				<source>Einleitungstext</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.panelInvitation">
+				<source>Podiums-Einladung</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.allowedParties">
+				<source>Mögliche Parteien</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.new">
+				<source>Podiums-Einladung hinzufügen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.confirmationText">
+				<source>Wollen Sie diese Podiums-Einladung löschen?</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.confirm">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.success">
+				<source>Die Podiumseinladung wurde gelöscht.</source>
 			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">

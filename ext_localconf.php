@@ -7,15 +7,17 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Managepanels',
 	array(
-		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, execute, votingStep',
+		'Panel' => 'startup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
+		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort'
 
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, execute, votingStep',
+		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
+		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort',
 	)
 );

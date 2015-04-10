@@ -1,0 +1,62 @@
+<div class="panelinvitation-items content-box">
+	<h2><f:translate key="panelInvitation.panelInvitations" /></h2>
+	<p><f:translate key="panelInvitation.description" /></p>
+
+	<f:flashMessages renderMode="div" />
+
+	<ul class="panelinvitations">
+		<f:for each="{panel.panelInvitations}" as="panelInvitation" iteration="panelInvitationIterator">
+			<li class="panelInvitation-item panelInvitation-item-{panelInvitation.uid}" data-uid="{panelInvitation.uid}">
+				<div class="row">
+					<div class="col-md-10">
+						<h3><f:translate key="panelInvitation.panelInvitation" /></h3>
+						<f:if condition="{panelInvitation.attendingCommunityUser}">
+							<f:translate key="panelInvitation.politician" />:
+							{panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
+							{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+						</f:if>
+						<div><f:translate key="panelInvitation.allowedParties" />:</div>
+						<f:for each="{panelInvitation.allowedParties}" as="party" iteration="partyIterator">
+							<f:if condition="{partyIterator.isLast}">
+								<f:then>
+									{party.title}
+								</f:then>
+								<f:else>
+									{party.title} |
+								</f:else>
+							</f:if>
+						</f:for>
+					</div>
+					<div class="col-md-2">
+						<f:if condition="{panelInvitation.attendingCommunityUser}">
+							<f:then>
+								<f:comment>
+									PanelInvitation cannot be deleted if there is an attending CommunityUser
+								</f:comment>
+							</f:then>
+							<f:else>
+								<a class="panelinvitation-delete" data-role="genericobjectaction" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="deletePanelInvitation" title="{f:translate(key:'panelInvitation.actions.delete')}"><i class="evicon-trash"></i></a>
+								<div class="hidden ajaxobject-confirm">
+									<p><f:translate key="panelInvitation.actions.delete.confirmationText" /></p>
+									<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.delete.cancel" /></button>
+									<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.delete.confirm" /></button>
+								</div>
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+
+			</li>
+		</f:for>
+	</ul>
+	<h3><f:translate key="panelInvitation.actions.new" /></h3>
+	<f:if condition="{panel.panelInvitations->f:count()} > 5">
+		<f:then>
+			<p><f:translate key="panelInvitation.maximumReached" /></p>
+		</f:then>
+		<f:else>
+			<input type="hidden" class="partyForCurrentPanelSelection" id="partyForCurrentPanelSelection" name="parties" />
+			<a class="btn btn-primary btn-fullwidth" data-role="genericobjectaction" data-submitvaluefrom="#partyForCurrentPanelSelection" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="createPanelInvitation"><f:translate key="panelInvitation.actions.new" /></a>
+		</f:else>
+	</f:if>
+</div>

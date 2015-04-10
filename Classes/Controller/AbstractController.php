@@ -60,6 +60,22 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $votingRepository = NULL;
 
 	/**
+	 * panelInvitationRepository
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelInvitationRepository
+	 * @inject
+	 */
+	protected $panelInvitationRepository = NULL;
+
+	/**
+	 * partyRepository
+	 *
+	 * @var \Visol\Easyvote\Domain\Repository\PartyRepository
+	 * @inject
+	 */
+	protected $partyRepository = NULL;
+
+	/**
 	 * votingOptionRepository
 	 *
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingOptionRepository

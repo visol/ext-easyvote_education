@@ -57,6 +57,14 @@ class PanelInvitation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $ignoringCommunityUsers = NULL;
 
 	/**
+	 * Panel
+	 *
+	 * @var \Visol\EasyvoteEducation\Domain\Model\Panel;
+	 * @lazy
+	 */
+	protected $panel = NULL;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -172,6 +180,20 @@ class PanelInvitation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setIgnoringCommunityUsers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ignoringCommunityUsers) {
 		$this->ignoringCommunityUsers = $ignoringCommunityUsers;
+	}
+
+	/**
+	 * @return Panel
+	 */
+	public function getPanel() {
+		return $this->panel;
+	}
+
+	/**
+	 * @param Panel $panel
+	 */
+	public function setPanel($panel) {
+		$this->panel = $panel;
 	}
 
 }

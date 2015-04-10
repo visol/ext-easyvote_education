@@ -82,6 +82,7 @@ $(function() {
 		var actionName = $this.attr('data-actionname');
 		var objectName = $this.attr('data-object');
 		var objectUid = $this.attr('data-uid');
+		var submitValueFrom = $this.attr('data-submitvaluefrom');
 		var targetElement = '.' + objectName + '-item-' + objectUid;
 
 		var confirmAction = $this.attr('data-confirm') === 'true';
@@ -90,6 +91,10 @@ $(function() {
 			Easyvote.displayModal($this.next('.ajaxobject-confirm').html(), function(selection) {
 				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, targetElement, selection);
 			})
+		} else if (submitValueFrom) {
+			// Submit value from another field with request
+			var value = $(submitValueFrom).val();
+			EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, targetElement, value);
 		} else {
 			// no confirmation needed, call the action right away
 			EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, targetElement, null, function() {
@@ -290,6 +295,7 @@ var EasyvoteEducation = {
 			$container.html(data);
 			EasyvoteEducation.pushHistoryState(actionName);
 			Easyvote.bindPostalCodeSelection();
+			EasyvoteEducation.bindPartySelection();
 			EasyvoteGeneral.bindDateTime();
 		});
 	},
@@ -334,6 +340,14 @@ var EasyvoteEducation = {
 		});
 	},
 
+	/**
+	 * @param actionName
+	 * @param objectName
+	 * @param objectUid
+	 * @param contentContainerSelector
+	 * @param selection
+	 * @param callback
+	 */
 	performAjaxObjectAction: function(actionName, objectName, objectUid, contentContainerSelector, selection, callback) {
 		if (typeof(contentContainerSelector) === 'string') {
 			var $container = $(contentContainerSelector);
@@ -354,14 +368,16 @@ var EasyvoteEducation = {
 					}
 				});
 			} else if (jsonData.hasOwnProperty('reloadVotings')) {
-				// Remove the target container, e.g. after a delete action
 				EasyvoteEducation.performAjaxObjectAction('listForCurrentUser', 'panel', jsonData.reloadVotings, '.votings-content', null, callback);
+			} else if (jsonData.hasOwnProperty('reloadPanelInvitations')) {
+				EasyvoteEducation.performAjaxObjectAction('listPanelInvitationsForCurrentUser', 'panel', jsonData.reloadPanelInvitations, '.panelinvitations-content', null, callback);
 			} else if (jsonData.hasOwnProperty('reloadVotingOptions')) {
 				// Remove the target container, e.g. after a delete action
 				EasyvoteEducation.performAjaxObjectAction('listForVoting', 'voting', jsonData.reloadVotingOptions, '.votingOptions-content', null, callback);
 			} else {
 				$container.html(jsonData.content);
 				Easyvote.bindPostalCodeSelection();
+				EasyvoteEducation.bindPartySelection();
 				EasyvoteGeneral.bindDateTime();
 				if (callback) {
 					callback();
@@ -433,7 +449,7 @@ var EasyvoteEducation = {
 		var hashData = document.location.hash.substr(1).split('/');
 		if (hashData.length > 1) {
 			// ajax object action
-			var allowedActions = ['edit', 'editVotings', 'execute'];
+			var allowedActions = ['edit', 'editVotings', 'editPanelInvitations', 'execute'];
 			if ($.inArray(hashData[0], allowedActions) !== -1) {
 				var actionName = hashData[0];
 				var objectName = hashData[1];
@@ -478,12 +494,41 @@ var EasyvoteEducation = {
 
 	/**
 	 * Reopen voting after saving voting or votingOption
-	 * 
+	 *
 	 * @param targetSelector
 	 */
 	openVoting: function(targetSelector) {
 		if (disableReopenExpandableContentBox === false) {
 			$(targetSelector).find('.toggle i').trigger('click');
+		}
+	},
+
+	/* Party selection for forms */
+	bindPartySelection: function() {
+		if (typeof(panelUid) != 'undefined') {
+			var $partySelector = $('.partyForCurrentPanelSelection');
+			$partySelector.select2({
+				multiple: true,
+				maximumSelectionSize: 2,
+				ajax: {
+					url: '/routing/getavailablepartiesforpanel/' + panelUid,
+					dataType: 'json',
+					data: function (term, page) {
+						return {
+							q: term // search term
+						};
+					},
+					results: function (data, page) {
+						return {results: data.results};
+					}
+				},
+				initSelection: function (element, callback) {
+				},
+				dropdownCssClass: "bigdrop",
+				escapeMarkup: function (m) {
+					return m;
+				}
+			});
 		}
 	}
 

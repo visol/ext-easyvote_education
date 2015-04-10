@@ -7,8 +7,8 @@
 	<div id="easyvoteeducation-content"></div>
 	<script>
 		var EasyvoteEducationActionUris = {
-			dashboard: '<h:uri.ajaxAction controller="Panel" action="dashboard" absolute="TRUE" />',
-			startPanel: '<h:uri.ajaxAction controller="Panel" action="startPanel" absolute="TRUE" />',
+			//dashboard: '<h:uri.ajaxAction controller="Panel" action="dashboard" absolute="TRUE" />',
+			//startPanel: '<h:uri.ajaxAction controller="Panel" action="startPanel" absolute="TRUE" />',
 			managePanels: '<h:uri.ajaxAction controller="Panel" action="managePanels" absolute="TRUE" />',
 			new: '<h:uri.ajaxAction controller="Panel" action="new" absolute="TRUE" />',
 			create: '<h:uri.ajaxAction controller="Panel" action="create" absolute="TRUE" />',
@@ -17,6 +17,7 @@
 			delete: '<h:uri.ajaxAction controller="Panel" action="delete" absolute="TRUE" />',
 			//duplicate: '<h:uri.ajaxAction controller="Panel" action="duplicate" absolute="TRUE" />',
 			editVotings: '<h:uri.ajaxAction controller="Panel" action="editVotings" absolute="TRUE" />',
+			editPanelInvitations: '<h:uri.ajaxAction controller="Panel" action="editPanelInvitations" absolute="TRUE" />',
 			execute: '<h:uri.ajaxAction controller="Panel" action="execute" absolute="TRUE" />',
 
 			listForCurrentUser: '<h:uri.ajaxAction controller="Voting" action="listForCurrentUser" absolute="TRUE" />',
@@ -27,6 +28,9 @@
 			//duplicateVoting: '<h:uri.ajaxAction controller="Voting" action="duplicate" absolute="TRUE" />',
 			sortVotings: '<h:uri.ajaxAction controller="Voting" action="sort" absolute="TRUE" />',
 
+			listPanelInvitationsForCurrentUser: '<h:uri.ajaxAction controller="PanelInvitation" action="listForCurrentUser" absolute="TRUE" />',
+			createPanelInvitation: '<h:uri.ajaxAction controller="PanelInvitation" action="create" absolute="TRUE" />',
+			deletePanelInvitation: '<h:uri.ajaxAction controller="PanelInvitation" action="delete" absolute="TRUE" />',
 
 			listForVoting: '<h:uri.ajaxAction controller="VotingOption" action="listForVoting" absolute="TRUE" />',
 			newVotingOption: '<h:uri.ajaxAction controller="VotingOption" action="new" absolute="TRUE" />',
@@ -34,8 +38,6 @@
 			updateVotingOption: '<h:uri.ajaxAction controller="VotingOption" action="update" absolute="TRUE" />',
 			deleteVotingOption: '<h:uri.ajaxAction controller="VotingOption" action="delete" absolute="TRUE" />',
 			sortVotingOptions: '<h:uri.ajaxAction controller="VotingOption" action="sort" absolute="TRUE" />'
-
-
 		}
 	</script>
 
