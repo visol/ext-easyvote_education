@@ -187,6 +187,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * action duplicate
 	 *
+	 * @unused Currently not used and maintained
 	 * @param Panel $panel
 	 * @return string
 	 */
