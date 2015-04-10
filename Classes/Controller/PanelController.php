@@ -105,7 +105,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function createAction(Panel $newPanel) {
 		if ($communityUser = $this->getLoggedInUser()) {
 			do {
-				$panelId = Algorithms::generateRandomString(4, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
+				$panelId = Algorithms::generateRandomString(4, 'ABCDEFGHJKMNPQRSTUVWXYZ123456789');
 			} while ($this->panelRepository->findOneByPanelId($panelId) instanceof Panel);
 			$newPanel->setPanelId($panelId);
 			$newPanel->setCommunityUser($communityUser);
@@ -198,7 +198,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$duplicatePanel = $this->cloneService->copy($panel);
 			// generate a new panelId
 			do {
-				$panelId = Algorithms::generateRandomString(8, 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789');
+				$panelId = Algorithms::generateRandomString(8, 'ABCDEFGHJKMNPQRSTUVWXYZ123456789');
 			} while ($this->panelRepository->findOneByPanelId($panelId) instanceof Panel);
 			$duplicatePanel->setPanelId($panelId);
 			// Prefix "Copy of" to duplicated panel
