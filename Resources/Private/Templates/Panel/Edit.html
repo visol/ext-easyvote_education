@@ -1,12 +1,16 @@
 <f:render partial="Panel/MainNavigation.html" />
 
-<h2><f:translate key="panel.edit.title" /></h2>
+<div class="content-box">
 
-<f:flashMessages renderMode="div" />
+	<h2><f:translate key="panel.edit.title" /></h2>
 
-<f:render partial="FormErrors" arguments="{object:Panel}" />
+	<f:flashMessages renderMode="div" />
 
-<f:form action="update" id="editPanel" name="panel" object="{panel}" >
-<f:render partial="Panel/FormFields" arguments="{panel:panel}" />
-	<button type="submit" class="btn btn-primary"><f:translate key="panel.edit.update" /></button>
-</f:form>
+	<f:render partial="FormErrors" arguments="{object:Panel}" />
+
+	<f:form action="update" id="editPanel" name="panel" object="{panel}" >
+	<f:render partial="Panel/FormFields" arguments="{panel:panel}" />
+		<button type="submit" class="btn btn-primary"><f:translate key="panel.edit.update" /></button>
+	</f:form>
+
+</div>

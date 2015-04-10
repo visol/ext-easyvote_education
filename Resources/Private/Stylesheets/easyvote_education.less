@@ -10,29 +10,21 @@
 		}
 	}
 
-	.panel-items {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		.panel-item {
-			background: white;
-			padding: 5px;
-			margin: 0 0 10px 0;
-			cursor: pointer;
-			.panel-id {
+	.content-box-expandable {
+		.panel-date {
+			.clearfix();
+		}
+		.panel-location {
+			.clearfix();
+		}
+		.panel-id {
+			.clearfix();
+			margin-bottom: 15px;
+			.panel-id-monospace {
 				font-family: "monotype", "courier new", sans-serif;
 			}
 		}
-	}
-
-	.expandable-item {
-		.item-header {
-			.clearfix();
-			font-weight: bold;
-		}
-		.item-content {
-			.clearfix();
-			display: none;
+		.box-content {
 			.item-toolbar {
 				.clearfix();
 				list-style: none;
@@ -49,6 +41,11 @@
 				}
 			}
 		}
+	}
+
+	.btn-fullwidth {
+		width: 100%;
+		margin-bottom: 15px;
 	}
 
 	.voting-items {

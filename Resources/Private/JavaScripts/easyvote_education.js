@@ -24,7 +24,7 @@ $(function() {
 			EasyvoteEducation.callHashRequestedAction();
 		} else {
 			// Fall back to dashboard
-			EasyvoteEducation.loadAction('dashboard');
+			EasyvoteEducation.loadAction('managePanels');
 		}
 	}
 
@@ -205,13 +205,6 @@ $(function() {
 				alert('Fehler!');
 			}
 		});
-	});
-
-	// Expandable items
-	$body.on('click', '.expandable-item .item-header', function() {
-		var $this = $(this);
-		var $toolbar = $this.parent().children('.item-content');
-		$toolbar.slideToggle(100);
 	});
 
 	// votingDuration

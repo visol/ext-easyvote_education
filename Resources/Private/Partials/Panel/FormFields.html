@@ -29,6 +29,12 @@
 	<f:form.textfield type="text" id="toTime" class="form-control time-picker" property="toTime"  value="{f:if(condition:'{panel.toTime}', then:'{panel.toTime->f:format.date(format:\'%R\')}')}" />
 </div>
 <div class="form-group">
+	<label for="organization">
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
+	</label>
+	<f:form.textfield id="organization" class="form-control" property="organization" />
+</div>
+<div class="form-group">
 	<label for="room">
 		<f:translate key="tx_easyvoteeducation_domain_model_panel.room" />
 	</label>
@@ -48,12 +54,6 @@
 		<input type="text" class="form-control cityOutput" readonly value="{panel.city.postalCode} {panel.city.name} ({panel.city.kanton.name})" />
 	</f:if>
 	<f:form.textfield class="form-control citySelection" property="city" />
-</div>
-<div class="form-group">
-	<label for="organization">
-		<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
-	</label>
-	<f:form.textfield id="organization" class="form-control" property="organization" />
 </div>
 <div class="form-group">
 	<label for="class">

@@ -30,6 +30,12 @@
 				<source>Podium speichern</source>
 			</trans-unit>
 
+			<trans-unit id="panel.time.oClock">
+				<source>Uhr</source>
+			</trans-unit>
+			<trans-unit id="panel.panelId">
+				<source>Voting-ID</source>
+			</trans-unit>
 			<trans-unit id="panel.actions.create.success">
 				<source>Das Podium "%s" wurde erstellt.</source>
 			</trans-unit>

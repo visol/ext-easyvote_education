@@ -1,40 +1,68 @@
 <f:render partial="Panel/MainNavigation.html" />
 
+<a class="btn btn-primary btn-fullwidth" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
+
 <f:for each="{panels}" as="panel">
-	<ul class="panel-items">
-		<li class="panel-item expandable-item">
-			<div class="item-header">
-				{panel.title} | <span class="panel-id">{panel.panelId}</span><br />
+	<div class="content-box content-box-expandable">
+		<div class="box-teaser">
+			<div class="actions">
+				<div class="action toggle handle">
+					<i class="evicon-down-open"></i>
+				</div>
+			</div>
+			<span>
 				<f:if condition="{panel.date}">
-					(<f:format.date format="%d.%m.%y, %H:%m Uhr">{panel.date}</f:format.date>)
+					<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+				</f:if>
+				<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
+				<f:if condition="{panel.city}">
+					| {panel.city.name}
+				</f:if>
+			</span>
+			<h2>{panel.title}</h2>
+		</div>
+		<div class="box-content">
+			<div class="panel-location">
+				<f:if condition="{panel.organization}">
+					{panel.organization},
+				</f:if>
+				<f:if condition="{panel.room}">
+					{panel.room},
+				</f:if>
+				<f:if condition="{panel.address}">
+					{panel.address},
+				</f:if>
+				<f:if condition="{panel.city}">
+					{panel.city.postalCode} {panel.city.name}
 				</f:if>
 			</div>
-			<div class="item-content">
-				<ul class="item-toolbar">
-					<li>
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
-					</li>
-					<li>
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
-					</li>
-					<li>
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
-						<div class="hidden ajaxobject-confirm">
-							<p><f:translate key="panel.actions.delete.confirmationText" /></p>
-							<button class="pull-left btn btn-primary button-cancel"><f:translate key="panel.actions.delete.cancel" /></button>
-							<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panel.actions.delete.confirm" /></button>
-						</div>
-					</li>
-					<li>
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="duplicate"><f:translate key="panel.actions.duplicate" /></a>
-					</li>
-					<li>
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="execute"><f:translate key="panel.actions.start" /></a>
-					</li>
-				</ul>
-			</div>
-		</li>
-	</ul>
+			<div class="panel-id"><f:translate key="panel.panelId" />: <span class="panel-id-monospace">{panel.panelId}</span></div>
+			<ul class="item-toolbar">
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+				</li>
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
+				</li>
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
+					<div class="hidden ajaxobject-confirm">
+						<p><f:translate key="panel.actions.delete.confirmationText" /></p>
+						<button class="pull-left btn btn-primary button-cancel"><f:translate key="panel.actions.delete.cancel" /></button>
+						<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panel.actions.delete.confirm" /></button>
+					</div>
+				</li>
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="duplicate"><f:translate key="panel.actions.duplicate" /></a>
+				</li>
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="execute"><f:translate key="panel.actions.start" /></a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </f:for>
 
-<a class="btn btn-primary btn-lg" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
+<f:if condition="{panels->f:count()} > 2">
+	<a class="btn btn-primary btn-fullwidth" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
+</f:if>

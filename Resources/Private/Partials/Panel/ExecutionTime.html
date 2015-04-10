@@ -1,0 +1,11 @@
+<f:if condition="{panel.fromTime}">
+	{leadingCharacter} <f:format.date format="%R">{panel.fromTime}</f:format.date>
+	<f:if condition="{panel.toTime}">
+		<f:then>
+			- <f:format.date format="%R">{panel.toTime}</f:format.date> <f:translate key="panel.time.oClock" />
+		</f:then>
+		<f:else>
+			<f:translate key="panel.time.oClock" />
+		</f:else>
+	</f:if>
+</f:if>
