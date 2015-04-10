@@ -57,6 +57,10 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.votings">
 				<source>Votings</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.panel_invitations">
+				<source>Panel Invitations</source>
+			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
 				<source>Voting</source>
 			</trans-unit>
@@ -110,6 +114,22 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_vote">
 				<source>Vote</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvoteeducation_domain_model_panelinvitation">
+				<source>Panel Invitation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panelinvitation.allowed_parties">
+				<source>Allowed Parties</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panelinvitation.attending_community_user">
+				<source>Attending Community User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panelinvitation.ignoring_community_users">
+				<source>Ignoring Community Users</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel">
+				<source>Panel</source>
 			</trans-unit>
 		</body>
 	</file>

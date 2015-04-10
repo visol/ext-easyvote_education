@@ -195,6 +195,15 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $currentVoting = NULL;
 
 	/**
+	 * Panel Invitations
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\PanelInvitation>
+	 * @cascade remove
+	 * @lazy
+	 */
+	protected $panelInvitations = NULL;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -212,6 +221,7 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->votings = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->panelInvitations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -552,6 +562,45 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getCurrentVoting() {
 		return $this->votingService->getCurrentVoting($this->currentState);
+	}
+
+	/**
+	 * Adds a PanelInvitation
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 * @return void
+	 */
+	public function addPanelInvitation(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+		$this->panelInvitations->attach($panelInvitation);
+	}
+
+	/**
+	 * Removes a PanelInvitation
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitationToRemove The PanelInvitation to be removed
+	 * @return void
+	 */
+	public function removePanelInvitation(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitationToRemove) {
+		$this->panelInvitations->detach($panelInvitationToRemove);
+	}
+
+	/**
+	 * Returns the panelInvitations
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\PanelInvitation> $panelInvitations
+	 */
+	public function getPanelInvitations() {
+		return $this->panelInvitations;
+	}
+
+	/**
+	 * Sets the panelInvitation
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\PanelInvitation> $panelInvitations
+	 * @return void
+	 */
+	public function setPanelInvitations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $panelInvitations) {
+		$this->panelInvitations = $panelInvitations;
 	}
 
 }

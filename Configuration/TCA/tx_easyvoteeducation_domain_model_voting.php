@@ -4,7 +4,27 @@ if (!defined ('TYPO3_MODE')) {
 }
 
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
-	'ctrl' => $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting']['ctrl'],
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting',
+		'label' => 'title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'sorting',
+
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'title,short,is_visible,is_voting_enabled,voting_duration,voting_options,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_education') . 'Resources/Public/Icons/tx_easyvoteeducation_domain_model_voting.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, short, is_visible, is_voting_enabled, voting_duration, voting_options',
 	),

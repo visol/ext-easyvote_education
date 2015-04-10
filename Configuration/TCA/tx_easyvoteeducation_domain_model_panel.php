@@ -4,12 +4,31 @@ if (!defined ('TYPO3_MODE')) {
 }
 
 $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
-	'ctrl' => $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel']['ctrl'],
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel',
+		'label' => 'title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'title,description,date,room,address,organization,class,number_of_participants,terms_accepted,city,image,creator,votings,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_education') . 'Resources/Public/Icons/tx_easyvoteeducation_domain_model_panel.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings, panel_invitations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -265,6 +284,23 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				//'readOnly' => 1,
 				'items'   => array(
 					array('', ''),
+				),
+			),
+		),
+		'panel_invitations' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.panel_invitations',
+			'config' => array(
+				'type' => 'inline',
+				'foreign_table' => 'tx_easyvoteeducation_domain_model_panelinvitation',
+				'foreign_field' => 'panel',
+				'maxitems'      => 9999,
+				'appearance' => array(
+					'collapseAll' => 1,
+					'levelLinksPosition' => 'top',
+					'showSynchronizationLink' => 1,
+					'showPossibleLocalizationRecords' => 1,
+					'showAllLocalizationLink' => 1
 				),
 			),
 		),
