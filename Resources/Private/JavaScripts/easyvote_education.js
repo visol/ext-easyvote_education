@@ -33,7 +33,8 @@ $(function() {
 		e.preventDefault();
 		var $this = $(this);
 		var actionName = $this.attr('data-actionname');
-		EasyvoteEducation.loadAction(actionName);
+		var openPanel = $this.attr('data-openpanel');
+		EasyvoteEducation.loadAction(actionName, null, openPanel);
 	});
 
 	// AJAX-based voting actions
@@ -285,7 +286,7 @@ var EasyvoteEducation = {
 	 * @param actionName Name of the action, an URI with the same name must be defined
 	 * @param contentContainerSelector
 	 */
-	loadAction: function(actionName, contentContainerSelector) {
+	loadAction: function(actionName, contentContainerSelector, panelUid) {
 		if (typeof(contentContainerSelector) === 'string') {
 			var $container = $(contentContainerSelector);
 		} else {
@@ -297,6 +298,9 @@ var EasyvoteEducation = {
 			Easyvote.bindPostalCodeSelection();
 			EasyvoteEducation.bindPartySelection();
 			EasyvoteGeneral.bindDateTime();
+			if (panelUid) {
+				EasyvoteEducation.openPanel(panelUid);
+			}
 		});
 	},
 
