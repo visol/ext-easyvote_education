@@ -17,11 +17,14 @@ $(function() {
 	};
 
 	var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
+	var requestedAction = $easyvoteEducationContentContainer.attr('data-action');
 
 	// Load dashboard on startup
 	if ($easyvoteEducationContentContainer.length) {
 		if (document.location.hash) {
 			EasyvoteEducation.callHashRequestedAction();
+		} else if (requestedAction) {
+			EasyvoteEducation.loadAction(requestedAction);
 		} else {
 			// Fall back to dashboard
 			EasyvoteEducation.loadAction('managePanels');

@@ -429,7 +429,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * action startup
 	 */
-	public function startupAction() {
+	public function managePanelsStartupAction() {
 	}
 
 	/**
