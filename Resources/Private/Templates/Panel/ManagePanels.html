@@ -36,19 +36,83 @@
 					{panel.city.postalCode} {panel.city.name}
 				</f:if>
 			</div>
-			<div class="panel-id"><f:translate key="panel.panelId" />: <span class="panel-id-monospace">{panel.panelId}</span></div>
+			<f:comment>
+				<div class="panel-id"><f:translate key="panel.panelId" />: <span class="panel-id-monospace">{panel.panelId}</span></div>
+			</f:comment>
+
+			<div class="panel-mainfunctions">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6 sameheight">
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+						<f:if condition="{panel.votings}">
+							<f:then>
+								<f:if condition="{panel.votings -> f:count()} > 1">
+									<f:then>
+										<f:count>{panel.votings}</f:count> <f:translate key="panel.votings" />
+									</f:then>
+									<f:else>
+										<f:count>{panel.votings}</f:count> <f:translate key="panel.voting" />
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<f:translate key="panel.votings.noVotings" />
+							</f:else>
+						</f:if>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 sameheight">
+						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
+						<f:if condition="{panel.panelInvitations}">
+							<f:then>
+								<ul>
+									<f:for each="{panel.panelInvitations}" as="panelInvitation">
+										<f:if condition="{panelInvitation.attendingCommunityUser}">
+											<f:then>
+												<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
+													{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+												</li>
+											</f:then>
+											<f:else>
+												<li><f:translate key="panel.panelInvitations.pendingTitle" />:
+													<f:if condition="{panelInvitation.allowedParties -> f:count()} > 1">
+														<f:then>
+															<f:for each="{panelInvitation.allowedParties}" as="allowedParty" iteration="allowedPartyIterator">
+																<f:if condition="{allowedPartyIterator.isLast}">
+																	<f:then>
+																		{allowedParty.shortTitle}
+																	</f:then>
+																	<f:else>
+																		{allowedParty.shortTitle} <f:translate key="panel.panelInvitations.or" />
+																	</f:else>
+																</f:if>
+															</f:for>
+														</f:then>
+														<f:else>
+															<f:for each="{panelInvitation.allowedParties}" as="allowedParty">
+																{allowedParty.shortTitle}
+															</f:for>
+														</f:else>
+													</f:if>
+												</li>
+											</f:else>
+										</f:if>
+									</f:for>
+								</ul>
+							</f:then>
+							<f:else>
+								<f:translate key="panel.panelInvitations.noInvitations" />
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</div>
+
 			<ul class="item-toolbar">
 				<li>
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><i class="evicon-pencil-squared"></i><f:translate key="panel.actions.edit" /></a>
 				</li>
 				<li>
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
-				</li>
-				<li>
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
-				</li>
-				<li>
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
+					<a class="btn btn-primary" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><i class="evicon-trash"></i><f:translate key="panel.actions.delete" /></a>
 					<div class="hidden ajaxobject-confirm">
 						<p><f:translate key="panel.actions.delete.confirmationText" /></p>
 						<button class="pull-left btn btn-primary button-cancel"><f:translate key="panel.actions.delete.cancel" /></button>
@@ -61,7 +125,7 @@
 					</li>
 				</f:comment>
 				<li>
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="execute"><f:translate key="panel.actions.start" /></a>
+					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="execute"><i class="evicon-play-circled"></i><f:translate key="panel.actions.start" /></a>
 				</li>
 			</ul>
 		</div>

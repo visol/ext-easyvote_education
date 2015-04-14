@@ -70,7 +70,7 @@
 				<source>duplizieren</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.start">
-				<source>starten</source>
+				<source>Podium starten</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.duplicate.success">
 				<source>Das Podium "%s" wurde dupliziert.</source>
@@ -78,6 +78,28 @@
 			<trans-unit id="panel.actions.duplicate.copyOf">
 				<source>Kopie von</source>
 			</trans-unit>
+			<trans-unit id="panel.panelInvitations.attendingTitle">
+				<source>Zusage</source>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.pendingTitle">
+				<source>Offen</source>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.noInvitations">
+				<source>Es wurden noch keine Politiker eingeladen.</source>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.or">
+				<source>oder</source>
+			</trans-unit>
+			<trans-unit id="panel.voting">
+				<source>Voting</source>
+			</trans-unit>
+			<trans-unit id="panel.votings">
+				<source>Votings</source>
+			</trans-unit>
+			<trans-unit id="panel.votings.noVotings">
+				<source>Es wurden noch keine Votings hinzugefügt.</source>
+			</trans-unit>
+
 			<trans-unit id="panel.execute.title">
 				<source>Podium</source>
 			</trans-unit>
