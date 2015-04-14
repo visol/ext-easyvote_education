@@ -503,6 +503,16 @@ var EasyvoteEducation = {
 		}
 	},
 
+	/**
+	 * Open a panel
+	 *
+	 * @param panelUid
+	 */
+	openPanel: function(panelUid) {
+		$('.panel-' + panelUid).find('.toggle i').trigger('click');
+		Easyvote.scrollToElement('.panel-' + panelUid);
+	},
+
 	/* Party selection for forms */
 	bindPartySelection: function() {
 		if (typeof(panelUid) != 'undefined') {

@@ -3,7 +3,7 @@
 <a class="btn btn-primary btn-fullwidth" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
 
 <f:for each="{panels}" as="panel">
-	<div class="content-box content-box-expandable">
+	<div class="panel-{panel.uid} content-box content-box-expandable">
 		<div class="box-teaser">
 			<div class="actions">
 				<div class="action toggle handle">

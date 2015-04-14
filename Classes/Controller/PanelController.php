@@ -112,6 +112,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$this->panelRepository->add($newPanel);
 			$this->persistenceManager->persistAll();
 			$message = LocalizationUtility::translate('panel.actions.create.success', $this->request->getControllerExtensionName(), array($newPanel->getTitle()));
+			$message .= '<script>EasyvoteEducation.openPanel(' . $newPanel->getUid() . ');</script>';
 			$this->addFlashMessage($message, '', AbstractMessage::OK);
 			return json_encode(array(
 				'redirectToAction' => 'managePanels'
@@ -153,6 +154,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function updateAction(Panel $panel) {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$message = LocalizationUtility::translate('panel.actions.update.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
+			$message .= '<script>EasyvoteEducation.openPanel(' . $panel->getUid() . ');</script>';
 			$this->addFlashMessage($message, '', AbstractMessage::OK);
 			$this->panelRepository->update($panel);
 			$this->persistenceManager->persistAll();
