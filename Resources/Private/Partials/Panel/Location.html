@@ -1,0 +1,14 @@
+<div class="panel-location">
+	<f:if condition="{panel.organization}">
+		{panel.organization},
+	</f:if>
+	<f:if condition="{panel.room}">
+		{panel.room},
+	</f:if>
+	<f:if condition="{panel.address}">
+		{panel.address},
+	</f:if>
+	<f:if condition="{panel.city}">
+		{panel.city.postalCode} {panel.city.name}
+	</f:if>
+</div>

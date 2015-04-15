@@ -7,7 +7,7 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Managepanels',
 	array(
-		'Panel' => 'managePanelsStartup, dashboard, managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
+		'Panel' => 'managePanelsStartup, managePanels, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
 		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort'
@@ -15,10 +15,25 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'managePanels, startPanel, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
+		'Panel' => 'managePanels, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
 		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
 		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
 		'VotingOption' => 'listForVoting, new,edit,update,delete,sort',
+	)
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Panelparticipations',
+	array(
+		'Panel' => 'panelParticipationsStartup, panelParticipations',
+		'PanelInvitation' => 'attend,ignore',
+
+	),
+	// non-cacheable actions
+	array(
+		'Panel' => 'managePanels, panelParticipations',
+		'PanelInvitation' => 'attend,ignore',
 	)
 );
 

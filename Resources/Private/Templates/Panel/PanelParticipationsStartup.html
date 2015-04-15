@@ -1,0 +1,16 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<div id="easyvoteeducation-content" data-action="panelParticipations"></div>
+	<script>
+		var EasyvoteEducationActionUris = {
+			panelParticipations: '<h:uri.ajaxAction controller="Panel" action="panelParticipations" absolute="TRUE" />',
+			attend: '<h:uri.ajaxAction controller="PanelInvitation" action="attend" absolute="TRUE" />',
+			ignore: '<h:uri.ajaxAction controller="PanelInvitation" action="ignore" absolute="TRUE" />'
+		}
+	</script>
+
+</f:section>

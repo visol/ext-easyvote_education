@@ -433,6 +433,12 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
+	 * action startup
+	 */
+	public function panelParticipationsStartupAction() {
+	}
+
+	/**
 	 * action dashboard
 	 */
 	public function dashboardAction() {
@@ -446,6 +452,21 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	public function managePanelsAction() {
 		if ($communityUser = $this->getLoggedInUser()) {
 			$this->view->assign('panels', $this->panelRepository->findByCommunityUser($communityUser));
+		} else {
+			// todo no user logged in
+		}
+	}
+
+	/**
+	 * action managePanels
+	 *
+	 * @return void
+	 */
+	public function panelParticipationsAction() {
+		if ($communityUser = $this->getLoggedInUser()) {
+			$panelInvitations = $this->panelInvitationRepository->findNotIgnoredPanelsByCommunityUser($communityUser);
+			$this->view->assign('panelInvitations', $panelInvitations);
+			$this->view->assign('communityUser', $communityUser);
 		} else {
 			// todo no user logged in
 		}

@@ -144,6 +144,10 @@
 			<trans-unit id="panel.execute.continuePanelButtonText">
 				<source>Podium fortsetzen</source>
 			</trans-unit>
+			<trans-unit id="panel.organizer">
+				<source>Veranstalter</source>
+			</trans-unit>
+
 			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
 				<source>Erste Voting-Frage anzeigen</source>
 			</trans-unit>
@@ -352,6 +356,37 @@
 			<trans-unit id="panelInvitation.maximumReached">
 				<source>Sie können maximal 6 PolitikerInnen einladen.</source>
 			</trans-unit>
+			<trans-unit id="panelInvitation.mine">
+				<source>Sie nehmen an diesem Podium teil.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore">
+				<source>Dieses Podium ignorieren.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.confirmationText">
+				<source>Wenn Sie an diesem Podium nicht teilnehmen und keine weiteren Benachrichtigungen erhalten möchten, können Sie das Podium ignorieren.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.confirm">
+				<source>Podium ignorieren</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend">
+				<source>Teilnehmen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.confirmationText">
+				<source>Bitte klicken Sie auf "Teilnahme bestätigen", um Ihre Teilnahme am Podium verbindlich zu bestätigen.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.confirm">
+				<source>Teilnahme bestätigen</source>
+			</trans-unit>
+			<trans-unit id="panel.participants">
+				<source>Teilnehmende</source>
+			</trans-unit>
+
 			<trans-unit id="panelInvitation.description">
 				<source>Einleitungstext</source>
 			</trans-unit>

@@ -32,5 +32,33 @@ namespace Visol\EasyvoteEducation\Domain\Repository;
  */
 class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	protected $defaultOrderings = array(
+		'panel.date' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+	);
+
+	public function findNotIgnoredPanelsByCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		if ($communityUser->getCitySelection() instanceof \Visol\Easyvote\Domain\Model\City && is_object($communityUser->getParty())) {
+			$query = $this->createQuery();
+			$query->matching(
+				$query->logicalAnd(
+					$query->greaterThanOrEqual('panel.date', time() - 86400),
+					$query->contains('allowedParties', $communityUser->getParty()),
+					$query->logicalNot(
+						$query->contains('ignoringCommunityUsers', $communityUser)
+					),
+					$query->logicalOr(
+						$query->equals('attendingCommunityUser', $communityUser),
+						$query->equals('attendingCommunityUser', 0)
+					),
+					$query->equals('panel.city.kanton', $communityUser->getCitySelection()->getKanton())
+				)
+			);
+			return $query->execute();
+
+		} else {
+			return NULL;
+		}
+
+	}
 	
 }

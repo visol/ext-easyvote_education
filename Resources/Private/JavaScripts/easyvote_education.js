@@ -88,12 +88,13 @@ $(function() {
 		var objectUid = $this.attr('data-uid');
 		var submitValueFrom = $this.attr('data-submitvaluefrom');
 		var targetElement = '.' + objectName + '-item-' + objectUid;
+		var pluginPrefix = $this.attr('data-pluginprefix');
 
 		var confirmAction = $this.attr('data-confirm') === 'true';
 		if (confirmAction) {
 			// open a modal and wait for confirmation to continue
 			Easyvote.displayModal($this.next('.ajaxobject-confirm').html(), function(selection) {
-				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, targetElement, selection);
+				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, targetElement, selection, null, pluginPrefix);
 			})
 		} else if (submitValueFrom) {
 			// Submit value from another field with request
@@ -250,14 +251,14 @@ $(function() {
 	$body.on('click', '.triggeruploadbutton', function() {
 		var $this = $(this);
 		$($this.attr('data-target')).trigger('click');
-	})
+	});
 
 	// Trigger file upload selector on clicking current picture
 	$body.on('click', '.votingOption-image-preview', function(e) {
 		e.stopPropagation();
 		var $this = $(this);
 		$($this.attr('data-target')).trigger('click');
-	})
+	});
 
 	// Save all forms (voting and votingOptions)
 	$body.on('click', '.voting-save', function(e) {
@@ -265,7 +266,7 @@ $(function() {
 		$this = $(this);
 		disableReopenExpandableContentBox = true;
 		$this.closest('.box-content').find('form').trigger('submit');
-	})
+	});
 
 });
 
@@ -288,6 +289,7 @@ var EasyvoteEducation = {
 	 *
 	 * @param actionName Name of the action, an URI with the same name must be defined
 	 * @param contentContainerSelector
+	 * @param panelUid
 	 */
 	loadAction: function(actionName, contentContainerSelector, panelUid) {
 		if (typeof(contentContainerSelector) === 'string') {
@@ -331,14 +333,18 @@ var EasyvoteEducation = {
 	 * @param objectUid
 	 * @param uri
 	 * @param selection
+	 * @param pluginPrefix
 	 * @returns {*}
 	 */
-	loadAjaxObjectContent: function(objectName, objectUid, uri, selection) {
+	loadAjaxObjectContent: function(objectName, objectUid, uri, selection, pluginPrefix) {
+		if (!pluginPrefix) {
+			var pluginPrefix = 'tx_easyvoteeducation_managepanels';
+		}
 		var data = {};
-		data['tx_easyvoteeducation_managepanels'] = {};
-		data['tx_easyvoteeducation_managepanels'][objectName] = objectUid;
+		data[pluginPrefix] = {};
+		data[pluginPrefix][objectName] = objectUid;
 		if (selection) {
-			data['tx_easyvoteeducation_managepanels']['selection'] = selection;
+			data[pluginPrefix]['selection'] = selection;
 		}
 		return $.ajax({
 			type: "POST",
@@ -353,16 +359,17 @@ var EasyvoteEducation = {
 	 * @param objectUid
 	 * @param contentContainerSelector
 	 * @param selection
+	 * @param pluginPrefix
 	 * @param callback
 	 */
-	performAjaxObjectAction: function(actionName, objectName, objectUid, contentContainerSelector, selection, callback) {
+	performAjaxObjectAction: function(actionName, objectName, objectUid, contentContainerSelector, selection, callback, pluginPrefix) {
 		if (typeof(contentContainerSelector) === 'string') {
 			var $container = $(contentContainerSelector);
 		} else {
 			var $container = $('#easyvoteeducation-content');
 		}
 		var actionUri = EasyvoteEducationActionUris[actionName];
-		EasyvoteEducation.loadAjaxObjectContent(objectName, objectUid, actionUri, selection).done(function (data) {
+		EasyvoteEducation.loadAjaxObjectContent(objectName, objectUid, actionUri, selection, pluginPrefix).done(function (data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
 			if (jsonData.hasOwnProperty('redirectToAction')) {
 				EasyvoteEducation.loadAction(jsonData.redirectToAction, contentContainerSelector);
@@ -378,6 +385,8 @@ var EasyvoteEducation = {
 				EasyvoteEducation.performAjaxObjectAction('listForCurrentUser', 'panel', jsonData.reloadVotings, '.votings-content', null, callback);
 			} else if (jsonData.hasOwnProperty('reloadPanelInvitations')) {
 				EasyvoteEducation.performAjaxObjectAction('listPanelInvitationsForCurrentUser', 'panel', jsonData.reloadPanelInvitations, '.panelinvitations-content', null, callback);
+			} else if (jsonData.hasOwnProperty('reloadPanelParticipations')) {
+				EasyvoteEducation.loadAction('panelParticipations');
 			} else if (jsonData.hasOwnProperty('reloadVotingOptions')) {
 				// Remove the target container, e.g. after a delete action
 				EasyvoteEducation.performAjaxObjectAction('listForVoting', 'voting', jsonData.reloadVotingOptions, '.votingOptions-content', null, callback);

@@ -1,0 +1,8 @@
+<div class="panel-organizer">
+	<strong><f:translate key="panel.organizer" />:</strong>
+	{panel.communityUser.firstName} {panel.communityUser.lastName} |
+	<f:link.page pageUid="{panel.communityUser.email}">{panel.communityUser.email}</f:link.page>
+	<f:if condition="{panel.communityUser.telephone}">
+		| {panel.communityUser.telephone}
+	</f:if>
+</div>

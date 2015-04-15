@@ -1,0 +1,34 @@
+<ul>
+	<f:for each="{panel.panelInvitations}" as="panelInvitation">
+		<f:if condition="{panelInvitation.attendingCommunityUser}">
+			<f:then>
+				<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
+					{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+				</li>
+			</f:then>
+			<f:else>
+				<li><f:translate key="panel.panelInvitations.pendingTitle" />:
+					<f:if condition="{panelInvitation.allowedParties -> f:count()} > 1">
+						<f:then>
+							<f:for each="{panelInvitation.allowedParties}" as="allowedParty" iteration="allowedPartyIterator">
+								<f:if condition="{allowedPartyIterator.isLast}">
+									<f:then>
+										{allowedParty.shortTitle}
+									</f:then>
+									<f:else>
+										{allowedParty.shortTitle} <f:translate key="panel.panelInvitations.or" />
+									</f:else>
+								</f:if>
+							</f:for>
+						</f:then>
+						<f:else>
+							<f:for each="{panelInvitation.allowedParties}" as="allowedParty">
+								{allowedParty.shortTitle}
+							</f:for>
+						</f:else>
+					</f:if>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>

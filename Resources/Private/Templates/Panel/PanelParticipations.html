@@ -1,0 +1,68 @@
+<f:render partial="Panel/MainNavigation.html" />
+
+
+<f:for each="{panelInvitations}" as="panelInvitation">
+	<div class="panelInvitation-item panelInvitation-item-{panelInvitation.uid} content-box content-box-expandable">
+		<div class="box-teaser">
+			<div class="actions">
+				<div class="action">
+					<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
+						<f:then>
+							<i title="{f:translate(key: 'panelInvitation.mine')}" class="evicon-profil"></i>
+						</f:then>
+						<f:else>
+							<a data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="ignore"><i title="{f:translate(key: 'panelInvitation.actions.ignore')}" class="evicon-eye-off"></i></a>
+							<div class="hidden ajaxobject-confirm">
+								<p><f:translate key="panelInvitation.actions.ignore.confirmationText" /></p>
+								<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.ignore.cancel" /></button>
+								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.ignore.confirm" /></button>
+							</div>
+						</f:else>
+					</f:if>
+
+				</div>
+				<div class="action toggle handle">
+					<i class="evicon-down-open"></i>
+				</div>
+			</div>
+			<span>
+				<f:if condition="{panelInvitation.panel.date}">
+					<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
+				</f:if>
+				<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
+				<f:if condition="{panelInvitation.panel.city}">
+					| {panelInvitation.panel.city.name}
+				</f:if>
+			</span>
+			<h2>{panelInvitation.panel.title}</h2>
+		</div>
+		<div class="box-content">
+			<f:render partial="Panel/Location" arguments="{panel:panelInvitation.panel}" />
+			<f:render partial="Panel/Organizer" arguments="{panel:panelInvitation.panel}" />
+
+			<h3><f:translate key="panel.participants" /></h3>
+			<f:render partial="Panel/Invitations" arguments="{panel:panelInvitation.panel}" />
+			<ul class="item-toolbar">
+				<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
+					<f:then>
+						<f:comment>
+							TODO Teilnahme absagen
+						</f:comment>
+					</f:then>
+					<f:else>
+						<li>
+							<a class="btn btn-primary" data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="attend"><i class="evicon-haken"></i><f:translate key="panelInvitation.actions.attend" /></a>
+							<div class="hidden ajaxobject-confirm">
+								<p><f:translate key="panelInvitation.actions.attend.confirmationText" /></p>
+								<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.attend.cancel" /></button>
+								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.attend.confirm" /></button>
+							</div>
+						</li>
+					</f:else>
+				</f:if>
+			</ul>
+
+
+		</div>
+	</div>
+</f:for>

@@ -11,6 +11,12 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
+	'Panelparticipations',
+	'easyvote Education: Podienteilnahmen verwalten'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
 	'Guestview',
 	'easyvote Education: Podiumsteilnahme'
 );

@@ -22,20 +22,7 @@
 			<h2>{panel.title}</h2>
 		</div>
 		<div class="box-content">
-			<div class="panel-location">
-				<f:if condition="{panel.organization}">
-					{panel.organization},
-				</f:if>
-				<f:if condition="{panel.room}">
-					{panel.room},
-				</f:if>
-				<f:if condition="{panel.address}">
-					{panel.address},
-				</f:if>
-				<f:if condition="{panel.city}">
-					{panel.city.postalCode} {panel.city.name}
-				</f:if>
-			</div>
+			<f:render partial="Panel/Location" arguments="{panel:panel}" />
 			<f:comment>
 				<div class="panel-id"><f:translate key="panel.panelId" />: <span class="panel-id-monospace">{panel.panelId}</span></div>
 			</f:comment>
@@ -64,40 +51,7 @@
 						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
 						<f:if condition="{panel.panelInvitations}">
 							<f:then>
-								<ul>
-									<f:for each="{panel.panelInvitations}" as="panelInvitation">
-										<f:if condition="{panelInvitation.attendingCommunityUser}">
-											<f:then>
-												<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
-													{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
-												</li>
-											</f:then>
-											<f:else>
-												<li><f:translate key="panel.panelInvitations.pendingTitle" />:
-													<f:if condition="{panelInvitation.allowedParties -> f:count()} > 1">
-														<f:then>
-															<f:for each="{panelInvitation.allowedParties}" as="allowedParty" iteration="allowedPartyIterator">
-																<f:if condition="{allowedPartyIterator.isLast}">
-																	<f:then>
-																		{allowedParty.shortTitle}
-																	</f:then>
-																	<f:else>
-																		{allowedParty.shortTitle} <f:translate key="panel.panelInvitations.or" />
-																	</f:else>
-																</f:if>
-															</f:for>
-														</f:then>
-														<f:else>
-															<f:for each="{panelInvitation.allowedParties}" as="allowedParty">
-																{allowedParty.shortTitle}
-															</f:for>
-														</f:else>
-													</f:if>
-												</li>
-											</f:else>
-										</f:if>
-									</f:for>
-								</ul>
+								<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
 							</f:then>
 							<f:else>
 								<f:translate key="panel.panelInvitations.noInvitations" />

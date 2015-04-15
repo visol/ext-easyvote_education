@@ -1,7 +1,6 @@
 <?php
 namespace Visol\EasyvoteEducation\Controller;
 
-
 /***************************************************************
  *
  *  Copyright notice
@@ -27,8 +26,6 @@ namespace Visol\EasyvoteEducation\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 
 /**
@@ -48,6 +45,8 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	}
 
 	/**
+	 * Action create
+	 *
 	 * @param Panel $panel
 	 * @param string $selection
 	 * @return string
@@ -78,7 +77,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	}
 
 	/**
-	 * action delete
+	 * Action delete
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
 	 * @ignorevalidation $panelInvitation
@@ -93,6 +92,10 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	}
 
 	/**
+	 * Get all parties that are (still) available for the current panel
+	 * For each panel, a party can only be added in one panelInvitation
+	 * This method is called by Select2 AJAX to ensure only available parties can be added
+	 *
 	 * @param Panel $panel
 	 * @return string
 	 */
@@ -124,6 +127,51 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		}
 		$returnArray['more'] = FALSE;
 		return json_encode($returnArray);
+	}
+
+	/**
+	 * Attend a panel
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 */
+	public function attendAction(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			if ($communityUser->isPolitician()) {
+				// TODO check if parties in panelInvitation match party of user
+				if (is_null($panelInvitation->getAttendingCommunityUser())) {
+					$panelInvitation->setAttendingCommunityUser($communityUser);
+					$this->panelInvitationRepository->update($panelInvitation);
+					$this->persistenceManager->persistAll();
+					return json_encode(array('reloadPanelParticipations' => TRUE));
+				} else {
+					// TODO error: Another user attends in the meantime
+				}
+			} else {
+				// TODO not a politician
+			}
+		} else {
+			// TODO access denied
+		}
+	}
+
+	/**
+	 * Ignore a panelInvitation
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 */
+	public function ignoreAction(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+		if ($communityUser = $this->getLoggedInUser()) {
+			if ($communityUser->isPolitician()) {
+				$panelInvitation->addIgnoringCommunityUser($communityUser);
+				$this->panelInvitationRepository->update($panelInvitation);
+				$this->persistenceManager->persistAll();
+				return json_encode(array('reloadPanelParticipations' => TRUE));
+			} else {
+				// TODO not a politician
+			}
+		} else {
+			// TODO access denied
+		}
 	}
 
 }
