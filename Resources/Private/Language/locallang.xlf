@@ -427,6 +427,30 @@
 			<trans-unit id="panelInvitations.cancelFilter">
 				<source>Filter entfernen</source>
 			</trans-unit>
+			<trans-unit id="panelInvitations.filter.title">
+				<source>Podien finden</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.search">
+				<source>Suche</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.active">
+				<source>aktive Podien</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.pending">
+				<source>zu bearbeitende Podien</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.archived">
+				<source>vergangene Podien</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.submit">
+				<source>Filtern</source>
+			</trans-unit>
 			<trans-unit id="panelInvitations.filter.noResults">
 				<source>Keine Resultate gefunden.</source>
 			</trans-unit>

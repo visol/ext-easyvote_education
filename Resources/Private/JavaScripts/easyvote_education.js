@@ -268,6 +268,15 @@ $(function() {
 		$this.closest('.box-content').find('form').trigger('submit');
 	});
 
+	/**
+	 * Functions for party administrators
+	 */
+	$body.on('click', '#cancelPanelInvitationsFilter', function() {
+		var $panelInvitationsFilter = $('#panelInvitationsFilter');
+		$panelInvitationsFilter.trigger('reset');
+		$panelInvitationsFilter.trigger('submit');
+	});
+
 });
 
 
@@ -604,6 +613,5 @@ var EasyvoteEducation = {
 			EasyvoteEducation.bindPartyMemberSelection();
 		});
 	}
-
 
 };

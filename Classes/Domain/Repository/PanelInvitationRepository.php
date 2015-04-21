@@ -26,6 +26,7 @@ namespace Visol\EasyvoteEducation\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * The repository for PanelInvitations
@@ -78,9 +79,58 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 	 */
 	public function findByAllowedPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand = NULL) {
 		$query = $this->createQuery();
+		$panelTable = 'tx_easyvoteeducation_domain_model_panel';
+
+		// Used for comparison in query
+		$endOfDay = new \DateTime('23:59:59');
+		$endOfDayDate = $endOfDay->format('Y-m-d H:i:s');
+		$beginningOfDay = new \DateTime('midnight');
+		$beginningOfDayDate = $endOfDay->format('Y-m-d H:i:s');
+
+		$constraints = [];
+		$constraints[] = $query->contains('allowedParties', $party);
+
+		if (is_array($demand)) {
+			if (isset($demand['query'])) {
+				// query constraint
+				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $panelTable), $panelTable) . '%';
+				$constraints[] = $query->logicalOr(
+					$query->like('panel.title', $queryString),
+					$query->like('panel.city.name', $queryString)
+				);
+			}
+
+			if (isset($demand['kanton']) && (int)$demand['kanton'] > 0) {
+				// kanton constraint
+				$constraints[] = $query->equals('panel.city.kanton', (int)$demand['kanton']);
+			}
+
+			if (isset($demand['status']) && in_array($demand['status'], array('active', 'pending', 'archived'))) {
+				if ($demand['status'] === 'active') {
+					// Display all future panel invitations
+					$constraints[] = $query->greaterThanOrEqual('panel.date', $beginningOfDayDate);
+				}
+				if ($demand['status'] === 'pending') {
+					// Only display future panel invitations without an attending community user
+					$constraints[] = $query->logicalAnd(
+						$query->equals('attendingCommunityUser', 0),
+						$query->greaterThanOrEqual('panel.date', $beginningOfDayDate)
+					);
+				}
+				if ($demand['status'] === 'archived') {
+					// Only display past panel invitations
+					$constraints[] = $query->lessThanOrEqual('panel.date', $endOfDayDate);
+				}
+			}
+		} else {
+			// if no demand is set, don't display archived panels
+			$constraints[] = $query->greaterThanOrEqual('panel.date', $beginningOfDayDate);
+		}
+
 		$query->matching(
-			$query->contains('allowedParties', $party)
+			$query->logicalAnd($constraints)
 		);
+
 		return $query->execute();
 	}
 	

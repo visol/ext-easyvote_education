@@ -26,6 +26,7 @@ namespace Visol\EasyvoteEducation\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 use Visol\EasyvoteEducation\Domain\Model\PanelInvitation;
 
@@ -175,11 +176,17 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		}
 	}
 
+	/**
+	 * This action initializes the function and calls listForPartyByDemandAction through AJAX
+	 */
 	public function manageInvitationsAction() {
 	}
 
 	/**
-	 * @param array|null $demand
+	 * Return all panel invitations for the party that the currently authentication party administrator is a member of
+	 * If an empty demand is passed, only active panels are returned
+	 *
+	 * @param array $demand
 	 */
 	public function listForPartyByDemandAction($demand = NULL) {
 		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
@@ -213,7 +220,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 					$communityUser->getParty()->_loadRealInstance();
 				}
 				if ($communityUser->getParty() === $party) {
-					$object->setAttendingCommunityUser(NULL);
+					$object->setAttendingCommunityUser(0);
 					$this->panelInvitationRepository->update($object);
 					$this->persistenceManager->persistAll();
 					return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
@@ -262,6 +269,20 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		} else {
 			// TODO not logged in or not a party administrator
 		}
+	}
+
+	/**
+	 * Filter box for panel invitations
+	 */
+	public function filterAction() {
+		$kantons = $this->kantonRepository->findAll();
+		$this->view->assign('kantons', $kantons);
+		$statusFilters = array(
+			'active' => LocalizationUtility::translate('panelInvitations.filter.status.active', 'easyvote_education'),
+			'pending' => LocalizationUtility::translate('panelInvitations.filter.status.pending', 'easyvote_education'),
+			'archived' => LocalizationUtility::translate('panelInvitations.filter.status.archived', 'easyvote_education'),
+		);
+		$this->view->assign('statusFilters', $statusFilters);
 	}
 
 

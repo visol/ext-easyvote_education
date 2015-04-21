@@ -18,8 +18,12 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Panelassignment',
-	'easyvote Education: Kandidaten Podien zuweisen'
+	'easyvote Education: Podienteilnahmen verwalten (für Partei-Administratoren)'
 );
+
+$pluginSignature = str_replace('_','',$_EXTKEY) . '_panelassignment';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForm/flexform_panelassignment.xml');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,

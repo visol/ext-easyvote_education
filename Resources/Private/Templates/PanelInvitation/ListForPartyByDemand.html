@@ -12,7 +12,7 @@
 </div>
 
 <f:if condition="{allInvitations -> f:count()} > {filteredInvitations -> f:count()}">
-	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelInvitationsFilter"><f:translate key="panelInvitations.filteredView" arguments="{0: '{filteredInvitations -> f:count()}'}" /> | <f:translate key="panelInvitations.cancelFilter" /></button>
+	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelPanelInvitationsFilter"><f:translate key="panelInvitations.filteredView" arguments="{0: '{filteredInvitations -> f:count()}'}" /> | <f:translate key="panelInvitations.cancelFilter" /></button>
 </f:if>
 
 
@@ -112,3 +112,9 @@
 		</div>
 	</f:else>
 </f:if>
+
+<script>
+	$(function() {
+		EasyvoteEducation.bindPartyMemberSelection();
+	})
+</script>

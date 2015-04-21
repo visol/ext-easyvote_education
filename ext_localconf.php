@@ -41,13 +41,13 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Panelassignment',
 	array(
-		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser',
+		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser,filter',
 		'PartyMember' => 'getMembersOfCurrentParty',
 
 	),
 	// non-cacheable actions
 	array(
-		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser',
+		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser,filter',
 		'PartyMember' => 'getMembersOfCurrentParty',
 	)
 );

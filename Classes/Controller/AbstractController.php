@@ -36,64 +36,54 @@ use Visol\EasyvoteEducation\Domain\Model\Panel;
 class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * communityUserRepository
-	 *
 	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
 	 * @inject
 	 */
 	protected $communityUserRepository;
 
 	/**
-	 * panelRepository
-	 *
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelRepository
 	 * @inject
 	 */
 	protected $panelRepository = NULL;
 
 	/**
-	 * votingRepository
-	 *
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingRepository
 	 * @inject
 	 */
 	protected $votingRepository = NULL;
 
 	/**
-	 * panelInvitationRepository
-	 *
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelInvitationRepository
 	 * @inject
 	 */
 	protected $panelInvitationRepository = NULL;
 
 	/**
-	 * partyRepository
-	 *
 	 * @var \Visol\Easyvote\Domain\Repository\PartyRepository
 	 * @inject
 	 */
 	protected $partyRepository = NULL;
 
 	/**
-	 * votingOptionRepository
-	 *
+	 * @var \Visol\Easyvote\Domain\Repository\KantonRepository
+	 * @inject
+	 */
+	protected $kantonRepository = NULL;
+
+	/**
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\VotingOptionRepository
 	 * @inject
 	 */
 	protected $votingOptionRepository = NULL;
 
 	/**
-	 * voteRepository
-	 *
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\VoteRepository
 	 * @inject
 	 */
 	protected $voteRepository = NULL;
 
 	/**
-	 * dummyDataService
-	 *
 	 * @var \Visol\EasyvoteEducation\Service\DummyDataService
 	 * @inject
 	 */
@@ -118,8 +108,6 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $extensionService;
 
 	/**
-	 * persistenceManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
 	 * @inject
 	 */
