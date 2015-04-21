@@ -2,9 +2,21 @@
 	<f:for each="{panel.panelInvitations}" as="panelInvitation">
 		<f:if condition="{panelInvitation.attendingCommunityUser}">
 			<f:then>
-				<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
-					{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
-				</li>
+				<f:if condition="{panelInvitation.attendingCommunityUser.party} == {party}">
+					<f:then>
+						<li><f:translate key="panel.panelInvitations.attendingTitle" />:
+							<strong>
+								{panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
+								{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+							</strong>
+						</li>
+					</f:then>
+					<f:else>
+						<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
+							{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+						</li>
+					</f:else>
+				</f:if>
 			</f:then>
 			<f:else>
 				<li><f:translate key="panel.panelInvitations.pendingTitle" />:
@@ -13,17 +25,38 @@
 							<f:for each="{panelInvitation.allowedParties}" as="allowedParty" iteration="allowedPartyIterator">
 								<f:if condition="{allowedPartyIterator.isLast}">
 									<f:then>
-										{allowedParty.shortTitle}
+										<f:if condition="{allowedParty} == {party}">
+											<f:then>
+												<strong>{allowedParty.shortTitle}</strong>
+											</f:then>
+											<f:else>
+												{allowedParty.shortTitle}
+											</f:else>
+										</f:if>
 									</f:then>
 									<f:else>
-										{allowedParty.shortTitle} <f:translate key="panel.panelInvitations.or" />
+										<f:if condition="{allowedParty} == {party}">
+											<f:then>
+												<strong>{allowedParty.shortTitle}</strong> <f:translate key="panel.panelInvitations.or" />
+											</f:then>
+											<f:else>
+												{allowedParty.shortTitle} <f:translate key="panel.panelInvitations.or" />
+											</f:else>
+										</f:if>
 									</f:else>
 								</f:if>
 							</f:for>
 						</f:then>
 						<f:else>
 							<f:for each="{panelInvitation.allowedParties}" as="allowedParty">
-								{allowedParty.shortTitle}
+								<f:if condition="{allowedParty} == {party}">
+									<f:then>
+										<strong>{allowedParty.shortTitle}</strong>
+									</f:then>
+									<f:else>
+										{allowedParty.shortTitle}
+									</f:else>
+								</f:if>
 							</f:for>
 						</f:else>
 					</f:if>

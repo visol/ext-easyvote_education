@@ -112,6 +112,12 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $votingService;
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Service\ExtensionService
+	 * @inject
+	 */
+	protected $extensionService;
+
+	/**
 	 * persistenceManager
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -145,6 +151,27 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($panel->getCommunityUser() === $communityUser) {
 				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	 * Check if the currently logged in user is the owner of a panel
+	 *
+	 * @return FALSE|\Visol\Easyvote\Domain\Model\Party
+	 */
+	public function getPartyIfCurrentUserIsAdministrator() {
+		if ($communityUser = $this->getLoggedInUser()) {
+			if ($communityUser->isPartyAdministrator()) {
+				// Party is a lazy property of CommunityUser
+				if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+					$communityUser->getParty()->_loadRealInstance();
+				}
+				return $communityUser->getParty();
 			} else {
 				return FALSE;
 			}
@@ -193,6 +220,19 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = FALSE;
 		$GLOBALS['TYPO3_DB']->explainOutput = FALSE;
 		$GLOBALS['TYPO3_DB']->debugOuput = FALSE;
+	}
+
+	/**
+	 * Gets the POST data from the requests and returns all data in the plugin namespace if defined
+	 *
+	 * @return array|null
+	 */
+	protected function getPostData() {
+		$data = [];
+		$pluginNamespace = $this->extensionService->getPluginNamespace($this->request->getControllerExtensionName(), $this->request->getPluginName());
+		$requestBody = file_get_contents('php://input');
+		parse_str($requestBody, $data);
+		return array_key_exists($pluginNamespace, $data) ? $data[$pluginNamespace] : NULL;
 	}
 
 }

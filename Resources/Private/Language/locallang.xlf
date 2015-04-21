@@ -415,6 +415,52 @@
 				<source>Die Podiumseinladung wurde gelöscht.</source>
 			</trans-unit>
 
+			<trans-unit id="panelInvitations.title">
+				<source>Podien</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.description">
+				<source>Teile Kandidatinnen und Kandidaten deiner Partei in Podien ein.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filteredView">
+				<source>Gefilterte Ansicht (%s Resultate)</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.cancelFilter">
+				<source>Filter entfernen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.noResults">
+				<source>Keine Resultate gefunden.</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.participants">
+				<source>Teilnehmende</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.assignment.member">
+				<source>KandidatIn zuweisen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove">
+				<source>%1$s %2$s entfernen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.information">
+				<source>Bist du sicher, dass du %1$s %2$s von diesem Podium entfernen möchtest?</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.remove">
+				<source>entfernen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign">
+				<source>hinzufügen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.information">
+				<source>Bist du sicher, dass du diese Kandidatin bzw. diesen Kandidaten zum Podium hinzufügen möchtest?</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.remove">
+				<source>bestätigen</source>
+			</trans-unit>
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
 				<source>Thema</source>
 			</trans-unit>

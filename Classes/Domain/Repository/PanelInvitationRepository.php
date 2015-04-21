@@ -36,6 +36,14 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 		'panel.date' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 	);
 
+	/**
+	 * Find panel invitations in the future that need a candidate of a party the current user belongs to. The
+	 * panel may not be already ignored or attended by the current user and must take place in the Kanton the current
+	 * user resides.
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @return array|null|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
 	public function findNotIgnoredPanelsByCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		if ($communityUser->getCitySelection() instanceof \Visol\Easyvote\Domain\Model\City && is_object($communityUser->getParty())) {
 			$query = $this->createQuery();
@@ -59,6 +67,21 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 			return NULL;
 		}
 
+	}
+
+	/**
+	 * Find panels that require politicians of the given party
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\Party $party
+	 * @param null $demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByAllowedPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand = NULL) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->contains('allowedParties', $party)
+		);
+		return $query->execute();
 	}
 	
 }

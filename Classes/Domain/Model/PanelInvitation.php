@@ -139,7 +139,7 @@ class PanelInvitation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $attendingCommunityUser
 	 * @return void
 	 */
-	public function setAttendingCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $attendingCommunityUser) {
+	public function setAttendingCommunityUser($attendingCommunityUser) {
 		$this->attendingCommunityUser = $attendingCommunityUser;
 	}
 

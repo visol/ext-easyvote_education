@@ -529,7 +529,10 @@ var EasyvoteEducation = {
 		Easyvote.scrollToElement('.panel-' + panelUid);
 	},
 
-	/* Party selection for forms */
+	/**
+	 * Get parties that are available for creating a panel invitation
+	 * There can be only one panel invitation for each party
+	 */
 	bindPartySelection: function() {
 		if (typeof(panelUid) != 'undefined') {
 			var $partySelector = $('.partyForCurrentPanelSelection');
@@ -556,6 +559,51 @@ var EasyvoteEducation = {
 				}
 			});
 		}
+	},
+
+	bindPartyMemberSelection: function() {
+		var $partyMemberSelection = $('.partyMemberSelection');
+		$partyMemberSelection.select2({
+			ajax: {
+				url: '/routing/getpartymembers',
+				dataType: 'json',
+				data: function (term, page) {
+					return {
+						q: term // search term
+					};
+				},
+				results: function (data, page) {
+					return {results: data.results};
+				}
+			},
+			initSelection: function (element, callback) {
+			},
+			dropdownCssClass: "bigdrop",
+			escapeMarkup: function (m) {
+				return m;
+			}
+		}).on('change', function(e) {
+			$(this).parents('form').find('button').show();
+		});
+	},
+
+	/**
+	 * Get panel invitations for the party of the current party administrator user
+	 * and open a single panel invitation if requested
+	 *
+	 * @param openPanelInvitation
+	 */
+	getPanelInvitations: function(openPanelInvitation) {
+		EasyvoteGeneral.getData('/routing/panelinvitations').done(function(data) {
+			$('.panel-invitations').html(data);
+			if (openPanelInvitation) {
+				var elementId = '#panelInvitation-item-' + openPanelInvitation;
+				$(elementId).find('.toggle i').trigger('click');
+				Easyvote.scrollToElement(elementId);
+			}
+			EasyvoteEducation.bindPartyMemberSelection();
+		});
 	}
+
 
 };

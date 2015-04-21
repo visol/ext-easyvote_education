@@ -27,6 +27,7 @@ namespace Visol\EasyvoteEducation\Controller;
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
+use Visol\EasyvoteEducation\Domain\Model\PanelInvitation;
 
 /**
  * VotingController
@@ -56,7 +57,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			$partyUids = GeneralUtility::trimExplode(',', $selection);
 			if (count($partyUids) > 0 && count($partyUids) < 3) {
 				// parties must be added
-				/** @var \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation */
+				/** @var PanelInvitation $panelInvitation */
 				$panelInvitation = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\PanelInvitation');
 				$panelInvitation->setPanel($panel);
 				foreach ($partyUids as $partyUid) {
@@ -79,11 +80,11 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	/**
 	 * Action delete
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 * @param PanelInvitation $panelInvitation
 	 * @ignorevalidation $panelInvitation
 	 * @return string
 	 */
-	public function deleteAction(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+	public function deleteAction(PanelInvitation $panelInvitation) {
 		if ($this->isCurrentUserOwnerOfPanel($panelInvitation->getPanel()) && !is_object($panelInvitation->getAttendingCommunityUser())) {
 			$this->panelInvitationRepository->remove($panelInvitation);
 			$this->persistenceManager->persistAll();
@@ -105,7 +106,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		// Build an array containing all parties that are already part of existing panelInvitations
 		$unavailableParties = array();
 		foreach ($panel->getPanelInvitations() as $panelInvitation) {
-			/** @var \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation */
+			/** @var PanelInvitation $panelInvitation */
 			foreach ($panelInvitation->getAllowedParties() as $unavailableParty) {
 				/** @var \Visol\Easyvote\Domain\Model\Party $unavailableParty */
 				$unavailableParties[] = $unavailableParty->getUid();
@@ -132,9 +133,9 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	/**
 	 * Attend a panel
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 * @param PanelInvitation $panelInvitation
 	 */
-	public function attendAction(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+	public function attendAction(PanelInvitation $panelInvitation) {
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser->isPolitician()) {
 				// TODO check if parties in panelInvitation match party of user
@@ -157,9 +158,9 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	/**
 	 * Ignore a panelInvitation
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation
+	 * @param PanelInvitation $panelInvitation
 	 */
-	public function ignoreAction(\Visol\EasyvoteEducation\Domain\Model\PanelInvitation $panelInvitation) {
+	public function ignoreAction(PanelInvitation $panelInvitation) {
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser->isPolitician()) {
 				$panelInvitation->addIgnoringCommunityUser($communityUser);
@@ -173,5 +174,96 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			// TODO access denied
 		}
 	}
+
+	public function manageInvitationsAction() {
+	}
+
+	/**
+	 * @param array|null $demand
+	 */
+	public function listForPartyByDemandAction($demand = NULL) {
+		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
+			$this->view->assign('demand', $demand);
+
+			$this->view->assign('party', $party);
+
+			$allInvitations = $this->panelInvitationRepository->findByAllowedPartyAndDemand($party, NULL);
+			$this->view->assign('allInvitations', $allInvitations);
+
+			$filteredInvitations = $this->panelInvitationRepository->findByAllowedPartyAndDemand($party, $demand);
+			$this->view->assign('filteredInvitations', $filteredInvitations);
+		} else {
+			// TODO not logged in or not a party administrator
+		}
+	}
+
+	/**
+	 * Removes a user passed by POST from a PanelInvitation
+	 *
+	 * @param PanelInvitation $object
+	 */
+	public function removeUserAction(PanelInvitation $object) {
+		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
+			$postData = $this->getPostData();
+			if (is_array($postData) && array_key_exists('communityUser', $postData)) {
+				/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+				$communityUser = $this->communityUserRepository->findByUid((int)$postData['communityUser']);
+				// Party is a lazy property of CommunityUser
+				if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+					$communityUser->getParty()->_loadRealInstance();
+				}
+				if ($communityUser->getParty() === $party) {
+					$object->setAttendingCommunityUser(NULL);
+					$this->panelInvitationRepository->update($object);
+					$this->persistenceManager->persistAll();
+					return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
+				} else {
+					// TODO denied trying removing a user of another party
+				}
+			} else {
+				// TODO no communityUser submitted
+			}
+		} else {
+			// TODO not logged in or not a party administrator
+		}
+	}
+
+	/**
+	 * Assigns a user passed by POST to a PanelInvitation
+	 *
+	 * @param PanelInvitation $object
+	 */
+	public function assignUserAction(PanelInvitation $object) {
+		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
+			$postData = $this->getPostData();
+			if (is_array($postData) && array_key_exists('communityUser', $postData)) {
+				/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+				$communityUser = $this->communityUserRepository->findByUid((int)$postData['communityUser']);
+				// Party is a lazy property of CommunityUser
+				if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+					$communityUser->getParty()->_loadRealInstance();
+				}
+				if ($communityUser->getParty() === $party) {
+					if (is_null($object->getAttendingCommunityUser())) {
+						$object->setAttendingCommunityUser($communityUser);
+						$this->panelInvitationRepository->update($object);
+						$this->persistenceManager->persistAll();
+						return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
+					} else {
+						// TODO there is an attending community user in the meantime
+						return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
+					}
+				} else {
+					// TODO denied trying removing a user of another party
+				}
+			} else {
+				// TODO no communityUser submitted
+			}
+		} else {
+			// TODO not logged in or not a party administrator
+		}
+	}
+
+
 
 }

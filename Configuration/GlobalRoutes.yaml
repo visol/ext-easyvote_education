@@ -19,3 +19,37 @@
     '@controller': 'PanelInvitation'
     '@action':     'getAvailablePartiesForPanel'
   httpMethods: ['GET']
+-
+  name: 'PanelInvitations'
+  uriPattern: 'panelinvitations/{demand}'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Panelassignment'
+    '@controller': 'PanelInvitation'
+    '@action':     'listForPartyByDemand'
+  httpMethods: ['GET']
+-
+  name: 'PanelInvitations'
+  uriPattern: 'panelinvitations'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Panelassignment'
+    '@controller': 'PanelInvitation'
+    '@action':     'listForPartyByDemand'
+  httpMethods: ['GET']
+-
+  name: 'PanelInvitation'
+  uriPattern: '{@controller}/{@action}/{object}'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Panelassignment'
+  httpMethods: ['GET', 'POST']
+-
+  name: 'GetPartyMembers'
+  uriPattern: 'getpartymembers'
+  defaults:
+    '@package':    'Visol.Easyvote_education'
+    '@plugin':     'Panelassignment'
+    '@controller': 'PartyMember'
+    '@action':     'getMembersOfCurrentParty'
+  httpMethods: ['GET']

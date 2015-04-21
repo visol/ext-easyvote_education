@@ -17,6 +17,12 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
+	'Panelassignment',
+	'easyvote Education: Kandidaten Podien zuweisen'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
 	'Guestview',
 	'easyvote Education: Podiumsteilnahme'
 );

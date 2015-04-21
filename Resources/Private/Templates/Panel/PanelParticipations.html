@@ -41,7 +41,7 @@
 			<f:render partial="Panel/Organizer" arguments="{panel:panelInvitation.panel}" />
 
 			<h3><f:translate key="panel.participants" /></h3>
-			<f:render partial="Panel/Invitations" arguments="{panel:panelInvitation.panel}" />
+			<f:render partial="Panel/Invitations" arguments="{panel:panelInvitation.panel, party:communityUser.party}" />
 			<ul class="item-toolbar">
 				<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
 					<f:then>

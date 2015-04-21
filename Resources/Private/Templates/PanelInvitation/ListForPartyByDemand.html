@@ -1,0 +1,114 @@
+<div class="content-box">
+	<h2><f:translate key="panelInvitations.title" /></h2>
+	<p><f:translate key="panelInvitations.description"  /></p>
+	<f:comment>
+	<f:if condition="{pendingMembers}">
+		<p>
+			<f:translate key="party.numberOfPendingMembers" arguments="{0: '{pendingMembers -> f:count()}'}" /><br />
+			<button class="btn btn-primary btn-sm" type="button" id="setPendingMembersFilter"><f:translate key="party.pendingMembers.filter" /></button>
+		</p>
+ 	</f:if>
+	</f:comment>
+</div>
+
+<f:if condition="{allInvitations -> f:count()} > {filteredInvitations -> f:count()}">
+	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelInvitationsFilter"><f:translate key="panelInvitations.filteredView" arguments="{0: '{filteredInvitations -> f:count()}'}" /> | <f:translate key="panelInvitations.cancelFilter" /></button>
+</f:if>
+
+
+<f:if condition="{filteredInvitations}">
+	<f:then>
+		<f:for each="{filteredInvitations}" as="panelInvitation">
+			<div class="content-box content-box-expandable" id="panelInvitation-item-{panelInvitation.uid}">
+				<div class="box-teaser">
+					<div class="actions">
+						<f:comment>
+						<f:if condition="{member.pendingPolitician}">
+							<div class="action status">
+								<i class="evicon-spin animate-spin" title="{f:translate(key:'party.member.pending')}"></i>
+							</div>
+						</f:if>
+						</f:comment>
+						<div class="action toggle handle">
+							<i class="evicon-down-open"></i>
+						</div>
+					</div>
+					<span>
+						<f:if condition="{panelInvitation.panel.date}">
+							<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
+						</f:if>
+						<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
+						<f:if condition="{panelInvitation.panel.city}">
+							| {panelInvitation.panel.city.name}
+						</f:if>
+					</span>
+					<h2>
+						{panelInvitation.panel.title}
+					</h2>
+				</div>
+				<div class="box-content">
+					<f:render partial="Panel/Location" arguments="{panel:panelInvitation.panel}" />
+					<h3><f:translate key="panelInvitations.participants" /></h3>
+					<f:render partial="Panel/Invitations" arguments="{panel:panelInvitation.panel, party:party}" />
+					<f:if condition="{panelInvitation.attendingCommunityUser}">
+						<f:then>
+							<f:form>
+								<f:form.hidden name="communityUser" value="{panelInvitation.attendingCommunityUser.uid}" />
+								<button class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-controller="PanelInvitation" data-action="removeUser" data-uid="{panelInvitation.uid}">
+									<f:translate key="panelInvitations.attendingCommunityUser.remove" arguments="{0: panelInvitation.attendingCommunityUser.firstName, 1:panelInvitation.attendingCommunityUser.lastName}" />
+								</button>
+								<div class="hidden" id="modal-removeUser-{panelInvitation.uid}">
+									<p><f:translate key="panelInvitations.attendingCommunityUser.remove.modal.information" arguments="{0: panelInvitation.attendingCommunityUser.firstName, 1: panelInvitation.attendingCommunityUser.lastName}" /></p>
+									<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitations.attendingCommunityUser.remove.modal.cancel" /></button>
+									<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitations.attendingCommunityUser.remove.modal.remove" /></button>
+								</div>
+							</f:form>
+						</f:then>
+						<f:else>
+							<f:else>
+								<f:form>
+									<div class="form-group">
+										<label>
+											<f:translate key="panelInvitations.assignment.member" />
+										</label>
+										<f:form.textfield class="form-control partyMemberSelection" name="communityUser" />
+									</div>
+									<div class="form-group">
+										<button style="display: none;" class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-controller="PanelInvitation" data-action="assignUser" data-uid="{panelInvitation.uid}">
+											<f:translate key="panelInvitations.attendingCommunityUser.assign" />
+										</button>
+										<div class="hidden" id="modal-assignUser-{panelInvitation.uid}">
+											<p><f:translate key="panelInvitations.attendingCommunityUser.assign.modal.information" /></p>
+											<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitations.attendingCommunityUser.assign.modal.cancel" /></button>
+											<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitations.attendingCommunityUser.assign.modal.remove" /></button>
+										</div>
+									</div>
+								</f:form>
+							</f:else>
+						</f:else>
+					</f:if>
+
+
+
+
+					<f:comment>
+						<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-controller="PartyMember" data-action="decline" data-uid="{member.uid}">
+							<f:translate key="party.pendingMember.decline" />
+						</button>
+						<div class="hidden" id="modal-decline-{member.uid}">
+							<p><f:translate key="party.pendingMember.decline.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
+							<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.decline.modal.cancel" /></button>
+							<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.decline.modal.decline" /></button>
+						</div>
+					</f:comment>
+
+				</div>
+			</div>
+		</f:for>
+	</f:then>
+	<f:else>
+		<div class="content-box">
+			<f:translate key="panelInvitations.filter.noResults" />
+		</div>
+	</f:else>
+</f:if>

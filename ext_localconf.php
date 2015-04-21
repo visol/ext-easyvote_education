@@ -39,6 +39,21 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,
+	'Panelassignment',
+	array(
+		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser',
+		'PartyMember' => 'getMembersOfCurrentParty',
+
+	),
+	// non-cacheable actions
+	array(
+		'PanelInvitation' => 'manageInvitations,listForPartyByDemand,assignUser,removeUser',
+		'PartyMember' => 'getMembersOfCurrentParty',
+	)
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
 	'Guestview',
 	array(
 		'Panel' => 'guestViewLogin, guestViewParticipation',
