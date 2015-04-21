@@ -357,13 +357,13 @@
 				<source>Sie können maximal 6 PolitikerInnen einladen.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.mine">
-				<source>Sie nehmen an diesem Podium teil.</source>
+				<source>Du nimmst an diesem Podium teil.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore">
 				<source>Dieses Podium ignorieren.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore.confirmationText">
-				<source>Wenn Sie an diesem Podium nicht teilnehmen und keine weiteren Benachrichtigungen erhalten möchten, können Sie das Podium ignorieren.</source>
+				<source>Wenn du an diesem Podium nicht teilnehmen kannst und keine weiteren Benachrichtigungen erhalten möchtest, kannst du das Podium ignorieren.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore.cancel">
 				<source>abbrechen</source>
@@ -375,7 +375,7 @@
 				<source>Teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.attend.confirmationText">
-				<source>Bitte klicken Sie auf "Teilnahme bestätigen", um Ihre Teilnahme am Podium verbindlich zu bestätigen.</source>
+				<source>Bitte klicke auf "Teilnahme bestätigen", um deine Teilnahme am Podium verbindlich zu bestätigen.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.attend.cancel">
 				<source>abbrechen</source>
@@ -413,6 +413,13 @@
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.delete.success">
 				<source>Die Podiumseinladung wurde gelöscht.</source>
+			</trans-unit>
+
+			<trans-unit id="panelParticipations.title">
+				<source>Podien</source>
+			</trans-unit>
+			<trans-unit id="panelParticipations.description">
+				<source>Nimm an Podien teil, die in deinem Kanton stattfinden.</source>
 			</trans-unit>
 
 			<trans-unit id="panelInvitations.title">

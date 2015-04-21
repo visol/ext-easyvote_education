@@ -87,21 +87,6 @@
 							</f:else>
 						</f:else>
 					</f:if>
-
-
-
-
-					<f:comment>
-						<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-controller="PartyMember" data-action="decline" data-uid="{member.uid}">
-							<f:translate key="party.pendingMember.decline" />
-						</button>
-						<div class="hidden" id="modal-decline-{member.uid}">
-							<p><f:translate key="party.pendingMember.decline.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-							<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.decline.modal.cancel" /></button>
-							<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.decline.modal.decline" /></button>
-						</div>
-					</f:comment>
-
 				</div>
 			</div>
 		</f:for>

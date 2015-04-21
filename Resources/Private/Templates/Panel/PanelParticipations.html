@@ -1,5 +1,7 @@
-<f:render partial="Panel/MainNavigation.html" />
-
+<div class="content-box">
+	<h2><f:translate key="panelParticipations.title" /></h2>
+	<p><f:translate key="panelParticipations.description"  /></p>
+</div>
 
 <f:for each="{panelInvitations}" as="panelInvitation">
 	<div class="panelInvitation-item panelInvitation-item-{panelInvitation.uid} content-box content-box-expandable">
