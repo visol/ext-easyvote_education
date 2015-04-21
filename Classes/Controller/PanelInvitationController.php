@@ -92,8 +92,12 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * @param PanelInvitation $panelInvitation
 	 * @ignorevalidation $panelInvitation
 	 * @return string
+	 * @unused currently not used and maintained
 	 */
 	public function deleteAction(PanelInvitation $panelInvitation) {
+		// currently disabled
+		return json_encode(array('reloadPanelInvitations' => $panelInvitation->getPanel()->getUid()));
+
 		if ($this->isCurrentUserOwnerOfPanel($panelInvitation->getPanel()) && !is_object($panelInvitation->getAttendingCommunityUser())) {
 			$this->panelInvitationRepository->remove($panelInvitation);
 			$this->persistenceManager->persistAll();
