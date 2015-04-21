@@ -204,6 +204,12 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $panelInvitations = NULL;
 
 	/**
+	 * @var int
+	 * @transient
+	 */
+	protected $numberOfAllowedPanelInvitations = 2;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -601,6 +607,21 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPanelInvitations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $panelInvitations) {
 		$this->panelInvitations = $panelInvitations;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getNumberOfAllowedPanelInvitations() {
+		// minimum 2
+		$numberOfParticipants = 2;
+		if ($this->numberOfParticipants > 29) {
+			$numberOfParticipants = 4;
+		}
+		if ($this->numberOfParticipants > 75) {
+			$numberOfParticipants = 6;
+		}
+		return $numberOfParticipants;
 	}
 
 }

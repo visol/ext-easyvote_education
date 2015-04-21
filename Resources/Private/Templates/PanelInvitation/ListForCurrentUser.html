@@ -50,9 +50,9 @@
 		</f:for>
 	</ul>
 	<h3><f:translate key="panelInvitation.actions.new" /></h3>
-	<f:if condition="{panel.panelInvitations->f:count()} > 5">
+	<f:if condition="{panel.panelInvitations->f:count()} >= {panel.numberOfAllowedPanelInvitations}">
 		<f:then>
-			<p><f:translate key="panelInvitation.maximumReached" /></p>
+			<p><f:translate key="panelInvitation.maximumReached" arguments="{0: panel.numberOfAllowedPanelInvitations}" /></p>
 		</f:then>
 		<f:else>
 			<input type="hidden" class="partyForCurrentPanelSelection" id="partyForCurrentPanelSelection" name="parties" />

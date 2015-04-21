@@ -55,24 +55,32 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 */
 	public function createAction(Panel $panel, $selection = '') {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
-			$partyUids = GeneralUtility::trimExplode(',', $selection);
-			if (count($partyUids) > 0 && count($partyUids) < 3) {
-				// parties must be added
-				/** @var PanelInvitation $panelInvitation */
-				$panelInvitation = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\PanelInvitation');
-				$panelInvitation->setPanel($panel);
-				foreach ($partyUids as $partyUid) {
-					$party = $this->partyRepository->findByUid($partyUid);
-					if ($party instanceof \Visol\Easyvote\Domain\Model\Party && $party->isIsYoungParty()) {
-						$panelInvitation->addAllowedParty($party);
+			if (count($panel->getPanelInvitations()) < $panel->getNumberOfAllowedPanelInvitations()) {
+				$partyUids = GeneralUtility::trimExplode(',', $selection);
+				// at least one party and not more than two parties must be selected
+				if (count($partyUids) > 0 && count($partyUids) < 3) {
+					// parties must be added
+					/** @var PanelInvitation $panelInvitation */
+					$panelInvitation = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\PanelInvitation');
+					$panelInvitation->setPanel($panel);
+					foreach ($partyUids as $partyUid) {
+						$party = $this->partyRepository->findByUid($partyUid);
+						if ($party instanceof \Visol\Easyvote\Domain\Model\Party && $party->isIsYoungParty()) {
+							$panelInvitation->addAllowedParty($party);
+						}
+					}
+					// Add panel invitation only if at least one party could be added
+					if (count($panelInvitation->getAllowedParties())) {
+						$this->panelInvitationRepository->add($panelInvitation);
+						$panel->addPanelInvitation($panelInvitation);
+						$this->panelRepository->update($panel);
+						$this->persistenceManager->persistAll();
+					} else {
+						// TODO handle error
 					}
 				}
-				if (count($panelInvitation->getAllowedParties())) {
-					$this->panelInvitationRepository->add($panelInvitation);
-					$panel->addPanelInvitation($panelInvitation);
-					$this->panelRepository->update($panel);
-					$this->persistenceManager->persistAll();
-				}
+			} else {
+				// TODO tried to add more invitations than allowed
 			}
 			return json_encode(array('reloadPanelInvitations' => $panel->getUid()));
 		}

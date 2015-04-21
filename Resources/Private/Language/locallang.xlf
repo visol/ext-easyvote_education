@@ -354,7 +354,7 @@
 				<source>Teilnehmende/r Politiker/in</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.maximumReached">
-				<source>Sie können maximal 6 PolitikerInnen einladen.</source>
+				<source>Sie können (aufgrund der erwarteten Teilnehmerzahl) maximal %s PolitikerInnen einladen.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.mine">
 				<source>Du nimmst an diesem Podium teil.</source>
