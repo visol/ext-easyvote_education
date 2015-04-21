@@ -48,26 +48,6 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$panels = $this->panelRepository->findAll();
-		$this->view->assign('panels', $panels);
-	}
-
-	/**
-	 * action show
-	 *
-	 * @param Panel $panel
-	 * @return void
-	 */
-	public function showAction(Panel $panel) {
-		$this->view->assign('panel', $panel);
-	}
-
-	/**
 	 * action new
 	 *
 	 * @param Panel $newPanel
