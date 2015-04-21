@@ -171,8 +171,14 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 *
 	 * @param Panel $panel
 	 * @return string
+	 * @unused Currently not maintained
 	 */
 	public function deleteAction(Panel $panel) {
+		// Deleting from the frontend is currently not allowed
+		return json_encode(array(
+			'redirectToAction' => 'managePanels'
+		));
+
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$message = LocalizationUtility::translate('panel.actions.delete.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
 			$this->addFlashMessage($message, '', AbstractMessage::OK);
