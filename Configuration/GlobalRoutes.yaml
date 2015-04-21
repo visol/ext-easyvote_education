@@ -39,7 +39,7 @@
   httpMethods: ['GET']
 -
   name: 'PanelInvitation'
-  uriPattern: '{@controller}/{@action}/{object}'
+  uriPattern: 'eveducation/{@controller}/{@action}/{object}'
   defaults:
     '@package':    'Visol.Easyvote_education'
     '@plugin':     'Panelassignment'

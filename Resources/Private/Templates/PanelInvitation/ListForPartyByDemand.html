@@ -54,7 +54,7 @@
 						<f:then>
 							<f:form>
 								<f:form.hidden name="communityUser" value="{panelInvitation.attendingCommunityUser.uid}" />
-								<button class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-controller="PanelInvitation" data-action="removeUser" data-uid="{panelInvitation.uid}">
+								<button class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eveducation" data-controller="PanelInvitation" data-action="removeUser" data-uid="{panelInvitation.uid}">
 									<f:translate key="panelInvitations.attendingCommunityUser.remove" arguments="{0: panelInvitation.attendingCommunityUser.firstName, 1:panelInvitation.attendingCommunityUser.lastName}" />
 								</button>
 								<div class="hidden" id="modal-removeUser-{panelInvitation.uid}">
@@ -74,7 +74,7 @@
 										<f:form.textfield class="form-control partyMemberSelection" name="communityUser" />
 									</div>
 									<div class="form-group">
-										<button style="display: none;" class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-controller="PanelInvitation" data-action="assignUser" data-uid="{panelInvitation.uid}">
+										<button style="display: none;" class="btn btn-primary btn-fullwidth" type="submit" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eveducation" data-controller="PanelInvitation" data-action="assignUser" data-uid="{panelInvitation.uid}">
 											<f:translate key="panelInvitations.attendingCommunityUser.assign" />
 										</button>
 										<div class="hidden" id="modal-assignUser-{panelInvitation.uid}">
