@@ -501,6 +501,9 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
 				<source>Datum</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date.editHint">
+				<source>Datum und Zeit können nur bearbeitet werden, solange keine KandidatInnen eingeladen wurden.</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.from_time">
 				<source>Zeit Beginn</source>
 			</trans-unit>

@@ -10,24 +10,50 @@
 	</label>
 	<f:form.textarea id="description" class="form-control" property="description" cols="40" rows="15" />
 </div>
-<div class="input-group">
-	<label for="date">
-		<f:translate key="tx_easyvoteeducation_domain_model_panel.date" />
-	</label>
-	<f:form.textfield type="text" id="date" class="form-control date-picker" property="date"  value="{panel.date->f:format.date(format:'d.m.y')}" />
-</div>
-<div class="input-group">
-	<label for="fromTime">
-		<f:translate key="tx_easyvoteeducation_domain_model_panel.from_time" />
-	</label>
-	<f:form.textfield type="text" id="fromTime" class="form-control time-picker" property="fromTime"  value="{f:if(condition:'{panel.fromTime}', then:'{panel.fromTime->f:format.date(format:\'%R\')}')}" />
-</div>
-<div class="input-group">
-	<label for="toTime">
-		<f:translate key="tx_easyvoteeducation_domain_model_panel.to_time" />
-	</label>
-	<f:form.textfield type="text" id="toTime" class="form-control time-picker" property="toTime"  value="{f:if(condition:'{panel.toTime}', then:'{panel.toTime->f:format.date(format:\'%R\')}')}" />
-</div>
+<f:if condition="{panel.panelInvitations}">
+	<f:then>
+		<div class="input-group">
+			<label>
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.date" /><br />
+				<em><f:translate key="tx_easyvoteeducation_domain_model_panel.date.editHint" /></em>
+			</label>
+			<input type="text" readonly="readonly" class="form-control" value="{panel.date->f:format.date(format:'d.m.y')}" />
+		</div>
+		<div class="input-group">
+			<label>
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.from_time" />
+			</label>
+			<input type="text" readonly="readonly" class="form-control" value="{f:if(condition:'{panel.fromTime}', then:'{panel.fromTime->f:format.date(format:\'%R\')}')}" />
+		</div>
+		<div class="input-group">
+			<label>
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.to_time" />
+			</label>
+			<input type="text" readonly="readonly" class="form-control" value="{f:if(condition:'{panel.toTime}', then:'{panel.toTime->f:format.date(format:\'%R\')}')}" />
+		</div>
+	</f:then>
+	<f:else>
+		<div class="input-group">
+			<label for="date">
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.date" /><br />
+				<em><f:translate key="tx_easyvoteeducation_domain_model_panel.date.editHint" /></em>
+			</label>
+			<f:form.textfield type="text" id="date" class="form-control date-picker" additionalAttributes="{required: required}" property="date"  value="{panel.date->f:format.date(format:'d.m.y')}" />
+		</div>
+		<div class="input-group">
+			<label for="fromTime">
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.from_time" />
+			</label>
+			<f:form.textfield type="text" id="fromTime" class="form-control time-picker" additionalAttributes="{required: required}" property="fromTime"  value="{f:if(condition:'{panel.fromTime}', then:'{panel.fromTime->f:format.date(format:\'%R\')}')}" />
+		</div>
+		<div class="input-group">
+			<label for="toTime">
+				<f:translate key="tx_easyvoteeducation_domain_model_panel.to_time" />
+			</label>
+			<f:form.textfield type="text" id="toTime" class="form-control time-picker" additionalAttributes="{required: required}" property="toTime"  value="{f:if(condition:'{panel.toTime}', then:'{panel.toTime->f:format.date(format:\'%R\')}')}" />
+		</div>
+	</f:else>
+</f:if>
 <div class="form-group">
 	<label for="organization">
 		<f:translate key="tx_easyvoteeducation_domain_model_panel.organization" />
