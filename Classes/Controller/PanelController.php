@@ -211,8 +211,14 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 */
 	public function editPanelInvitationsAction(Panel $panel) {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
-			$this->view->assign('panel', $panel);
-			return json_encode(array('content' => $this->view->render()));
+			if (count($panel->getPanelInvitations()) > 0 && $this->getPanelService()->isPanelInvitationAllowedForPanel($panel)) {
+				// allow editing of panel invitiations of there are already invitations or it is still possible to
+				// add panel invititations for a panel in this Kanton
+				$this->view->assign('panel', $panel);
+				return json_encode(array('content' => $this->view->render()));
+			} else {
+				// todo no panel invititations yet and new invitations not allowed
+			}
 		} else {
 			// todo permission denied
 		}
@@ -456,6 +462,13 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		} else {
 			// todo no user logged in
 		}
+	}
+
+	/**
+	 * @return \Visol\EasyvoteEducation\Service\PanelService
+	 */
+	public function getPanelService() {
+		return $this->objectManager->get('Visol\EasyvoteEducation\Service\PanelService');
 	}
 
 }

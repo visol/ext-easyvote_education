@@ -87,6 +87,14 @@
 			<trans-unit id="panel.panelInvitations.noInvitations">
 				<source>Es wurden noch keine Politiker eingeladen.</source>
 			</trans-unit>
+			<trans-unit id="panel.panelInvitations.notAllowed">
+				<source><![CDATA[
+					Es ist derzeit nicht möglich, Politiker zu einem Podium im Kanton %s einzuladen, da bereits viele
+					Podien organisiert wurden. Bitte kontaktiere <a style="display: inline" href=mailto:lea.thommen@dsj.ch">Lea Thommen</a>
+					für weitere Informationen oder falls du kontaktiert werden möchtest, wenn es wieder möglich ist,
+					Politiker einzuladen.
+				]]></source>
+			</trans-unit>
 			<trans-unit id="panel.panelInvitations.or">
 				<source>oder</source>
 			</trans-unit>
