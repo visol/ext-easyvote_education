@@ -79,7 +79,7 @@
 	<f:if condition="{panel.city}">
 		<input type="text" class="form-control cityOutput" readonly value="{panel.city.postalCode} {panel.city.name} ({panel.city.kanton.name})" />
 	</f:if>
-	<f:form.textfield class="form-control citySelection" property="city" />
+	<f:form.textfield class="form-control citySelection" required="required" property="city" />
 </div>
 <div class="form-group">
 	<label for="class">
