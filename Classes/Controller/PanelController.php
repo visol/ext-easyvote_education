@@ -389,7 +389,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			if (!$panel instanceof \Visol\EasyvoteEducation\Domain\Model\Panel) {
 				$message = LocalizationUtility::translate('panel.guestView.panelNotFound', $this->request->getControllerExtensionName());
 				$this->flashMessageContainer->add($message, '', AbstractMessage::ERROR);
-				$this->redirect('guestViewLogin');
+				$this->redirect('presentationViewLogin');
 			}
 		}
 	}
