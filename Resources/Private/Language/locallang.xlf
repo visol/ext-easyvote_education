@@ -141,10 +141,13 @@
 				<source>Dieses Podium wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder das Podium nochmals von vorne starten.</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.panelFinishedBeforeInformation">
-				<source>Dieses Podium wurde bereits zuvor komplett durchgeführt. Sie können das Podium erneut durchführen, die bisherigen Stimmen bleiben aber erhalten. Hinweis: Benutzen Sie die "Duplizieren"-Funktion, um ein neues, leeres Podium mit denselben Votings zu erstellen.</source>
+				<source>Dieses Podium wurde bereits zuvor komplett durchgeführt. Sie können das Podium erneut durchführen, dabei gehen aber die Stimmen der bisherigen Durchführung unwiderruflich verloren.</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.startPanelButtonText">
 				<source>Podium starten</source>
+			</trans-unit>
+			<trans-unit id="panel.execute.cancel">
+				<source>abbrechen</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.restartPanelButtonText">
 				<source>Podium neu starten</source>
@@ -219,8 +222,14 @@
 			<trans-unit id="panel.guestView.participationInformation">
 				<source>Diese Ansicht wird automatisch aktualisiert.</source>
 			</trans-unit>
+			<trans-unit id="panel.presentationView.title">
+				<source>Podium durchführen</source>
+			</trans-unit>
 			<trans-unit id="panel.presentationView.panelId">
 				<source>Podiums-ID:</source>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.startButtonText">
+				<source>Durchführen</source>
 			</trans-unit>
 
 			<trans-unit id="voting.votingDuration">

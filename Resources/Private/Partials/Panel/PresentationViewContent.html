@@ -5,11 +5,8 @@
 	</div>
 	<div class="col-md-8 presentation-view-content">
 		<h2>{panel.title}</h2>
+		<div class="panel-id"><f:uri.page absolute="true" pageUid="{settings.guestViewPid}" /></div>
 		<div class="panel-id"><f:translate key="panel.presentationView.panelId" /> {panel.panelId}</div>
 	</div>
 </div>
-
-
-
-
-
+<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.nextVoting.uid}" data-target="#panel-votingcontainer" href="#" class="btn btn-primary presentation-view-button"><f:translate key="panel.votingStep.displayFirstVotingButtonText" /></a></p>

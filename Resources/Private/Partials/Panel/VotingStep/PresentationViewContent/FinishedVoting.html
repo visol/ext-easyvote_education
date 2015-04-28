@@ -8,4 +8,12 @@
 		<f:render partial="Panel/VotingResults" arguments="{_all}" />
 	</div>
 </div>
+<f:if condition="{panel.nextVoting}">
+	<f:then>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.nextVoting.uid}" data-target="#panel-votingcontainer" href="#" class="btn btn-primary presentation-view-button"><f:translate key="panel.votingStep.displayNextVotingButtonText" /></a></p>
+	</f:then>
+	<f:else>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-stopPanel-0" data-target="#panel-votingcontainer" href="#" class="btn btn-primary presentation-view-button"><f:translate key="panel.votingStep.stopPanelButtonText" /></a></p>
+	</f:else>
+</f:if>
 

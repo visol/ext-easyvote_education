@@ -397,11 +397,41 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * action guestViewParticipation
 	 * @param string $panelId
+	 * @param boolean $reset
 	 */
-	public function presentationViewParticipationAction($panelId) {
+	public function presentationViewParticipationAction($panelId, $reset = FALSE) {
 		/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
 		$panel = $this->panelRepository->findOneByPanelId($panelId);
-		$this->view->assign('panel', $panel);
+		// action can only be performed by the owner of the panel, security check
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			// the owner is making the request, so it is valid
+			if ($reset) {
+				// panel needs to be reset for a fresh start
+				$this->resetPanel($panel);
+			}
+			$this->view->assign('panel', $panel);
+		} else {
+			// TODO access denied
+		}
+	}
+
+	/**
+	 * Sets panel state to beginning (currentState => empty) and removes all votes from all votingOptions from all votings
+	 *
+	 * @param Panel $panel
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 */
+	protected function resetPanel(Panel $panel) {
+		$panel->setCurrentState('');
+		foreach ($panel->getVotings() as $voting) {
+			/** @var $voting \Visol\EasyvoteEducation\Domain\Model\Voting */
+			foreach ($voting->getVotingOptions() as $votingOption) {
+				/** @var $votingOption \Visol\EasyvoteEducation\Domain\Model\VotingOption */
+				$votingOption->getVotes()->removeAll($votingOption->getVotes());
+				$this->votingOptionRepository->update($votingOption);
+			}
+		}
+		$this->persistenceManager->persistAll();
 	}
 
 

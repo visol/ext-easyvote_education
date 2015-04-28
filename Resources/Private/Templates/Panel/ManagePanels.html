@@ -76,7 +76,6 @@
 					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><i class="evicon-pencil-squared"></i><f:translate key="panel.actions.edit" /></a>
 				</li>
 				<f:comment>
-					Currently unused and unmaintained
 					<li>
 						<a class="btn btn-primary" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><i class="evicon-trash"></i><f:translate key="panel.actions.delete" /></a>
 						<div class="hidden ajaxobject-confirm">
@@ -87,13 +86,51 @@
 					</li>
 				</f:comment>
 				<f:comment>
+					Currently unused and unmaintained
 					<li>
 						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="duplicate"><f:translate key="panel.actions.duplicate" /></a>
 					</li>
 				</f:comment>
-				<li>
-					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="execute"><i class="evicon-play-circled"></i><f:translate key="panel.actions.start" /></a>
-				</li>
+				<f:if condition="{panel.votings}">
+					<li>
+						<f:link.action pageUid="{settings.presentationViewPid}" noCacheHash="true" controller="Panel" action="presentationViewParticipation" arguments="{panelId: panel.panelId}" class="btn btn-primary {f:if(condition:panel.currentState, then:'hasModal')}" target="_blank">
+							<i class="evicon-play-circled"></i><f:translate key="panel.actions.start" />
+						</f:link.action>
+						<f:if condition="{panel.currentState}">
+							<f:if condition="{panel.currentState} == 'finishedPanel-0'">
+								<f:then>
+									<div class="hidden">
+										<a class="pull-right qtip-close" aria-label="schliessen">
+											<i class="evicon-cancel"></i>
+										</a>
+										<p><f:translate key="panel.execute.panelFinishedBeforeInformation" /></p>
+										<p>
+											<button type="button" class="btn btn-primary button-cancel"><f:translate key="panel.execute.cancel" /></button>
+											<f:link.action pageUid="{settings.presentationViewPid}" noCacheHash="true" controller="Panel" action="presentationViewParticipation" arguments="{panelId: panel.panelId, reset: 1}" class="btn btn-primary">
+												<f:translate key="panel.execute.restartPanelButtonText" />
+											</f:link.action>
+										</p>
+									</div>
+								</f:then>
+								<f:else>
+									<div class="hidden">
+										<a class="pull-right qtip-close" aria-label="schliessen">
+											<i class="evicon-cancel"></i>
+										</a>
+										<p><f:translate key="panel.execute.panelStartedBeforeInformation" /></p>
+										<p>
+											<button type="button" class="btn btn-primary button-cancel"><f:translate key="panel.execute.cancel" /></button>
+											<button type="button" class="btn btn-primary button-confirm"><f:translate key="panel.execute.continuePanelButtonText" /></button>
+											<f:link.action pageUid="{settings.presentationViewPid}" noCacheHash="true" controller="Panel" action="presentationViewParticipation" arguments="{panelId: panel.panelId, reset: 1}" class="btn btn-primary">
+												<f:translate key="panel.execute.restartPanelButtonText" />
+											</f:link.action>
+										</p>
+									</div>
+								</f:else>
+							</f:if>
+						</f:if>
+					</li>
+				</f:if>
 			</ul>
 		</div>
 	</div>

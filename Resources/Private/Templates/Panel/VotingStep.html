@@ -3,16 +3,16 @@
 		<f:render partial="Panel/VotingStep/StartPanel" arguments="{_all}" />
 	</f:case>
 	<f:case value="nextVoting">
-		<f:render partial="Panel/VotingStep/NextVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/PresentationViewContent/PendingVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="startVoting">
-		<f:render partial="Panel/VotingStep/StartVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/PresentationViewContent/CurrentVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="stopVoting">
-		<f:render partial="Panel/VotingStep/StopVoting" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/PresentationViewContent/FinishedVoting" arguments="{_all}" />
 	</f:case>
 	<f:case value="stopPanel">
-		<f:render partial="Panel/VotingStep/StopPanel" arguments="{_all}" />
+		<f:render partial="Panel/VotingStep/PresentationViewContent/FinishedPanel" arguments="{_all}" />
 	</f:case>
 	<f:case value="pendingVoting">
 		<f:render partial="Panel/VotingStep/{originalVotingStepAction}/PendingVoting" arguments="{_all}" />
