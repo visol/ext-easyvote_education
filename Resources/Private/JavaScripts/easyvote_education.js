@@ -51,6 +51,10 @@ $(function() {
 			targetContainer = '#votecast-message';
 		}
 		var actionarguments = $this.attr('data-actionarguments');
+		var target = $this.attr('data-target');
+		if (target) {
+			targetContainer = target;
+		}
 		// set a cookie about voteCast to prevent double-casting (is checked again on server side, so not security relevant)
 		$.cookie('easyvoteeducation-voteCast', actionarguments);
 		EasyvoteEducation.loadVotingAction(actionarguments, targetContainer);
