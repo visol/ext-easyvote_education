@@ -5,13 +5,14 @@
 
 	<f:flashMessages renderMode="div" />
 
-	<f:form action="guestViewParticipation" name="panel">
+	<form name="panel" method="GET">
 		<div class="form-group">
 			<label for="panelId">
 				<f:translate key="panel.guestView.idLabel" />
 			</label>
-			<f:form.textfield id="panelId" class="form-control" name="panelId" />
+			<f:form.textfield id="panelId" class="form-control" name="tx_easyvoteeducation_guestview[panelId]" />
+			<f:form.hidden name="tx_easyvoteeducation_guestview[action]" value="guestViewParticipation" />
 		</div>
 		<button type="submit" class="btn btn-primary"><f:translate key="panel.guestView.participateButtonText" /></button>
-	</f:form>
+	</form>
 </f:section>
