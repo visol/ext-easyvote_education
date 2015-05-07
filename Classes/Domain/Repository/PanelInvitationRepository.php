@@ -45,12 +45,16 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @return array|null|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findNotIgnoredPanelsByCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+	public function findFutureNotIgnoredPanelsByCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		if ($communityUser->getCitySelection() instanceof \Visol\Easyvote\Domain\Model\City && is_object($communityUser->getParty())) {
+			// midnigth of current day
+			$endOfDay = new \DateTime('23:59:59');
+			$endOfDayDate = $endOfDay->format('Y-m-d');
+
 			$query = $this->createQuery();
 			$query->matching(
 				$query->logicalAnd(
-					$query->greaterThanOrEqual('panel.date', time() - 86400),
+					$query->greaterThanOrEqual('panel.date', $endOfDayDate),
 					$query->contains('allowedParties', $communityUser->getParty()),
 					$query->logicalNot(
 						$query->contains('ignoringCommunityUsers', $communityUser)

@@ -473,7 +473,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 */
 	public function panelParticipationsAction() {
 		if ($communityUser = $this->getLoggedInUser()) {
-			$panelInvitations = $this->panelInvitationRepository->findNotIgnoredPanelsByCommunityUser($communityUser);
+			$panelInvitations = $this->panelInvitationRepository->findFutureNotIgnoredPanelsByCommunityUser($communityUser);
 			$this->view->assign('panelInvitations', $panelInvitations);
 			$this->view->assign('communityUser', $communityUser);
 		} else {
