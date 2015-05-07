@@ -95,8 +95,8 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 				// query constraint
 				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $panelTable), $panelTable) . '%';
 				$constraints[] = $query->logicalOr(
-					$query->like('panel.title', $queryString),
-					$query->like('panel.city.name', $queryString)
+					$query->like('panel.title', $queryString, FALSE),
+					$query->like('panel.city.name', $queryString, FALSE)
 				);
 			}
 
