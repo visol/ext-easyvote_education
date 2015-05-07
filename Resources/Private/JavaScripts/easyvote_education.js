@@ -316,6 +316,7 @@ var EasyvoteEducation = {
 			Easyvote.bindPostalCodeSelection();
 			EasyvoteEducation.bindPartySelection();
 			EasyvoteGeneral.bindDateTime();
+			Easyvote.bindToolTips();
 			if (panelUid) {
 				EasyvoteEducation.openPanel(panelUid);
 			}
@@ -408,6 +409,7 @@ var EasyvoteEducation = {
 				Easyvote.bindPostalCodeSelection();
 				EasyvoteEducation.bindPartySelection();
 				EasyvoteGeneral.bindDateTime();
+				Easyvote.bindToolTips();
 				if (callback) {
 					callback();
 				}
@@ -485,6 +487,7 @@ var EasyvoteEducation = {
 				var objectUid = hashData[2];
 				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid, null, null, function() {
 					EasyvoteGeneral.bindDateTime();
+					Easyvote.bindToolTips();
 				})
 			} else {
 				// disallowed action, fall back to dashboard

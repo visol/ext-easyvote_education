@@ -10,10 +10,14 @@
 				<div class="action">
 					<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
 						<f:then>
-							<i title="{f:translate(key: 'panelInvitation.mine')}" class="evicon-profil"></i>
+							<i class="evicon-profil hasTooltip"></i>
+							<div class="hidden">
+								{f:translate(key: 'panelInvitation.mine')}
+							</div>
+
 						</f:then>
 						<f:else>
-							<a data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="ignore"><i title="{f:translate(key: 'panelInvitation.actions.ignore')}" class="evicon-cancel"></i></a>
+							<a data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="ignore"><i class="evicon-cancel hasTooltip"></i><div class="hidden">{f:translate(key: 'panelInvitation.actions.ignore')}</div></a>
 							<div class="hidden ajaxobject-confirm">
 								<p><f:translate key="panelInvitation.actions.ignore.confirmationText" /></p>
 								<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.ignore.cancel" /></button>

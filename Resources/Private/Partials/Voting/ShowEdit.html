@@ -1,13 +1,13 @@
 <div class="box-header">
 	<div class="actions">
 		<div class="action">
-			<a class="action-moveup" data-role="movegenericobject" data-direction="up" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i title="{f:translate(key: 'voting.actions.moveup')}" class="evicon-angle-double-up"></i></a>
+			<a class="action-moveup" data-role="movegenericobject" data-direction="up" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-up hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.moveup')}</div></a>
 		</div>
 		<div class="action">
-			<a class="action-movedown" data-role="movegenericobject" data-direction="down" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i title="{f:translate(key: 'voting.actions.movedown')}" class="evicon-angle-double-down"></i></a>
+			<a class="action-movedown" data-role="movegenericobject" data-direction="down" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-down hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.movedown')}</div></a>
 		</div>
 		<div class="action">
-			<a data-role="genericobjectaction" data-confirm="true" data-object="voting" data-uid="{voting.uid}" data-actionname="deleteVoting"><i title="{f:translate(key: 'voting.actions.delete')}" class="evicon-trash"></i></a>
+			<a data-role="genericobjectaction" data-confirm="true" data-object="voting" data-uid="{voting.uid}" data-actionname="deleteVoting"><i class="evicon-trash hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.delete')}</div></a>
 			<div class="hidden ajaxobject-confirm">
 				<p><f:translate key="voting.actions.delete.confirmationText" /></p>
 				<button class="pull-left btn btn-primary button-cancel"><f:translate key="voting.actions.delete.cancel" /></button>
