@@ -225,6 +225,9 @@
 			<trans-unit id="panel.presentationView.title">
 				<source>Podium durchführen</source>
 			</trans-unit>
+			<trans-unit id="panel.presentationView.participationLink">
+				<source>Link zur Teilnahme:</source>
+			</trans-unit>
 			<trans-unit id="panel.presentationView.panelId">
 				<source>Podiums-ID:</source>
 			</trans-unit>
