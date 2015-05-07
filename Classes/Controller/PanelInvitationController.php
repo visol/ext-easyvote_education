@@ -202,6 +202,14 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 */
 	public function listForPartyByDemandAction($demand = NULL) {
 		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
+			if ($demand) {
+				// Save demand to user session
+				$this->saveDemandInSession($demand);
+			} else {
+				// If no demand is passed and a demand is in the session, use it
+				$demand = $this->getDemandFromSession();
+			}
+
 			$this->view->assign('demand', $demand);
 
 			$this->view->assign('party', $party);
@@ -289,6 +297,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	public function filterAction() {
 		$kantons = $this->kantonRepository->findAll();
 		$this->view->assign('kantons', $kantons);
+		$this->view->assign('demand', $this->getDemandFromSession(TRUE));
 		$statusFilters = array(
 			'active' => LocalizationUtility::translate('panelInvitations.filter.status.active', 'easyvote_education'),
 			'pending' => LocalizationUtility::translate('panelInvitations.filter.status.pending', 'easyvote_education'),
@@ -297,6 +306,39 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		$this->view->assign('statusFilters', $statusFilters);
 	}
 
+	/**
+	 * @param array $demand
+	 */
+	protected function saveDemandInSession($demand) {
+		$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_easyvoteeducation_managePanelInvitationsDemand', serialize($demand));
+		$GLOBALS['TSFE']->fe_user->sesData_change = TRUE;
+		$GLOBALS['TSFE']->fe_user->storeSessionData();
+	}
 
+	/**
+	 * @param bool $sanitized
+	 * @return mixed
+	 */
+	protected function getDemandFromSession($sanitized = FALSE) {
+		$demand = unserialize($GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_easyvoteeducation_managePanelInvitationsDemand'));
+		if ($sanitized) {
+			return $this->sanitizeDemand($demand);
+		} else {
+			return $demand;
+		}
+	}
+
+	/**
+	 * Sanitize the query of a given demand (strip tags, htmlspecialchars)
+	 *
+	 * @param $demand
+	 * @return array
+	 */
+	protected function sanitizeDemand($demand) {
+		if (is_array($demand) && array_key_exists('query', $demand)) {
+			$demand['query'] = htmlspecialchars(strip_tags($demand['query']));
+			return $demand;
+		}
+	}
 
 }
