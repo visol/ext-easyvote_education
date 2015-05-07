@@ -34,6 +34,11 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 	 * @return boolean
 	 */
 	public function isPanelInvitationAllowedForPanel(Panel $panel) {
+		if (count($panel->getPanelInvitations()) > 0) {
+			// If a panel already has invitations, it is allowed to have invitations (quite logical, isn't it :-)?)
+			return TRUE;
+		}
+
 		$cityOfPanel = $panel->getCity();
 		if ($cityOfPanel instanceof \Visol\Easyvote\Domain\Model\City) {
 			// panelLimit is either NULL or an integer
