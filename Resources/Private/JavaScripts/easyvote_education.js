@@ -177,14 +177,13 @@ $(function() {
 		var targetSelector = '.' + objectName + '-item-' + objectUid;
 		EasyvoteEducation.postForm($this.serialize(), EasyvoteEducationActionUris['updateVoting']).done(function(data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-			if (jsonData.hasOwnProperty('success') && jsonData.success === true) {
+			if (jsonData.hasOwnProperty('status') && jsonData.status == 200) {
 				EasyvoteEducation.performAjaxObjectAction('editVoting', objectName, objectUid, targetSelector, null, function() {
 					// open the edited voting
 					EasyvoteEducation.openVoting(targetSelector);
 				});
 			} else {
-				// todo meaningful and usable error
-				alert('Fehler!');
+				EasyvoteEducation.handleError(jsonData);
 			}
 		});
 	});
@@ -207,14 +206,13 @@ $(function() {
 		var targetSelector = '.' + parentObjectName + '-item-' + parentObjectUid;
 		EasyvoteEducation.postFormWithFileUpload(data, EasyvoteEducationActionUris['updateVotingOption']).done(function(data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-			if (jsonData.hasOwnProperty('success') && jsonData.success === true) {
+			if (jsonData.hasOwnProperty('status') && jsonData.status == 200) {
 				EasyvoteEducation.performAjaxObjectAction('editVoting', parentObjectName, parentObjectUid, targetSelector, null, function() {
 					// open voting
 					EasyvoteEducation.openVoting(targetSelector);
 				});
 			} else {
-				// todo meaningful and usable error
-				alert('Fehler!');
+				EasyvoteEducation.handleError(jsonData);
 			}
 		});
 	});
@@ -466,11 +464,8 @@ var EasyvoteEducation = {
 		});
 		EasyvoteEducation.postForm(data, EasyvoteEducationActionUris[actionName]).done(function(data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-			if (jsonData.hasOwnProperty('status')) {
-				// todo use a meaningful error message
-				alert('Fehler');
-			} else {
-				Easyvote.displayFlashMessage('Fatal error.')
+			if (jsonData.hasOwnProperty('status') && jsonData.status !== 200) {
+				EasyvoteEducation.handleError(jsonData);
 			}
 		});
 	},
@@ -642,7 +637,7 @@ var EasyvoteEducation = {
 		if (data.hasOwnProperty('status')) {
 			Easyvote.displayFlashMessage('<h2>Error ' + data.status + ':</h2><p>'+ data.reason + '</p>');
 		} else {
-			Easyvote.displayFlashMessage('Unhandled exception: EasyvoteEducation.loadAction');
+			Easyvote.displayFlashMessage('Unhandled error');
 		}
 	}
 

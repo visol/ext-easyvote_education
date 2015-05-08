@@ -24,7 +24,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 
 	/**
 	 * @var \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication frontendUserAuthentication
-	*/
+	 */
 	protected $frontendUserAuthentication;
 
 	public function __construct() {

@@ -1,20 +1,29 @@
-<div class="content-box">
-	<h2><f:translate key="panelInvitations.filter.title" /></h2>
-	<f:form id="panelInvitationsFilter" additionalAttributes="{data-role: 'ajaxSubmit', data-action: 'panelinvitations', data-target: '.panel-invitations'}">
-		<div class="form-group">
-			<label for="panelInvitationsFilter-search">{f:translate(key:'panelInvitations.filter.search')}</label>
-			<f:form.textfield id="panelInvitationsFilter-search" class="form-control" value="{demand.query}" name="demand[query]" />
+<f:security.ifHasRole role="{settings.partyAdministratorUserGroupUid}">
+	<f:then>
+		<div class="content-box">
+			<h2><f:translate key="panelInvitations.filter.title" /></h2>
+			<f:form id="panelInvitationsFilter" additionalAttributes="{data-role: 'ajaxSubmit', data-action: 'panelinvitations', data-target: '.panel-invitations'}">
+				<div class="form-group">
+					<label for="panelInvitationsFilter-search">{f:translate(key:'panelInvitations.filter.search')}</label>
+					<f:form.textfield id="panelInvitationsFilter-search" class="form-control" value="{demand.query}" name="demand[query]" />
+				</div>
+				<div class="form-group">
+					<label for="panelInvitationsFilter-kanton">{f:translate(key:'panelInvitations.filter.kanton')}</label>
+					<f:form.select id="panelInvitationsFilter-kanton" class="form-control" name="demand[kanton]" value="{demand.kanton}" options="{kantons}" optionLabelField="name" optionValueField="uid" prependOptionLabel="" prependOptionValue="0" />
+				</div>
+				<div class="form-group">
+					<label for="panelInvitationsFilter-status">{f:translate(key:'panelInvitations.filter.status')}</label>
+					<f:form.select id="panelInvitationsFilter-status" class="form-control" name="demand[status]" value="{demand.status}" options="{statusFilters}" optionLabelField="value" optionValueField="key" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit"><f:translate key="panelInvitations.filter.submit" /></button>
+				</div>
+			</f:form>
 		</div>
-		<div class="form-group">
-			<label for="panelInvitationsFilter-kanton">{f:translate(key:'panelInvitations.filter.kanton')}</label>
-			<f:form.select id="panelInvitationsFilter-kanton" class="form-control" name="demand[kanton]" value="{demand.kanton}" options="{kantons}" optionLabelField="name" optionValueField="uid" prependOptionLabel="" prependOptionValue="0" />
+	</f:then>
+	<f:else>
+		<div class="content-box">
+			<h2>Error 403</h2>
 		</div>
-		<div class="form-group">
-			<label for="panelInvitationsFilter-status">{f:translate(key:'panelInvitations.filter.status')}</label>
-			<f:form.select id="panelInvitationsFilter-status" class="form-control" name="demand[status]" value="{demand.status}" options="{statusFilters}" optionLabelField="value" optionValueField="key" />
-		</div>
-		<div class="form-group">
-			<button class="btn btn-primary" type="submit"><f:translate key="panelInvitations.filter.submit" /></button>
-		</div>
-	</f:form>
-</div>
+	</f:else>
+</f:security.ifHasRole>

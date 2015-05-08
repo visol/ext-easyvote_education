@@ -1,7 +1,19 @@
-<div class="panel-invitations">
-	<script>
-		$(function() {
-			EasyvoteEducation.getPanelInvitations(null);
-		})
-	</script>
-</div>
+<f:security.ifHasRole role="{settings.partyAdministratorUserGroupUid}">
+	<f:then>
+		<div class="panel-invitations">
+			<script>
+				$(function() {
+					EasyvoteEducation.getPanelInvitations(null);
+				})
+			</script>
+		</div>
+	</f:then>
+	<f:else>
+		<f:else>
+			<div class="content-box">
+				<h2>Error 403</h2>
+				<p><f:translate key="ajax.status.403.panelInvitationController.manageInvitations" /></p>
+			</div>
+		</f:else>
+	</f:else>
+</f:security.ifHasRole>

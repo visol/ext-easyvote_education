@@ -18,6 +18,34 @@
 			<trans-unit id="ajax.status.400.panelController.votingStepAction">
 				<source>Die Anfrage ist ungültig.</source>
 			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.createAction.notAllowedParty.">
+				<source>Unerwarteter Fehler: Hinzufügen dieser Partei ist nicht möglich.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.createAction.noMoreInvitations">
+				<source>Versuch, mehr Podiums-Einladungen als erlaubt anzulegen.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.notAPolitician">
+				<source>Nur PolitikerInnen können an Podien teilnehmen.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.wrongParty">
+				<source>Die Podiumseinladung ist nicht an deine Partei gerichtet..</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.otherPoliticianAttending">
+				<source>Zwischenzeitlich hat ein anderer Politiker/eine andere Politikerin für dieses Podium zugesagt.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.manageInvitations">
+				<source>Zugriff verweigert. Podiumseinladungen können nur von einem Partei-Administrator verwaltet werden.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.400.panelInvitationController.removeUserAction.noUserSubmitted">
+				<source>Unerwarteter Fehler: Es wurde kein Benutzer zum Hinzufügen übergeben.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.removeUserAction.wrongParty">
+				<source>Du kannst keine/n PolitikerIn einer anderen Partei vom Podium entfernen.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.assignUserAction.wrongParty">
+				<source>Du kannst keine/n PolitikerIn einer anderen Partei zu einem Podium hinzufügen.</source>
+			</trans-unit>
+
 
 			<trans-unit id="panel.managePanels.managePanels">
 				<source>Podien verwalten</source>

@@ -8,17 +8,17 @@ if (!defined('TYPO3_MODE')) {
 	'Managepanels',
 	array(
 		'Panel' => 'managePanelsStartup, managePanels, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
-		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
+		'Voting' => 'listForCurrentUser, update, delete, new, duplicate, sort',
 		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
-		'VotingOption' => 'listForVoting, new,edit,update,delete,sort'
+		'VotingOption' => 'listForVoting, new, update,delete,sort'
 
 	),
 	// non-cacheable actions
 	array(
 		'Panel' => 'managePanels, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, execute, votingStep',
-		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
+		'Voting' => 'listForCurrentUser, update, delete, new, duplicate, sort',
 		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
-		'VotingOption' => 'listForVoting, new,edit,update,delete,sort',
+		'VotingOption' => 'listForVoting, new, update, delete, sort',
 	)
 );
 

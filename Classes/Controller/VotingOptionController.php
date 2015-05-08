@@ -1,40 +1,28 @@
 <?php
 namespace Visol\EasyvoteEducation\Controller;
 
-/***************************************************************
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  (c) 2015 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 use Visol\Easyvote\Property\TypeConverter\UploadedFileReferenceConverter;
 
-/**
- * VotingController
- */
 class VotingOptionController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
+	 * List all votings options of a voting
+	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
 	 * @return string
 	 */
@@ -42,53 +30,42 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
 			$this->view->assign('voting', $voting);
 			return json_encode(array('content' => $this->view->render()));
+		} else {
+			// Error: Non-owner tries to list voting options
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/listForVotingAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
 	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$votings = $this->votingRepository->findAll();
-		$this->view->assign('votings', $votings);
-	}
-
-	/**
-	 * action show
-	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
-	 * @return string
-	 */
-	public function showAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
-			$this->view->assign('voting', $voting);
-			return json_encode(array('content' => $this->view->render()));
-		}
-	}
-
-	/**
-	 * action new
+	 * Add a new voting option
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
 	 * @return string
 	 */
 	public function newAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
-		/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $newVotingOption */
-		$newVotingOption = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
-		$newVotingOptionTitle = LocalizationUtility::translate('votingOption.actions.new.dummyText.newVotingOption', $this->request->getControllerExtensionName());
-		$newVotingOption->setTitle($newVotingOptionTitle);
-		$newVotingOption->setSorting(9999);
-		$this->votingOptionRepository->add($newVotingOption);
-		$voting->addVotingOption($newVotingOption);
-		$this->votingRepository->update($voting);
-		$this->persistenceManager->persistAll();
-		return json_encode(array('reloadVotingOptions' => $voting->getUid()));
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $newVotingOption */
+			$newVotingOption = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
+			$newVotingOptionTitle = LocalizationUtility::translate('votingOption.actions.new.dummyText.newVotingOption', $this->request->getControllerExtensionName());
+			$newVotingOption->setTitle($newVotingOptionTitle);
+			$newVotingOption->setSorting(9999);
+			$this->votingOptionRepository->add($newVotingOption);
+			$voting->addVotingOption($newVotingOption);
+			$this->votingRepository->update($voting);
+			$this->persistenceManager->persistAll();
+			return json_encode(array('reloadVotingOptions' => $voting->getUid()));
+		} else {
+			// Error: Non-owner tries to create a new VotingOption
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/newAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
+		}
 	}
 
 	/**
-	 * action edit
+	 * Edit a voting option
 	 *
 	 * @ignorevalidation $voting
 	 * @param \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption
@@ -98,6 +75,11 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 		if ($this->isCurrentUserOwnerOfPanel($votingOption->getVoting()->getPanel())) {
 			$this->view->assign('votingOption', $votingOption);
 			return json_encode(array('content' => $this->view->render()));
+		} else {
+			// Error: Non-owner tries to edit a voting option
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/editAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -120,7 +102,7 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 	}
 
 	/**
-	 * action update
+	 * Update a voting option
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption
 	 * @return string
@@ -129,14 +111,17 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 		if ($this->isCurrentUserOwnerOfPanel($votingOption->getVoting()->getPanel())) {
 			$this->votingOptionRepository->update($votingOption);
 			$this->persistenceManager->persistAll();
-			return json_encode(array('success' => TRUE));
+			return json_encode(array('status' => 200));
 		} else {
-			return json_encode(array('success' => FALSE, 'message' => 'Access denied.'));
+			// Error: Non-owner tries to update a voting option
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/updateAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
 	/**
-	 * action delete
+	 * Delete a voting option
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption
 	 * @ignorevalidation $votingOption
@@ -147,11 +132,16 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 			$this->votingOptionRepository->remove($votingOption);
 			$this->persistenceManager->persistAll();
 			return json_encode(array('removeElement' => TRUE));
+		} else {
+			// Error: Non-owner tries to delete a voting option
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/deleteAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
 	/**
-	 * action sort
+	 * Sort a voting option
 	 *
 	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
 	 * @param array $sorting
@@ -166,7 +156,12 @@ class VotingOptionController extends \Visol\EasyvoteEducation\Controller\Abstrac
 				$this->votingOptionRepository->update($votingOption);
 			}
 			$this->persistenceManager->persistAll();
-			return json_encode(array('success' => TRUE));
+			return json_encode(array('status' => 200));
+		} else {
+			// Error: Non-owner tries to sort a voting option
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingOptionController/sortAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 }
