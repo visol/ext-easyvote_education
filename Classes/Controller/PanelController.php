@@ -20,9 +20,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Utility\Algorithms;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 
-/**
- * PanelController
- */
 class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
@@ -36,7 +33,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action new
+	 * Display new panel form (for authenticated user)
 	 *
 	 * @param Panel $newPanel
 	 * @ignorevalidation $newPanel
@@ -64,7 +61,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action create
+	 * Create a panel (for authenticated user)
 	 *
 	 * @param Panel $newPanel
 	 * @return string
@@ -92,7 +89,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action edit
+	 * Edit a panel (for panel owner)
 	 *
 	 * @param Panel $panel
 	 * @ignorevalidation $panel
@@ -120,7 +117,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action update
+	 * Update a panel (for panel owner)
 	 *
 	 * @param Panel $panel
 	 * @return string
@@ -143,7 +140,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action delete
+	 * Delete a panel (for panel owner)
 	 *
 	 * @param Panel $panel
 	 * @return string
@@ -171,7 +168,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action duplicate
+	 * Duplicate a panel (for panel owner)
 	 *
 	 * @unused Currently not used and maintained
 	 * @param Panel $panel
@@ -211,6 +208,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
+	 * Edit Votings (for panel owner)
+	 *
 	 * @param Panel $panel
 	 * @return string
 	 */
@@ -226,6 +225,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
+	 * Edit Panel Invitations (for panel owner)
+	 *
 	 * @param Panel $panel
 	 * @return string
 	 */
@@ -249,6 +250,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
+	 * Loads the Panel Host View, a commented view which could be used in addition to the Presentation View
+	 * This view is currently unused
+	 *
 	 * @param Panel $panel
 	 * @return string
 	 * @unused Currently unused and unmaintained
@@ -272,6 +276,14 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
+	 * Load/perform a Voting Step
+	 * This method is used in the Presentation View and the Guest View
+	 *
+	 * Protected actions: Actions that can only be executed by the panel owner to perform the panel (e.g. start a voting,
+	 * stop a voting etc.)
+	 * Public actions: Actions that can be performed by anonymous users that participate in a panel (e.g. get the current
+	 * voting, cast a vote)
+	 *
 	 * @param string $actionarguments The action arguments
 	 * @return string
 	 */
@@ -478,19 +490,13 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 
 
 	/**
-	 * action startup
+	 * Load Manage Panels functionality for teachers
 	 */
 	public function managePanelsStartupAction() {
 	}
 
 	/**
-	 * action startup
-	 */
-	public function panelParticipationsStartupAction() {
-	}
-
-	/**
-	 * action managePanels
+	 * Load all panels of a teacher
 	 *
 	 * @return string
 	 */
@@ -506,7 +512,13 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action panelParticipations
+	 * Load panel participations functionality for politician
+	 */
+	public function panelParticipationsStartupAction() {
+	}
+
+	/**
+	 * Loads all panel invitations in the scope of a politician
 	 *
 	 * @return void
 	 */

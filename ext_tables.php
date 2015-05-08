@@ -6,19 +6,19 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Managepanels',
-	'easyvote Education: Podien verwalten'
+	'easyvote Education: Podien verwalten (für Lehrperson)'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Panelparticipations',
-	'easyvote Education: Podienteilnahmen verwalten'
+	'easyvote Education: Podienteilnahmen verwalten (für Politiker)'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Panelassignment',
-	'easyvote Education: Podienteilnahmen verwalten (für Partei-Administratoren)'
+	'easyvote Education: Podienteilnahmen verwalten (für Partei-Administrator)'
 );
 
 $pluginSignature = str_replace('_','',$_EXTKEY) . '_panelassignment';
@@ -28,13 +28,13 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Guestview',
-	'easyvote Education: Podiumsteilnahme'
+	'easyvote Education: Podiumsteilnahme als Gast'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Presentationview',
-	'easyvote Education: Präsentationsansicht'
+	'easyvote Education: Präsentationsansicht (für Lehrperson)'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote Education');
