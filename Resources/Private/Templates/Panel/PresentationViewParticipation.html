@@ -1,26 +1,36 @@
 <f:layout name="default" />
 
 <f:section name="main">
-	<div id="panel-votingcontainer"></div>
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-8 logo-easyvote">
-			<div class="panel-id">
-				<f:translate key="panel.presentationView.panelId" />
-				{panel.panelId}
+	<f:if condition="{panel}">
+		<f:then>
+			<div id="panel-votingcontainer"></div>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-8 logo-easyvote">
+					<div class="panel-id">
+						<f:translate key="panel.presentationView.panelId" />
+						{panel.panelId}
+					</div>
+					<f:link.page pageUid="{settings.managePanelsPid}">
+						<f:image src="EXT:usereasyvotetemplate/Resources/Public/Images/logo_easyvote_default.svg" alt="easyvote" />
+					</f:link.page>
+				</div>
 			</div>
-			<f:link.page pageUid="{settings.managePanelsPid}">
-				<f:image src="EXT:usereasyvotetemplate/Resources/Public/Images/logo_easyvote_default.svg" alt="easyvote" />
-			</f:link.page>
-		</div>
-	</div>
 
-	<script>
-		$(function() {
-			$('body').addClass('presentation-view');
-			var panelUid = {panel.uid};
-			// Initialize panel
-			EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
-		});
-	</script>
+			<script>
+				$(function() {
+					$('body').addClass('presentation-view');
+					var panelUid = {panel.uid};
+					// Initialize panel
+					EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-presentationViewContent-0', '#panel-votingcontainer');
+				});
+			</script>
+		</f:then>
+		<f:else>
+			<div class="content-box">
+				<h2>Error 403</h2>
+				<p><f:translate key="ajax.status.403.panelController.executeAction" /></p>
+			</div>
+		</f:else>
+	</f:if>
 </f:section>

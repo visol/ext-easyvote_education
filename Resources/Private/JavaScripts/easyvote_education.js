@@ -150,8 +150,7 @@ $(function() {
 			if (jsonData.hasOwnProperty('redirectToAction')) {
 				EasyvoteEducation.loadAction(jsonData.redirectToAction);
 			} else {
-				// todo meaningful and usable error
-				alert('Fehler!');
+				EasyvoteEducation.handleError(jsonData);
 			}
 		});
 	});
@@ -164,8 +163,7 @@ $(function() {
 			if (jsonData.hasOwnProperty('redirectToAction')) {
 				EasyvoteEducation.loadAction(jsonData.redirectToAction);
 			} else {
-				// todo meaningful and usable error
-				alert('Fehler!');
+				EasyvoteEducation.handleError(jsonData);
 			}
 		});
 	});
@@ -311,7 +309,12 @@ var EasyvoteEducation = {
 			var $container = $('#easyvoteeducation-content');
 		}
 		EasyvoteEducation.loadAjaxContent(EasyvoteEducationActionUris[actionName]).done(function(data) {
-			$container.html(data);
+			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
+			if (jsonData.hasOwnProperty('content')) {
+				$container.html(jsonData.content);
+			} else {
+				EasyvoteEducation.handleError(jsonData);
+			}
 			EasyvoteEducation.pushHistoryState(actionName);
 			Easyvote.bindPostalCodeSelection();
 			EasyvoteEducation.bindPartySelection();
@@ -337,8 +340,13 @@ var EasyvoteEducation = {
 		}
 		var actionUri = '/routing/votings/' + actionArguments;
 		EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
-			$container.html(data);
-			EasyvoteEducation.disableVotingIfAlreadyVoted();
+			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
+			if (jsonData.hasOwnProperty('content')) {
+				$container.html(jsonData.content);
+				EasyvoteEducation.disableVotingIfAlreadyVoted();
+			} else {
+				EasyvoteEducation.handleError(jsonData);
+			}
 		});
 	},
 
@@ -404,6 +412,8 @@ var EasyvoteEducation = {
 			} else if (jsonData.hasOwnProperty('reloadVotingOptions')) {
 				// Remove the target container, e.g. after a delete action
 				EasyvoteEducation.performAjaxObjectAction('listForVoting', 'voting', jsonData.reloadVotingOptions, '.votingOptions-content', null, callback);
+			} else if (jsonData.hasOwnProperty('status') && jsonData.status !== 200) {
+				EasyvoteEducation.handleError(jsonData);
 			} else {
 				$container.html(jsonData.content);
 				Easyvote.bindPostalCodeSelection();
@@ -456,9 +466,11 @@ var EasyvoteEducation = {
 		});
 		EasyvoteEducation.postForm(data, EasyvoteEducationActionUris[actionName]).done(function(data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-			if (!jsonData.hasOwnProperty('success')) {
+			if (jsonData.hasOwnProperty('status')) {
 				// todo use a meaningful error message
 				alert('Fehler');
+			} else {
+				Easyvote.displayFlashMessage('Fatal error.')
 			}
 		});
 	},
@@ -619,6 +631,19 @@ var EasyvoteEducation = {
 			}
 			EasyvoteEducation.bindPartyMemberSelection();
 		});
+	},
+
+	/**
+	 * Handles an error and displays a Flash Message
+	 *
+	 * @param data
+	 */
+	handleError: function(data) {
+		if (data.hasOwnProperty('status')) {
+			Easyvote.displayFlashMessage('Error ' + data.status + ':<br />'+ data.reason);
+		} else {
+			Easyvote.displayFlashMessage('Unhandled exception: EasyvoteEducation.loadAction');
+		}
 	}
 
 };

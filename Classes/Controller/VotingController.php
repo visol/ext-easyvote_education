@@ -161,9 +161,11 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
 			$this->votingRepository->update($voting);
 			$this->persistenceManager->persistAll();
-			return json_encode(array('success' => TRUE));
+			return json_encode(array('status' => 200));
 		} else {
-			return json_encode(array('success' => FALSE, 'message' => 'Access denied.'));
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />VotingController/updateAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 

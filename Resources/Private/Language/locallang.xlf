@@ -3,6 +3,22 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-23T14:38:44Z" product-name="easyvote_education">
 		<header/>
 		<body>
+			<trans-unit id="ajax.status.403">
+				<source>Der Zugriff wurde verweigert.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.executeAction">
+				<source>Der Zugriff wurde verweigert. Ein Podium kann nur vom Ersteller/von der Erstellerin durchgeführt werden.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.editPanelInvitationsAction">
+				<source>Der Zugriff wurde verweigert. In diesem Kanton können derzeit keine PolitikerInnen eingeladen werden.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.404.panelController.votingStepAction">
+				<source>Die aufgerufene Funktion existiert nicht.</source>
+			</trans-unit>
+			<trans-unit id="ajax.status.400.panelController.votingStepAction">
+				<source>Die Anfrage ist ungültig.</source>
+			</trans-unit>
+
 			<trans-unit id="panel.managePanels.dashboard">
 				<source>Dashboard</source>
 			</trans-unit>

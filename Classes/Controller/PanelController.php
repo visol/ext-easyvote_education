@@ -40,13 +40,16 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 *
 	 * @param Panel $newPanel
 	 * @ignorevalidation $newPanel
-	 * @return void
+	 * @return mixed
 	 */
 	public function newAction(Panel $newPanel = NULL) {
 		if ($this->getLoggedInUser()) {
 			$this->view->assign('newPanel', $newPanel);
+			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo access denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/newAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -82,7 +85,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				'redirectToAction' => 'managePanels'
 			));
 		} else {
-			// TODO no user logged in
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/createAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -98,7 +103,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$this->view->assign('panel', $panel);
 			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/editAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -129,7 +136,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				'redirectToAction' => 'managePanels'
 			));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/updateAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -155,7 +164,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				'redirectToAction' => 'managePanels'
 			));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/deleteAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -187,7 +198,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				'redirectToAction' => 'managePanels'
 			));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/duplicateAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 
 	}
@@ -201,7 +214,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$this->view->assign('panel', $panel);
 			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/editVotingsAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -217,25 +232,37 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				$this->view->assign('panel', $panel);
 				return json_encode(array('content' => $this->view->render()));
 			} else {
-				// todo new invitations not allowed
+				$reason = LocalizationUtility::translate('ajax.status.403.panelController.editPanelInvitationsAction', 'easyvote_education');
+				$reason .= '<br />PanelController/editPanelInvitationsAction';
+				return json_encode(array('status' => 403, 'reason' => $reason));
 			}
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/editPanelInvitationsAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
 	/**
 	 * @param Panel $panel
 	 * @return string
+	 * @unused Currently unused and unmaintained
 	 */
 	public function executeAction(Panel $panel) {
+		// Currently unused
+		return json_encode(array(
+			'redirectToAction' => 'managePanels'
+		));
+
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$this->view->assign('panel', $panel);
 			$guestViewUri = $this->uriBuilder->setCreateAbsoluteUri(TRUE)->build();
 			$this->view->assign('guestViewUri', urlencode($guestViewUri));
 			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo permission denied
+			$reason = LocalizationUtility::translate('ajax.status.403.panelController.executeAction', 'easyvote_education');
+			$reason .= '<br />PanelController/executeAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -248,10 +275,10 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		$protectedActions = array('startPanel', 'nextVoting', 'startVoting', 'stopVoting', 'stopPanel');
 		$publicActions = array('guestViewContent', 'presentationViewContent', 'castVote');
 
-		if (count($actionArgumentsArray === 4)) {
+		if (count($actionArgumentsArray) === 4) {
 			// we need four parts in the array for the request to be valid
 			list($unusedPanelObjectName, $panelUid, $votingStepAction, $votingUid) = $actionArgumentsArray;
-			/* @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			/* @var Panel $panel */
 			$panel = $this->panelRepository->findByUid((int)$panelUid);
 			if (in_array($votingStepAction, $protectedActions)) {
 				// action can only be performed by the owner of the panel, security check
@@ -292,9 +319,11 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 
 					$this->view->assign('votingStepAction', $votingStepAction);
 					$this->view->assign('panel', $panel);
-					return $this->view->render();
+					return json_encode(array('content' => $this->view->render()));
 				} else {
-					// todo permission denied
+					$reason = LocalizationUtility::translate('ajax.status.403.panelController.executeAction', 'easyvote_education');
+					$reason .= '<br />PanelController/votingStepAction/' . $votingStepAction;
+					return json_encode(array('status' => 403, 'reason' => $reason));
 				}
 			} elseif (in_array($votingStepAction, $publicActions)) {
 				// action can be performed anonymously, proceed
@@ -314,7 +343,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 								// save information about cast vote to session to prevent double-casting
 								$this->frontendUserAuthentication->setAndSaveSessionData('easyvoteeducation-castVote', $condensedVotingName);
 							} else {
-								// TODO do nothing - vote was cast before for user
+								// Vote was cast before and it is ignored
 							}
 						}
 					}
@@ -324,12 +353,16 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				}
 				$this->view->assign('votingStepAction', $votingStepAction);
 				$this->view->assign('panel', $panel);
-				return $this->view->render();
+				return json_encode(array('content' => $this->view->render()));
 			} else {
-				// todo action not allowed
+				$reason = LocalizationUtility::translate('ajax.status.404.panelController.votingStepAction', 'easyvote_education');
+				$reason .= '<br />PanelController/votingStepAction/' . $votingStepAction;
+				return json_encode(array('status' => 404, 'reason' => $reason));
 			}
 		} else {
-			// todo invalid request
+			$reason = LocalizationUtility::translate('ajax.status.400.panelController.votingStepAction', 'easyvote_education');
+			$reason .= '<br />PanelController/votingStepAction';
+			return json_encode(array('status' => 400, 'reason' => $reason));
 		}
 	}
 
@@ -411,7 +444,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			}
 			$this->view->assign('panel', $panel);
 		} else {
-			// TODO access denied
+			// No panel is assigned to Fluid, so a condition in Fluid output an access denied error
+			$this->response->setStatus(403);
 		}
 	}
 
@@ -456,13 +490,16 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * action managePanels
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function managePanelsAction() {
 		if ($communityUser = $this->getLoggedInUser()) {
 			$this->view->assign('panels', $this->panelRepository->findByCommunityUser($communityUser));
+			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo no user logged in
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/managePanelsAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -485,12 +522,19 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 * action startPanel
 	 *
 	 * @return void
+	 * @unused Currently unused and unmaintained
 	 */
 	public function startPanelAction() {
+		// Currently unused
+		return json_encode(array(
+			'redirectToAction' => 'managePanels'
+		));
+
 		if ($communityUser = $this->getLoggedInUser()) {
 			$this->view->assign('panels', $communityUser->getPanels());
 		} else {
-			// todo no user logged in
+			// No panel is assigned to Fluid, so a condition in Fluid output an access denied error
+			$this->response->setStatus(403);
 		}
 	}
 
