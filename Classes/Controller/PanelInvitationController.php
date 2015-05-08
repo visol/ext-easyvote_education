@@ -1,41 +1,29 @@
 <?php
 namespace Visol\EasyvoteEducation\Controller;
 
-/***************************************************************
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  (c) 2015 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 use Visol\EasyvoteEducation\Domain\Model\PanelInvitation;
 
-/**
- * VotingController
- */
 class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
 	/**
+	 * List all panel invitations for a given panel
+	 * Called by AJAX in editPanelInvitations
+	 *
 	 * @param Panel $panel
 	 * @return string
 	 */
@@ -43,6 +31,11 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$this->view->assign('panel', $panel);
 			return json_encode(array('content' => $this->view->render()));
+		} else {
+			// Error: Non-owner trying to list panel invitations
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/listForCurrentUserAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -75,19 +68,30 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 						$panel->addPanelInvitation($panelInvitation);
 						$this->panelRepository->update($panel);
 						$this->persistenceManager->persistAll();
+						return json_encode(array('reloadPanelInvitations' => $panel->getUid()));
 					} else {
-						// TODO handle error
+						// Error: Trying to add a panel invitation for a not allowed party
+						$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.createAction.notAllowedParty', 'easyvote_education');
+						$reason .= '<br />PanelInvitationController/createAction';
+						return json_encode(array('status' => 403, 'reason' => $reason));
 					}
 				}
 			} else {
-				// TODO tried to add more invitations than allowed
+				// Error: Limit of panel invitations for panel reached
+				$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.createAction.noMoreInvitations', 'easyvote_education');
+				$reason .= '<br />PanelInvitationController/createAction';
+				return json_encode(array('status' => 403, 'reason' => $reason));
 			}
-			return json_encode(array('reloadPanelInvitations' => $panel->getUid()));
+		} else {
+			// Error: Non-owner trying to add panel invitation
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/createAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
 	/**
-	 * Action delete
+	 * Delete a panel invitation
 	 *
 	 * @param PanelInvitation $panelInvitation
 	 * @ignorevalidation $panelInvitation
@@ -102,6 +106,11 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			$this->panelInvitationRepository->remove($panelInvitation);
 			$this->persistenceManager->persistAll();
 			return json_encode(array('removeElement' => TRUE));
+		} else {
+			// Error: Non-owner trying to delete panel invitation
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/listForCurrentUserAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -147,24 +156,56 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * Attend a panel
 	 *
 	 * @param PanelInvitation $panelInvitation
+	 * @return string
 	 */
 	public function attendAction(PanelInvitation $panelInvitation) {
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser->isPolitician()) {
-				// TODO check if parties in panelInvitation match party of user
 				if (is_null($panelInvitation->getAttendingCommunityUser())) {
-					$panelInvitation->setAttendingCommunityUser($communityUser);
-					$this->panelInvitationRepository->update($panelInvitation);
-					$this->persistenceManager->persistAll();
-					return json_encode(array('reloadPanelParticipations' => TRUE));
+					// Party is a lazy property of CommunityUser
+					if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+						$communityUser->getParty()->_loadRealInstance();
+					}
+					$isPanelInvitationForPartyOfCommunityUser = FALSE;
+					foreach ($panelInvitation->getAllowedParties() as $party) {
+						/** @var $party \Visol\Easyvote\Domain\Model\Party */
+						if ($party === $communityUser->getParty()) {
+							$isPanelInvitationForPartyOfCommunityUser = TRUE;
+						}
+					}
+					if ($isPanelInvitationForPartyOfCommunityUser) {
+						$panelInvitation->setAttendingCommunityUser($communityUser);
+//						/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+//						$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+//						$templateEmail->setRecipient($communityUser);
+//						$templateEmail->setSubject('@TODO ');
+//						$templateEmail->setTemplate('Email/AttendPanelInvitation.html', $this->request->getControllerExtensionName());
+//						$templateEmail->assign('panelInvitation', $panelInvitation);
+//						$templateEmail->enqueue();
+						$this->panelInvitationRepository->update($panelInvitation);
+						$this->persistenceManager->persistAll();
+						return json_encode(array('reloadPanelParticipations' => TRUE));
+					} else {
+						// Error: User tries to attend to a panel invitation of another party
+						$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.attendAction.wrongParty', 'easyvote_education');
+						return json_encode(array('status' => 403, 'reason' => $reason));
+					}
 				} else {
-					// TODO error: Another user attends in the meantime
+					// Error: User tries to attend to a panel invitation that already has an attendee
+					$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.attendAction.otherPoliticianAttending', 'easyvote_education');
+					return json_encode(array('status' => 403, 'reason' => $reason));
 				}
 			} else {
-				// TODO not a politician
+				// Error: User that is no politician tries to attend a panel invitation
+				$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.attendAction.notAPolitician', 'easyvote_education');
+				$reason .= '<br />PanelInvitationController/attendAction';
+				return json_encode(array('status' => 403, 'reason' => $reason));
 			}
 		} else {
-			// TODO access denied
+			// Error: Not authenticated
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/attendAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -172,6 +213,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * Ignore a panelInvitation
 	 *
 	 * @param PanelInvitation $panelInvitation
+	 * @return string
 	 */
 	public function ignoreAction(PanelInvitation $panelInvitation) {
 		if ($communityUser = $this->getLoggedInUser()) {
@@ -181,10 +223,14 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 				$this->persistenceManager->persistAll();
 				return json_encode(array('reloadPanelParticipations' => TRUE));
 			} else {
-				// TODO not a politician
+				// Not a politician
+				// Must not be handled since there is no interest for a non-politician to forge ignoring a panel
 			}
-		} else {
-			// TODO access denied
+		}  else {
+			// Error: Not authenticated
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/ignoreAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -220,7 +266,8 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			$filteredInvitations = $this->panelInvitationRepository->findByAllowedPartyAndDemand($party, $demand);
 			$this->view->assign('filteredInvitations', $filteredInvitations);
 		} else {
-			// TODO not logged in or not a party administrator
+			// Not logged in or not a party administrator
+			// Does not need to be handled because it's never called if the parent view
 		}
 	}
 
@@ -228,6 +275,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * Removes a user passed by POST from a PanelInvitation
 	 *
 	 * @param PanelInvitation $object
+	 * @return string
 	 */
 	public function removeUserAction(PanelInvitation $object) {
 		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
@@ -245,13 +293,22 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 					$this->persistenceManager->persistAll();
 					return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
 				} else {
-					// TODO denied trying removing a user of another party
+					// Error: Trying to remove user of another party
+					$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.removeUserAction.wrongParty', 'easyvote_education');
+					$reason .= '<br />PanelInvitationController/removeUserAction';
+					return json_encode(array('status' => 403, 'reason' => $reason));
 				}
 			} else {
-				// TODO no communityUser submitted
+				// Error: No user to remove was submitted
+				$reason = LocalizationUtility::translate('ajax.status.400.panelInvitationController.removeUserAction.noUserSubmitted', 'easyvote_education');
+				$reason .= '<br />PanelInvitationController/removeUserAction';
+				return json_encode(array('status' => 400, 'reason' => $reason));
 			}
 		} else {
-			// TODO not logged in or not a party administrator
+			// Error: No user is authenticated or user is not a party administrator
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/removeUserAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
@@ -259,6 +316,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * Assigns a user passed by POST to a PanelInvitation
 	 *
 	 * @param PanelInvitation $object
+	 * @return string
 	 */
 	public function assignUserAction(PanelInvitation $object) {
 		if ($party = $this->getPartyIfCurrentUserIsAdministrator()) {
@@ -277,17 +335,26 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 						$this->persistenceManager->persistAll();
 						return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
 					} else {
-						// TODO there is an attending community user in the meantime
+						// Another user is attending in the meantime, reload panel invitations
 						return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
 					}
 				} else {
-					// TODO denied trying removing a user of another party
+					// Error: trying to assign user of another party
+					$reason = LocalizationUtility::translate('ajax.status.403.panelInvitationController.assignUserAction.wrongParty', 'easyvote_education');
+					$reason .= '<br />PanelInvitationController/assignUserAction';
+					return json_encode(array('status' => 403, 'reason' => $reason));
 				}
 			} else {
-				// TODO no communityUser submitted
+				// Error: No user to assign was submitted
+				$reason = LocalizationUtility::translate('ajax.status.400.panelInvitationController.assignUserAction.noUserSubmitted', 'easyvote_education');
+				$reason .= '<br />PanelInvitationController/assignUserAction';
+				return json_encode(array('status' => 400, 'reason' => $reason));
 			}
 		} else {
-			// TODO not logged in or not a party administrator
+			// Error: No user is authenticated or user is not a party administrator
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelInvitationController/assignUserAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 
