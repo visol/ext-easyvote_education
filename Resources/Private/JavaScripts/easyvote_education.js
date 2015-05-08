@@ -19,14 +19,14 @@ $(function() {
 	var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
 	var requestedAction = $easyvoteEducationContentContainer.attr('data-action');
 
-	// Load dashboard on startup
+	// Load managePanels on startup
 	if ($easyvoteEducationContentContainer.length) {
 		if (document.location.hash) {
 			EasyvoteEducation.callHashRequestedAction();
 		} else if (requestedAction) {
 			EasyvoteEducation.loadAction(requestedAction);
 		} else {
-			// Fall back to dashboard
+			// Fall back to managePanels
 			EasyvoteEducation.loadAction('managePanels');
 		}
 	}
@@ -502,8 +502,8 @@ var EasyvoteEducation = {
 					Easyvote.bindToolTips();
 				})
 			} else {
-				// disallowed action, fall back to dashboard
-				EasyvoteEducation.loadAction('dashboard');
+				// disallowed action, fall back to managePanels
+				EasyvoteEducation.loadAction('managePanels');
 			}
 		} else {
 			// action without an object involved

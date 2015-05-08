@@ -19,12 +19,6 @@
 				<source>Die Anfrage ist ungültig.</source>
 			</trans-unit>
 
-			<trans-unit id="panel.managePanels.dashboard">
-				<source>Dashboard</source>
-			</trans-unit>
-			<trans-unit id="panel.managePanels.startPanel">
-				<source>Podium starten</source>
-			</trans-unit>
 			<trans-unit id="panel.managePanels.managePanels">
 				<source>Podien verwalten</source>
 			</trans-unit>

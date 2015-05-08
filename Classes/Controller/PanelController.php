@@ -178,10 +178,15 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 * @return string
 	 */
 	public function duplicateAction(Panel $panel) {
+		// Duplicating is currently not allowed
+		return json_encode(array(
+			'redirectToAction' => 'managePanels'
+		));
+
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$message = LocalizationUtility::translate('panel.actions.duplicate.success', $this->request->getControllerExtensionName(), array($panel->getTitle()));
 			$this->addFlashMessage($message, '', AbstractMessage::OK);
-			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $duplicatePanel */
+			/** @var Panel $duplicatePanel */
 			$duplicatePanel = $this->cloneService->copy($panel);
 			// generate a new panelId
 			do {
@@ -367,7 +372,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action guestViewLogin
+	 * Login Screen for Guest View
 	 */
 	public function guestViewLoginAction() {
 	}
@@ -381,9 +386,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		if ($this->request->hasArgument('panelId')) {
 			// check if there is a panel with this ID
 			$panelId = $this->request->getArgument('panelId');
-			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			/** @var Panel $panel */
 			$panel = $this->panelRepository->findOneByPanelId($panelId);
-			if (!$panel instanceof \Visol\EasyvoteEducation\Domain\Model\Panel) {
+			if (!$panel instanceof Panel) {
 				$message = LocalizationUtility::translate('panel.guestView.panelNotFound', $this->request->getControllerExtensionName());
 				$this->flashMessageContainer->add($message, '', AbstractMessage::ERROR);
 				$this->redirect('guestViewLogin');
@@ -392,17 +397,18 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action guestViewParticipation
+	 * Load Guest View
+	 *
 	 * @param string $panelId
 	 */
 	public function guestViewParticipationAction($panelId) {
-		/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+		/** @var Panel $panel */
 		$panel = $this->panelRepository->findOneByPanelId($panelId);
 		$this->view->assign('panel', $panel);
 	}
 
 	/**
-	 * action presentationView
+	 * Login Screen for Presentation View
 	 */
 	public function presentationViewLoginAction() {
 
@@ -417,9 +423,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		if ($this->request->hasArgument('panelId')) {
 			// check if there is a panel with this ID
 			$panelId = $this->request->getArgument('panelId');
-			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+			/** @var Panel $panel */
 			$panel = $this->panelRepository->findOneByPanelId($panelId);
-			if (!$panel instanceof \Visol\EasyvoteEducation\Domain\Model\Panel) {
+			if (!$panel instanceof Panel) {
 				$message = LocalizationUtility::translate('panel.guestView.panelNotFound', $this->request->getControllerExtensionName());
 				$this->flashMessageContainer->add($message, '', AbstractMessage::ERROR);
 				$this->redirect('presentationViewLogin');
@@ -428,12 +434,14 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action guestViewParticipation
+	 * Load Presentation View
+	 *
 	 * @param string $panelId
 	 * @param boolean $reset
+	 * @return string
 	 */
 	public function presentationViewParticipationAction($panelId, $reset = FALSE) {
-		/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $panel */
+		/** @var Panel $panel */
 		$panel = $this->panelRepository->findOneByPanelId($panelId);
 		// action can only be performed by the owner of the panel, security check
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
@@ -482,12 +490,6 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action dashboard
-	 */
-	public function dashboardAction() {
-	}
-
-	/**
 	 * action managePanels
 	 *
 	 * @return string
@@ -504,7 +506,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	}
 
 	/**
-	 * action managePanels
+	 * action panelParticipations
 	 *
 	 * @return void
 	 */
@@ -515,26 +517,6 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 			$this->view->assign('communityUser', $communityUser);
 		} else {
 			// todo no user logged in
-		}
-	}
-
-	/**
-	 * action startPanel
-	 *
-	 * @return void
-	 * @unused Currently unused and unmaintained
-	 */
-	public function startPanelAction() {
-		// Currently unused
-		return json_encode(array(
-			'redirectToAction' => 'managePanels'
-		));
-
-		if ($communityUser = $this->getLoggedInUser()) {
-			$this->view->assign('panels', $communityUser->getPanels());
-		} else {
-			// No panel is assigned to Fluid, so a condition in Fluid output an access denied error
-			$this->response->setStatus(403);
 		}
 	}
 
