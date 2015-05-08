@@ -520,15 +520,18 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	/**
 	 * Loads all panel invitations in the scope of a politician
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function panelParticipationsAction() {
 		if ($communityUser = $this->getLoggedInUser()) {
 			$panelInvitations = $this->panelInvitationRepository->findFutureNotIgnoredPanelsByCommunityUser($communityUser);
 			$this->view->assign('panelInvitations', $panelInvitations);
 			$this->view->assign('communityUser', $communityUser);
+			return json_encode(array('content' => $this->view->render()));
 		} else {
-			// todo no user logged in
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/panelParticipationsAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}
 

@@ -640,7 +640,7 @@ var EasyvoteEducation = {
 	 */
 	handleError: function(data) {
 		if (data.hasOwnProperty('status')) {
-			Easyvote.displayFlashMessage('Error ' + data.status + ':<br />'+ data.reason);
+			Easyvote.displayFlashMessage('<h2>Error ' + data.status + ':</h2><p>'+ data.reason + '</p>');
 		} else {
 			Easyvote.displayFlashMessage('Unhandled exception: EasyvoteEducation.loadAction');
 		}
