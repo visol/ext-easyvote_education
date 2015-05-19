@@ -61,7 +61,7 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'Panel' => 'guestViewParticipation',
+		'Panel' => 'guestViewLogin, guestViewParticipation',
 	)
 );
 
