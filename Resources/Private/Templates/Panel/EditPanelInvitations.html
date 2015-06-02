@@ -1,22 +1,24 @@
 <f:flashMessages renderMode="div" />
 
-<div class="edit-mainfunction content-box">
-	<div class="actions">
-		<div class="action">
-			<a data-role="generalaction" data-actionname="managePanels" data-openpanel="{panel.uid}"><i class="evicon-left-open"></i></a>
+<f:comment>
+	<div class="edit-mainfunction content-box">
+		<div class="actions">
+			<div class="action">
+				<a data-role="generalaction" data-actionname="managePanels" data-openpanel="{panel.uid}"><i class="evicon-left-open"></i></a>
+			</div>
 		</div>
+		<span>
+			<f:if condition="{panel.date}">
+				<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+			</f:if>
+			<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
+			<f:if condition="{panel.city}">
+				| {panel.city.name}
+			</f:if>
+		</span>
+		<h2>{panel.title}</h2>
 	</div>
-	<span>
-		<f:if condition="{panel.date}">
-			<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
-		</f:if>
-		<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
-		<f:if condition="{panel.city}">
-			| {panel.city.name}
-		</f:if>
-	</span>
-	<h2>{panel.title}</h2>
-</div>
+</f:comment>
 <script>
 	var panelUid = {panel.uid};
 </script>

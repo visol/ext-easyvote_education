@@ -232,7 +232,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 */
 	public function editPanelInvitationsAction(Panel $panel) {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
-			if ($this->getPanelService()->isPanelInvitationAllowedForPanel($panel)) {
+			if ($this->getPanelService()->isPanelInvitationAllowedForPanel($panel) && !$panel->isPanelInvitationsSent()) {
 				// allow editing of panel invitations if it is still possible to add panel invitations for a panel
 				// in this Kanton or if there are already panel invitations
 				$this->view->assign('panel', $panel);
@@ -245,6 +245,32 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		} else {
 			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
 			$reason .= '<br />PanelController/editPanelInvitationsAction';
+			return json_encode(array('status' => 403, 'reason' => $reason));
+		}
+	}
+
+	/**
+	 * Send Panel Invitations (for panel owner)
+	 *
+	 * @param Panel $panel
+	 * @return string
+	 */
+	public function sendPanelInvitationsAction(Panel $panel) {
+		if ($this->isCurrentUserOwnerOfPanel($panel)) {
+			if (!$panel->isPanelInvitationsSent()) {
+				$panel->setPanelInvitationsSent(TRUE);
+				$this->panelRepository->update($panel);
+				$this->persistenceManager->persistAll();
+				// TODO send invitations
+				return json_encode(array('redirectToAction' => 'managePanels'));
+			} else {
+				$reason = LocalizationUtility::translate('ajax.status.403.panelController.sendPanelInvitationsAction', 'easyvote_education');
+				$reason .= '<br />PanelController/sendPanelInvitationsAction';
+				return json_encode(array('status' => 403, 'reason' => $reason));
+			}
+		} else {
+			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');
+			$reason .= '<br />PanelController/sendPanelInvitationsAction';
 			return json_encode(array('status' => 403, 'reason' => $reason));
 		}
 	}

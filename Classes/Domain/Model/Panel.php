@@ -197,6 +197,13 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $panelInvitations = NULL;
 
 	/**
+	 * Were panel invitations sent?
+	 *
+	 * @var boolean
+	 */
+	protected $panelInvitationsSent = FALSE;
+
+	/**
 	 * @var int
 	 * @transient
 	 */
@@ -601,11 +608,25 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the panelInvitation
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\PanelInvitation> $panelInvitations
+	 * @param $panelInvitations \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\PanelInvitation>
 	 * @return void
 	 */
 	public function setPanelInvitations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $panelInvitations) {
 		$this->panelInvitations = $panelInvitations;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isPanelInvitationsSent() {
+		return $this->panelInvitationsSent;
+	}
+
+	/**
+	 * @param boolean $panelInvitationsSent
+	 */
+	public function setPanelInvitationsSent($panelInvitationsSent) {
+		$this->panelInvitationsSent = $panelInvitationsSent;
 	}
 
 	/**

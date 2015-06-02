@@ -37,20 +37,30 @@
 
 			<div class="panel-mainfunctions">
 				<div class="panel-functions">
-					<f:if condition="{panel.panelInvitationAllowed}">
-					</f:if>
+
 					<f:if condition="{panel.panelInvitations}">
 						<f:then>
-							<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
-							<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
+							<f:if condition="{panel.panelInvitationsSent}">
+								<f:then>
+									<h3><f:translate key="panel.panelInvitations" /></h3>
+									<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
+								</f:then>
+								<f:else>
+									<h3><f:translate key="panel.panelInvitations" /></h3>
+									<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
+									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
+								</f:else>
+							</f:if>
 						</f:then>
 						<f:else>
 							<f:if condition="{panel.panelInvitationAllowed}">
 								<f:then>
-									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
+									<h3><f:translate key="panel.panelInvitations" /></h3>
 									<f:translate key="panel.panelInvitations.noInvitations" />
+									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
 								</f:then>
 								<f:else>
+									<h3><f:translate key="panel.panelInvitations" /></h3>
 									<f:translate key="panel.panelInvitations.notAllowed" arguments="{0: panel.city.kanton.name}" />
 								</f:else>
 							</f:if>
@@ -58,22 +68,23 @@
 					</f:if>
 				</div>
 				<div class="panel-functions">
-					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+					<h3><f:translate key="panel.votings" /></h3>
 					<f:if condition="{panel.votings}">
 						<f:then>
 							<f:if condition="{panel.votings -> f:count()} > 1">
 								<f:then>
-									<f:count>{panel.votings}</f:count> <f:translate key="panel.votings" />
+									<p><f:count>{panel.votings}</f:count> <f:translate key="panel.votings" /></p>
 								</f:then>
 								<f:else>
-									<f:count>{panel.votings}</f:count> <f:translate key="panel.voting" />
+									<p><f:count>{panel.votings}</f:count> <f:translate key="panel.voting" /></p>
 								</f:else>
 							</f:if>
 						</f:then>
 						<f:else>
-							<f:translate key="panel.votings.noVotings" />
+							<p><f:translate key="panel.votings.noVotings" /></p>
 						</f:else>
 					</f:if>
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
 				</div>
 			</div>
 

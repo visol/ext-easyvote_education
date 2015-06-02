@@ -28,7 +28,7 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings, panel_invitations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings, panel_invitations, panel_invitations_sent, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -303,6 +303,14 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 					'showAllLocalizationLink' => 1
 				),
 			),
+		),
+		'panel_invitations_sent' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_panel.panel_invitations_sent',
+			'config' => array(
+				'type' => 'check',
+				'default' => 0
+			)
 		),
 	),
 );

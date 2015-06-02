@@ -12,6 +12,9 @@
 			<trans-unit id="ajax.status.403.panelController.editPanelInvitationsAction">
 				<source>Der Zugriff wurde verweigert. In diesem Kanton können derzeit keine PolitikerInnen eingeladen werden.</source>
 			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.sendPanelInvitationsAction">
+				<source>Der Zugriff wurde verweigert. Die Podiums-Einladungen können nur einmal versendet werden.</source>
+			</trans-unit>
 			<trans-unit id="ajax.status.404.panelController.votingStepAction">
 				<source>Die aufgerufene Funktion existiert nicht.</source>
 			</trans-unit>
@@ -80,8 +83,14 @@
 			<trans-unit id="panel.actions.create.success">
 				<source>Das Podium "%s" wurde erstellt.</source>
 			</trans-unit>
+			<trans-unit id="panel.votings">
+				<source>Voting</source>
+			</trans-unit>
 			<trans-unit id="panel.actions.editVotings">
 				<source>Votings bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations">
+				<source>Politiker</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.editPanelInvitations">
 				<source>Politiker einladen</source>
@@ -130,8 +139,9 @@
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<source><![CDATA[
-					Es ist derzeit nicht möglich, Politiker zu einem Podium im Kanton %s einzuladen, da bereits viele
-					Podien organisiert wurden. Bitte kontaktiere <a style="display: inline" href=mailto:lea.thommen@dsj.ch">Lea Thommen</a>
+					Es ist derzeit nicht möglich, Politiker zu einem Podium im Kanton %s einzuladen, da entweder bereits zu viele
+					Podien organisiert wurden oder der Polittalk ausserhalb der Zeitspanne 1. August bis 18. Oktober 2015 liegt.
+					Bitte kontaktiere <a style="display: inline" href=mailto:lea.thommen@dsj.ch">Lea Thommen</a>
 					für weitere Informationen oder falls du kontaktiert werden möchtest, wenn es wieder möglich ist,
 					Politiker einzuladen.
 				]]></source>
@@ -475,6 +485,23 @@
 			<trans-unit id="panelInvitation.actions.delete.success">
 				<source>Die Podiumseinladung wurde gelöscht.</source>
 			</trans-unit>
+
+			<trans-unit id="panelInvitation.actions.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations">
+				<source>Einladungen versenden</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.confirmationText">
+				<source>Ich nehme zur Kenntnis, dass ich nach dem Versenden der Einladungen keine Änderungen mehr vornehmen kann bzw. nur noch eingeschränkt (vgl. Einleitungstext).</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
+				<source>bestätigen</source>
+			</trans-unit>
+
 
 			<trans-unit id="panelParticipations.title">
 				<source>Podien</source>

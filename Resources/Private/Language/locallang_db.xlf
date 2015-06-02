@@ -60,6 +60,9 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.panel_invitations">
 				<source>Panel Invitations</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.panel_invitations_sent">
+				<source>Panel Invitations sent</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
 				<source>Voting</source>

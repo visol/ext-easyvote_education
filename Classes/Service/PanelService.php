@@ -50,6 +50,18 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 				}
 			}
 		}
+
+		if ($panel->getDate() instanceof \DateTime) {
+			$panelTimestamp = $panel->getDate()->getTimestamp();
+			$allowedTimestampStart = 1438387200;
+			$allowedTimestampEnd = 1445205599;
+			if ($panelTimestamp < $allowedTimestampStart || $panelTimestamp > $allowedTimestampEnd) {
+				// The panel doesn't take place between August 1, 2015 and October 18, 2015
+				return FALSE;
+			}
+
+		}
+
 		// return false if all panels are reached or existing panels don't have a city set
 		return TRUE;
 	}

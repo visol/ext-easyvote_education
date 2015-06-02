@@ -73,7 +73,7 @@ $(function() {
 		var confirmAction = $this.attr('data-confirm') === 'true';
 		if (confirmAction) {
 			// open a modal and wait for confirmation to continue
-			Easyvote.displayModal($this.parent().find('.ajaxobject-confirm').html(), function(status) {
+			Easyvote.displayModal($this.next('.ajaxobject-confirm').html(), function(status) {
 				EasyvoteEducation.performAjaxObjectAction(actionName, objectName, objectUid);
 			})
 		} else {
