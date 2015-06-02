@@ -561,7 +561,7 @@ var EasyvoteEducation = {
 			var $partySelector = $('.partyForCurrentPanelSelection');
 			$partySelector.select2({
 				multiple: true,
-				maximumSelectionSize: 2,
+				//maximumSelectionSize: 2,
 				ajax: {
 					url: '/routing/getavailablepartiesforpanel/' + panelUid,
 					dataType: 'json',

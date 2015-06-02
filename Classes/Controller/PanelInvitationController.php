@@ -51,7 +51,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			if (count($panel->getPanelInvitations()) < $panel->getNumberOfAllowedPanelInvitations()) {
 				$partyUids = GeneralUtility::trimExplode(',', $selection);
 				// at least one party and not more than two parties must be selected
-				if (count($partyUids) > 0 && count($partyUids) < 3) {
+				if (count($partyUids) > 0/* && count($partyUids) < 3*/) {
 					// parties must be added
 					/** @var PanelInvitation $panelInvitation */
 					$panelInvitation = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\PanelInvitation');
