@@ -50,6 +50,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 			$newVotingTitle = LocalizationUtility::translate('voting.actions.new.dummyText.newVoting', $this->request->getControllerExtensionName());
 			$newVoting->setTitle($newVotingTitle);
 			$newVoting->setIsVisible(TRUE);
+			$newVoting->setVotingDuration(60);
 			switch ((int)$selection) {
 				case 1:
 					// YesNoAbstention
@@ -73,6 +74,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 					$newVoting->addVotingOption($votingOptionAbstention);
 					break;
 				case 2:
+					// current unused (commented in Template)
 					// Free text
 					$randomColors = $this->dummyDataService->getRandomColors(3);
 					for ($i = 0; $i < 3; $i++) {
@@ -96,6 +98,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 					}
 					break;
 				default:
+					// current unused (commented in Template)
 					break;
 			}
 			$this->votingRepository->add($newVoting);
