@@ -5,21 +5,29 @@
 <f:for each="{panels}" as="panel">
 	<div class="panel-{panel.uid} content-box content-box-expandable">
 		<div class="box-teaser">
-			<div class="actions">
-				<div class="action toggle handle">
-					<i class="evicon-down-open"></i>
+			<div class="row">
+				<div class="col-xs-3 col-md-3">
+					[TODO Icon]
+				</div>
+				<div class="col-xs-9 col-md-9">
+					<div class="actions">
+						<div class="action toggle handle">
+							<i class="evicon-down-open"></i>
+						</div>
+					</div>
+					<h2>{panel.title}</h2>
+					<span>
+						<f:if condition="{panel.date}">
+							<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+						</f:if>
+						<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
+						<f:if condition="{panel.city}">
+							| {panel.city.name}
+						</f:if>
+					</span>
 				</div>
 			</div>
-			<span>
-				<f:if condition="{panel.date}">
-					<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
-				</f:if>
-				<f:render partial="Panel/ExecutionTime" arguments="{panel:panel, leadingCharacter: '|'}" />
-				<f:if condition="{panel.city}">
-					| {panel.city.name}
-				</f:if>
-			</span>
-			<h2>{panel.title}</h2>
+
 		</div>
 		<div class="box-content">
 			<f:render partial="Panel/Location" arguments="{panel:panel}" />
@@ -28,56 +36,54 @@
 			</f:comment>
 
 			<div class="panel-mainfunctions">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-6 sameheight">
-						<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
-						<f:if condition="{panel.votings}">
-							<f:then>
-								<f:if condition="{panel.votings -> f:count()} > 1">
-									<f:then>
-										<f:count>{panel.votings}</f:count> <f:translate key="panel.votings" />
-									</f:then>
-									<f:else>
-										<f:count>{panel.votings}</f:count> <f:translate key="panel.voting" />
-									</f:else>
-								</f:if>
-							</f:then>
-							<f:else>
-								<f:translate key="panel.votings.noVotings" />
-							</f:else>
-						</f:if>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-6 sameheight">
-						<f:if condition="{panel.panelInvitationAllowed}">
-						</f:if>
-						<f:if condition="{panel.panelInvitations}">
-							<f:then>
-								<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
-								<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
-							</f:then>
-							<f:else>
-								<f:if condition="{panel.panelInvitationAllowed}">
-									<f:then>
-										<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
-										<f:translate key="panel.panelInvitations.noInvitations" />
-									</f:then>
-									<f:else>
-										<f:translate key="panel.panelInvitations.notAllowed" arguments="{0: panel.city.kanton.name}" />
-									</f:else>
-								</f:if>
-							</f:else>
-						</f:if>
-					</div>
+				<div class="panel-functions">
+					<f:if condition="{panel.panelInvitationAllowed}">
+					</f:if>
+					<f:if condition="{panel.panelInvitations}">
+						<f:then>
+							<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
+							<f:render partial="Panel/Invitations" arguments="{panel:panel}" />
+						</f:then>
+						<f:else>
+							<f:if condition="{panel.panelInvitationAllowed}">
+								<f:then>
+									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
+									<f:translate key="panel.panelInvitations.noInvitations" />
+								</f:then>
+								<f:else>
+									<f:translate key="panel.panelInvitations.notAllowed" arguments="{0: panel.city.kanton.name}" />
+								</f:else>
+							</f:if>
+						</f:else>
+					</f:if>
+				</div>
+				<div class="panel-functions">
+					<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editVotings"><f:translate key="panel.actions.editVotings" /></a>
+					<f:if condition="{panel.votings}">
+						<f:then>
+							<f:if condition="{panel.votings -> f:count()} > 1">
+								<f:then>
+									<f:count>{panel.votings}</f:count> <f:translate key="panel.votings" />
+								</f:then>
+								<f:else>
+									<f:count>{panel.votings}</f:count> <f:translate key="panel.voting" />
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<f:translate key="panel.votings.noVotings" />
+						</f:else>
+					</f:if>
 				</div>
 			</div>
 
 			<ul class="item-toolbar">
 				<li>
-					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><i class="evicon-pencil-squared"></i><f:translate key="panel.actions.edit" /></a>
+					<a class="btn btn-primary" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="edit"><f:translate key="panel.actions.edit" /></a>
 				</li>
 				<f:comment>
 					<li>
-						<a class="btn btn-primary" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><i class="evicon-trash"></i><f:translate key="panel.actions.delete" /></a>
+						<a class="btn btn-primary" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="delete"><f:translate key="panel.actions.delete" /></a>
 						<div class="hidden ajaxobject-confirm">
 							<p><f:translate key="panel.actions.delete.confirmationText" /></p>
 							<button class="pull-left btn btn-primary button-cancel"><f:translate key="panel.actions.delete.cancel" /></button>
@@ -94,7 +100,7 @@
 				<f:if condition="{panel.votings}">
 					<li>
 						<f:link.action pageUid="{settings.presentationViewPid}" noCacheHash="true" controller="Panel" action="presentationViewParticipation" arguments="{panelId: panel.panelId}" class="btn btn-primary {f:if(condition:panel.currentState, then:'hasModal')}" target="_blank">
-							<i class="evicon-play-circled"></i><f:translate key="panel.actions.start" />
+							<f:translate key="panel.actions.start" />
 						</f:link.action>
 						<f:if condition="{panel.currentState}">
 							<f:if condition="{panel.currentState} == 'finishedPanel-0'">

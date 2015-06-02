@@ -594,6 +594,15 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
 				<source>PLZ/Ort</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.cityOnly">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.communityUser">
+				<source>Organisator</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
+				<source>Bemerkung</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
 				<source>Image</source>

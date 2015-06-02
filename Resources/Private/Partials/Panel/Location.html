@@ -1,14 +1,32 @@
 <div class="panel-location">
+	<strong>
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.cityOnly" />:
+	</strong>
 	<f:if condition="{panel.organization}">
 		{panel.organization},
 	</f:if>
-	<f:if condition="{panel.room}">
-		{panel.room},
-	</f:if>
+	<f:comment>
+		<f:if condition="{panel.room}">
+			{panel.room},
+		</f:if>
+	</f:comment>
 	<f:if condition="{panel.address}">
 		{panel.address},
 	</f:if>
 	<f:if condition="{panel.city}">
 		{panel.city.postalCode} {panel.city.name}
+	</f:if>
+	<br />
+	<strong>
+		<f:translate key="tx_easyvoteeducation_domain_model_panel.communityUser" />:
+	</strong>
+	{panel.communityUser.firstName} {panel.communityUser.lastName} | <a href="mailto:{panel.communityuser.email}">{panel.communityuser.email}</a>
+	<f:if condition="{panel.communityUser.telephone}"> | {panel.communityUser.telephone}</f:if>
+	<f:if condition="{panel.description}">
+		<br />
+		<strong>
+			<f:translate key="tx_easyvoteeducation_domain_model_panel.description" />:
+		</strong>
+		{panel.description}
 	</f:if>
 </div>

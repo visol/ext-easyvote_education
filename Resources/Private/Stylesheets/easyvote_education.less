@@ -16,6 +16,7 @@
 		}
 		.panel-location {
 			.clearfix();
+			margin-bottom: 10px;
 		}
 		.panel-id {
 			.clearfix();
@@ -194,27 +195,17 @@
 		padding-right: 0px;
 		margin-bottom: 15px;
 		width: 100%;
-		.row {
-			display: table-row;
-			.sameheight {
-				display: table-cell;
-				float: none;
-				padding: 15px;
-				background: lighten(@box-background, 5%);
-				vertical-align: top;
-				&:first-child {
-					border-right: 10px solid @box-background;
-				}
-				border-right: 5px solid @box-background;
-				&:last-child {
-					border-left: 5px solid @box-background;
-					border-right: 0;
-				}
-				a {
-					display: block;
-					width: 100%;
-					margin-bottom: 10px;
-				}
+		.panel-functions {
+			padding: 15px;
+			background: lighten(@box-background, 5%);
+			vertical-align: top;
+			a {
+				display: block;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			&:first-child {
+				margin-bottom: 10px;
 			}
 		}
 	}
