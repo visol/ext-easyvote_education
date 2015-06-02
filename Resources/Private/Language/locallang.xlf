@@ -60,6 +60,9 @@
 			<trans-unit id="panel.new.create">
 				<source>Podium anlegen</source>
 			</trans-unit>
+			<trans-unit id="panel.new.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
 
 			<trans-unit id="panel.edit.title">
 				<source>Podium bearbeiten</source>
@@ -584,7 +587,9 @@
 				<source>Ungefähre Anzahl der Teilnehmenden</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
-				<source>Ich akzeptiere die Nutzungsbedingungen.</source>
+				<source><![CDATA[
+					Ich akzeptiere die <a href="%s" target="_blank">Nutzungsbedingungen und Datenschutzrichtlinien</a>.
+				]]></source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
 				<source>PLZ/Ort</source>

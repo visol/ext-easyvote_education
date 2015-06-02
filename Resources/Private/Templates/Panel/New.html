@@ -9,8 +9,9 @@
 	<f:render partial="FormErrors" arguments="{object:Panel}" />
 
 	<f:form action="create" id="newPanel" name="newPanel" object="{newPanel}">
-	<f:render partial="Panel/FormFields" />
-		<button type="submit" class="btn btn-primary"><f:translate key="panel.new.create" /></button>
+		<f:render partial="Panel/FormFields" />
+		<a class="btn btn-primary" data-role="generalaction" data-actionname="managePanels"><f:translate key="panel.new.cancel" /></a>
+		<button type="submit" class="btn btn-primary pull-right"><f:translate key="panel.new.create" /></button>
 	</f:form>
 
 </div>
