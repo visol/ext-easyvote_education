@@ -234,6 +234,7 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 	 * This action initializes the function and calls listForPartyByDemandAction through AJAX
 	 */
 	public function manageInvitationsAction() {
+		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}
 
 	/**
@@ -261,6 +262,9 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 
 			$filteredInvitations = $this->panelInvitationRepository->findByAllowedPartyAndDemand($party, $demand);
 			$this->view->assign('filteredInvitations', $filteredInvitations);
+
+			$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
+
 		} else {
 			// Not logged in or not a party administrator
 			// Does not need to be handled because it's never called if the parent view

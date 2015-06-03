@@ -443,6 +443,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 		/** @var Panel $panel */
 		$panel = $this->panelRepository->findOneByPanelId($panelId);
 		$this->view->assign('panel', $panel);
+		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}
 
 	/**
@@ -489,6 +490,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				$this->resetPanel($panel);
 			}
 			$this->view->assign('panel', $panel);
+			$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 		} else {
 			// No panel is assigned to Fluid, so a condition in Fluid output an access denied error
 			$this->response->setStatus(403);
@@ -519,6 +521,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 * Load Manage Panels functionality for teachers
 	 */
 	public function managePanelsStartupAction() {
+		// Language is used for requests with EXT:routing
+		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}
 
 	/**
@@ -528,7 +532,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 	 */
 	public function managePanelsAction() {
 		if ($communityUser = $this->getLoggedInUser()) {
-			$this->view->assign('panels', $this->panelRepository->findByCommunityUser($communityUser));
+			$panels = $this->panelRepository->findByCommunityUser($communityUser);
+			$this->view->assign('panels', $panels);
 			return json_encode(array('content' => $this->view->render()));
 		} else {
 			$reason = LocalizationUtility::translate('ajax.status.403', 'easyvote_education');

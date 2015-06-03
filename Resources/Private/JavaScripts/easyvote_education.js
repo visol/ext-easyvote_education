@@ -336,7 +336,7 @@ var EasyvoteEducation = {
 		} else {
 			var $container = $('#easyvoteeducation-content');
 		}
-		var actionUri = '/routing/votings/' + actionArguments;
+		var actionUri = '/routing/votings/' + actionArguments + '?L=' + EasyvoteLanguage;
 		EasyvoteEducation.loadAjaxContent(actionUri).done(function(data) {
 			jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
 			if (jsonData.hasOwnProperty('content')) {
@@ -563,7 +563,7 @@ var EasyvoteEducation = {
 				multiple: true,
 				//maximumSelectionSize: 2,
 				ajax: {
-					url: '/routing/getavailablepartiesforpanel/' + panelUid,
+					url: '/routing/getavailablepartiesforpanel/' + panelUid + '?L=' + EasyvoteLanguage,
 					dataType: 'json',
 					data: function (term, page) {
 						return {
@@ -617,7 +617,7 @@ var EasyvoteEducation = {
 	 * @param openPanelInvitation
 	 */
 	getPanelInvitations: function(openPanelInvitation) {
-		EasyvoteGeneral.getData('/routing/panelinvitations').done(function(data) {
+		EasyvoteGeneral.getData('/routing/panelinvitations?L=' + EasyvoteLanguage).done(function(data) {
 			$('.panel-invitations').html(data);
 			if (openPanelInvitation) {
 				var elementId = '#panelInvitation-item-' + openPanelInvitation;

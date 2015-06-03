@@ -184,4 +184,13 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		return array_key_exists($pluginNamespace, $data) ? $data[$pluginNamespace] : NULL;
 	}
 
+	/**
+	 * Returns an instance of the Frontend object.
+	 *
+	 * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+	 */
+	protected function getFrontendObject() {
+		return $GLOBALS['TSFE'];
+	}
+
 }
