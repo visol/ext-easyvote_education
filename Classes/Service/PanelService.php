@@ -66,4 +66,19 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 		return TRUE;
 	}
 
+	/**
+	 * @param Panel $panel
+	 * @return boolean
+	 */
+	public function areAllPanelInvitationsAccepted(Panel $panel) {
+		foreach ($panel->getPanelInvitations() as $panelInvitation) {
+			/** @var $panelInvitation \Visol\EasyvoteEducation\Domain\Model\PanelInvitation */
+			if (is_null($panelInvitation->getAttendingCommunityUser())) {
+				// The first PanelInvitation without an attending CommunityUser makes this false
+				return FALSE;
+			}
+		}
+		return TRUE;
+	}
+
 }

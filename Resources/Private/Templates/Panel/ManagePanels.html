@@ -7,7 +7,21 @@
 		<div class="box-teaser">
 			<div class="row">
 				<div class="col-xs-3 col-md-3">
-					[TODO Icon]
+					<f:if condition="{panel.panelInvitationsSent}">
+						<f:then>
+							<f:if condition="{panel.allPanelInvitationsAccepted}">
+								<f:then>
+									<f:render partial="ActionIcons/Ok" />
+								</f:then>
+								<f:else>
+									<f:render partial="ActionIcons/Pending" />
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<f:render partial="ActionIcons/Panel" />
+						</f:else>
+					</f:if>
 				</div>
 				<div class="col-xs-9 col-md-9">
 					<div class="actions">

@@ -216,6 +216,12 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $panelInvitationAllowed = FALSE;
 
 	/**
+	 * @var boolean
+	 * @transient
+	 */
+	protected $allPanelInvitationsAccepted = FALSE;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -649,6 +655,13 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function isPanelInvitationAllowed() {
 		return $this->panelService->isPanelInvitationAllowedForPanel($this);
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isAllPanelInvitationsAccepted() {
+		return $this->panelService->areAllPanelInvitationsAccepted($this);
 	}
 
 }
