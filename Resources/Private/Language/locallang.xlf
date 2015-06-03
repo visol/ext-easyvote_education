@@ -7,13 +7,13 @@
 				<source>Der Zugriff wurde verweigert.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelController.executeAction">
-				<source>Der Zugriff wurde verweigert. Ein Podium kann nur vom Ersteller/von der Erstellerin durchgeführt werden.</source>
+				<source>Der Zugriff wurde verweigert. Ein Polittalk kann nur vom Ersteller/von der Erstellerin durchgeführt werden.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelController.editPanelInvitationsAction">
 				<source>Der Zugriff wurde verweigert. In diesem Kanton können derzeit keine PolitikerInnen eingeladen werden.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelController.sendPanelInvitationsAction">
-				<source>Der Zugriff wurde verweigert. Die Podiums-Einladungen können nur einmal versendet werden.</source>
+				<source>Der Zugriff wurde verweigert. Die Polittalk-Einladungen können nur einmal versendet werden.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.404.panelController.votingStepAction">
 				<source>Die aufgerufene Funktion existiert nicht.</source>
@@ -25,63 +25,63 @@
 				<source>Unerwarteter Fehler: Hinzufügen dieser Partei ist nicht möglich.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.createAction.noMoreInvitations">
-				<source>Versuch, mehr Podiums-Einladungen als erlaubt anzulegen.</source>
+				<source>Versuch, mehr PolitikerInnen-Einladungen als erlaubt zu verschicken.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.notAPolitician">
 				<source>Nur PolitikerInnen können an Podien teilnehmen.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.wrongParty">
-				<source>Die Podiumseinladung ist nicht an deine Partei gerichtet..</source>
+				<source>Die Polittalk-Einladung ist nicht an deine Partei gerichtet.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.otherPoliticianAttending">
-				<source>Zwischenzeitlich hat ein anderer Politiker/eine andere Politikerin für dieses Podium zugesagt.</source>
+				<source>Zwischenzeitlich hat ein anderer Politiker/eine andere Politikerin für diesen Polittalk zugesagt.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.manageInvitations">
-				<source>Zugriff verweigert. Podiumseinladungen können nur von einem Partei-Administrator verwaltet werden.</source>
+				<source>Zugriff verweigert. Polittalk-Einladungen können nur von einem Partei-Administrator verwaltet werden.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.400.panelInvitationController.removeUserAction.noUserSubmitted">
 				<source>Unerwarteter Fehler: Es wurde kein Benutzer zum Hinzufügen übergeben.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.removeUserAction.wrongParty">
-				<source>Du kannst keine/n PolitikerIn einer anderen Partei vom Podium entfernen.</source>
+				<source>Du kannst keine/n PolitikerIn einer anderen Partei vom Polittalk entfernen.</source>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.assignUserAction.wrongParty">
-				<source>Du kannst keine/n PolitikerIn einer anderen Partei zu einem Podium hinzufügen.</source>
+				<source>Du kannst keine/n PolitikerIn einer anderen Partei zum Polittalk hinzufügen.</source>
 			</trans-unit>
 
 
 			<trans-unit id="panel.managePanels.managePanels">
-				<source>Podien verwalten</source>
+				<source>Polittalk verwalten</source>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.newPanel">
-				<source>Neues Podium erstellen</source>
+				<source>Neuer Polittalk erstellen</source>
 			</trans-unit>
 
 			<trans-unit id="panel.new.title">
-				<source>Neues Podium</source>
+				<source>Neuer Polittalk</source>
 			</trans-unit>
 			<trans-unit id="panel.new.create">
-				<source>Podium anlegen</source>
+				<source>Polittalk anlegen</source>
 			</trans-unit>
 			<trans-unit id="panel.new.cancel">
 				<source>abbrechen</source>
 			</trans-unit>
 
 			<trans-unit id="panel.edit.title">
-				<source>Podium bearbeiten</source>
+				<source>Polittalk bearbeiten</source>
 			</trans-unit>
 			<trans-unit id="panel.edit.update">
-				<source>Podium speichern</source>
+				<source>Polittalk speichern</source>
 			</trans-unit>
 
 			<trans-unit id="panel.time.oClock">
 				<source>Uhr</source>
 			</trans-unit>
 			<trans-unit id="panel.panelId">
-				<source>Voting-ID</source>
+				<source>Polittalk-ID</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.create.success">
-				<source>Das Podium "%s" wurde erstellt.</source>
+				<source>Der Polittalk "%s" wurde erstellt.</source>
 			</trans-unit>
 			<trans-unit id="panel.votings">
 				<source>Voting</source>
@@ -96,16 +96,16 @@
 				<source>Politiker einladen</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.edit">
-				<source>Podium bearbeiten</source>
+				<source>Polittalk bearbeiten</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.update.success">
-				<source>Das Podium "%s" wurde aktualisiert.</source>
+				<source>Der Polittalk "%s" wurde aktualisiert.</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.delete">
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.delete.confirmationText">
-				<source>Wollen Sie dieses Podium und dessen Abstimmungen löschen?</source>
+				<source>Wollen Sie diesen Polittalk und dessen Voting löschen?</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.delete.cancel">
 				<source>abbrechen</source>
@@ -114,16 +114,16 @@
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.delete.success">
-				<source>Das Podium "%s" wurde gelöscht.</source>
+				<source>Der Polittalk "%s" wurde gelöscht.</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.duplicate">
 				<source>duplizieren</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.start">
-				<source>Podium starten</source>
+				<source>Präsentation starten</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.duplicate.success">
-				<source>Das Podium "%s" wurde dupliziert.</source>
+				<source>Der Polittalk "%s" wurde dupliziert.</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.duplicate.copyOf">
 				<source>Kopie von</source>
@@ -139,11 +139,7 @@
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<source><![CDATA[
-					Es ist derzeit nicht möglich, Politiker zu einem Podium im Kanton %s einzuladen, da entweder bereits zu viele
-					Podien organisiert wurden oder der Polittalk ausserhalb der Zeitspanne 1. August bis 18. Oktober 2015 liegt.
-					Bitte kontaktiere <a style="display: inline" href=mailto:lea.thommen@dsj.ch">Lea Thommen</a>
-					für weitere Informationen oder falls du kontaktiert werden möchtest, wenn es wieder möglich ist,
-					Politiker einzuladen.
+					Zur Zeit können keine weitere PolitikerInnen in deinem Kanton eingeladen werden.
 				]]></source>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.or">
@@ -160,7 +156,7 @@
 			</trans-unit>
 
 			<trans-unit id="panel.execute.title">
-				<source>Podium</source>
+				<source>Polittalk</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.presentationViewTitle">
 				<source>Präsentationsansicht</source>
@@ -181,7 +177,7 @@
 			<trans-unit id="panel.execute.guestViewIntroduction">
 				<source>
 					Die Teilnahmeansicht wird von den Teilnehmern des Podiums aufgerufen, idealerweise auf einem Mobiltelefon. Sie ermöglicht die Anzeige der
-					Fragen und Teilnahme an Abstimmungen. Der Podiums-Code bzw. ein QR-Code zum Direktaufruf der Teilnahmeansicht wird jetzt in der
+					Fragen und Teilnahme an Votings. Der Polittalk-ID bzw. ein QR-Code zum Direktaufruf der Teilnahmeansicht wird jetzt in der
 					Präsentationsansicht angezeigt.
 				</source>
 			</trans-unit>
@@ -189,22 +185,22 @@
 				<source>Teilnahmeansicht</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.panelStartedBeforeInformation">
-				<source>Dieses Podium wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder das Podium nochmals von vorne starten.</source>
+				<source>Dieser Polittalk wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder den Polittalk nochmals von vorne starten.</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.panelFinishedBeforeInformation">
-				<source>Dieses Podium wurde bereits zuvor komplett durchgeführt. Sie können das Podium erneut durchführen, dabei gehen aber die Stimmen der bisherigen Durchführung unwiderruflich verloren.</source>
+				<source>Dieser Polittalk wurde bereits zuvor komplett durchgeführt. Sie können den Polittalk erneut durchführen, dabei gehen aber die Stimmen der bisherigen Durchführung unwiderruflich verloren.</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.startPanelButtonText">
-				<source>Podium starten</source>
+				<source>Polittalk starten</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.cancel">
 				<source>abbrechen</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.restartPanelButtonText">
-				<source>Podium neu starten</source>
+				<source>Präsentation neu starten</source>
 			</trans-unit>
 			<trans-unit id="panel.execute.continuePanelButtonText">
-				<source>Podium fortsetzen</source>
+				<source>Präsentation fortsetzen</source>
 			</trans-unit>
 			<trans-unit id="panel.organizer">
 				<source>Veranstalter</source>
@@ -240,10 +236,10 @@
 				<source>Danke für deine Stimme!</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.finishedPanelThanks">
-				<source>Das Podium wurde beendet. Vielen Dank für deine Teilnahme!</source>
+				<source>Der Polittalk wurde beendet. Vielen Dank für deine Teilnahme!</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.endOfPanelTitle">
-				<source>Ende des Podiums</source>
+				<source>Ende des Polittalks</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.endOfPanelText">
 				<source>Vielen Dank für deine Teilnahme!</source>
@@ -259,28 +255,28 @@
 			</trans-unit>
 
 			<trans-unit id="panel.guestView.title">
-				<source>An Podium teilnehmen</source>
+				<source>An Polittalk teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="panel.guestView.idLabel">
-				<source>Podiums-ID</source>
+				<source>Polittalk-ID</source>
 			</trans-unit>
 			<trans-unit id="panel.guestView.participateButtonText">
 				<source>Teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="panel.guestView.panelNotFound">
-				<source>Podium wurde nicht gefunden.</source>
+				<source>Polittalk wurde nicht gefunden.</source>
 			</trans-unit>
 			<trans-unit id="panel.guestView.participationInformation">
 				<source>Diese Ansicht wird automatisch aktualisiert.</source>
 			</trans-unit>
 			<trans-unit id="panel.presentationView.title">
-				<source>Podium durchführen</source>
+				<source>Polittalk durchführen</source>
 			</trans-unit>
 			<trans-unit id="panel.presentationView.participationLink">
 				<source>Link zur Teilnahme:</source>
 			</trans-unit>
 			<trans-unit id="panel.presentationView.panelId">
-				<source>Podiums-ID:</source>
+				<source>Polittalk-ID:</source>
 			</trans-unit>
 			<trans-unit id="panel.presentationView.startButtonText">
 				<source>Durchführen</source>
@@ -419,7 +415,7 @@
 			</trans-unit>
 
 			<trans-unit id="panelInvitation.panelInvitations">
-				<source>Podiums-Einladungen</source>
+				<source>Polittalk-Einladungen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.politician">
 				<source>Teilnehmende/r Politiker/in</source>
@@ -428,25 +424,25 @@
 				<source>Sie können (aufgrund der erwarteten Teilnehmerzahl) maximal %s PolitikerInnen einladen.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.mine">
-				<source>Du nimmst an diesem Podium teil.</source>
+				<source>Du nimmst an diesem Polittalk teil.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore">
-				<source>Dieses Podium ignorieren.</source>
+				<source>Diesen Polittalk ignorieren.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore.confirmationText">
-				<source>Wenn du an diesem Podium nicht teilnehmen kannst und keine weiteren Benachrichtigungen erhalten möchtest, kannst du das Podium ignorieren.</source>
+				<source>Wenn du an diesem Polittalk nicht teilnehmen kannst und keine weiteren Benachrichtigungen erhalten möchtest, kannst du den Polittalk ignorieren.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore.cancel">
 				<source>abbrechen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.ignore.confirm">
-				<source>Podium ignorieren</source>
+				<source>Polittalk ignorieren</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.attend">
 				<source>Teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.attend.confirmationText">
-				<source>Bitte klicke auf "Teilnahme bestätigen", um deine Teilnahme am Podium verbindlich zu bestätigen.</source>
+				<source>Bitte klicke auf "Teilnahme bestätigen", um deine Teilnahme am Polittalk verbindlich zu bestätigen.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.attend.cancel">
 				<source>abbrechen</source>
@@ -462,19 +458,19 @@
 				<source>Einleitungstext</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.panelInvitation">
-				<source>Podiums-Einladung</source>
+				<source>Polittalk-Einladung</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.allowedParties">
 				<source>Mögliche Parteien</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.new">
-				<source>Podiums-Einladung hinzufügen</source>
+				<source>Polittalk-Einladung hinzufügen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.delete">
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.delete.confirmationText">
-				<source>Wollen Sie diese Podiums-Einladung löschen?</source>
+				<source>Wollen Sie diese Polittalk-Einladung löschen?</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.delete.cancel">
 				<source>abbrechen</source>
@@ -483,7 +479,7 @@
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.delete.success">
-				<source>Die Podiumseinladung wurde gelöscht.</source>
+				<source>Die Polittalk-Einladung wurde gelöscht.</source>
 			</trans-unit>
 
 			<trans-unit id="panelInvitation.actions.cancel">
@@ -504,17 +500,17 @@
 
 
 			<trans-unit id="panelParticipations.title">
-				<source>Podien</source>
+				<source>Polittalk</source>
 			</trans-unit>
 			<trans-unit id="panelParticipations.description">
-				<source>Nimm an Podien teil, die in deinem Kanton stattfinden.</source>
+				<source>Nimm am Polittalk teil, die in deinem Kanton stattfinden.</source>
 			</trans-unit>
 
 			<trans-unit id="panelInvitations.title">
-				<source>Podien</source>
+				<source>Polittalk</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.description">
-				<source>Teile Kandidatinnen und Kandidaten deiner Partei in Podien ein.</source>
+				<source>Teile KandidatInnen deiner Partei in Polittalks ein.</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filteredView">
 				<source>Gefilterte Ansicht (%s Resultate)</source>
@@ -523,7 +519,7 @@
 				<source>Filter entfernen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.title">
-				<source>Podien finden</source>
+				<source>Polittalks finden</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.search">
 				<source>Suche</source>
@@ -535,13 +531,13 @@
 				<source>Status</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.status.active">
-				<source>aktive Podien</source>
+				<source>aktive Polittalks</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.status.pending">
-				<source>zu bearbeitende Podien</source>
+				<source>zu bearbeitende Polittalks</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.status.archived">
-				<source>vergangene Podien</source>
+				<source>vergangene Polittalks</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.filter.submit">
 				<source>Filtern</source>
@@ -559,7 +555,7 @@
 				<source>%1$s %2$s entfernen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.information">
-				<source>Bist du sicher, dass du %1$s %2$s von diesem Podium entfernen möchtest?</source>
+				<source>Bist du sicher, dass du %1$s %2$s von diesen Polittalk entfernen möchtest?</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.cancel">
 				<source>abbrechen</source>
@@ -571,7 +567,7 @@
 				<source>hinzufügen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.information">
-				<source>Bist du sicher, dass du diese Kandidatin bzw. diesen Kandidaten zum Podium hinzufügen möchtest?</source>
+				<source>Bist du sicher, dass du diese Politikerin bzw. diesen Politiker zum Polittalk hinzufügen möchtest?</source>
 			</trans-unit>
 			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.cancel">
 				<source>abbrechen</source>
@@ -584,7 +580,7 @@
 				<source>Thema</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
-				<source>Beschreibung</source>
+				<source>Bemerkung</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
 				<source>Datum</source>
@@ -615,7 +611,7 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
 				<source><![CDATA[
-					Ich akzeptiere die <a href="%s" target="_blank">Nutzungsbedingungen und Datenschutzrichtlinien</a>.
+					Ich akzeptiere die <a href="%s" target="_blank">Nutzungsbedingungen</a>.
 				]]></source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
@@ -659,7 +655,6 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
 				<source>Voting Options</source>
 			</trans-unit>
-
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption">
 				<source>Voting Option</source>
