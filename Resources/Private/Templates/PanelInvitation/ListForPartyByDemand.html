@@ -1,15 +1,11 @@
-<div class="content-box">
-	<h2><f:translate key="panelInvitations.title" /></h2>
-	<p><f:translate key="panelInvitations.description"  /></p>
-	<f:comment>
-	<f:if condition="{pendingMembers}">
-		<p>
-			<f:translate key="party.numberOfPendingMembers" arguments="{0: '{pendingMembers -> f:count()}'}" /><br />
-			<button class="btn btn-primary btn-sm" type="button" id="setPendingMembersFilter"><f:translate key="party.pendingMembers.filter" /></button>
-		</p>
- 	</f:if>
-	</f:comment>
-</div>
+<div class="easyvote-education">
+
+<f:comment>
+	<div class="content-box">
+		<h2><f:translate key="panelInvitations.title" /></h2>
+		<p><f:translate key="panelInvitations.description"  /></p>
+	</div>
+</f:comment>
 
 <f:if condition="{allInvitations -> f:count()} > {filteredInvitations -> f:count()}">
 	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelPanelInvitationsFilter"><f:translate key="panelInvitations.filteredView" arguments="{0: '{filteredInvitations -> f:count()}'}" /> | <f:translate key="panelInvitations.cancelFilter" /></button>
@@ -21,30 +17,35 @@
 		<f:for each="{filteredInvitations}" as="panelInvitation">
 			<div class="content-box content-box-expandable" id="panelInvitation-item-{panelInvitation.uid}">
 				<div class="box-teaser">
-					<div class="actions">
-						<f:comment>
-						<f:if condition="{member.pendingPolitician}">
-							<div class="action status">
-								<i class="evicon-spin animate-spin" title="{f:translate(key:'party.member.pending')}"></i>
+					<div class="row">
+						<div class="col-xs-3 col-md-3">
+							<f:if condition="{panelInvitation.attendingCommunityUser}">
+								<f:then>
+									<f:render partial="ActionIcons/Ok" />
+								</f:then>
+								<f:else>
+									<f:render partial="ActionIcons/Pending" />
+								</f:else>
+							</f:if>
+						</div>
+						<div class="col-xs-9 col-md-9">
+							<div class="actions">
+								<div class="action toggle handle">
+									<i class="evicon-down-open"></i>
+								</div>
 							</div>
-						</f:if>
-						</f:comment>
-						<div class="action toggle handle">
-							<i class="evicon-down-open"></i>
+							<h2>{panelInvitation.panel.title}</h2>
+							<span>
+								<f:if condition="{panelInvitation.panel.date}">
+									<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
+								</f:if>
+								<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
+								<f:if condition="{panelInvitation.panel.city}">
+									| {panelInvitation.panel.city.name}
+								</f:if>
+							</span>
 						</div>
 					</div>
-					<span>
-						<f:if condition="{panelInvitation.panel.date}">
-							<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
-						</f:if>
-						<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
-						<f:if condition="{panelInvitation.panel.city}">
-							| {panelInvitation.panel.city.name}
-						</f:if>
-					</span>
-					<h2>
-						{panelInvitation.panel.title}
-					</h2>
 				</div>
 				<div class="box-content">
 					<f:render partial="Panel/Location" arguments="{panel:panelInvitation.panel}" />
@@ -103,3 +104,5 @@
 		EasyvoteEducation.bindPartyMemberSelection();
 	})
 </script>
+
+</div>
