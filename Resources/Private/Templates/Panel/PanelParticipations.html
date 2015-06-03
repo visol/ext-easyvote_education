@@ -1,51 +1,46 @@
-<div class="content-box">
-	<h2><f:translate key="panelParticipations.title" /></h2>
-	<p><f:translate key="panelParticipations.description"  /></p>
-</div>
+<f:comment>
+	<div class="content-box">
+		<h2><f:translate key="panelParticipations.title" /></h2>
+		<p><f:translate key="panelParticipations.description"  /></p>
+	</div>
+</f:comment>
 
 <f:for each="{panelInvitations}" as="panelInvitation">
 	<div class="panelInvitation-item panelInvitation-item-{panelInvitation.uid} content-box content-box-expandable">
 		<div class="box-teaser">
-			<div class="actions">
-				<div class="action">
+			<div class="row">
+				<div class="col-xs-3 col-md-3">
 					<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
 						<f:then>
-							<i class="evicon-profil hasTooltip"></i>
-							<div class="hidden">
-								{f:translate(key: 'panelInvitation.mine')}
-							</div>
-
+							<f:render partial="ActionIcons/Ok" />
 						</f:then>
 						<f:else>
-							<a data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="ignore"><i class="evicon-cancel hasTooltip"></i><div class="hidden">{f:translate(key: 'panelInvitation.actions.ignore')}</div></a>
-							<div class="hidden ajaxobject-confirm">
-								<p><f:translate key="panelInvitation.actions.ignore.confirmationText" /></p>
-								<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.ignore.cancel" /></button>
-								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.ignore.confirm" /></button>
-							</div>
+							<f:render partial="ActionIcons/Todo" />
 						</f:else>
 					</f:if>
 
 				</div>
-				<div class="action toggle handle">
-					<i class="evicon-down-open"></i>
+				<div class="col-xs-9 col-md-9">
+					<div class="actions">
+						<div class="action toggle handle">
+							<i class="evicon-down-open"></i>
+						</div>
+					</div>
+					<h2>{panelInvitation.panel.title}</h2>
+					<span>
+						<f:if condition="{panelInvitation.panel.date}">
+							<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
+						</f:if>
+						<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
+						<f:if condition="{panelInvitation.panel.city}">
+							| {panelInvitation.panel.city.name}
+						</f:if>
+					</span>
 				</div>
 			</div>
-			<span>
-				<f:if condition="{panelInvitation.panel.date}">
-					<f:format.date format="%A, %e. %B %Y">{panelInvitation.panel.date}</f:format.date>
-				</f:if>
-				<f:render partial="Panel/ExecutionTime" arguments="{panel:panelInvitation.panel, leadingCharacter: '|'}" />
-				<f:if condition="{panelInvitation.panel.city}">
-					| {panelInvitation.panel.city.name}
-				</f:if>
-			</span>
-			<h2>{panelInvitation.panel.title}</h2>
 		</div>
 		<div class="box-content">
 			<f:render partial="Panel/Location" arguments="{panel:panelInvitation.panel}" />
-			<f:render partial="Panel/Organizer" arguments="{panel:panelInvitation.panel}" />
-
 			<h3><f:translate key="panel.participants" /></h3>
 			<f:render partial="Panel/Invitations" arguments="{panel:panelInvitation.panel, party:communityUser.party}" />
 			<ul class="item-toolbar">
@@ -63,6 +58,15 @@
 								<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.attend.cancel" /></button>
 								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.attend.confirm" /></button>
 							</div>
+							<f:if condition="{panelInvitation.attendingCommunityUser} != {communityUser}">
+								<br />
+								<a data-role="genericobjectaction" data-pluginprefix="tx_easyvoteeducation_panelparticipations" data-confirm="true" data-object="panelInvitation" data-uid="{panelInvitation.uid}" data-actionname="ignore">{f:translate(key: 'panelInvitation.actions.ignore')}</a>
+								<div class="hidden ajaxobject-confirm">
+									<p><f:translate key="panelInvitation.actions.ignore.confirmationText" /></p>
+									<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.ignore.cancel" /></button>
+									<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.ignore.confirm" /></button>
+								</div>
+							</f:if>
 						</li>
 					</f:else>
 				</f:if>

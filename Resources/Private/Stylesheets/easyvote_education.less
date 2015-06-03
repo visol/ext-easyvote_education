@@ -25,6 +25,41 @@
 				font-family: "monotype", "courier new", sans-serif;
 			}
 		}
+		.action-icon {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 100%;
+			.icon-centered {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				text-align: center;
+				.icon-center {
+					display: inline-block;
+					vertical-align: middle;
+					height: 100%;
+				}
+				i {
+					display: inline-block;
+					vertical-align: middle;
+					font-size: 60px;
+					color: white;
+					margin-left: -5px;
+				}
+			}
+		}
+		.action-icon-todo {
+			background-color: @pink;
+		}
+		.action-icon-pending {
+			background-color: @orange;
+		}
+		.action-icon-ok {
+			background-color: @light-blue;
+		}
 		.box-content {
 			.item-toolbar {
 				.clearfix();
@@ -473,4 +508,13 @@ button.newvoting-button {
 			}
 		}
 	}
+	.action-icon {
+		.icon-centered {
+			i {
+				font-size: 30px !important;
+				margin-left: -3px !important;
+			}
+		}
+	}
+
 }
