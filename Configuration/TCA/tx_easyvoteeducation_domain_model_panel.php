@@ -12,9 +12,9 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 		'cruser_id' => 'cruser_id',
 		'dividers2tabs' => TRUE,
 
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
+//		'languageField' => 'sys_language_uid',
+//		'transOrigPointerField' => 'l10n_parent',
+//		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',

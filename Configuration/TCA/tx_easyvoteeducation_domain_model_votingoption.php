@@ -13,9 +13,9 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_votingoption'] = array(
 		'dividers2tabs' => TRUE,
 		'sortby' => 'sorting',
 
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
+//		'languageField' => 'sys_language_uid',
+//		'transOrigPointerField' => 'l10n_parent',
+//		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
