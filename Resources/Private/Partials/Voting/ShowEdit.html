@@ -1,24 +1,31 @@
 <div class="box-header">
-	<div class="actions">
-		<div class="action">
-			<a class="action-moveup" data-role="movegenericobject" data-direction="up" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-up hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.moveup')}</div></a>
+	<div class="row">
+		<div class="col-xs-3 col-md-3">
+			<f:render partial="ActionIcons/Voting" />
 		</div>
-		<div class="action">
-			<a class="action-movedown" data-role="movegenericobject" data-direction="down" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-down hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.movedown')}</div></a>
-		</div>
-		<div class="action">
-			<a data-role="genericobjectaction" data-confirm="true" data-object="voting" data-uid="{voting.uid}" data-actionname="deleteVoting"><i class="evicon-trash hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.delete')}</div></a>
-			<div class="hidden ajaxobject-confirm">
-				<p><f:translate key="voting.actions.delete.confirmationText" /></p>
-				<button class="pull-left btn btn-primary button-cancel"><f:translate key="voting.actions.delete.cancel" /></button>
-				<button class="pull-right btn btn-primary button-returntrue"><f:translate key="voting.actions.delete.confirm" /></button>
+		<div class="col-xs-9 col-md-9">
+			<div class="actions">
+				<div class="action">
+					<a class="action-moveup" data-role="movegenericobject" data-direction="up" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-up hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.moveup')}</div></a>
+				</div>
+				<div class="action">
+					<a class="action-movedown" data-role="movegenericobject" data-direction="down" data-object="voting" data-uid="{voting.uid}" data-parentobject="panel" data-parentuid="{voting.panel.uid}" data-actionname="sortVotings"><i class="evicon-angle-double-down hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.movedown')}</div></a>
+				</div>
+				<div class="action">
+					<a data-role="genericobjectaction" data-confirm="true" data-object="voting" data-uid="{voting.uid}" data-actionname="deleteVoting"><i class="evicon-trash hasTooltip"></i><div class="hidden">{f:translate(key: 'voting.actions.delete')}</div></a>
+					<div class="hidden ajaxobject-confirm">
+						<p><f:translate key="voting.actions.delete.confirmationText" /></p>
+						<button class="pull-left btn btn-primary button-cancel"><f:translate key="voting.actions.delete.cancel" /></button>
+						<button class="pull-right btn btn-primary button-returntrue"><f:translate key="voting.actions.delete.confirm" /></button>
+					</div>
+				</div>
+				<div class="action toggle handle">
+					<i class="evicon-down-open"></i>
+				</div>
 			</div>
-		</div>
-		<div class="action toggle handle">
-			<i class="evicon-down-open"></i>
+			<h2>{voting.title}</h2>
 		</div>
 	</div>
-	<h2>{voting.title}</h2>
 </div>
 <div class="box-content">
 	<f:form class="editVoting" action="update" name="voting" object="{voting}" additionalAttributes="{data-objectname: 'voting', data-objectuid: '{voting.uid}'}">
