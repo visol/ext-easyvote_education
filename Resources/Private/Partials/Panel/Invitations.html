@@ -6,14 +6,21 @@
 					<f:then>
 						<li><f:translate key="panel.panelInvitations.attendingTitle" />:
 							<strong>
-								{panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
-								{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+								{panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName} ({panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}) |
+								<f:link.page pageUid="mailto:{panelInvitation.attendingCommunityUser.email}">{panelInvitation.attendingCommunityUser.email}</f:link.page>
+								<f:if condition="{panelInvitation.attendingCommunityUser.telephone}">
+									| {panelInvitation.attendingCommunityUser.telephone}
+								</f:if>
 							</strong>
 						</li>
 					</f:then>
 					<f:else>
-						<li><f:translate key="panel.panelInvitations.attendingTitle" />: {panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName},
-							{panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}
+						<li><f:translate key="panel.panelInvitations.attendingTitle" />:
+							{panelInvitation.attendingCommunityUser.firstName} {panelInvitation.attendingCommunityUser.lastName} ({panelInvitation.attendingCommunityUser.party.shortTitle}, {panelInvitation.attendingCommunityUser.citySelection.name}) |
+							<f:link.page pageUid="mailto:{panelInvitation.attendingCommunityUser.email}">{panelInvitation.attendingCommunityUser.email}</f:link.page>
+							<f:if condition="{panelInvitation.attendingCommunityUser.telephone}">
+								| {panelInvitation.attendingCommunityUser.telephone}
+							</f:if>
 						</li>
 					</f:else>
 				</f:if>
