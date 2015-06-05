@@ -573,7 +573,7 @@
 			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
-				<target>Tema</target>
+				<target>Titolo</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
 				<target>Osservazione</target>
@@ -588,13 +588,13 @@
 				<target>Ora della fine</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
-				<target>Luogo dell’evento</target>
+				<target>Sala (numero)</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.address">
 				<target>Indirizzo</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.organization">
-				<target>Scuola/Istituto</target>
+				<target>Nome dell’istituto</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.class">
 				<target>Classe</target>

@@ -134,8 +134,8 @@
 			<trans-unit id="panel.panelInvitations.pendingTitle">
 				<source>Offen</source>
 			</trans-unit>
-			<trans-unit id="panel.panelInvitations.noInvitations">
-				<source>Es wurden noch keine Politiker eingeladen.</source>
+			<trans-unit id="panel.panelInvitations.noInvitationsOrNotSent">
+				<source>Es wurden noch keine Einladungen versendet.</source>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<source><![CDATA[
@@ -577,7 +577,7 @@
 			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
-				<source>Thema</source>
+				<source>Titel</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
 				<source>Bemerkung</source>
@@ -592,13 +592,13 @@
 				<source>Zeit Ende</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
-				<source>Veranstaltungsort</source>
+				<source>Raum (Nummer)</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.address">
 				<source>Adresse</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.organization">
-				<source>Schule/Institution</source>
+				<source>Name der Schule</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.class">
 				<source>Klasse</source>
