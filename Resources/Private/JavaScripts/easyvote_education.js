@@ -260,6 +260,12 @@ $(function() {
 		$($this.attr('data-target')).trigger('click');
 	});
 
+	// Update voting title dynamically
+	$body.on('input', '.voting-title', function(e) {
+		var $this = $(this);
+		$this.closest('.voting-item').find('.box-header h2').text($this.val());
+	});
+
 	// Save all forms (voting and votingOptions)
 	$body.on('click', '.voting-save', function(e) {
 		e.stopPropagation();
