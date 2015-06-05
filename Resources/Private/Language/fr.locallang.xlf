@@ -483,7 +483,7 @@
 			</trans-unit>
 			
 			<trans-unit id="panelInvitation.actions.cancel">
-				<target>abbrechen</target>
+				<target>retour</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations">
 				<target>Einladungen versenden</target>
