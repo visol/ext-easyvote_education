@@ -581,9 +581,6 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
 				<target>Data</target>
 			</trans-unit>
-			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date.editHint">
-				<target>Data e ora possono essere modificati soltanto se non è stato invitato alcun candidato.</target>
-			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.from_time">
 				<target>Ora dell’inizio</target>
 			</trans-unit>

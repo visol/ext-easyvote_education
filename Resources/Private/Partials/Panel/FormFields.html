@@ -9,7 +9,6 @@
 		<div class="input-group">
 			<label>
 				<f:translate key="tx_easyvoteeducation_domain_model_panel.date" /><br />
-				<em><f:translate key="tx_easyvoteeducation_domain_model_panel.date.editHint" /></em>
 			</label>
 			<input type="text" readonly="readonly" class="form-control" value="{panel.date->f:format.date(format:'d.m.y')}" />
 		</div>
@@ -30,7 +29,6 @@
 		<div class="input-group">
 			<label for="date">
 				<f:translate key="tx_easyvoteeducation_domain_model_panel.date" /><br />
-				<em><f:translate key="tx_easyvoteeducation_domain_model_panel.date.editHint" /></em>
 			</label>
 			<f:form.textfield type="text" id="date" class="form-control date-picker" additionalAttributes="{required: required}" property="date"  value="{panel.date->f:format.date(format:'d.m.y')}" />
 		</div>
