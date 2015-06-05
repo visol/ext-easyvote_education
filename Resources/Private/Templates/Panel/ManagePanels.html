@@ -60,7 +60,7 @@
 								</f:then>
 								<f:else>
 									<h3><f:translate key="panel.panelInvitations" /></h3>
-									<p><f:render partial="Panel/Invitations" arguments="{panel:panel}" /></p><br />
+									<p><f:translate key="panel.panelInvitations.noInvitationsOrNotSent" /></p>
 									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
 								</f:else>
 							</f:if>
@@ -69,7 +69,7 @@
 							<f:if condition="{panel.panelInvitationAllowed}">
 								<f:then>
 									<h3><f:translate key="panel.panelInvitations" /></h3>
-									<p><f:translate key="panel.panelInvitations.noInvitations" /></p><br />
+									<p><f:translate key="panel.panelInvitations.noInvitationsOrNotSent" /></p>
 									<a class="btn btn-primary btn-sm" data-role="panelaction" data-confirm="false" data-object="panel" data-uid="{panel.uid}" data-actionname="editPanelInvitations"><f:translate key="panel.actions.editPanelInvitations" /></a>
 								</f:then>
 								<f:else>

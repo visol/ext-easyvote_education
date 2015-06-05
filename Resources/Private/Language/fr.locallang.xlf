@@ -134,8 +134,8 @@
 			<trans-unit id="panel.panelInvitations.pendingTitle">
 				<target>Invitations en suspens</target>
 			</trans-unit>
-			<trans-unit id="panel.panelInvitations.noInvitations">
-				<target>Aucun politicien n'a encore été invité.</target>
+			<trans-unit id="panel.panelInvitations.noInvitationsOrNotSent">
+				<target>Aucun politicien n’a été invité.</target>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<target><![CDATA[
