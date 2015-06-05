@@ -486,17 +486,17 @@
 				<target>retour</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations">
-				<target>Einladungen versenden</target>
+				<source>Envoyer l’invitation</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirmationText">
-				<target>Ich nehme zur Kenntnis, dass ich nach dem Versenden der Einladungen keine Änderungen mehr vornehmen kann bzw. nur noch eingeschränkt (vgl. Einleitungstext).</target>
+				<source>J’ai été informé du fait qu’aucune modification ne peut être effectuée après l’envoi d’une invitation ou que, le cas échéant, je m’engage à en assumer les coûts (voir plus haut).</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.cancel">
-				<target>abbrechen</target>
+				<source>Annuler</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
-				<target>bestätigen</target>
-			</trans-unit>			
+				<source>attester</source>
+			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">
 				<target>Polittalk</target>

@@ -483,17 +483,17 @@
 				<target>indietro</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations">
-				<target>Einladungen versenden</target>
+				<source>Inviare l’invito</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirmationText">
-				<target>Ich nehme zur Kenntnis, dass ich nach dem Versenden der Einladungen keine Änderungen mehr vornehmen kann bzw. nur noch eingeschränkt (vgl. Einleitungstext).</target>
+				<source>Prendo atto del fatto che dopo l’invio degli inviti non potrò più apportare alcuna modifica e che eventuali modifiche implicheranno dei costi (si veda sopra).</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.cancel">
-				<target>abbrechen</target>
+				<source>annullare</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
-				<target>bestätigen</target>
-			</trans-unit>			
+				<source>affermare</source>
+			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">
 				<target>Polittalk</target>
