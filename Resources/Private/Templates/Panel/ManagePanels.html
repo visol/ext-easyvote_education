@@ -1,6 +1,10 @@
-<f:flashMessages renderMode="div" />
+<div class="content-box">
+	<h2><f:translate key="panel.managePanels.title" /></h2>
+	<f:translate key="panel.managePanels.introduction" arguments="{0: '{f:uri.page(pageUid:settings.panelChecklistPid)}'}"/>
+	<a class="btn btn-primary" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
+</div>
 
-<a class="btn btn-primary btn-fullwidth" data-role="generalaction" data-actionname="new"><f:translate key="panel.managePanels.newPanel" /></a>
+<f:flashMessages renderMode="div" />
 
 <f:for each="{panels}" as="panel">
 	<div class="panel-{panel.uid} content-box content-box-expandable">

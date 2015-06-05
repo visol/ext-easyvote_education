@@ -49,12 +49,49 @@
 				<source>Du kannst keine/n PolitikerIn einer anderen Partei zum Polittalk hinzufügen.</source>
 			</trans-unit>
 
-
-			<trans-unit id="panel.managePanels.managePanels">
-				<source>Polittalk verwalten</source>
+			<trans-unit id="panel.managePanels.title">
+				<source>Meine Polittalks</source>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.introduction">
+				<source><![CDATA[
+					<p>Organisieren Sie einen Polittalk an Ihrer Schule einfach in fünf Schritten.</p>
+                    <ol><li>
+                    Polittalk erstellen
+                    </li><li>
+                    Politiker einladen
+                    </li><li>
+                    Ablauf planen und Voting erstellen
+                    </li><li>
+                    Infrastruktur und organisatorische Aufgaben
+                    </li><li>
+                    Polittalk durchführen
+                    </li></ol>
+                    <p><a href="%s">Hier finden Sie eine detaillierte Checkliste</a> für die Organisation.</p>
+				]]></source>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.newPanel">
-				<source>Neuer Polittalk erstellen</source>
+				<source>Neuen Polittalk erstellen</source>
+			</trans-unit>
+
+			<trans-unit id="panel.editVotings.title">
+				<source>Voting bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="panel.editVotings.introduction">
+				<source><![CDATA[
+					<p>Erstellen Sie ein Voting, mit dem Sie die Schülerschaft interaktiv in den Polittalk einbeziehen können.</p>
+					<p>An der Veranstaltung müssen Sie dann nur noch in der Übersicht <a href="%s">Meine Polittalks</a> auf “Podium starten” klicken und die sich öffnende Seite mittels Beamer projizieren.</p>
+					<p>Die Schülerschaft kann dann per Handy am Voting teilnehmen, sobald Sie es freigeben.</p>
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="panel.editPanelInvitations.title">
+				<source>Politiker einladen</source>
+			</trans-unit>
+			<trans-unit id="panel.editPanelInvitations.introduction">
+				<source><![CDATA[
+					<p>Unten können Sie für jede/n PolitikerIn definieren, von welcher Partei diese/r stammen soll. Sie können pro PolitikerIn auch mehrere Parteien definieren. In diesem Fall nimmt diejenige Partei teil, die als erstes zusagt.</p>
+					<p>Mit einem Klick auf “Einladungen versenden” werden die betreffenden PolitikerInnen automatisiert per E-Mail eingeladen. Auf der Übersicht <a href="%s">Meine Polittalks</a> sehen Sie wer zugesagt hat.</p>
+				]]></source>
 			</trans-unit>
 
 			<trans-unit id="panel.new.title">
@@ -139,7 +176,7 @@
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<source><![CDATA[
-					Zur Zeit können keine weitere PolitikerInnen in deinem Kanton eingeladen werden.
+					Zur Zeit können keine PolitikerInnen in deinem Kanton eingeladen werden, da das Datum ausserhalb des Buchungszeitraums liegt oder das Kontingent pro Kanton erreicht wurde.
 				]]></source>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.or">

@@ -1,3 +1,20 @@
+<div class="content-box">
+	<h2><f:translate key="panel.editVotings.title" /></h2>
+	<f:translate key="panel.editVotings.introduction" arguments="{0: '{f:uri.page(pageUid:settings.managePanelsPid)}'}"/>
+	<a class="btn btn-primary" data-role="generalaction" data-actionname="managePanels" data-openpanel="{panel.uid}"><f:translate key="panelInvitation.actions.cancel" /></a>
+	<a class="btn btn-primary pull-right" data-role="genericobjectaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="newVoting"><f:translate key="voting.actions.new" /></a>
+	<div class="hidden ajaxobject-confirm">
+		<button class="btn btn-primary button-returntrue newvoting-button" data-selection="1"><f:translate key="voting.actions.new.yesNoAbstention" /></button><br />
+		<f:comment>
+			<button class="btn btn-primary button-returntrue newvoting-button" data-selection="2"><f:translate key="voting.actions.new.text" /></button><br />
+		</f:comment>
+		<button class="btn btn-primary button-returntrue newvoting-button" data-selection="3"><f:translate key="voting.actions.new.images" /></button><br />
+		<f:comment>
+			<button class="btn btn-primary button-returntrue newvoting-button" data-selection="4"><f:translate key="voting.actions.new.empty" /></button>
+		</f:comment>
+	</div>
+</div>
+
 <div class="voting-items">
 	<f:for each="{panel.votings}" as="voting" iteration="votingIterator">
 		<div class="content-box content-box-expandable voting-item voting-item-{voting.uid} {f:if(condition: voting.isVisible, else: 'voting-item-hidden')}" data-uid="{voting.uid}">
@@ -5,16 +22,5 @@
 		</div>
 	</f:for>
 </div>
-<a class="btn btn-primary" data-role="generalaction" data-actionname="managePanels" data-openpanel="{panel.uid}"><f:translate key="panelInvitation.actions.cancel" /></a>
-<a class="btn btn-primary pull-right" data-role="genericobjectaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="newVoting"><f:translate key="voting.actions.new" /></a>
-<div class="hidden ajaxobject-confirm">
-	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="1"><f:translate key="voting.actions.new.yesNoAbstention" /></button><br />
-	<f:comment>
-		<button class="btn btn-primary button-returntrue newvoting-button" data-selection="2"><f:translate key="voting.actions.new.text" /></button><br />
-	</f:comment>
-	<button class="btn btn-primary button-returntrue newvoting-button" data-selection="3"><f:translate key="voting.actions.new.images" /></button><br />
-	<f:comment>
-		<button class="btn btn-primary button-returntrue newvoting-button" data-selection="4"><f:translate key="voting.actions.new.empty" /></button>
-	</f:comment>
-</div>
+
 

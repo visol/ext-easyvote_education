@@ -49,12 +49,48 @@
 				<target>Non puoi aggiungere al Polittalk politici di altri partiti.</target>
 			</trans-unit>
 
-
-			<trans-unit id="panel.managePanels.managePanels">
-				<target>Amministrare il Polittalk</target>
+			<trans-unit id="panel.managePanels.title">
+				<source>I miei Polittalk</source>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.introduction">
+				<source><![CDATA[
+					<p>Organizzi un Polittalk nella Sua scuola in sole cinque tappe.</p>
+                    <ol><li>
+                    Preparare un Polittalk
+                    </li><li>
+                    Invitare un politico
+                    </li><li>
+                    Pianificare lo svolgimento e organizzare la procedura di voto (voting)
+                    </li><li>
+                    Infrastruttura e compiti organizzativi
+                    </li><li>
+                    Avviare il Polittalk
+                    </li></ol>
+                    <p><a href="%s">Quitrovate una Checklist dettagliata</a> per aiutarvi nell’organizzazione.</p>
+				]]></source>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.newPanel">
 				<target>Creare un nuovo Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="panel.editVotings.title">
+				<source>Creare la procedura di voto</source>
+			</trans-unit>
+			<trans-unit id="panel.editVotings.introduction">
+				<source><![CDATA[
+					<p>Prepari un sondaggio con il quale coinvolgere attivamente gli studenti nel Polittalk.</p>
+					<p>Al momento dell’evento dovrà quindi solamente cliccare su “Iniziare un dibattito” nella panoramica “<a href="%s">I miei Polittalk</a>” e proiettare la pagina che si aprirà per mezzo di un beamer. Gli studenti potranno così partecipare al voto con il loro telefonino non appena Lei avrà dato loro il via.</p>
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="panel.editPanelInvitations.title">
+				<source>Invitare politici</source>
+			</trans-unit>
+			<trans-unit id="panel.editPanelInvitations.introduction">
+				<source><![CDATA[
+					<p>Qui sotto potete definire il partito politico di ciascun partecipante. Potete definire anche più partiti per politico. In questo caso parteciperà il partito che accetta per primo.</p>
+					<p>Con un click su “invio dell’invito”, i politici in questione verranno invitati automaticamente per e-mail. Alla panoramica “<a href="%s">I miei Polittalk</a>”  potrete vedere chi ha accettato.</p>
+				]]></source>
 			</trans-unit>
 
 			<trans-unit id="panel.new.title">

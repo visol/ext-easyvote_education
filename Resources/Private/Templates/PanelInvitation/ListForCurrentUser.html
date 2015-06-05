@@ -1,3 +1,16 @@
+<div class="content-box">
+	<h2><f:translate key="panel.editPanelInvitations.title" /></h2>
+	<f:translate key="panel.editPanelInvitations.introduction" arguments="{0: '{f:uri.page(pageUid:settings.managePanelsPid)}'}"/>
+
+	<a class="btn btn-primary" data-role="generalaction" data-actionname="managePanels" data-openpanel="{panel.uid}"><f:translate key="panelInvitation.actions.cancel" /></a>
+	<a class="btn btn-primary pull-right" data-role="panelaction" data-confirm="true" data-object="panel" data-uid="{panel.uid}" data-actionname="sendPanelInvitations"><f:translate key="panelInvitation.actions.sendInvitations" /></a>
+	<div class="hidden ajaxobject-confirm">
+		<p><f:translate key="panelInvitation.actions.sendInvitations.confirmationText" /></p>
+		<button class="pull-left btn btn-primary button-cancel"><f:translate key="panelInvitation.actions.sendInvitations.cancel" /></button>
+		<button class="pull-right btn btn-primary button-returntrue"><f:translate key="panelInvitation.actions.sendInvitations.confirm" /></button>
+	</div>
+</div>
+
 <div class="panelinvitation-items content-box">
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-xs-3 col-md-3">
