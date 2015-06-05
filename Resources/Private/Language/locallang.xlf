@@ -301,16 +301,16 @@
 				<source>speichern</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.create.success">
-				<source>Das Voting "%s" wurde erstellt.</source>
+				<source>Die Frage "%s" wurde erstellt.</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.update.success">
-				<source>Das Voting "%s" wurde aktualisiert.</source>
+				<source>Die Frage "%s" wurde aktualisiert.</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete">
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<source>Wollen Sie dieses Voting und dessen Stimmen löschen?</source>
+				<source>Wollen Sie diese Frage und dessen Stimmen löschen?</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<source>abbrechen</source>
@@ -319,13 +319,13 @@
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.success">
-				<source>Das Voting "%s" wurde gelöscht.</source>
+				<source>Die Frage "%s" wurde gelöscht.</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate">
 				<source>duplizieren</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.success">
-				<source>Das Voting "%s" wurde dupliziert.</source>
+				<source>Die Frage "%s" wurde dupliziert.</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.copyOf">
 				<source>Kopie von</source>
@@ -337,7 +337,7 @@
 				<source>nach unten</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<source>Neues Voting</source>
+				<source>Neue Frage</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<source>abbrechen</source>
@@ -352,10 +352,10 @@
 				<source>Bild-Antworten</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.empty">
-				<source>Leeres Voting</source>
+				<source>Leere Frage</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<source>[Neues Voting]</source>
+				<source>[Neue Frage]</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<source>ja</source>

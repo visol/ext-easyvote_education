@@ -298,16 +298,16 @@
 				<target>Salvare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.create.success">
-				<target>Il voting "%s" è stato creato.</target>
+				<target>La domanda "%s" è stato creato.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.update.success">
-				<target>Il voting "%s" è stato aggiornato.</target>
+				<target>La domanda "%s" è stato aggiornato.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete">
 				<target>Cancellare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<target>Volete cancellare questo voting e i relativi voti?</target>
+				<target>Volete cancellare questa domanda e i relativi voti?</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<target>Annullare</target>
@@ -316,13 +316,13 @@
 				<target>Cancellare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.success">
-				<target>Il voting "%s" è stato cancellato.</target>
+				<target>La domanda "%s" è stato cancellato.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate">
 				<target>Duplicare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.success">
-				<target>Il voting "%s" è stato duplicato.</target>
+				<target>La domanda "%s" è stato duplicato.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.copyOf">
 				<target>Copia di</target>
@@ -334,7 +334,7 @@
 				<target>in basso</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<target>Nuovo voting</target>
+				<target>Nuova domanda</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<target>Annullare</target>
@@ -352,7 +352,7 @@
 				<target>Voting vuoto</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<target>[Nuovo voting]</target>
+				<target>[Nuova domanda]</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<target>sì</target>

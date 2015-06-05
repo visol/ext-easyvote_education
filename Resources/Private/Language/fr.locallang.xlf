@@ -301,16 +301,16 @@
 				<target>Enregistrer</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.create.success">
-				<target>Le voting "%s" a bien été créé.</target>
+				<target>La question "%s" a bien été créé.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.update.success">
-				<target>Le voting "%s" a été actualisé.</target>
+				<target>La question "%s" a été actualisé.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete">
 				<target>Supprimer</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<target>Voulez-vous supprimer ce voting et les réponses reçues ?</target>
+				<target>Voulez-vous supprimer cette question et les réponses reçues ?</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<target>Annuler</target>
@@ -319,13 +319,13 @@
 				<target>Supprimer</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.success">
-				<target>Le voting "%s" a bien été supprimé.</target>
+				<target>La question "%s" a bien été supprimé.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate">
 				<target>dupliquer</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.success">
-				<target>Le voting "%s" a été dupliqué.</target>
+				<target>La question "%s" a été dupliqué.</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.duplicate.copyOf">
 				<target>Copie de</target>
@@ -337,7 +337,7 @@
 				<target>Déplacer vers le bas</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<target>Nouveau voting</target>
+				<target>Nouvelle question</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<target>Annuler</target>
@@ -355,7 +355,7 @@
 				<target>Voting vide</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<target>[Nouveau voting]</target>
+				<target>[Nouvelle question]</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<target>Oui</target>
