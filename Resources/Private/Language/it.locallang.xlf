@@ -50,10 +50,10 @@
 			</trans-unit>
 
 			<trans-unit id="panel.managePanels.title">
-				<source>I miei Polittalk</source>
+				<target>I miei Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.introduction">
-				<source><![CDATA[
+				<target><![CDATA[
 					<p>Organizzi un Polittalk nella Sua scuola in sole cinque tappe.</p>
                     <ol><li>
                     Preparare un Polittalk
@@ -67,30 +67,30 @@
                     Avviare il Polittalk
                     </li></ol>
                     <p><a href="%s">Quitrovate una Checklist dettagliata</a> per aiutarvi nell’organizzazione.</p>
-				]]></source>
+				]]></target>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.newPanel">
 				<target>Creare un nuovo Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="panel.editVotings.title">
-				<source>Creare la procedura di voto</source>
+				<target>Creare la procedura di voto</target>
 			</trans-unit>
 			<trans-unit id="panel.editVotings.introduction">
-				<source><![CDATA[
+				<target><![CDATA[
 					<p>Prepari un sondaggio con il quale coinvolgere attivamente gli studenti nel Polittalk.</p>
 					<p>Al momento dell’evento dovrà quindi solamente cliccare su “Iniziare un dibattito” nella panoramica “<a href="%s">I miei Polittalk</a>” e proiettare la pagina che si aprirà per mezzo di un beamer. Gli studenti potranno così partecipare al voto con il loro telefonino non appena Lei avrà dato loro il via.</p>
-				]]></source>
+				]]></target>
 			</trans-unit>
 
 			<trans-unit id="panel.editPanelInvitations.title">
-				<source>Invitare politici</source>
+				<target>Invitare politici</target>
 			</trans-unit>
 			<trans-unit id="panel.editPanelInvitations.introduction">
-				<source><![CDATA[
+				<target><![CDATA[
 					<p>Qui sotto potete definire il partito politico di ciascun partecipante. Potete definire anche più partiti per politico. In questo caso parteciperà il partito che accetta per primo.</p>
 					<p>Con un click su “invio dell’invito”, i politici in questione verranno invitati automaticamente per e-mail. Alla panoramica “<a href="%s">I miei Polittalk</a>”  potrete vedere chi ha accettato.</p>
-				]]></source>
+				]]></target>
 			</trans-unit>
 
 			<trans-unit id="panel.new.title">
@@ -519,16 +519,16 @@
 				<target>indietro</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations">
-				<source>Inviare l’invito</source>
+				<target>Inviare l’invito</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirmationText">
-				<source>Prendo atto del fatto che dopo l’invio degli inviti non potrò più apportare alcuna modifica e che eventuali modifiche implicheranno dei costi (si veda sopra).</source>
+				<target>Prendo atto del fatto che dopo l’invio degli inviti non potrò più apportare alcuna modifica e che eventuali modifiche implicheranno dei costi (si veda sopra).</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.cancel">
-				<source>annullare</source>
+				<target>annullare</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
-				<source>affermare</source>
+				<target>affermare</target>
 			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">
