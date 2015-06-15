@@ -82,6 +82,7 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 
 		$constraints = [];
 		$constraints[] = $query->contains('allowedParties', $party);
+		$constraints[] = $query->equals('panel.panelInvitationsSent', TRUE);
 
 		if (is_array($demand)) {
 			if (isset($demand['query'])) {
