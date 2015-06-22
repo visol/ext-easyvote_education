@@ -58,7 +58,7 @@
                     <ol><li>
                     Polittalk erstellen
                     </li><li>
-                    Politiker einladen
+                    PolitikerInnen einladen
                     </li><li>
                     Ablauf planen und Voting erstellen
                     </li><li>
@@ -85,7 +85,7 @@
 			</trans-unit>
 
 			<trans-unit id="panel.editPanelInvitations.title">
-				<source>Politiker einladen</source>
+				<source>PolitikerInnen einladen</source>
 			</trans-unit>
 			<trans-unit id="panel.editPanelInvitations.introduction">
 				<source><![CDATA[
@@ -127,10 +127,10 @@
 				<source>Votings bearbeiten</source>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations">
-				<source>Politiker</source>
+				<source>PolitikerInnen</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.editPanelInvitations">
-				<source>Politiker einladen</source>
+				<source>PolitikerInnen einladen</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.edit">
 				<source>Polittalk bearbeiten</source>
@@ -455,7 +455,7 @@
 				<source>Polittalk-Einladungen</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.politician">
-				<source>Teilnehmende/r Politiker/in</source>
+				<source>Teilnehmende/r PolitikerIn</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.maximumReached">
 				<source>Sie können (aufgrund der erwarteten Teilnehmerzahl) maximal %s PolitikerInnen einladen.</source>
