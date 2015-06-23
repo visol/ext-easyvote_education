@@ -236,6 +236,7 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				// allow editing of panel invitations if it is still possible to add panel invitations for a panel
 				// in this Kanton or if there are already panel invitations
 				$this->view->assign('panel', $panel);
+				$this->view->assign('communityHomePid', $this->settings['communityHomePid']);
 				return json_encode(array('content' => $this->view->render()));
 			} else {
 				$reason = LocalizationUtility::translate('ajax.status.403.panelController.editPanelInvitationsAction', 'easyvote_education');

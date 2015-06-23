@@ -569,11 +569,11 @@ var EasyvoteEducation = {
 				multiple: true,
 				//maximumSelectionSize: 2,
 				ajax: {
-					url: '/routing/getavailablepartiesforpanel/' + panelUid + '?L=' + EasyvoteLanguage,
+					url: '/routing/getavailablepartiesforpanel/' + panelUid + '?L=' + EasyvoteLanguage + '&id=' + EasyvoteHomePid,
 					dataType: 'json',
 					data: function (term, page) {
 						return {
-							q: term // search term
+							q: term
 						};
 					},
 					results: function (data, page) {
