@@ -519,7 +519,7 @@
 			</trans-unit>
 			
 			<trans-unit id="panelInvitation.actions.cancel">
-				<target>retour</target>
+				<target>Retour</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations">
 				<target>Envoyer l’invitation</target>
@@ -531,7 +531,7 @@
 				<target>Annuler</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
-				<target>attester</target>
+				<target>Confirmer</target>
 			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">
