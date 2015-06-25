@@ -71,7 +71,9 @@ $moduleLoader->setIcon(sprintf('EXT:easyvote_education/Resources/Public/Icons/%s
 	->register();
 
 
-// Connect some signals with slots
+// Signal slot to filter the Frontend Users to only display teachers and politicians
+/** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 $signalSlotDispatcher->connect(
 	'Fab\Vidi\Controller\Backend\ContentController',
 	'postProcessMatcherObject',
