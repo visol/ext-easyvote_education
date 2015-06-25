@@ -57,3 +57,25 @@ $moduleLoader->setIcon(sprintf('EXT:easyvote_education/Resources/Public/Icons/%s
 	->setDefaultPid(286) // hard-coded for now
 	->register();
 
+// Backend Module for managing Frontend Users
+$usersTable = 'fe_users';
+
+/** @var \Fab\Vidi\Module\ModuleLoader $moduleLoader */
+$moduleLoader = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Fab\Vidi\Module\ModuleLoader', $usersTable);
+
+$moduleLoader->setIcon(sprintf('EXT:easyvote_education/Resources/Public/Icons/%s.png', $usersTable))
+	->setMainModule('easyvote')
+	->setModuleLanguageFile(sprintf('LLL:EXT:easyvote_education/Resources/Private/Language/Vidi/%s.xlf', $usersTable))
+	/*->addJavaScriptFile(sprintf('EXT:easyvote_education/Resources/Public/JavaScript/%s.js', $panelTable))*/
+	->setDefaultPid(144) // hard-coded for now
+	->register();
+
+
+// Connect some signals with slots
+$signalSlotDispatcher->connect(
+	'Fab\Vidi\Controller\Backend\ContentController',
+	'postProcessMatcherObject',
+	'Visol\EasyvoteEducation\Vidi\Security\FrontendUserGroupLimitationAspect',
+	'addUsergroupConstraint',
+	TRUE
+);
