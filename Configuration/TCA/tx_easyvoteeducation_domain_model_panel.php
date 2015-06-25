@@ -21,8 +21,8 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'title,description,date,room,address,organization,class,number_of_participants,terms_accepted,city,image,creator,votings,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_education') . 'Resources/Public/Icons/tx_easyvoteeducation_domain_model_panel.gif'
+		'searchFields' => 'title,description,date,room,address,organization,class,city,image,votings,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_education') . 'Resources/Public/Icons/tx_easyvoteeducation_domain_model_panel.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, panel_id, title, description, date, from_time, to_time, room, address, organization, class, number_of_participants, terms_accepted, city, image, votings',
@@ -33,8 +33,63 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
+	'grid' => array(
+		'excluded_fields' => 'sys_language_uid,l10n_parent,hidden,starttime,endtime,class,current_state,terms_accepted,votings,panel_invitations_sent,image',
+		'columns' => array(
+			'__checkbox' => array(
+				'visible' => TRUE,
+				'renderer' => new Fab\Vidi\Grid\CheckBoxComponent(),
+			),
+			'panel_id' => array(
+				'visible' => TRUE,
+			),
+			'title' => array(
+				'visible' => TRUE,
+			),
+			'date' => array(
+				'visible' => TRUE,
+				'format' => 'Visol\EasyvoteEducation\Vidi\Formatter\NativeDateTime',
+			),
+			'from_time' => array(
+				'visible' => TRUE,
+				'format' => 'Visol\EasyvoteEducation\Vidi\Formatter\Time',
+			),
+			'to_time' => array(
+				'visible' => TRUE,
+				'format' => 'Visol\EasyvoteEducation\Vidi\Formatter\Time',
+			),
+			'community_user' => array(
+				'visible' => TRUE,
+				'renderers' => array(
+					'Visol\EasyvoteEducation\Vidi\Grid\ShowRelationRenderer',
+					'Visol\EasyvoteEducation\Vidi\Grid\FrontendUserSimulationRenderer'
+				),
+			),
+			'organization' => array(
+				'visible' => TRUE,
+			),
+			'room' => array(
+				'visible' => TRUE,
+			),
+			'address' => array(
+				'visible' => TRUE,
+			),
+			'city' => array(
+				'visible' => TRUE
+			),
+			'number_of_participants' => array(
+				'visible' => TRUE,
+			),
+			'description' => array(
+				'visible' => TRUE,
+			),
+			'panel_invitations' => array(
+				'visible' => TRUE,
+				'renderer' => 'Visol\EasyvoteEducation\Vidi\Grid\PanelInvitationsRenderer',
+			),
+		)
+	),
 	'columns' => array(
-	
 		'sys_language_uid' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
@@ -238,6 +293,8 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				'items'   => array(
 					array('', ''),
 				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		'image' => array(
@@ -285,6 +342,8 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				'items'   => array(
 					array('', ''),
 				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		'panel_invitations' => array(
@@ -314,3 +373,4 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 		),
 	),
 );
+

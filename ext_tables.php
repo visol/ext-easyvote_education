@@ -43,3 +43,17 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_voting');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_votingoption');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvoteeducation_domain_model_vote');
+
+// Backend Module for managing Panels
+$panelTable = 'tx_easyvoteeducation_domain_model_panel';
+
+/** @var \Fab\Vidi\Module\ModuleLoader $moduleLoader */
+$moduleLoader = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Fab\Vidi\Module\ModuleLoader', $panelTable);
+
+$moduleLoader->setIcon(sprintf('EXT:easyvote_education/Resources/Public/Icons/%s.png', $panelTable))
+	->setMainModule('easyvote')
+	->setModuleLanguageFile(sprintf('LLL:EXT:easyvote_education/Resources/Private/Language/Vidi/%s.xlf', $panelTable))
+	/*->addJavaScriptFile(sprintf('EXT:easyvote_education/Resources/Public/JavaScript/%s.js', $panelTable))*/
+	->setDefaultPid(286) // hard-coded for now
+	->register();
+
