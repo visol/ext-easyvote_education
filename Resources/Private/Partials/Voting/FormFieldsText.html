@@ -1,0 +1,20 @@
+<div class="form-group">
+	<label for="voting{voting.uid}-title">
+		<f:translate key="tx_easyvoteeducation_domain_model_voting.title" />
+	</label>
+	<f:form.textfield class="form-control voting-title" id="voting{voting.uid}-title" property="title" additionalAttributes="{required: required}" />
+</div>
+<f:comment>
+	<div class="checkbox">
+		<label for="voting{voting.uid}-isVisible">
+			<f:form.checkbox id="voting{voting.uid}-isVisible" property="isVisible" value="1" /> <f:translate key="tx_easyvoteeducation_domain_model_voting.is_visible" />
+		</label>
+	</div>
+</f:comment>
+<f:form.hidden id="voting{voting.uid}-isVisible" property="isVisible" value="1" />
+<div class="form-group">
+	<label for="voting{voting.uid}-content">
+		<f:translate key="tx_easyvoteeducation_domain_model_voting.content" />
+	</label>
+	<f:form.textarea class="form-control" id="voting{voting.uid}-content" property="content" additionalAttributes="{required: required}" />
+</div>
