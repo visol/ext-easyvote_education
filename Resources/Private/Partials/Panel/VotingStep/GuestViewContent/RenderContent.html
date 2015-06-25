@@ -1,0 +1,7 @@
+<h2>{panel.currentVoting.title}</h2>
+<f:if condition="{panel.currentVoting.type} == 10">
+	<f:translate key="panel.votingStep.renderContentVideo" />
+</f:if>
+<f:if condition="{panel.currentVoting.type} == 11">
+	<p><f:format.nl2br>{panel.currentVoting.content}</f:format.nl2br></p>
+</f:if>

@@ -334,7 +334,17 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 							break;
 
 						case 'nextVoting':
-							$panel->setCurrentState('pendingVoting-' . $votingUid);
+							/** @var \Visol\EasyvoteEducation\Domain\Model\Voting $voting */
+							$voting = $this->votingRepository->findByUid((int)$votingUid);
+							if ((int)$voting->getType() >= 10) {
+								// A render only content
+								$votingStepAction = 'renderContent';
+								$this->view->assign('originalVotingStepAction', 'PresentationViewContent');
+								$panel->setCurrentState('renderContent-' . $votingUid);
+							} else {
+								// A normal voting
+								$panel->setCurrentState('pendingVoting-' . $votingUid);
+							}
 							break;
 
 						case 'startVoting':

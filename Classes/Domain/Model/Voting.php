@@ -1,36 +1,38 @@
 <?php
 namespace Visol\EasyvoteEducation\Domain\Model;
 
-
-/***************************************************************
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  (c) 2015 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Voting
+ * While this class is called "Voting", it is a generic class for every step inside a Panel presentation.
+ * This is because the requirements changed during the project and we didn't want to refactor anything.
  */
 class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	const TYPE_VOTING_YESNOABSTENTION = 1;
+	const TYPE_VOTING_TEXT = 2; // unused
+	const TYPE_VOTING_TEXTANDIMAGES = 3;
+	const TYPE_VOTING_EMPTY = 4; // unused
+
+	const TYPE_VIDEO = 10;
+	const TYPE_TEXT = 11;
+
+	/**
+	 * @var int
+	 */
+	protected $type = 0;
 
 	/**
 	 * Title
@@ -74,6 +76,26 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $votingDuration = 0;
 
 	/**
+	 * Video URL
+	 *
+	 * @var string
+	 */
+	protected $video = '';
+
+	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $videoUrl;
+
+	/**
+	 * Text content
+	 *
+	 * @var string
+	 */
+	protected $content = '';
+
+	/**
 	 * Voting Options
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\VotingOption>
@@ -115,6 +137,20 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->votingOptions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getType() {
+		return $this->type;
+	}
+
+	/**
+	 * @param int $type
+	 */
+	public function setType($type) {
+		$this->type = $type;
 	}
 
 	/**
@@ -228,6 +264,42 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setVotingDuration($votingDuration) {
 		$this->votingDuration = $votingDuration;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getContent() {
+		return $this->content;
+	}
+
+	/**
+	 * @param string $content
+	 */
+	public function setContent($content) {
+		$this->content = $content;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getVideo() {
+		return $this->video;
+	}
+
+	/**
+	 * @param string $video
+	 */
+	public function setVideo($video) {
+		$this->video = $video;
+	}
+
+	public function getVideoUrl() {
+		/** @var \TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider $mediaWizardProvider */
+		$mediaWizardProvider = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider');
+		if ($mediaWizardProvider->canHandle($this->video)) {
+			return $mediaWizardProvider->rewriteUrl($this->video);
+		}
 	}
 
 	/**

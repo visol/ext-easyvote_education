@@ -124,7 +124,7 @@
 				<source>Voting</source>
 			</trans-unit>
 			<trans-unit id="panel.actions.editVotings">
-				<source>Votings bearbeiten</source>
+				<source>Voting bearbeiten</source>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations">
 				<source>PolitikerInnen</source>
@@ -182,11 +182,14 @@
 			<trans-unit id="panel.panelInvitations.or">
 				<source>oder</source>
 			</trans-unit>
-			<trans-unit id="panel.voting">
+			<trans-unit id="panel.votings.title">
 				<source>Voting</source>
 			</trans-unit>
+			<trans-unit id="panel.voting">
+				<source>Schritt</source>
+			</trans-unit>
 			<trans-unit id="panel.votings">
-				<source>Votings</source>
+				<source>Schritte</source>
 			</trans-unit>
 			<trans-unit id="panel.votings.noVotings">
 				<source>Es wurden noch keine Votings hinzugefügt.</source>
@@ -244,13 +247,13 @@
 			</trans-unit>
 
 			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
-				<source>Erste Voting-Frage anzeigen</source>
+				<source>Ersten Schritt anzeigen</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.displayNextVotingButtonText">
-				<source>Nächste Voting-Frage anzeigen</source>
+				<source>Nächsten Schritt anzeigen</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.stopPanelButtonText">
-				<source>Podium beenden</source>
+				<source>Polittalk beenden</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.activateButtonText">
 				<source>Voting aktivieren</source>
@@ -272,6 +275,9 @@
 			<trans-unit id="panel.votingStep.castVoteThanks">
 				<source>Danke für deine Stimme!</source>
 			</trans-unit>
+			<trans-unit id="panel.votingStep.renderContentVideo">
+				<source>In der Präsentation wird nun ein Video angezeigt.</source>
+			</trans-unit>
 			<trans-unit id="panel.votingStep.finishedPanelThanks">
 				<source>Der Polittalk wurde beendet. Vielen Dank für deine Teilnahme!</source>
 			</trans-unit>
@@ -282,7 +288,7 @@
 				<source>Vielen Dank für deine Teilnahme!</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.voting">
-				<source>Voting</source>
+				<source>Schritt</source>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.navigation.presentationViewContent">
 				<source>Einleitung</source>
@@ -347,7 +353,7 @@
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<source>Wollen Sie diese Frage und dessen Stimmen löschen?</source>
+				<source>Wollen Sie diesen Schritt und allfällige Stimmen löschen?</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<source>abbrechen</source>
@@ -374,25 +380,31 @@
 				<source>nach unten</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<source>Neue Frage</source>
+				<source>Neuer Schritt</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<source>abbrechen</source>
 			</trans-unit>
-			<trans-unit id="voting.actions.new.yesNoAbstention">
-				<source>Ja/Nein/Enthaltung</source>
+			<trans-unit id="voting.actions.new.voting.yesNoAbstention">
+				<source>Voting: Ja/Nein/Enthaltung</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.text">
+				<source>Voting: Freier Text</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.images">
+				<source>Voting: Bild-Antworten</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.empty">
+				<source>Voting: Leere Frage</source>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.video">
+				<source>Video (YouTube) zeigen</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.text">
-				<source>Freier Text</source>
-			</trans-unit>
-			<trans-unit id="voting.actions.new.images">
-				<source>Bild-Antworten</source>
-			</trans-unit>
-			<trans-unit id="voting.actions.new.empty">
-				<source>Leere Frage</source>
+				<source>Text anzeigen</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<source>[Neue Frage]</source>
+				<source>[Neuer Schritt]</source>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<source>ja</source>
@@ -672,7 +684,7 @@
 				<source>Voting</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.title">
-				<source>Frage</source>
+				<source>Titel</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.short">
 				<source>Short</source>
@@ -685,6 +697,12 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_duration">
 				<source>Abstimmungszeit in Sekunden</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.video">
+				<source>Video-URL (YouTube)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.content">
+				<source>Text</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
 				<source>Voting Options</source>

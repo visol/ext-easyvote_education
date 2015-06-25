@@ -1,7 +1,17 @@
 <div class="box-header">
 	<div class="row">
 		<div class="col-xs-3 col-md-3">
-			<f:render partial="ActionIcons/Voting" />
+			<f:switch expression="{voting.type}">
+				<f:case value="10">
+					<f:render partial="ActionIcons/Video" />
+				</f:case>
+				<f:case value="11">
+					<f:render partial="ActionIcons/Text" />
+				</f:case>
+				<f:case default="TRUE">
+					<f:render partial="ActionIcons/Voting" />
+				</f:case>
+			</f:switch>
 		</div>
 		<div class="col-xs-9 col-md-9">
 			<div class="actions">
@@ -29,19 +39,31 @@
 </div>
 <div class="box-content">
 	<f:form class="editVoting" action="update" name="voting" object="{voting}" additionalAttributes="{data-objectname: 'voting', data-objectuid: '{voting.uid}'}">
-		<f:render partial="Voting/FormFields" arguments="{voting:voting}" />
+		<f:switch expression="{voting.type}">
+			<f:case value="10">
+				<f:render partial="Voting/FormFieldsVideo" arguments="{voting:voting}" />
+			</f:case>
+			<f:case value="11">
+				<f:render partial="Voting/FormFieldsText" arguments="{voting:voting}" />
+			</f:case>
+			<f:case default="TRUE">
+				<f:render partial="Voting/FormFieldsVoting" arguments="{voting:voting}" />
+			</f:case>
+		</f:switch>
 		<f:form.submit class="btn btn-primary btn-sm" value="{f:translate(key: 'voting.actions.save')}" />
 	</f:form>
-	<h3><f:translate key="voting.votingOptions" /></h3>
-	<div class="votingOptions-content" data-votinguid="{voting.uid}">
-		<f:render partial="Voting/VotingOptions" arguments="{voting:voting}"/>
-	</div>
-	<f:comment>
-		<ul class="item-toolbar">
-			<li>
-				<a class="btn btn-primary btn-sm" data-role="genericobjectaction" data-confirm="false" data-object="voting" data-uid="{voting.uid}" data-actionname="duplicateVoting"><f:translate key="voting.actions.duplicate" /></a>
-			</li>
-		</ul>
-	</f:comment>
+	<f:if condition="{voting.type} < 10">
+		<h3><f:translate key="voting.votingOptions" /></h3>
+		<div class="votingOptions-content" data-votinguid="{voting.uid}">
+			<f:render partial="Voting/VotingOptions" arguments="{voting:voting}"/>
+		</div>
+		<f:comment>
+			<ul class="item-toolbar">
+				<li>
+					<a class="btn btn-primary btn-sm" data-role="genericobjectaction" data-confirm="false" data-object="voting" data-uid="{voting.uid}" data-actionname="duplicateVoting"><f:translate key="voting.actions.duplicate" /></a>
+				</li>
+			</ul>
+		</f:comment>
+	</f:if>
 	<button type="button" class="btn btn-primary voting-save">{f:translate(key: 'voting.actions.save')}</button>
 </div>

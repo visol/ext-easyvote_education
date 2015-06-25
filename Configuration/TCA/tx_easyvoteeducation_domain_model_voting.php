@@ -22,14 +22,20 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
+		'type' => 'type',
 		'searchFields' => 'title,short,is_visible,is_voting_enabled,voting_duration,voting_options,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_education') . 'Resources/Public/Icons/tx_easyvoteeducation_domain_model_voting.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, short, is_visible, is_voting_enabled, voting_duration, voting_options',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, short, is_visible, is_voting_enabled, voting_duration, video, content, voting_options',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'hidden;;1, title, short, is_visible, is_voting_enabled, voting_duration, voting_options, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'hidden;;1, type, title, voting_duration, voting_options'),
+		'2' => array('showitem' => 'hidden;;1, type, title, voting_duration, voting_options'),
+		'3' => array('showitem' => 'hidden;;1, type, title, voting_duration, voting_options'),
+		'4' => array('showitem' => 'hidden;;1, type, title, voting_duration, voting_options'),
+		'10' => array('showitem' => 'hidden;;1, type, title, video'),
+		'11' => array('showitem' => 'hidden;;1, type, title, content'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -107,7 +113,24 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 				),
 			),
 		),
-
+		'type' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type',
+			'config' => array(
+				'type' => 'select',
+				'items' => array(
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.1', 1),
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.2', 2),
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.3', 3),
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.4', 4),
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.10', 10),
+					array('LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.type.11', 11),
+				),
+				'size' => 1,
+				'maxitems' => 1,
+				'eval' => ''
+			),
+		),
 		'title' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.title',
@@ -149,6 +172,25 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_voting'] = array(
 				'type' => 'input',
 				'size' => 4,
 				'eval' => 'int'
+			)
+		),
+		'video' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.video',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'content' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_education/Resources/Private/Language/locallang_db.xlf:tx_easyvoteeducation_domain_model_voting.content',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
 			)
 		),
 		'voting_options' => array(

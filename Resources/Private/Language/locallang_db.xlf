@@ -67,6 +67,27 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
 				<source>Voting</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.1">
+				<source>Voting: Yes/No/Abstention</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.2">
+				<source>Voting: Text</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.3">
+				<source>Voting: Text and Images</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.4">
+				<source>Voting: Empty</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.10">
+				<source>Video</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.type.11">
+				<source>Text</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.title">
 				<source>Title</source>
 			</trans-unit>
@@ -81,6 +102,12 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_duration">
 				<source>Voting Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.video">
+				<source>Video</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.content">
+				<source>Content</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
 				<source>Voting Options</source>

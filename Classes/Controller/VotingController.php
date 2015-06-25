@@ -17,6 +17,7 @@ namespace Visol\EasyvoteEducation\Controller;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
+use Visol\EasyvoteEducation\Domain\Model\Voting;
 
 class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractController {
 
@@ -45,14 +46,15 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	 */
 	public function newAction(\Visol\EasyvoteEducation\Domain\Model\Panel $panel, $selection = '') {
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
-			/** @var \Visol\EasyvoteEducation\Domain\Model\Voting $newVoting */
+			/** @var Voting $newVoting */
 			$newVoting = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Voting');
 			$newVotingTitle = LocalizationUtility::translate('voting.actions.new.dummyText.newVoting', $this->request->getControllerExtensionName());
 			$newVoting->setTitle($newVotingTitle);
 			$newVoting->setIsVisible(TRUE);
 			$newVoting->setVotingDuration(60);
+			$newVoting->setType((int)$selection);
 			switch ((int)$selection) {
-				case 1:
+				case Voting::TYPE_VOTING_YESNOABSTENTION:
 					// YesNoAbstention
 					/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionYes */
 					$votingOptionYes = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
@@ -73,8 +75,8 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 					$this->votingOptionRepository->add($votingOptionAbstention);
 					$newVoting->addVotingOption($votingOptionAbstention);
 					break;
-				case 2:
-					// current unused (commented in Template)
+				case Voting::TYPE_VOTING_TEXT:
+					// currently unused (commented in Template)
 					// Free text
 					$randomColors = $this->dummyDataService->getRandomColors(3);
 					for ($i = 0; $i < 3; $i++) {
@@ -85,7 +87,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 						$newVoting->addVotingOption($votingOption);
 					}
 					break;
-				case 3:
+				case Voting::TYPE_VOTING_TEXTANDIMAGES:
 					// Text and Images
 					$randomNames = $this->dummyDataService->getRandomNames(3);
 					for ($i = 0; $i < 3; $i++) {
@@ -97,8 +99,10 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 						$newVoting->addVotingOption($votingOption);
 					}
 					break;
+				case Voting::TYPE_VOTING_EMPTY: // currently unused
+				case Voting::TYPE_VIDEO:
+				case Voting::TYPE_TEXT:
 				default:
-					// current unused (commented in Template)
 					break;
 			}
 			$this->votingRepository->add($newVoting);
@@ -117,10 +121,10 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	/**
 	 * Update a voting
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
+	 * @param Voting $voting
 	 * @return string
 	 */
-	public function updateAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
+	public function updateAction(Voting $voting) {
 		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
 			$this->votingRepository->update($voting);
 			$this->persistenceManager->persistAll();
@@ -136,11 +140,11 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	/**
 	 * Delete a voting
 	 *
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
+	 * @param Voting $voting
 	 * @ignorevalidation $voting
 	 * @return string
 	 */
-	public function deleteAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
+	public function deleteAction(Voting $voting) {
 		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
 			$this->votingRepository->remove($voting);
 			$this->persistenceManager->persistAll();
@@ -157,10 +161,10 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	 * Duplicate a voting
 	 *
 	 * @unused Currently not used and maintained
-	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
+	 * @param Voting $voting
 	 * @return string
 	 */
-	public function duplicateAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
+	public function duplicateAction(Voting $voting) {
 		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
 			/** @var \Visol\EasyvoteEducation\Domain\Model\Panel $duplicateVoting */
 			$duplicateVoting = $this->cloneService->copy($voting);
@@ -189,7 +193,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 		if ($this->isCurrentUserOwnerOfPanel($panel)) {
 			$votings = $this->votingRepository->findByPanel($panel);
 			foreach ($votings as $voting) {
-				/** @var $voting \Visol\EasyvoteEducation\Domain\Model\Voting */
+				/** @var $voting Voting */
 				$voting->setSorting((int)$sorting[$voting->getUid()]);
 				$this->votingRepository->update($voting);
 			}

@@ -378,16 +378,16 @@
 			<trans-unit id="voting.actions.new.cancel">
 				<target>Annuler</target>
 			</trans-unit>
-			<trans-unit id="voting.actions.new.yesNoAbstention">
+			<trans-unit id="voting.actions.new.voting.yesNoAbstention">
 				<target>Oui/Non/Abstention</target>
 			</trans-unit>
-			<trans-unit id="voting.actions.new.text">
+			<trans-unit id="voting.actions.new.voting.text">
 				<target>Nouveau texte</target>
 			</trans-unit>
-			<trans-unit id="voting.actions.new.images">
+			<trans-unit id="voting.actions.new.voting.images">
 				<target>Illustration de réponses</target>
 			</trans-unit>
-			<trans-unit id="voting.actions.new.empty">
+			<trans-unit id="voting.actions.new.voting.empty">
 				<target>Voting vide</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">

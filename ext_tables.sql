@@ -56,12 +56,15 @@ CREATE TABLE tx_easyvoteeducation_domain_model_voting (
 
 	panel int(11) unsigned DEFAULT '0' NOT NULL,
 
+  type int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	short varchar(255) DEFAULT '' NOT NULL,
 	is_visible tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	is_voting_enabled tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	voting_duration int(11) DEFAULT '0' NOT NULL,
 	voting_options int(11) unsigned DEFAULT '0' NOT NULL,
+  video varchar(255) DEFAULT '' NOT NULL,
+  content text NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

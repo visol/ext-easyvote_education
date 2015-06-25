@@ -1,0 +1,27 @@
+<div class="row presentation-view">
+	<div class="col-md-4 presentation-view-sidebar">
+		<div class="voting-timer"></div>
+		<f:render partial="Panel/VotingStep/PresentationViewContent/Navigation" arguments="{_all}" />
+	</div>
+	<div class="col-md-8 presentation-view-content">
+		<h2>{panel.currentVoting.title}</h2>
+		<f:if condition="{panel.currentVoting.type} == 10">
+			<f:if condition="{panel.currentVoting.videoUrl}">
+				<div class="youtube-embed">
+					<iframe src="{panel.currentVoting.videoUrl}?theme=light&html5&rel=0" frameborder="0" allowfullscreen=""></iframe>
+				</div>
+			</f:if>
+		</f:if>
+		<f:if condition="{panel.currentVoting.type} == 11">
+			<p class="big"><f:format.nl2br>{panel.currentVoting.content}</f:format.nl2br></p>
+		</f:if>
+	</div>
+</div>
+<f:if condition="{panel.nextVoting}">
+	<f:then>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-nextVoting-{panel.nextVoting.uid}" data-target="#panel-votingcontainer" href="#" class="btn btn-primary presentation-view-button"><f:translate key="panel.votingStep.displayNextVotingButtonText" /></a></p>
+	</f:then>
+	<f:else>
+		<p><a data-role="votingaction" data-actionarguments="panel-{panel.uid}-stopPanel-0" data-target="#panel-votingcontainer" href="#" class="btn btn-primary presentation-view-button"><f:translate key="panel.votingStep.stopPanelButtonText" /></a></p>
+	</f:else>
+</f:if>
