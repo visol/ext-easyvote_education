@@ -14,7 +14,6 @@ namespace Visol\EasyvoteEducation\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 use Visol\EasyvoteEducation\Domain\Model\Voting;
@@ -53,6 +52,8 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 			$newVoting->setIsVisible(TRUE);
 			$newVoting->setVotingDuration(60);
 			$newVoting->setType((int)$selection);
+
+
 			switch ((int)$selection) {
 				case Voting::TYPE_VOTING_YESNOABSTENTION:
 					// YesNoAbstention
@@ -60,18 +61,21 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 					$votingOptionYes = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
 					$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.yes', $this->request->getControllerExtensionName());
 					$votingOptionYes->setTitle($votingOptionDummyText);
+					$votingOptionYes->setImage($this->votingService->getPlaceholderImageFileReference('yes'));
 					$this->votingOptionRepository->add($votingOptionYes);
 					$newVoting->addVotingOption($votingOptionYes);
 					/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionNo */
 					$votingOptionNo = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
 					$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.no', $this->request->getControllerExtensionName());
 					$votingOptionNo->setTitle($votingOptionDummyText);
+					$votingOptionNo->setImage($this->votingService->getPlaceholderImageFileReference('no'));
 					$this->votingOptionRepository->add($votingOptionNo);
 					$newVoting->addVotingOption($votingOptionNo);
 					/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOptionAbstention */
 					$votingOptionAbstention = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
 					$votingOptionDummyText = LocalizationUtility::translate('voting.actions.new.dummyText.abstention', $this->request->getControllerExtensionName());
 					$votingOptionAbstention->setTitle($votingOptionDummyText);
+					$votingOptionAbstention->setImage($this->votingService->getPlaceholderImageFileReference('abstention'));
 					$this->votingOptionRepository->add($votingOptionAbstention);
 					$newVoting->addVotingOption($votingOptionAbstention);
 					break;
@@ -94,7 +98,7 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 						/** @var \Visol\EasyvoteEducation\Domain\Model\VotingOption $votingOption */
 						$votingOption = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\VotingOption');
 						$votingOption->setTitle($randomNames[$i]);
-						// todo add dummy images
+						$votingOption->setImage($this->votingService->getPlaceholderImageFileReference());
 						$this->votingOptionRepository->add($votingOption);
 						$newVoting->addVotingOption($votingOption);
 					}
