@@ -38,7 +38,6 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Title
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 * @copy clone
 	 */
 	protected $title = '';
