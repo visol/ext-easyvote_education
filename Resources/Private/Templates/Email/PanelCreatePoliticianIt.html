@@ -1,0 +1,75 @@
+<html>
+<body>
+<p>Ciao {communityUser.firstName}</p>
+
+<p>in una scuola nelle vicinanze si terrà presto un Polittalk:</p>
+
+<p><strong>Concerne il Cantone {panel.city.kanton.name}</strong></p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>
+				Organizzazione:
+			</th>
+			<td>
+				{panel.organization}, {panel.address}, {panel.city.postalCode} {panel.city.name}
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Data:
+			</th>
+			<td>
+				<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Ora:
+			</th>
+			<td>
+				<f:if condition="{panel.fromTime}">
+					<f:format.date format="%R">{panel.fromTime}</f:format.date>
+					<f:if condition="{panel.toTime}">
+						<f:then>
+							-
+							<f:format.date format="%R">{panel.toTime}</f:format.date>
+							<f:translate key="panel.time.oClock"/>
+						</f:then>
+						<f:else>
+							<f:translate key="panel.time.oClock"/>
+						</f:else>
+					</f:if>
+				</f:if>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				Tema:
+			</th>
+			<td>
+				{panel.title}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Vorresti partecipare al dibattito? Esercitarti nei dibattiti? Mostrare il tuo punto di vista agli studenti?</p>
+
+<p>Allora effettua ora il login e iscriviti come partecipante a questo Polittalk. La regola è: primo arrivato, primo
+	servito!</p>
+
+<p>Hai ancora domande? Non esitare a contattarci all’indirizzo <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+	Puoi inoltre raggiungerci telefonicamente allo 031 384 08 09.</p>
+
+<p>Cordiali saluti</p>
+
+<p>Il tuo team easyvote</p>
+<hr/>
+<p>*** Non rispondere a questa e-mail. L’e-mail è stata generata automaticamente. ***</p>
+</body>
+</html>
+
+
+

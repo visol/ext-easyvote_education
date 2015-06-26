@@ -1,0 +1,87 @@
+<html>
+<body>
+<p>Hallo {communityUser.firstName}</p>
+
+<p>Du hast dich soeben erfolgreich für folgenden Polittalk eingetragen:</p>
+
+<table>
+	<tbody>
+	<tr>
+		<th>
+			Organisation:
+		</th>
+		<td>
+			{panel.organization}, {panel.address}, {panel.city.postalCode} {panel.city.name}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Datum:
+		</th>
+		<td>
+			<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Zeit:
+		</th>
+		<td>
+			<f:if condition="{panel.fromTime}">
+				<f:format.date format="%R">{panel.fromTime}</f:format.date>
+				<f:if condition="{panel.toTime}">
+					<f:then>
+						-
+						<f:format.date format="%R">{panel.toTime}</f:format.date>
+						<f:translate key="panel.time.oClock"/>
+					</f:then>
+					<f:else>
+						<f:translate key="panel.time.oClock"/>
+					</f:else>
+				</f:if>
+			</f:if>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Thema:
+		</th>
+		<td>
+			{panel.title}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Polittalk-Organisatorin:
+		</th>
+		<td>
+			{panel.communityUser.firstName} {panel.communityUser.lastName},
+			<a href="mailto:{panel.communityuser.email}">{panel.communityuser.email}</a>,
+			{panel.communityuser.telephone}
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>Deine Anmeldung ist <strong>verbindlich</strong>. Wir bitten dich, den Anlass in deiner Agenda einzutragen.
+	Solltest du aus wichtigen Gründen nicht am Polittalk teilnehmen können, bitten wir dich, rechtzeitig mit
+	deinem/deiner Parteiadministrator/in Kontakt aufzunehmen.
+</p>
+
+<p>Der/die Polittalk-Organisator/in wird ca. 2 Wochen vor dem Anlass mit dir Kontakt aufnehmen und dir dann weitere
+	Details zu Treffpunkt, Ablauf etc. zukommen lassen.</p>
+
+<p>Hast du noch Fragen? Zögere nicht, uns über <a href="mailto:info@easyvote.ch">info@easyvote.ch</a> zu kontaktieren.
+	Wir sind zudem auch telefonisch unter 031 384 08 09 erreichbar. Bei spezifischen Fragen zum Polittalk bitten wir
+	dich, direkt mit dem/der Organisator/in Kontakt aufzunehmen.</p>
+
+<p>Beste Grüsse</p>
+
+<p>Dein easyvote Team</p>
+<hr/>
+<p>*** Antworte nicht auf diese E-Mail. Diese E-Mail wurde automatisch generiert. ***</p>
+</body>
+</html>
+
+
+

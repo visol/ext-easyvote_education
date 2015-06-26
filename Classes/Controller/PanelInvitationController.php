@@ -171,13 +171,16 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 					}
 					if ($isPanelInvitationForPartyOfCommunityUser) {
 						$panelInvitation->setAttendingCommunityUser($communityUser);
-//						/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
-//						$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
-//						$templateEmail->setRecipient($communityUser);
-//						$templateEmail->setSubject('@TODO ');
-//						$templateEmail->setTemplate('Email/AttendPanelInvitation.html', $this->request->getControllerExtensionName());
-//						$templateEmail->assign('panelInvitation', $panelInvitation);
-//						$templateEmail->enqueue();
+
+						// Send confirmation e-mail to politician
+						/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+						$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+						$templateEmail->addRecipient($communityUser);
+						$templateEmail->setTemplateName('panelInvitationAttendPolitician');
+						$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+						$templateEmail->assign('panel', $panelInvitation->getPanel());
+						$templateEmail->enqueue();
+
 						$this->panelInvitationRepository->update($panelInvitation);
 						$this->persistenceManager->persistAll();
 						return json_encode(array('reloadPanelParticipations' => TRUE));
@@ -283,14 +286,20 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 			if (is_array($postData) && array_key_exists('communityUser', $postData)) {
 				/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
 				$communityUser = $this->communityUserRepository->findByUid((int)$postData['communityUser']);
-				// Party is a lazy property of CommunityUser
-				if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
-					$communityUser->getParty()->_loadRealInstance();
-				}
 				if ($communityUser->getParty() === $party) {
 					$object->setAttendingCommunityUser(0);
 					$this->panelInvitationRepository->update($object);
 					$this->persistenceManager->persistAll();
+
+					// Send information e-mail to politician
+					/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+					$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+					$templateEmail->addRecipient($communityUser);
+					$templateEmail->setTemplateName('panelInvitationRemovePolitician');
+					$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+					$templateEmail->assign('panel', $object->getPanel());
+					$templateEmail->enqueue();
+
 					return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
 				} else {
 					// Error: Trying to remove user of another party
@@ -333,6 +342,16 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
 						$object->setAttendingCommunityUser($communityUser);
 						$this->panelInvitationRepository->update($object);
 						$this->persistenceManager->persistAll();
+
+						// Send information e-mail to politician
+						/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+						$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+						$templateEmail->addRecipient($communityUser);
+						$templateEmail->setTemplateName('panelInvitationAssignPolitician');
+						$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+						$templateEmail->assign('panel', $object->getPanel());
+						$templateEmail->enqueue();
+
 						return json_encode(array('namespace' => 'EasyvoteEducation', 'function' => 'getPanelInvitations', 'arguments' => $object->getUid()));
 					} else {
 						// Another user is attending in the meantime, reload panel invitations

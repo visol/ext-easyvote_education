@@ -24,10 +24,22 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 	protected $kantonRepository = NULL;
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
+	 * @inject
+	 */
+	protected $communityUserRepository = NULL;
+
+	/**
 	 * @var \Visol\EasyvoteEducation\Domain\Repository\PanelRepository
 	 * @inject
 	 */
 	protected $panelRepository = NULL;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+	 * @inject
+	 */
+	protected $objectManager;
 
 	/**
 	 * @param Panel $panel
@@ -81,4 +93,45 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 		return TRUE;
 	}
 
+	/**
+	 * Send an invitiation to all politicians affected by a panel
+	 * Affected by a panel means:
+	 * a) Living in the Kanton a panel takes place
+	 * b) Are politicians of a Party that is allowed for a Panel invitation
+	 *
+	 * @param Panel $panel
+	 */
+	public function sentMailAboutPanelToAffectedPoliticians(Panel $panel) {
+		if (is_null($panel->getCity())) {
+			return FALSE;
+		}
+		if (count($panel->getPanelInvitations())) {
+			foreach ($panel->getPanelInvitations() as $panelInvitation) {
+				/** @var $panelInvitation \Visol\EasyvoteEducation\Domain\Model\PanelInvitation */
+				if (count($panelInvitation->getAllowedParties())) {
+
+					foreach ($panelInvitation->getAllowedParties() as $party) {
+						/** @var $party \Visol\Easyvote\Domain\Model\Party */
+						$demand = [];
+						$demand['kanton'] = $panel->getCity()->getKanton()->getUid();
+						$partyMembers = $this->communityUserRepository->findPoliticiansByPartyAndDemand(
+							$party, $demand
+						);
+						foreach ($partyMembers as $partyMember) {
+							/** @var $partyMember \Visol\Easyvote\Domain\Model\CommunityUser */
+							// Send information e-mail to politician
+							/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+							$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+							$templateEmail->addRecipient($partyMember);
+							$templateEmail->setTemplateName('panelCreatePolitician');
+							$templateEmail->setExtensionName('easyvoteeducation');
+							$templateEmail->assign('panel', $panel);
+							$templateEmail->enqueue();
+						}
+
+					}
+				}
+			}
+		}
+	}
 }

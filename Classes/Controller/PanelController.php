@@ -262,7 +262,19 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
 				$panel->setPanelInvitationsSent(TRUE);
 				$this->panelRepository->update($panel);
 				$this->persistenceManager->persistAll();
-				// TODO send invitations
+
+				// Send confirmation e-mail to teacher
+				/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+				$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+				$templateEmail->addRecipient($panel->getCommunityUser());
+				$templateEmail->setTemplateName('panelCreateTeacher');
+				$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+				$templateEmail->assign('panel', $panel);
+				$templateEmail->enqueue();
+
+				// Send information e-mails
+				$this->getPanelService()->sentMailAboutPanelToAffectedPoliticians($panel);
+
 				return json_encode(array('redirectToAction' => 'managePanels'));
 			} else {
 				$reason = LocalizationUtility::translate('ajax.status.403.panelController.sendPanelInvitationsAction', 'easyvote_education');
