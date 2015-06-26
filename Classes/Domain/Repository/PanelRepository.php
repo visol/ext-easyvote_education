@@ -42,4 +42,69 @@ class PanelRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		return $query->execute()->count();
 	}
 
+	/**
+	 * Find all panel in the past that have not been feedback e-mails sent for
+	 * The is used in the PanelCommandController
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPastPanelsWithoutFeedbackEmailSent() {
+		$now = new \DateTime();
+		$today = $now->format('Y-m-d');
+
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$query->matching(
+			$query->logicalAnd(
+				$query->lessThanOrEqual('date', $today),
+				$query->equals('feedbackMailSent', FALSE)
+			)
+		);
+		return $query->execute();
+
+	}
+
+	/**
+	 * Find panels that happen in a week, two weeks or a month from the actual date
+	 * This is used to send a reminder e-mail in the PanelCommandController
+	 *
+	 * @param $constraint
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPanelsWithinDateConstraintWithoutReminderEmailSent($constraint) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$constraints = [];
+
+		switch ($constraint) {
+			case 'onemonth':
+				$nextMonth = new \DateTime('+1 month');
+				$todayInAMonth = $nextMonth->format('Y-m-d');
+				$constraints[] = $query->equals('date', $todayInAMonth);
+				$constraints[] = $query->equals('reminder' . ucfirst($constraint) . 'Sent', FALSE);
+				break;
+			case 'twoweeks':
+				$weekAfterNextWeeks = new \DateTime('+2 weeks');
+				$todayInTwoWeeks = $weekAfterNextWeeks->format('Y-m-d');
+				$constraints[] = $query->equals('date', $todayInTwoWeeks);
+				$constraints[] = $query->equals('reminder' . ucfirst($constraint) . 'Sent', FALSE);
+				break;
+			case 'oneweek':
+				$nextWeek = new \DateTime('+1 week');
+				$todayInAWeek = $nextWeek->format('Y-m-d');
+				$constraints[] = $query->equals('date', $todayInAWeek);
+				$constraints[] = $query->equals('reminder' . ucfirst($constraint) . 'Sent', FALSE);
+				break;
+		}
+
+		if (count($constraints)) {
+			$query->matching(
+				$query->logicalAnd(
+					$constraints
+				)
+			);
+			return $query->execute();
+		}
+	}
+
 }

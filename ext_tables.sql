@@ -26,6 +26,10 @@ CREATE TABLE tx_easyvoteeducation_domain_model_panel (
 	community_user int(11) unsigned DEFAULT '0' NOT NULL,
   panel_invitations int(11) unsigned DEFAULT '0' NOT NULL,
   panel_invitations_sent tinyint(1) unsigned DEFAULT '0' NOT NULL,
+  feedback_mail_sent tinyint(1) unsigned DEFAULT '0' NOT NULL,
+  reminder_onemonth_sent tinyint(1) unsigned DEFAULT '0' NOT NULL,
+  reminder_twoweeks_sent tinyint(1) unsigned DEFAULT '0' NOT NULL,
+  reminder_oneweek_sent tinyint(1) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

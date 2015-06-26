@@ -702,103 +702,103 @@
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelCreatePolitician">
-				<source>easyvote Polittalk – Einladung zu einem Polittalk</source>
+				<target>easyvote Polittalk – Einladung zu einem Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelCreatePoliticianFr">
-				<source>easyvote Polittalk - Invitation pour un Polittalk</source>
+				<target>easyvote Polittalk - Invitation pour un Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelCreatePoliticianIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelCreateTeacher">
-				<source>easyvote Polittalk – Bestätigung Buchungsanfrage</source>
+				<target>easyvote Polittalk – Bestätigung Buchungsanfrage</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelCreateTeacherFr">
-				<source>easyvote Polittalk - Confirmation de l'inscription</source>
+				<target>easyvote Polittalk - Confirmation de l'inscription</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelCreateTeacherIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelInvitationAttendPolitician">
-				<source>easyvote Polittalk – Bestätigung Teilnahme an Polittalk</source>
+				<target>easyvote Polittalk – Bestätigung Teilnahme an Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationAttendPoliticianFr">
-				<source>easyvote Polittalk - Confirmation de la participation à un Polittalk</source>
+				<target>easyvote Polittalk - Confirmation de la participation à un Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationAttendPoliticianIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelInvitationAssignPolitician">
-				<source>easyvote Polittalk – Einteilung zu einem Polittalk</source>
+				<target>easyvote Polittalk – Einteilung zu einem Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationAssignPoliticianFr">
-				<source>easyvote Polittalk - Assignation à un Polittalk</source>
+				<target>easyvote Polittalk - Assignation à un Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationAssignPoliticianIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelInvitationRemovePolitician">
-				<source>easyvote Polittalk – Deine Teilnahme an einem Polittalk wurde storniert</source>
+				<target>easyvote Polittalk – Deine Teilnahme an einem Polittalk wurde storniert</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationRemovePoliticianFr">
-				<source>easyvote - Polittalk - Ta participation à un Polittalk a été annulée</source>
+				<target>easyvote - Polittalk - Ta participation à un Polittalk a été annulée</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelInvitationRemovePoliticianIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
-			<trans-unit id="email.subject.panelReminderOneMonthTeacher">
-				<source>easyvote Polittalk – Update zu Ihrem Polittalk</source>
+			<trans-unit id="email.subject.panelReminderOnemonthTeacher">
+				<target>easyvote Polittalk – Update zu Ihrem Polittalk</target>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneMonthTeacherFr">
-				<source>easyvote Polittalk</source>
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherFr">
+				<target>easyvote Polittalk</target>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneMonthTeacherIt">
-				<source>easyvote Polittalk</source>
-			</trans-unit>
-
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacher">
-				<source>easyvote Polittalk – Update zu Ihrem Polittalk</source>
-			</trans-unit>
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacherFr">
-				<source>easyvote Polittalk - Mise à jour de votre Polittalk</source>
-			</trans-unit>
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacherFr">
-				<source>easyvote Polittalk</source>
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherIt">
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
-			<trans-unit id="email.subject.panelReminderOneWeekTeacher">
-				<source>easyvote Polittalk – Ihr Polittalk von nächster Woche</source>
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacher">
+				<target>easyvote Polittalk – Update zu Ihrem Polittalk</target>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneWeekTeacherFr">
-				<source>easyvote Polittalk - Votre Polittalk de la semaine prochaine</source>
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
+				<target>easyvote Polittalk - Mise à jour de votre Polittalk</target>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneWeekTeacherIt">
-				<source>easyvote Polittalk</source>
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
+				<target>easyvote Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelReminderOneweekTeacher">
+				<target>easyvote Polittalk – Ihr Polittalk von nächster Woche</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOneweekTeacherFr">
+				<target>easyvote Polittalk - Votre Polittalk de la semaine prochaine</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOneweekTeacherIt">
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelFeedbackTeacher">
-				<source>easyvote Polittalk – Bitte bewerten Sie Ihren Polittalk</source>
+				<target>easyvote Polittalk – Bitte bewerten Sie Ihren Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelFeedbackTeacherFr">
-				<source>easyvote Polittalk - S'il vous plaît, merci d'évaluer votre Polittalk</source>
+				<target>easyvote Polittalk - S'il vous plaît, merci d'évaluer votre Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelFeedbackTeacherIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.panelFeedbackPolitician">
-				<source>easyvote Polittalk – Bitte bewerte deinen Polittalk</source>
+				<target>easyvote Polittalk – Bitte bewerte deinen Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelFeedbackPoliticianFr">
-				<source>easyvote Polittalk - S'il te plaît, merci d'évaluer ton Polittalk</source>
+				<target>easyvote Polittalk - S'il te plaît, merci d'évaluer ton Polittalk</target>
 			</trans-unit>
 			<trans-unit id="email.subject.panelFeedbackPoliticianIt">
-				<source>easyvote Polittalk</source>
+				<target>easyvote Polittalk</target>
 			</trans-unit>
 
 		</body>

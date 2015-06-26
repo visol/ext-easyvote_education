@@ -1,0 +1,71 @@
+<html>
+<body>
+<p>Guten Tag {communityUser.firstName} {communityUser.lastName}</p>
+
+<p>Gerne informieren wir Sie, dass sich bereits folgende Jungpolitiker/innen für Ihren Polittalk vom
+	<f:format.date format="%A, %e. %B %Y">{panel.date}</f:format.date>
+	angemeldet haben:
+</p>
+
+<ul>
+	<f:for each="{panel.panelInvitations}" as="panelInvitation">
+		<f:if condition="{panelInvitation.attendingCommunityUser}">
+			<f:then>
+				<li>{panelInvitation.attendingCommunityUser.firstName}
+					{panelInvitation.attendingCommunityUser.lastName},
+					{panelInvitation.attendingCommunityUser.citySelection.name},
+					{panelInvitation.attendingCommunityUser.party.shortTitle},
+					<a href="mailto:{panelInvitation.attendingCommunityUser.email}">{panelInvitation.attendingCommunityUser.email}</a>,
+					{panelInvitation.attendingCommunityUser.telephone}
+				</li>
+			</f:then>
+			<f:else>
+				<li>
+					<f:translate key="panel.panelInvitations.pendingTitle"/>
+					:
+					<f:if condition="{panelInvitation.allowedParties -> f:count()} > 1">
+						<f:then>
+							<f:for each="{panelInvitation.allowedParties}" as="allowedParty"
+								   iteration="allowedPartyIterator">
+								<f:if condition="{allowedPartyIterator.isLast}">
+									<f:then>
+										{allowedParty.shortTitle}
+									</f:then>
+									<f:else>
+										{allowedParty.shortTitle} oder
+									</f:else>
+								</f:if>
+							</f:for>
+						</f:then>
+						<f:else>
+							<f:for each="{panelInvitation.allowedParties}" as="allowedParty">
+								{allowedParty.shortTitle}
+							</f:for>
+						</f:else>
+					</f:if>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+</ul>
+
+<p>Falls noch Vakanzen bestehen sollten, setzt easyvote, in Zusammenarbeit mit den Jungparteien, alles daran, noch
+	geeignete Kandidierende zu finden.</p>
+
+<p>Zwei Wochen vor dem Polittalk-Termin werden wir Sie nochmals über den Stand der Buchung informieren.</p>
+
+
+<p>Haben Sie noch Fragen? Zögern Sie nicht, uns über <a href="mailto:info@easyvote.ch">info@easyvote.ch</a> zu
+	kontaktieren.
+	Wir sind zudem auch telefonisch unter 031 384 08 09 erreichbar.</p>
+
+<p>Freundliche Grüsse</p>
+
+<p>Das easyvote Team</p>
+<hr/>
+<p>*** Antworten Sie nicht auf diese E-Mail. Diese E-Mail wurde automatisch generiert. ***</p>
+</body>
+</html>
+
+
+

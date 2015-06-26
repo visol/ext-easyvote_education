@@ -63,6 +63,18 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.panel_invitations_sent">
 				<source>Panel Invitations sent</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.feedback_mail_sent">
+				<source>Feedback e-mail sent</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.reminder_onemonth_sent">
+				<source>Reminder sent: One month</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.reminder_twoweeks_sent">
+				<source>Reminder sent: Two weeks</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.reminder_oneweek_sent">
+				<source>Reminder sent: One week</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
 				<source>Voting</source>

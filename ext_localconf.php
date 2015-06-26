@@ -90,3 +90,8 @@ if (TYPO3_MODE == 'BE') {
 		'className' => 'Visol\\EasyvoteEducation\\Vidi\\Xclass\\View\\MenuItem\\ExportXlsMenuItem'
 	);
 }
+
+/* Command Controllers */
+if (TYPO3_MODE === 'BE') {
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Visol\\EasyvoteEducation\\Command\\PanelCommandController';
+}

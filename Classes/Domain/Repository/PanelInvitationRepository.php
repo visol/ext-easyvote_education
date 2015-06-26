@@ -35,7 +35,7 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 	 */
 	public function findFutureNotIgnoredPanelsByCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		if ($communityUser->getCitySelection() instanceof \Visol\Easyvote\Domain\Model\City && is_object($communityUser->getParty())) {
-			// midnigth of current day
+			// midnight of current day
 			$endOfDay = new \DateTime('23:59:59');
 			$endOfDayDate = $endOfDay->format('Y-m-d');
 

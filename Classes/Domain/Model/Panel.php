@@ -204,6 +204,34 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $panelInvitationsSent = FALSE;
 
 	/**
+	 * Was a feedback e-mail sent?
+	 *
+	 * @var boolean
+	 */
+	protected $feedbackMailSent = FALSE;
+
+	/**
+	 * Was a "one month before panel" reminder sent?
+	 *
+	 * @var boolean
+	 */
+	protected $reminderOnemonthSent = FALSE;
+
+	/**
+	 * Was a "two weeks before panel" reminder sent?
+	 *
+	 * @var boolean
+	 */
+	protected $reminderTwoweeksSent = FALSE;
+
+	/**
+	 * Was a "one week before panel" reminder sent?
+	 *
+	 * @var boolean
+	 */
+	protected $reminderOneweekSent = FALSE;
+
+	/**
 	 * @var int
 	 * @transient
 	 */
@@ -633,6 +661,62 @@ class Panel extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPanelInvitationsSent($panelInvitationsSent) {
 		$this->panelInvitationsSent = $panelInvitationsSent;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isFeedbackMailSent() {
+		return $this->feedbackMailSent;
+	}
+
+	/**
+	 * @param boolean $feedbackMailSent
+	 */
+	public function setFeedbackMailSent($feedbackMailSent) {
+		$this->feedbackMailSent = $feedbackMailSent;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isReminderOnemonthSent() {
+		return $this->reminderOnemonthSent;
+	}
+
+	/**
+	 * @param boolean $reminderOnemonthSent
+	 */
+	public function setReminderOnemonthSent($reminderOnemonthSent) {
+		$this->reminderOnemonthSent = $reminderOnemonthSent;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isReminderOneweekSent() {
+		return $this->reminderOneweekSent;
+	}
+
+	/**
+	 * @param boolean $reminderOneweekSent
+	 */
+	public function setReminderOneweekSent($reminderOneweekSent) {
+		$this->reminderOneweekSent = $reminderOneweekSent;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isReminderTwoweeksSent() {
+		return $this->reminderTwoweeksSent;
+	}
+
+	/**
+	 * @param boolean $reminderTwoweeksSent
+	 */
+	public function setReminderTwoweeksSent($reminderTwoweeksSent) {
+		$this->reminderTwoweeksSent = $reminderTwoweeksSent;
 	}
 
 	/**

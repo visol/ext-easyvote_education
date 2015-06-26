@@ -774,33 +774,33 @@
 				<source>easyvote Polittalk</source>
 			</trans-unit>
 
-			<trans-unit id="email.subject.panelReminderOneMonthTeacher">
+			<trans-unit id="email.subject.panelReminderOnemonthTeacher">
 				<source>easyvote Polittalk – Update zu Ihrem Polittalk</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneMonthTeacherFr">
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherFr">
 				<source>easyvote Polittalk</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneMonthTeacherIt">
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherIt">
 				<source>easyvote Polittalk</source>
 			</trans-unit>
 
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacher">
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacher">
 				<source>easyvote Polittalk – Update zu Ihrem Polittalk</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacherFr">
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
 				<source>easyvote Polittalk - Mise à jour de votre Polittalk</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderTwoWeeksTeacherFr">
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
 				<source>easyvote Polittalk</source>
 			</trans-unit>
 
-			<trans-unit id="email.subject.panelReminderOneWeekTeacher">
+			<trans-unit id="email.subject.panelReminderOneweekTeacher">
 				<source>easyvote Polittalk – Ihr Polittalk von nächster Woche</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneWeekTeacherFr">
+			<trans-unit id="email.subject.panelReminderOneweekTeacherFr">
 				<source>easyvote Polittalk - Votre Polittalk de la semaine prochaine</source>
 			</trans-unit>
-			<trans-unit id="email.subject.panelReminderOneWeekTeacherIt">
+			<trans-unit id="email.subject.panelReminderOneweekTeacherIt">
 				<source>easyvote Polittalk</source>
 			</trans-unit>
 
