@@ -88,6 +88,10 @@ class PanelCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCo
 			$this->outputLine('Panels due in ' . $reminder . ': ' . count($affectedPanels));
 			foreach ($affectedPanels as $panel) {
 				/** @var $panel \Visol\EasyvoteEducation\Domain\Model\Panel */
+				if (is_null($panel->getDate())) {
+					// If panel has not date, we don't send a reminder (obviously)
+					return TRUE;
+				}
 				$this->outputLine($panel->getDate()->format('Y-m-d') . ' | ' . $panel->getTitle() . ' | Sending reminder to ' . $panel->getCommunityUser()->getEmail());
 
 				// Send reminder e-mail to teacher
