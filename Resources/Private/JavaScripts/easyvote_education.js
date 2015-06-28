@@ -16,6 +16,12 @@ $(function() {
 		callback();
 	};
 
+	// Enforce a number
+	$body.on('input', '.enforce-number', function() {
+		this.value = this.value.replace(/[^0-9.]/g, '');
+		this.value = this.value.replace(/(\..*)\./g, '$1');
+	});
+
 	var $easyvoteEducationContentContainer = $('#easyvoteeducation-content');
 	var requestedAction = $easyvoteEducationContentContainer.attr('data-action');
 
