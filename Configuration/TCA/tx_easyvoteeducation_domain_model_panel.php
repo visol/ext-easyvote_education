@@ -40,6 +40,9 @@ $GLOBALS['TCA']['tx_easyvoteeducation_domain_model_panel'] = array(
 				'visible' => TRUE,
 				'renderer' => new Fab\Vidi\Grid\CheckBoxComponent(),
 			),
+			'__buttons' => array(
+				'renderer' => new Fab\Vidi\Grid\ButtonGroupComponent(),
+			),
 			'panel_id' => array(
 				'visible' => TRUE,
 			),
