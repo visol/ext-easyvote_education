@@ -89,8 +89,8 @@
 			</trans-unit>
 			<trans-unit id="panel.editPanelInvitations.introduction">
 				<source><![CDATA[
-					<p>Unten können Sie für jede/n PolitikerIn definieren, von welcher Partei diese/r stammen soll. Sie können pro PolitikerIn auch mehrere Parteien definieren. In diesem Fall nimmt diejenige Partei teil, die als erstes zusagt.</p>
-					<p>Mit einem Klick auf “Einladungen versenden” werden die betreffenden PolitikerInnen automatisiert per E-Mail eingeladen. Auf der Übersicht <a href="%s">Meine Polittalks</a> sehen Sie wer zugesagt hat.</p>
+					<p>Unten können Sie PolitikerInnen (Polittalk-Gäste) zu Ihrem Polittalk einladen. Je nach erwarteter Teilnehmerzahl (Anzahl SchülerInnen) können Sie unterschiedlich viele Polittalk-Gäste einladen. Für jeden Polittalk-Platz können Sie definieren, von welcher Partei dieser eingenommen werden soll. Sie können für einen Polittalk-Platz auch mehrere Parteien auswählen (in diesem Fall nimmt diejenige Partei teil, die als erstes zusagt).</p>
+	                <p>Mit einem Klick auf “Einladungen versenden” werden die PolitikerInnen der entsprechenden Parteien automatisch eingeladen. Auf der Übersicht <a href="%s">Meine Polittalks</a> sehen Sie, wer zugesagt hat.</p>
 				]]></source>
 			</trans-unit>
 
@@ -325,6 +325,16 @@
 				<source>Durchführen</source>
 			</trans-unit>
 
+			<trans-unit id="panel.actionIcon.panel">
+				<source>Keine PolitikerInnen eingeladen.</source>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.pending">
+				<source>Zusagen der PolitikerInnen pendent.</source>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.ok">
+				<source>Alle PolitikerInnen haben bestätigt.</source>
+			</trans-unit>
+
 			<trans-unit id="voting.votingDuration">
 				<source>Abstimmungszeit</source>
 			</trans-unit>
@@ -507,7 +517,7 @@
 				<source>Einleitungstext</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.panelInvitation">
-				<source>Polittalk-Einladung</source>
+				<source>Polittalk-Platz</source>
 			</trans-unit>
 			<trans-unit id="panelInvitation.allowedParties">
 				<source>Mögliche Parteien</source>
@@ -547,6 +557,15 @@
 				<source>bestätigen</source>
 			</trans-unit>
 
+			<trans-unit id="panelInvitation.actionIcon.todo">
+				<source>Offene Einladung</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.pending">
+				<source>Offene Einladung</source>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.ok">
+				<source>Angenommene Einladung</source>
+			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">
 				<source>Polittalk</source>

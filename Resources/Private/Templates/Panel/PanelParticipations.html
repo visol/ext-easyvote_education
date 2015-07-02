@@ -12,10 +12,10 @@
 				<div class="col-xs-3 col-md-3">
 					<f:if condition="{panelInvitation.attendingCommunityUser} == {communityUser}">
 						<f:then>
-							<f:render partial="ActionIcons/Ok" />
+							<f:render partial="ActionIcons/Ok" arguments="{tooltip: '{f:translate(key: \'panelInvitation.actionIcon.ok\')}'}" />
 						</f:then>
 						<f:else>
-							<f:render partial="ActionIcons/Todo" />
+							<f:render partial="ActionIcons/Todo" arguments="{tooltip: '{f:translate(key: \'panelInvitation.actionIcon.todo\')}'}" />
 						</f:else>
 					</f:if>
 

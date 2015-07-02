@@ -1,6 +1,7 @@
 <div class="action-icon action-icon-blue">
 	<div class="icon-centered">
 		<div class="icon-center"></div>
-		<i class="evicon-haken"></i>
+		<i class="evicon-haken {f:if(condition: '{tooltip}', then:'hasTooltip')}"></i>
+		<f:if condition="{tooltip}"><div class="hidden">{tooltip}</div></f:if>
 	</div>
 </div>

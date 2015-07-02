@@ -88,8 +88,8 @@
 			</trans-unit>
 			<trans-unit id="panel.editPanelInvitations.introduction">
 				<target><![CDATA[
-					<p>Ci-dessous vous pouvez choisir les partis de chaque participant. Vous pouvez également sélectionner plusieurs partis par politicien-ne-s. Dans ce cas de figure, ce sera le premier parti à avoir accepté l’invitation qui participera à l’événement.</p>
-					<p>Après avoir cliqué sur « Envoyer l’invitation », les politicien-ne-s concerné-e-s recevront une invitation automatique par e-mail. Dans la rubrique « <a href="%s">Mes Polittalks</a> »  vous pouvez voir qui a accepté l’invitation.</p>
+					<p>En cliquant ci-dessous, vous pouvez inviter des politicien-ne-s (invités au Polittalk) à votre Polittalk. Selon le nombre de participants attendus (étudiant-e-s), vous pouvez inviter un plus ou moins grand nombre de politicien-ne-s. Vous pouvez définir un parti pour chacun des invités. Il vous est également possible de choisir plusieurs partis par invités (le parti représenté sera le premier à avoir accepté l'invitation).</p>
+					<p>Après avoir cliqué sur "Envoyer l'invitation", les politicien-ne-s des partis concernés reçoivent automatiquement une invitation. Vous pouvez voir qui a accepté l'invitation dans la rubrique « <a href="%s">Mes Polittalks</a> ».</p>
 				]]></target>
 			</trans-unit>
 
@@ -120,7 +120,7 @@
 				<target>Le Polittalk "%s" a été créé.</target>
 			</trans-unit>
 			<trans-unit id="panel.votings">
-				<target>Voting</target>
+				<target>Etapes</target>
 			</trans-unit>
 			<trans-unit id="panel.actions.editVotings">
 				<target>Editer la procédure de vote (voting)</target>
@@ -243,13 +243,13 @@
 			</trans-unit>
 
 			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
-				<target>Montrer la première question du vote</target>
+				<target>Montrer la première étape</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.displayNextVotingButtonText">
-				<target>Montrer la prochaine question du vote</target>
+				<target>Montrer la prochaine étape</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.stopPanelButtonText">
-				<target>Mettre fin au débat</target>
+				<target>Fin du Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.activateButtonText">
 				<target>Activer le voting</target>
@@ -270,6 +270,9 @@
 			</trans-unit>
 			<trans-unit id="panel.votingStep.castVoteThanks">
 				<target>Merci d'avoir voté !</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.renderContentVideo">
+				<target>Dans la présentation une vidéo sera diffusée.</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.finishedPanelThanks">
 				<target>Le Polittalk est maintenant terminé. Merci d'avoir participé !</target>
@@ -318,6 +321,16 @@
 				<target>Commencer</target>
 			</trans-unit>
 
+			<trans-unit id="panel.actionIcon.panel">
+				<target>Aucun politicien n’a été invité.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.pending">
+				<target>Confirmation du politician en attente.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.ok">
+				<target>Tous les politiciens ont confirmé l’invitation.</target>
+			</trans-unit>
+
 			<trans-unit id="voting.votingDuration">
 				<target>Durée</target>
 			</trans-unit>
@@ -346,7 +359,7 @@
 				<target>Supprimer</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<target>Voulez-vous supprimer cette question et les réponses reçues ?</target>
+				<target>Voulez-vous supprimer ces étapes et supprimer les votes ?</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<target>Annuler</target>
@@ -373,25 +386,31 @@
 				<target>Déplacer vers le bas</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<target>Nouvelle question</target>
+				<target>Nouvelle étape</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<target>Annuler</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.yesNoAbstention">
-				<target>Oui/Non/Abstention</target>
+				<target>Voting: Oui/Non/Abstention</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.text">
-				<target>Nouveau texte</target>
+				<target>Voting: Nouveau texte</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.images">
-				<target>Illustration de réponses</target>
+				<target>Voting: Illustration de réponses</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.empty">
-				<target>Voting vide</target>
+				<target>Voting: Voting vide</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.video">
+				<target>Montrer une vidéo (YouTube)</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.text">
+				<target>Montrer un texte</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<target>[Nouvelle question]</target>
+				<target>[Nouvelle étape]</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<target>Oui</target>
@@ -494,7 +513,7 @@
 				<target>Descriptif</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.panelInvitation">
-				<target>Invitation au Polittalk</target>
+				<target>Invité au Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.allowedParties">
 				<target>Partis possibles</target>
@@ -532,6 +551,16 @@
 			</trans-unit>
 			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
 				<target>Confirmer</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.actionIcon.todo">
+				<target>Invitation en attente</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.pending">
+				<target>Invitation en attente</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.ok">
+				<target>Invitation acceptées</target>
 			</trans-unit>
 
 			<trans-unit id="panelParticipations.title">

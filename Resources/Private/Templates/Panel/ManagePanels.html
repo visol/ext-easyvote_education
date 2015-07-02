@@ -15,15 +15,15 @@
 						<f:then>
 							<f:if condition="{panel.allPanelInvitationsAccepted}">
 								<f:then>
-									<f:render partial="ActionIcons/Ok" />
+									<f:render partial="ActionIcons/Ok" arguments="{tooltip: '{f:translate(key:\'panel.actionIcon.ok\')}'}" />
 								</f:then>
 								<f:else>
-									<f:render partial="ActionIcons/Pending" />
+									<f:render partial="ActionIcons/Pending" arguments="{tooltip: '{f:translate(key:\'panel.actionIcon.pending\')}'}" />
 								</f:else>
 							</f:if>
 						</f:then>
 						<f:else>
-							<f:render partial="ActionIcons/Panel" />
+							<f:render partial="ActionIcons/Panel" arguments="{tooltip: '{f:translate(key:\'panel.actionIcon.panel\')}'}" />
 						</f:else>
 					</f:if>
 				</div>

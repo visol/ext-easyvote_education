@@ -637,6 +637,7 @@ var EasyvoteEducation = {
 				Easyvote.scrollToElement(elementId);
 			}
 			EasyvoteEducation.bindPartyMemberSelection();
+			Easyvote.bindToolTips();
 		});
 	},
 

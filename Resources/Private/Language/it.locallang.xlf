@@ -88,8 +88,8 @@
 			</trans-unit>
 			<trans-unit id="panel.editPanelInvitations.introduction">
 				<target><![CDATA[
-					<p>Qui sotto potete definire il partito politico di ciascun partecipante. Potete definire anche più partiti per politico. In questo caso parteciperà il partito che accetta per primo.</p>
-					<p>Con un click su “invio dell’invito”, i politici in questione verranno invitati automaticamente per e-mail. Alla panoramica “<a href="%s">I miei Polittalk</a>”  potrete vedere chi ha accettato.</p>
+					<p>Qui sotto può invitare i politici (ospiti del Polittalk) al Suo Polittalk. A seconda del numero di partecipanti che si aspetta (numero di studenti) può invitare un numero diverso di ospiti. Per ogni posto al Polittalk può definire quale partito potrà essere rappresentato e può anche scegliere più partiti (in tal caso parteciperà il partito che accetterà per primo).</p>
+					<p>Se cliccherà su “spedire gli inviti”, i politici dei relativi partiti verranno automaticamente invitati. Alla panoramica <a href="%s">I miei Polittalk</a> può vedere chi ha accettato.</p>
 				]]></target>
 			</trans-unit>
 
@@ -120,7 +120,7 @@
 				<target>Il Polittalk "%s" è stato creato.</target>
 			</trans-unit>
 			<trans-unit id="panel.votings">
-				<target>Voting</target>
+				<target>Passaggi</target>
 			</trans-unit>
 			<trans-unit id="panel.actions.editVotings">
 				<target>Modificare la procedura di voto (voting)</target>
@@ -175,7 +175,7 @@
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.notAllowed">
 				<target><![CDATA[
-					Al momento non possono più essere invitati politici del tuo Cantone.
+					Al momento non è possibile invitare dei politici nel tuo Cantone perché la data selezionata non rientra nel calendario delle date prenotabili o perché il tetto massimo per il tuo Cantone è già stato raggiunto.
 				]]></target>
 			</trans-unit>
 			<trans-unit id="panel.panelInvitations.or">
@@ -240,13 +240,13 @@
 			</trans-unit>
 
 			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
-				<target>Mostrare la prima domanda-Voting</target>
+				<target>Mostra il primo passaggio</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.displayNextVotingButtonText">
-				<target>Mostrare la prossima domanda del voting</target>
+				<target>Mostra il prossimo passaggio</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.stopPanelButtonText">
-				<target>Terminare il dibattito</target>
+				<target>Terminare Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.activateButtonText">
 				<target>Attivare il voting</target>
@@ -267,6 +267,9 @@
 			</trans-unit>
 			<trans-unit id="panel.votingStep.castVoteThanks">
 				<target>Grazie per aver votato!</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.renderContentVideo">
+				<target>Al momento nella presentazione viene mostrato un video.</target>
 			</trans-unit>
 			<trans-unit id="panel.votingStep.finishedPanelThanks">
 				<target>Il Polittalk è terminato. Grazie mille per la tua partecipazione!</target>
@@ -315,6 +318,16 @@
 				<target>Avviare</target>
 			</trans-unit>
 
+			<trans-unit id="panel.actionIcon.panel">
+				<target>Non è stato invitato alcun politico.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.pending">
+				<target>Conferma del politico in attesa.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.ok">
+				<target>Tutti i politici hanno confermato l’invito.</target>
+			</trans-unit>
+
 			<trans-unit id="voting.votingDuration">
 				<target>Durata del voto</target>
 			</trans-unit>
@@ -343,7 +356,7 @@
 				<target>Cancellare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.confirmationText">
-				<target>Volete cancellare questa domanda e i relativi voti?</target>
+				<target>Vuole cancellare questo passaggio e tutti i voti raccolti?</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.delete.cancel">
 				<target>Annullare</target>
@@ -370,25 +383,31 @@
 				<target>in basso</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new">
-				<target>Nuova domanda</target>
+				<target>Nuovo passaggio</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.cancel">
 				<target>Annullare</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.yesNoAbstention">
-				<target>Sì/No/Astensione</target>
+				<target>Voting: Sì/No/Astensione</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.text">
-				<target>Nuovo testo</target>
+				<target>Voting: Nuovo testo</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.images">
-				<target>Illustrazione delle risposte</target>
+				<target>Voting: Illustrazione delle risposte</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.voting.empty">
-				<target>Voting vuoto</target>
+				<target>Voting: Voting vuoto</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.video">
+				<target>Mostrare un video (YouTube)</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.text">
+				<target>Mostrare un testo</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.newVoting">
-				<target>[Nuova domanda]</target>
+				<target>[Nuovo passaggio]</target>
 			</trans-unit>
 			<trans-unit id="voting.actions.new.dummyText.yes">
 				<target>sì</target>
@@ -491,7 +510,7 @@
 				<target>Testo introduttivo</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.panelInvitation">
-				<target>Invito Polittalk</target>
+				<target>Posto al Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panelInvitation.allowedParties">
 				<target>Partiti possibili</target>
@@ -531,11 +550,24 @@
 				<target>Confermare</target>
 			</trans-unit>
 
+			<trans-unit id="panelInvitation.actionIcon.todo">
+				<target>Invito in attesa</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.pending">
+				<target>Invito in attesa</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.ok">
+				<target>Invito accettato</target>
+			</trans-unit>
+
 			<trans-unit id="panelParticipations.title">
 				<target>Polittalk</target>
 			</trans-unit>
 			<trans-unit id="panelParticipations.description">
 				<target>Partecipa ai Polittalk che si tengono nel tuo Cantone.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.panel">
+				<target>Non è stato invitato alcun politico.</target>
 			</trans-unit>
 
 			<trans-unit id="panelInvitations.title">
