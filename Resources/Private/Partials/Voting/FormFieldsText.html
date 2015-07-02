@@ -16,5 +16,13 @@
 	<label for="voting{voting.uid}-content">
 		<f:translate key="tx_easyvoteeducation_domain_model_voting.content" />
 	</label>
-	<f:form.textarea class="form-control" id="voting{voting.uid}-content" property="content" additionalAttributes="{required: required}" />
+	<f:form.textarea class="form-control voting-type-text-content" id="voting{voting.uid}-content" property="content" additionalAttributes="{required: required, maxlength: 700}" />
 </div>
+<script>
+	$(function() {
+		// Limit
+		$('.voting-type-text-content[maxlength]').maxlength({
+			threshold: 700
+		});
+	})
+</script>
