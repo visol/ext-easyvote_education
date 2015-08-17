@@ -8,7 +8,7 @@ if (!defined('TYPO3_MODE')) {
 	'Managepanels',
 	array(
 		'Panel' => 'managePanelsStartup, managePanels, new, create, edit, update, delete, duplicate, editVotings, editPanelInvitations, sendPanelInvitations, execute, votingStep',
-		'Voting' => 'listForCurrentUser, update, delete, new, duplicate, sort',
+		'Voting' => 'listForCurrentUser, edit, update, delete, new, duplicate, sort',
 		'PanelInvitation' => 'listForCurrentUser, create, delete, getAvailablePartiesForPanel',
 		'VotingOption' => 'listForVoting, new, update,delete,sort'
 

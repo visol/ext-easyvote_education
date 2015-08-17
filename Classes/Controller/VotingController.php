@@ -123,6 +123,22 @@ class VotingController extends \Visol\EasyvoteEducation\Controller\AbstractContr
 	}
 
 	/**
+	 *
+	 * @param \Visol\EasyvoteEducation\Domain\Model\Voting $voting
+	 * @ignorevalidation $voting
+	 * @return string
+	 */
+	public function editAction(\Visol\EasyvoteEducation\Domain\Model\Voting $voting) {
+		if ($this->isCurrentUserOwnerOfPanel($voting->getPanel())) {
+			$this->view->assign('voting', $voting);
+			// http://stackoverflow.com/a/12056253/1517316
+			return json_encode(array('content' => $this->view->render()), JSON_HEX_QUOT | JSON_HEX_TAG);
+		} else {
+			// TODO handle error
+		}
+	}
+
+	/**
 	 * Update a voting
 	 *
 	 * @param Voting $voting
