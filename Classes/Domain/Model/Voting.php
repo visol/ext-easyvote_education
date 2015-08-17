@@ -295,7 +295,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	public function getVideoUrl() {
 		/** @var \TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider $mediaWizardProvider */
-		$mediaWizardProvider = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider');
+		$mediaWizardProvider = GeneralUtility::makeInstance('Visol\EasyvoteEducation\Service\MediaWizardProvider');
 		if ($mediaWizardProvider->canHandle($this->video)) {
 			return $mediaWizardProvider->rewriteUrl($this->video);
 		}
