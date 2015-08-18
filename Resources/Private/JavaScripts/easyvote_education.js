@@ -142,7 +142,7 @@ $(function() {
 	});
 
 	// React on history changes
-	if (Modernizr.history) {
+	if (Modernizr.history && $easyvoteEducationContentContainer.length) {
 		window.onpopstate = function () {
 			EasyvoteEducation.callHashRequestedAction();
 		};
