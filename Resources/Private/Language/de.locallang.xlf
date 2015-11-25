@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-23T14:38:44Z" product-name="easyvote_education">
+		<header/>
+		<body>
+			<trans-unit id="ajax.status.403">
+				<target>Der Zugriff wurde verweigert.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.executeAction">
+				<target>Der Zugriff wurde verweigert. Ein Polittalk kann nur vom Ersteller/von der Erstellerin durchgeführt werden.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.editPanelInvitationsAction">
+				<target>Der Zugriff wurde verweigert. In diesem Kanton können derzeit keine PolitikerInnen eingeladen werden.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelController.sendPanelInvitationsAction">
+				<target>Der Zugriff wurde verweigert. Die Polittalk-Einladungen können nur einmal versendet werden.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.404.panelController.votingStepAction">
+				<target>Die aufgerufene Funktion existiert nicht.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.400.panelController.votingStepAction">
+				<target>Die Anfrage ist ungültig.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.createAction.notAllowedParty.">
+				<target>Unerwarteter Fehler: Hinzufügen dieser Partei ist nicht möglich.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.createAction.noMoreInvitations">
+				<target>Versuch, mehr PolitikerInnen-Einladungen als erlaubt zu verschicken.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.notAPolitician">
+				<target>Nur PolitikerInnen können an Podien teilnehmen.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.wrongParty">
+				<target>Die Polittalk-Einladung ist nicht an deine Partei gerichtet.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.otherPoliticianAttending">
+				<target>Zwischenzeitlich hat ein anderer Politiker/eine andere Politikerin für diesen Polittalk zugesagt.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.manageInvitations">
+				<target>Zugriff verweigert. Polittalk-Einladungen können nur von einem Partei-Administrator verwaltet werden.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.400.panelInvitationController.removeUserAction.noUserSubmitted">
+				<target>Unerwarteter Fehler: Es wurde kein Benutzer zum Hinzufügen übergeben.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.removeUserAction.wrongParty">
+				<target>Du kannst keine/n PolitikerIn einer anderen Partei vom Polittalk entfernen.</target>
+			</trans-unit>
+			<trans-unit id="ajax.status.403.panelInvitationController.assignUserAction.wrongParty">
+				<target>Du kannst keine/n PolitikerIn einer anderen Partei zum Polittalk hinzufügen.</target>
+			</trans-unit>
+
+			<trans-unit id="panel.managePanels.title">
+				<target>Meine Polittalks</target>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.introduction">
+				<target><![CDATA[
+					<p>Organisieren Sie einen Polittalk an Ihrer Schule einfach in fünf Schritten.</p>
+                    <ol><li>
+                    Polittalk erstellen
+                    </li><li>
+                    PolitikerInnen einladen
+                    </li><li>
+                    Ablauf planen und Voting erstellen
+                    </li><li>
+                    Infrastruktur und organisatorische Aufgaben
+                    </li><li>
+                    Polittalk durchführen
+                    </li></ol>
+                    <p><a href="%s">Hier finden Sie eine detaillierte Checkliste</a> für die Organisation.</p>
+				]]></target>
+			</trans-unit>
+			<trans-unit id="panel.managePanels.newPanel">
+				<target>Neuen Polittalk erstellen</target>
+			</trans-unit>
+
+			<trans-unit id="panel.editVotings.title">
+				<target>Voting bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="panel.editVotings.introduction">
+				<target><![CDATA[
+					<p>Erstellen Sie ein Voting, mit dem Sie die Schülerschaft interaktiv in den Polittalk einbeziehen können.</p>
+					<p>An der Veranstaltung müssen Sie dann nur noch in der Übersicht <a href="%s">Meine Polittalks</a> auf “Podium starten” klicken und die sich öffnende Seite mittels Beamer projizieren.</p>
+					<p>Die Schülerschaft kann dann per Handy am Voting teilnehmen, sobald Sie es freigeben.</p>
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="panel.editPanelInvitations.title">
+				<target>PolitikerInnen einladen</target>
+			</trans-unit>
+			<trans-unit id="panel.editPanelInvitations.introduction">
+				<target><![CDATA[
+					<p>Unten können Sie PolitikerInnen (Polittalk-Gäste) zu Ihrem Polittalk einladen. Je nach erwarteter Teilnehmerzahl (Anzahl SchülerInnen) können Sie unterschiedlich viele Polittalk-Gäste einladen. Für jeden Polittalk-Platz können Sie definieren, von welcher Partei dieser eingenommen werden soll. Sie können für einen Polittalk-Platz auch mehrere Parteien auswählen (in diesem Fall nimmt diejenige Partei teil, die als erstes zusagt).</p>
+	                <p>Mit einem Klick auf “Einladungen versenden” werden die PolitikerInnen der entsprechenden Parteien automatisch eingeladen. Auf der Übersicht <a href="%s">Meine Polittalks</a> sehen Sie, wer zugesagt hat.</p>
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="panel.new.title">
+				<target>Neuer Polittalk</target>
+			</trans-unit>
+			<trans-unit id="panel.new.create">
+				<target>Polittalk anlegen</target>
+			</trans-unit>
+			<trans-unit id="panel.new.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+
+			<trans-unit id="panel.edit.title">
+				<target>Polittalk bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="panel.edit.update">
+				<target>Polittalk speichern</target>
+			</trans-unit>
+
+			<trans-unit id="panel.time.oClock">
+				<target>Uhr</target>
+			</trans-unit>
+			<trans-unit id="panel.panelId">
+				<target>Polittalk-ID</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.create.success">
+				<target>Der Polittalk "%s" wurde erstellt.</target>
+			</trans-unit>
+			<trans-unit id="panel.votings">
+				<target>Voting</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.editVotings">
+				<target>Voting bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations">
+				<target>PolitikerInnen</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.editPanelInvitations">
+				<target>PolitikerInnen einladen</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.edit">
+				<target>Polittalk bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.update.success">
+				<target>Der Polittalk "%s" wurde aktualisiert.</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.confirmationText">
+				<target>Wollen Sie diesen Polittalk und dessen Voting löschen?</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.confirm">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.delete.success">
+				<target>Der Polittalk "%s" wurde gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate">
+				<target>duplizieren</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.start">
+				<target>Präsentation starten</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate.success">
+				<target>Der Polittalk "%s" wurde dupliziert.</target>
+			</trans-unit>
+			<trans-unit id="panel.actions.duplicate.copyOf">
+				<target>Kopie von</target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.attendingTitle">
+				<target>Zusage</target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.pendingTitle">
+				<target>Offen</target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.noInvitationsOrNotSent">
+				<target>Es wurden noch keine Einladungen versendet.</target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.notAllowed">
+				<target><![CDATA[
+					Zur Zeit können keine PolitikerInnen in deinem Kanton eingeladen werden, da das Datum ausserhalb des Buchungszeitraums liegt oder das Kontingent pro Kanton erreicht wurde.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="panel.panelInvitations.or">
+				<target>oder</target>
+			</trans-unit>
+			<trans-unit id="panel.votings.title">
+				<target>Voting</target>
+			</trans-unit>
+			<trans-unit id="panel.voting">
+				<target>Schritt</target>
+			</trans-unit>
+			<trans-unit id="panel.votings">
+				<target>Schritte</target>
+			</trans-unit>
+			<trans-unit id="panel.votings.noVotings">
+				<target>Es wurden noch keine Votings hinzugefügt.</target>
+			</trans-unit>
+
+			<trans-unit id="panel.execute.title">
+				<target>Polittalk</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewTitle">
+				<target>Präsentationsansicht</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewIntroduction">
+				<target>
+					Die Präsentationsansicht ist eine Vollbild-Darstellung, auf der die Fragen, die verbleibende Zeit und die Auswertung angezeigt werden.
+					Sie kann in einem separaten Browser-Fenster oder auf einem separaten Computer per Beamer projiziert wird. Die Präsentationsansicht ist
+					eine reine Darstellungsansicht - die Steuerung der Präsentation erfolgt auf der aktuellen Oberfläche.
+				</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.presentationViewLinkText">
+				<target>Präsentationsansicht</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewTitle">
+				<target>Teilnahmeansicht</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewIntroduction">
+				<target>
+					Die Teilnahmeansicht wird von den Teilnehmern des Podiums aufgerufen, idealerweise auf einem Mobiltelefon. Sie ermöglicht die Anzeige der
+					Fragen und Teilnahme an Votings. Der Polittalk-ID bzw. ein QR-Code zum Direktaufruf der Teilnahmeansicht wird jetzt in der
+					Präsentationsansicht angezeigt.
+				</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.guestViewLinkText">
+				<target>Teilnahmeansicht</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.panelStartedBeforeInformation">
+				<target>Dieser Polittalk wurde bereits zuvor gestartet. Sie können es an dieser Stelle fortsetzen oder den Polittalk nochmals von vorne starten.</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.panelFinishedBeforeInformation">
+				<target>Dieser Polittalk wurde bereits zuvor komplett durchgeführt. Sie können den Polittalk erneut durchführen, dabei gehen aber die Stimmen der bisherigen Durchführung unwiderruflich verloren.</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.startPanelButtonText">
+				<target>Polittalk starten</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.restartPanelButtonText">
+				<target>Präsentation neu starten</target>
+			</trans-unit>
+			<trans-unit id="panel.execute.continuePanelButtonText">
+				<target>Präsentation fortsetzen</target>
+			</trans-unit>
+			<trans-unit id="panel.organizer">
+				<target>Veranstalter</target>
+			</trans-unit>
+
+			<trans-unit id="panel.votingStep.displayFirstVotingButtonText">
+				<target>Ersten Schritt anzeigen</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.displayNextVotingButtonText">
+				<target>Nächsten Schritt anzeigen</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.stopPanelButtonText">
+				<target>Polittalk beenden</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.activateButtonText">
+				<target>Voting aktivieren</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.noVotingDurationNotice">
+				<target>Für dieses Voting wurde keine Abstimmungszeit gesetzt. Das Voting ist aktiv, bis es manuell beendet wird.</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.deactivateButtonText">
+				<target>Voting beenden</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.timeLeft">
+				<target><![CDATA[
+					Noch <span class="timer">%s</span> Sekunden.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.nextVoting">
+				<target>Nächstes Voting</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.castVoteThanks">
+				<target>Danke für deine Stimme!</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.renderContentVideo">
+				<target>In der Präsentation wird nun ein Video angezeigt.</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.finishedPanelThanks">
+				<target>Der Polittalk wurde beendet. Vielen Dank für deine Teilnahme!</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.endOfPanelTitle">
+				<target>Ende des Polittalks</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.endOfPanelText">
+				<target>Vielen Dank für deine Teilnahme!</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.voting">
+				<target>Schritt</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.navigation.presentationViewContent">
+				<target>Einleitung</target>
+			</trans-unit>
+			<trans-unit id="panel.votingStep.navigation.finishedPanel">
+				<target>Ende</target>
+			</trans-unit>
+
+			<trans-unit id="panel.guestView.title">
+				<target>An Polittalk teilnehmen</target>
+			</trans-unit>
+			<trans-unit id="panel.guestView.idLabel">
+				<target>Polittalk-ID</target>
+			</trans-unit>
+			<trans-unit id="panel.guestView.participateButtonText">
+				<target>Teilnehmen</target>
+			</trans-unit>
+			<trans-unit id="panel.guestView.panelNotFound">
+				<target>Polittalk wurde nicht gefunden.</target>
+			</trans-unit>
+			<trans-unit id="panel.guestView.participationInformation">
+				<target>Diese Ansicht wird automatisch aktualisiert.</target>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.title">
+				<target>Polittalk durchführen</target>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.participationLink">
+				<target>Link zur Teilnahme:</target>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.panelId">
+				<target>Polittalk-ID:</target>
+			</trans-unit>
+			<trans-unit id="panel.presentationView.startButtonText">
+				<target>Durchführen</target>
+			</trans-unit>
+
+			<trans-unit id="panel.actionIcon.panel">
+				<target>Keine PolitikerInnen eingeladen.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.pending">
+				<target>Zusagen der PolitikerInnen pendent.</target>
+			</trans-unit>
+			<trans-unit id="panel.actionIcon.ok">
+				<target>Alle PolitikerInnen haben bestätigt.</target>
+			</trans-unit>
+
+			<trans-unit id="voting.votingDuration">
+				<target>Abstimmungszeit</target>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.seconds">
+				<target>Sekunden</target>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.infinite">
+				<target>keine Abstimmungszeit gesetzt</target>
+			</trans-unit>
+			<trans-unit id="voting.votingDuration.setInfinite">
+				<target>keine Abstimmungszeit setzen</target>
+			</trans-unit>
+			<trans-unit id="voting.hidden">
+				<target>verborgen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.save">
+				<target>speichern</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.create.success">
+				<target>Die Frage "%s" wurde erstellt.</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.update.success">
+				<target>Die Frage "%s" wurde aktualisiert.</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.confirmationText">
+				<target>Wollen Sie diesen Schritt und allfällige Stimmen löschen?</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.confirm">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.delete.success">
+				<target>Die Frage "%s" wurde gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate">
+				<target>duplizieren</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate.success">
+				<target>Die Frage "%s" wurde dupliziert.</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.duplicate.copyOf">
+				<target>Kopie von</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.moveup">
+				<target>nach oben</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.movedown">
+				<target>nach unten</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new">
+				<target>Neuer Schritt</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.yesNoAbstention">
+				<target>Voting: Ja/Nein/Enthaltung</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.text">
+				<target>Voting: Freier Text</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.images">
+				<target>Voting: Bild-Antworten</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.voting.empty">
+				<target>Voting: Leere Frage</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.video">
+				<target>Video (YouTube) zeigen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.text">
+				<target>Text anzeigen</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.newVoting">
+				<target>[Neuer Schritt]</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.yes">
+				<target>ja</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.no">
+				<target>nein</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.abstention">
+				<target>Enthaltung</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.firstNames">
+				<target>Nicola,Silvan,Fabien,Lorenz,Alexandra,Maurus,Ariane,Sarah,Mario,Zoë,Jonas,Lea,Diego,Michael,Anne,Luisa,Luzia,Adil,Alissa,Anaïs,Aurélia,Benjamin,Dominic,Giorgio,Jochanan,Loic,Melanie,Stefan</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.lastNames">
+				<target>Jorio,Zemp,Udriot,Ulrich,Molinaro,Blumenthal,Bahri,Eggo,Stübi,Maire,Hirschi,Thommen,Bigger,Felder,Kneer,Hafner,Iseli,Koller,Bizzozero,Franck,Buchs,Jakob,Hauser,Tresoldi,Harari,Muhlemann,Eberhard,Germann</target>
+			</trans-unit>
+			<trans-unit id="voting.actions.new.dummyText.colors">
+				<target>blau,grün,gelb,rot,ocker,pink,rosa,schwarz,weiss,gold</target>
+			</trans-unit>
+
+			<trans-unit id="voting.votingOptions">
+				<target>Antwortmöglichkeiten</target>
+			</trans-unit>
+
+			<trans-unit id="votingOption.votes">
+				<target>Stimmen</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.new.dummyText.newVotingOption">
+				<target>[Neue Antwortmöglichkeit]</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.confirmationText">
+				<target>Wollen Sie diese Antwortmöglichkeit löschen?</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.confirm">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.delete.success">
+				<target>Die Antwortmöglichkeit "%s" wurde gelöscht.</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.moveup">
+				<target>nach oben</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.movedown">
+				<target>nach unten</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.new">
+				<target>Neue Antwortmöglichkeit</target>
+			</trans-unit>
+			<trans-unit id="votingOption.actions.save">
+				<target>speichern</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.panelInvitations">
+				<target>Polittalk-Einladungen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.politician">
+				<target>Teilnehmende/r PolitikerIn</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.maximumReached">
+				<target>Sie können (aufgrund der erwarteten Teilnehmerzahl) maximal %s PolitikerInnen einladen.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.mine">
+				<target>Du nimmst an diesem Polittalk teil.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore">
+				<target>Diesen Polittalk ignorieren.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.confirmationText">
+				<target>Wenn du an diesem Polittalk nicht teilnehmen kannst und keine weiteren Benachrichtigungen erhalten möchtest, kannst du den Polittalk ignorieren.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.ignore.confirm">
+				<target>Polittalk ignorieren</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend">
+				<target>Teilnehmen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.confirmationText">
+				<target>Bitte klicke auf "Teilnahme bestätigen", um deine Teilnahme am Polittalk verbindlich zu bestätigen.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.attend.confirm">
+				<target>Teilnahme bestätigen</target>
+			</trans-unit>
+			<trans-unit id="panel.participants">
+				<target>Teilnehmende</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.description">
+				<target>Einleitungstext</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.panelInvitation">
+				<target>Polittalk-Platz</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.allowedParties">
+				<target>Mögliche Parteien</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.new">
+				<target>Polittalk-Einladung hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.confirmationText">
+				<target>Wollen Sie diese Polittalk-Einladung löschen?</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.confirm">
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.delete.success">
+				<target>Die Polittalk-Einladung wurde gelöscht.</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.actions.cancel">
+				<target>zurück</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations">
+				<target>Einladungen versenden</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.confirmationText">
+				<target>Ich nehme zur Kenntnis, dass ich nach dem Versenden der Einladungen keine Änderungen mehr vornehmen kann bzw. nur noch eingeschränkt (vgl. Einleitungstext).</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actions.sendInvitations.confirm">
+				<target>bestätigen</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitation.actionIcon.todo">
+				<target>Offene Einladung</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.pending">
+				<target>Offene Einladung</target>
+			</trans-unit>
+			<trans-unit id="panelInvitation.actionIcon.ok">
+				<target>Angenommene Einladung</target>
+			</trans-unit>
+
+			<trans-unit id="panelParticipations.title">
+				<target>Polittalk</target>
+			</trans-unit>
+			<trans-unit id="panelParticipations.description">
+				<target>Nimm am Polittalk teil, die in deinem Kanton stattfinden.</target>
+			</trans-unit>
+
+			<trans-unit id="panelInvitations.title">
+				<target>Polittalk</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.description">
+				<target>Teile KandidatInnen deiner Partei in Polittalks ein.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filteredView">
+				<target>Gefilterte Ansicht (%s Resultate)</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.cancelFilter">
+				<target>Filter entfernen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.title">
+				<target>Polittalks finden</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.search">
+				<target>Suche</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.kanton">
+				<target>Kanton</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status">
+				<target>Status</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.active">
+				<target>aktive Polittalks</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.pending">
+				<target>zu bearbeitende Polittalks</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.status.archived">
+				<target>vergangene Polittalks</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.submit">
+				<target>Filtern</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.filter.noResults">
+				<target>Keine Resultate gefunden.</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.participants">
+				<target>Teilnehmende</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.assignment.member">
+				<target>KandidatIn zuweisen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove">
+				<target>%1$s %2$s entfernen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.information">
+				<target>Bist du sicher, dass du %1$s %2$s von diesen Polittalk entfernen möchtest?</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.remove.modal.remove">
+				<target>entfernen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign">
+				<target>hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.information">
+				<target>Bist du sicher, dass du diese Politikerin bzw. diesen Politiker zum Polittalk hinzufügen möchtest?</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.cancel">
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="panelInvitations.attendingCommunityUser.assign.modal.remove">
+				<target>bestätigen</target>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.title">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
+				<target>Bemerkung</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.date">
+				<target>Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.from_time">
+				<target>Zeit Beginn</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.to_time">
+				<target>Zeit Ende</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.room">
+				<target>Raum (Nummer)</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.address">
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.organization">
+				<target>Name der Schule</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.class">
+				<target>Klasse</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.number_of_participants">
+				<target>Ungefähre Anzahl der Teilnehmenden</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.terms_accepted">
+				<target><![CDATA[
+					Ich akzeptiere die <a href="%s" target="_blank">Nutzungsbedingungen</a>.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.city">
+				<target>PLZ/Ort</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.cityOnly">
+				<target>Ort</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.communityUser">
+				<target>Organisator</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
+				<target>Bemerkung</target>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_panel.votings">
+				<target>Votings</target>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting">
+				<target>Voting</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.title">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.short">
+				<target>Short</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_visible">
+				<target>Frage ist aktiv</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.is_voting_enabled">
+				<target>Is Voting Enabled</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_duration">
+				<target>Abstimmungszeit in Sekunden</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.video">
+				<target>Video-URL (YouTube)</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.content">
+				<target>Text</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_voting.voting_options">
+				<target>Voting Options</target>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption">
+				<target>Voting Option</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.title">
+				<target>Antwort</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.style">
+				<target>Style</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image">
+				<target>Bild (optional)</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvoteeducation_domain_model_votingoption.image.select">
+				<target>auswählen</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelCreatePolitician">
+				<target>easyvote Polittalk – Einladung zu einem Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelCreatePoliticianFr">
+				<target>easyvote Polittalk - Invitation pour un Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelCreatePoliticianIt">
+				<target>easyvote Polittalk – invito a un Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelCreateTeacher">
+				<target>easyvote Polittalk – Bestätigung Buchungsanfrage</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelCreateTeacherFr">
+				<target>easyvote Polittalk - Confirmation de l'inscription</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelCreateTeacherIt">
+				<target>easyvote Polittalk – conferma della richiesta di prenotazione</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelInvitationAttendPolitician">
+				<target>easyvote Polittalk – Bestätigung Teilnahme an Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationAttendPoliticianFr">
+				<target>easyvote Polittalk - Confirmation de la participation à un Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationAttendPoliticianIt">
+				<target>easyvote Polittalk – conferma della partecipazione al Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelInvitationAssignPolitician">
+				<target>easyvote Polittalk – Einteilung zu einem Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationAssignPoliticianFr">
+				<target>easyvote Polittalk - Assignation à un Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationAssignPoliticianIt">
+				<target>easyvote Polittalk – assegnazione a un Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelInvitationRemovePolitician">
+				<target>easyvote Polittalk – Deine Teilnahme an einem Polittalk wurde storniert</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationRemovePoliticianFr">
+				<target>easyvote - Polittalk - Ta participation à un Polittalk a été annulée</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelInvitationRemovePoliticianIt">
+				<target>easyvote Polittalk – la tua partecipazione al Polittalk è stata cancellata</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelReminderOnemonthTeacher">
+				<target>easyvote Polittalk – Update zu Ihrem Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherFr">
+				<target>easyvote Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOnemonthTeacherIt">
+				<target>easyvote Polittalk – aggiornamento in merito al Suo Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacher">
+				<target>easyvote Polittalk – Update zu Ihrem Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
+				<target>easyvote Polittalk - Mise à jour de votre Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderTwoweeksTeacherFr">
+				<target>easyvote Polittalk – aggiornamento in merito al Suo Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelReminderOneweekTeacher">
+				<target>easyvote Polittalk – Ihr Polittalk von nächster Woche</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOneweekTeacherFr">
+				<target>easyvote Polittalk - Votre Polittalk de la semaine prochaine</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelReminderOneweekTeacherIt">
+				<target>easyvote Polittalk – il Suo Polittalk di settimana prossima</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelFeedbackTeacher">
+				<target>easyvote Polittalk – Bitte bewerten Sie Ihren Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelFeedbackTeacherFr">
+				<target>easyvote Polittalk - S'il vous plaît, merci d'évaluer votre Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelFeedbackTeacherIt">
+				<target>easyvote Polittalk – Valuti per favore il Suo Polittalk</target>
+			</trans-unit>
+
+			<trans-unit id="email.subject.panelFeedbackPolitician">
+				<target>easyvote Polittalk – Bitte bewerte deinen Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelFeedbackPoliticianFr">
+				<target>easyvote Polittalk - S'il te plaît, merci d'évaluer ton Polittalk</target>
+			</trans-unit>
+			<trans-unit id="email.subject.panelFeedbackPoliticianIt">
+				<target>easyvote Polittalk – Valuta per favore il tuo Polittalk</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>
