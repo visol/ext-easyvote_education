@@ -12,6 +12,10 @@ $tca = [
         'excluded_fields' => $GLOBALS['TCA']['fe_users']['grid']['excluded_fields'] . ', uid, name, crdate, tstamp, password, middle_name, address, fax, title, zip, city, country, www, company, fal_image, starttime, endtime, lastlogin, tx_extbase_type, customer_number, age_start, age_end, datasets, salutation, kanton, notification_mail_active, notification_sms_active, notification_related_users, community_user, party_verification_code,tx_cabagloginas_loginas, tx_easyvoteeducation_panels',
         'facets' => [
             'uid',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
             'usergroup',
             new \Fab\Vidi\Facet\StandardFacet(
                 'privacy_protection',
@@ -53,11 +57,6 @@ $tca = [
                     '1' => 'LLL:EXT:vidi/Resources/Private/Language/locallang.xlf:active.1'
                 ]
             ),
-            'username',
-            'first_name',
-            'last_name',
-            'telephone',
-            'email',
         ],
     ]];
 
