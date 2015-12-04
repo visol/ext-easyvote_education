@@ -61,16 +61,31 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
 					return FALSE;
 				}
 			}
-		}
 
-		if ($panel->getDate() instanceof \DateTime) {
-			$panelTimestamp = $panel->getDate()->getTimestamp();
-			$allowedTimestampStart = 1438387200;
-			$allowedTimestampEnd = 1445205599;
-			if ($panelTimestamp < $allowedTimestampStart || $panelTimestamp > $allowedTimestampEnd) {
-				// The panel doesn't take place between August 1, 2015 and October 18, 2015
-				return FALSE;
-			}
+            if ($cityOfPanel->getKanton()->getPanelAllowedFrom() instanceof \DateTime) {
+                // Panel has a date restriction
+                if ($panel->getDate() instanceof \DateTime) {
+                    $panelTimestamp = $panel->getDate()->getTimestamp();
+                    $panelAllowedFromTimeStamp = $cityOfPanel->getKanton()->getPanelAllowedFrom()->getTimestamp();
+
+                    if ($cityOfPanel->getKanton()->getPanelAllowedTo() instanceof \DateTime) {
+                        // We also have an end date restriction
+                        $panelAllowedToTimeStamp = $cityOfPanel->getKanton()->getPanelAllowedTo()->getTimestamp();
+                        if ($panelTimestamp < $panelAllowedFromTimeStamp || $panelTimestamp > $panelAllowedToTimeStamp) {
+                            // The panel doesn't take place in the given timeframe
+                            return FALSE;
+                        }
+                    } else {
+                        if ($panelTimestamp < $panelAllowedFromTimeStamp) {
+                            // Panel is too early
+                            return FALSE;
+                        }
+                    }
+                } else {
+                    // There is a date restriction, but panel has no date, so we can't know if invitations are allowed
+                    return FALSE;
+                }
+            }
 
 		}
 
