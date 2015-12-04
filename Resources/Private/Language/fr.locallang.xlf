@@ -22,13 +22,13 @@
 				<target>La requête est incorrecte.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.createAction.notAllowedParty.">
-				<target>Une erreur inattendue est survenue : il est impossible d'ajouter ce parti.</target>
+				<target>il est impossible d'ajouter ce parti.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.createAction.noMoreInvitations">
 				<target>Vous avez essayé d'envoyer plus d'invitations qu'il n'est permis.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.notAPolitician">
-				<target>Seuls les politiciennes et politiciens peuvent participer au débat.</target>
+				<target>Seuls les politiciennes peuvent participer au débat.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelInvitationController.attendAction.wrongParty">
 				<target>L'invitation au Polittalk n'est pas destinée à ton parti.</target>
