@@ -13,7 +13,7 @@
 				<target>L'accès est refusé. Il n'est actuellement pas possible d'inviter des politiciens dans ce canton.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.403.panelController.sendPanelInvitationsAction">
-				<target>Der Zugriff wurde verweigert. Die Polittalk-Einladungen können nur einmal versendet werden.</target>
+				<target>Die Polittalk-Einladungen können nur einmal versendet werden.</target>
 			</trans-unit>
 			<trans-unit id="ajax.status.404.panelController.votingStepAction">
 				<target>La fonction demandée n'existe pas.</target>
