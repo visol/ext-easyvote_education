@@ -80,6 +80,12 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public $cloneService;
 
     /**
+     * @var \Visol\Easyvote\Service\CommunityUserService
+     * @inject
+     */
+    public $communityUserService;
+
+    /**
      * @var \Visol\EasyvoteEducation\Service\VotingService
      * @inject
      */

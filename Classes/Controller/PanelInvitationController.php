@@ -415,8 +415,8 @@ class PanelInvitationController extends \Visol\EasyvoteEducation\Controller\Abst
      */
     public function filterAction()
     {
-        $kantons = $this->kantonRepository->findAll();
-        $this->view->assign('kantons', $kantons);
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+        $this->view->assign('kantons', $authenticatedUser->getPartyAdminAllowedCantons());
         $this->view->assign('demand', $this->getDemandFromSession(true));
         $statusFilters = array(
             'active' => LocalizationUtility::translate('panelInvitations.filter.status.active', 'easyvote_education'),

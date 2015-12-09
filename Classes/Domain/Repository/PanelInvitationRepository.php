@@ -27,6 +27,12 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
     );
 
     /**
+     * @var \Visol\Easyvote\Service\CommunityUserService
+     * @inject
+     */
+    protected $communityUserService = NULL;
+
+    /**
      * Find panel invitations in the future that need a candidate of a party the current user belongs to. The
      * panel may not be already ignored or attended by the current user and must take place in the Kanton the current
      * user resides.
@@ -86,6 +92,10 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
         $constraints = [];
         $constraints[] = $query->contains('allowedParties', $party);
         $constraints[] = $query->equals('panel.panelInvitationsSent', true);
+
+        // Respect allowed Cantons of CommunityUser
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+        $constraints[] = $query->in('panel.city.kanton', $authenticatedUser->getPartyAdminAllowedCantons());
 
         if (is_array($demand)) {
             if (isset($demand['query'])) {

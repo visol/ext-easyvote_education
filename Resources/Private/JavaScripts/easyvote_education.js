@@ -286,6 +286,7 @@ $(function() {
 	$body.on('click', '#cancelPanelInvitationsFilter', function() {
 		var $panelInvitationsFilter = $('#panelInvitationsFilter');
 		$panelInvitationsFilter.trigger('reset');
+		$('#panelInvitationsFilter-status').find('option:selected').prop('selected', false);
 		$panelInvitationsFilter.trigger('submit');
 	});
 
