@@ -21,23 +21,25 @@ use Fab\Vidi\Formatter\FormatterInterface;
 /**
  * Format a date that will be displayed in the Grid
  */
-class Time implements FormatterInterface, SingletonInterface {
+class Time implements FormatterInterface, SingletonInterface
+{
 
-	/**
-	 * Format a date
-	 *
-	 * @param int $value
-	 * @return string
-	 */
-	public function format($value) {
-		$result = '';
-		if ($value > 0) {
+    /**
+     * Format a date
+     *
+     * @param int $value
+     * @return string
+     */
+    public function format($value)
+    {
+        $result = '';
+        if ($value > 0) {
 
-			/** @var $viewHelper \TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper */
-			$viewHelper = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper');
-			$result = $viewHelper->render('@' . $value, '%R');
-		}
-		return $result;
-	}
+            /** @var $viewHelper \TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper */
+            $viewHelper = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper');
+            $result = $viewHelper->render('@' . $value, '%R');
+        }
+        return $result;
+    }
 
 }

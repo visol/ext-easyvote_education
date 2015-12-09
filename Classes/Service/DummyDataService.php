@@ -17,45 +17,50 @@ namespace Visol\EasyvoteEducation\Service;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-class DummyDataService  {
+class DummyDataService
+{
 
-	/**
-	 * @param $numberOfNames
-	 * @return array
-	 */
-	public function getRandomNames($numberOfNames) {
-		$firstNamesString = LocalizationUtility::translate('voting.actions.new.dummyText.firstNames', 'EasyvoteEducation');
-		$firstNames = GeneralUtility::trimExplode(',', $firstNamesString);
-		$lastNamesString = LocalizationUtility::translate('voting.actions.new.dummyText.lastNames', 'EasyvoteEducation');
-		$lastNames = GeneralUtility::trimExplode(',', $lastNamesString);
+    /**
+     * @param $numberOfNames
+     * @return array
+     */
+    public function getRandomNames($numberOfNames)
+    {
+        $firstNamesString = LocalizationUtility::translate('voting.actions.new.dummyText.firstNames',
+            'EasyvoteEducation');
+        $firstNames = GeneralUtility::trimExplode(',', $firstNamesString);
+        $lastNamesString = LocalizationUtility::translate('voting.actions.new.dummyText.lastNames',
+            'EasyvoteEducation');
+        $lastNames = GeneralUtility::trimExplode(',', $lastNamesString);
 
-		$randomNames = array();
-		for ($i = 1; $i <= $numberOfNames; $i++) {
-			$firstNameKey = array_rand($firstNames);
-			$lastNameKey = array_rand($lastNames);
-			$randomNames[] = $firstNames[$firstNameKey] . ' ' . $lastNames[$lastNameKey];
-		}
+        $randomNames = array();
+        for ($i = 1; $i <= $numberOfNames; $i++) {
+            $firstNameKey = array_rand($firstNames);
+            $lastNameKey = array_rand($lastNames);
+            $randomNames[] = $firstNames[$firstNameKey] . ' ' . $lastNames[$lastNameKey];
+        }
 
-		return $randomNames;
+        return $randomNames;
 
-	}
+    }
 
-	/**
-	 * @param $numberOfColors
-	 * @return array
-	 */
-	public function getRandomColors($numberOfColors) {
-		$colorsString = LocalizationUtility::translate('voting.actions.new.dummyText.colors', 'EasyvoteEducation');
-		$colors = GeneralUtility::trimExplode(',', $colorsString);
+    /**
+     * @param $numberOfColors
+     * @return array
+     */
+    public function getRandomColors($numberOfColors)
+    {
+        $colorsString = LocalizationUtility::translate('voting.actions.new.dummyText.colors', 'EasyvoteEducation');
+        $colors = GeneralUtility::trimExplode(',', $colorsString);
 
-		$randomColors = array();
-		for ($i = 1; $i <= $numberOfColors; $i++) {
-			$colorKey = array_rand($colors);
-			$randomColors[] = $colors[$colorKey];
-		}
+        $randomColors = array();
+        for ($i = 1; $i <= $numberOfColors; $i++) {
+            $colorKey = array_rand($colors);
+            $randomColors[] = $colors[$colorKey];
+        }
 
-		return $randomColors;
+        return $randomColors;
 
-	}
+    }
 
 }

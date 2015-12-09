@@ -15,5 +15,6 @@ namespace Visol\EasyvoteEducation\Controller;
  */
 use Visol\EasyvoteEducation\Domain\Model\Panel;
 
-class PartyMemberController extends \Visol\Easyvote\Controller\PartyMemberController {
+class PartyMemberController extends \Visol\Easyvote\Controller\PartyMemberController
+{
 }

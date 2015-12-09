@@ -21,23 +21,25 @@ use Fab\Vidi\Formatter\FormatterInterface;
 /**
  * Format a date that will be displayed in the Grid
  */
-class NativeDateTime implements FormatterInterface, SingletonInterface {
+class NativeDateTime implements FormatterInterface, SingletonInterface
+{
 
-	/**
-	 * Format a date
-	 *
-	 * @param int $value
-	 * @return string
-	 */
-	public function format($value) {
-		$result = '';
-		if (!empty($value)) {
-			/** @var $viewHelper \TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper */
-			$viewHelper = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper');
-			$dateTime = \DateTime::createFromFormat('Y-m-d', $value);
-			$result = $viewHelper->render($dateTime, '%d.%m.%Y');
-		}
-		return $result;
-	}
+    /**
+     * Format a date
+     *
+     * @param int $value
+     * @return string
+     */
+    public function format($value)
+    {
+        $result = '';
+        if (!empty($value)) {
+            /** @var $viewHelper \TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper */
+            $viewHelper = GeneralUtility::makeInstance('TYPO3\CMS\Fluid\ViewHelpers\Format\DateViewHelper');
+            $dateTime = \DateTime::createFromFormat('Y-m-d', $value);
+            $result = $viewHelper->render($dateTime, '%d.%m.%Y');
+        }
+        return $result;
+    }
 
 }

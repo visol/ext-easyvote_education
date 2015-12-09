@@ -25,27 +25,30 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 /**
  * Class which handle signal slot for Vidi Content controller
  */
-class FrontendUserGroupLimitationAspect {
+class FrontendUserGroupLimitationAspect
+{
 
-	/**
-	 * Post-process the matcher object to respect the file storages.
-	 *
-	 * @param Matcher $matcher
-	 * @param string $dataType
-	 * @return void
-	 */
-	public function addUsergroupConstraint(Matcher $matcher, $dataType) {
-		if ($dataType === 'fe_users' && $GLOBALS['_SERVER']['REQUEST_METHOD'] === 'GET' && $this->getModuleLoader()->getSignature() === 'easyvote_VidiFeUsersM1') {
-			$matcher->in('usergroup.uid', array(9, 10));
-		}
-	}
+    /**
+     * Post-process the matcher object to respect the file storages.
+     *
+     * @param Matcher $matcher
+     * @param string $dataType
+     * @return void
+     */
+    public function addUsergroupConstraint(Matcher $matcher, $dataType)
+    {
+        if ($dataType === 'fe_users' && $GLOBALS['_SERVER']['REQUEST_METHOD'] === 'GET' && $this->getModuleLoader()->getSignature() === 'easyvote_VidiFeUsersM1') {
+            $matcher->in('usergroup.uid', array(9, 10));
+        }
+    }
 
-	/**
-	 * Get the Vidi Module Loader.
-	 *
-	 * @return \Fab\Vidi\Module\ModuleLoader
-	 */
-	protected function getModuleLoader() {
-		return GeneralUtility::makeInstance('Fab\Vidi\Module\ModuleLoader');
-	}
+    /**
+     * Get the Vidi Module Loader.
+     *
+     * @return \Fab\Vidi\Module\ModuleLoader
+     */
+    protected function getModuleLoader()
+    {
+        return GeneralUtility::makeInstance('Fab\Vidi\Module\ModuleLoader');
+    }
 }

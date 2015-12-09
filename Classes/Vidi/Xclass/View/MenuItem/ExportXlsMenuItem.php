@@ -21,20 +21,22 @@ use TYPO3\CMS\Vidi\View\AbstractComponentView;
 /**
  * View which renders a "xls export" item to be placed in the menu.
  */
-class ExportXlsMenuItem extends \Fab\Vidi\View\MenuItem\ExportXlsMenuItem {
+class ExportXlsMenuItem extends \Fab\Vidi\View\MenuItem\ExportXlsMenuItem
+{
 
-	/**
-	 * Renders a "xls export" item to be placed in the menu.
-	 *
-	 * @return string
-	 */
-	public function render() {
-		// Override
-		$result = sprintf('<li><a href="#" class="export-xls" data-format="xls">%s %s</a></li>',
-			IconUtility::getSpriteIcon('mimetypes-excel'),
-			LocalizationUtility::translate('export-xls', 'vidi')
-		);
-		return $result;
-	}
+    /**
+     * Renders a "xls export" item to be placed in the menu.
+     *
+     * @return string
+     */
+    public function render()
+    {
+        // Override
+        $result = sprintf('<li><a href="#" class="export-xls" data-format="xls">%s %s</a></li>',
+            IconUtility::getSpriteIcon('mimetypes-excel'),
+            LocalizationUtility::translate('export-xls', 'vidi')
+        );
+        return $result;
+    }
 
 }
