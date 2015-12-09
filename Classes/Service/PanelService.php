@@ -87,7 +87,18 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface  {
                 }
             }
 
-		}
+            if ($cityOfPanel->getKanton()->getPanelAllowedTo() instanceof \DateTime) {
+                // If there is only an end date restriction
+                if ($panel->getDate() instanceof \DateTime) {
+                    $panelTimestamp = $panel->getDate()->getTimestamp();
+                    $panelAllowedToTimeStamp = $cityOfPanel->getKanton()->getPanelAllowedTo()->getTimestamp();
+                    if ($panelTimestamp > $panelAllowedToTimeStamp) {
+                        // Panel is too late
+                        return FALSE;
+                    }
+                }
+            }
+        }
 
 		// return false if all panels are reached or existing panels don't have a city set
 		return TRUE;
