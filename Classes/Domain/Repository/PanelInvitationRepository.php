@@ -14,7 +14,9 @@ namespace Visol\EasyvoteEducation\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  * The repository for PanelInvitations
@@ -141,5 +143,24 @@ class PanelInvitationRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 
         return $query->execute();
     }
+
+	/**
+	 * @param CommunityUser $communityUser
+	 * @param bool $respectStoragePage
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByAttendingCommunityUser(CommunityUser $communityUser, $respectStoragePage = true) {
+		$query = $this->createQuery();
+		if (!$respectStoragePage) {
+			$query->getQuerySettings()->setRespectStoragePage(false);
+		}
+		$query->matching(
+			$query->equals('attendingCommunityUser', $communityUser)
+		);
+		$query->setOrderings([
+			'panel.date' => QueryInterface::ORDER_ASCENDING
+		]);
+		return $query->execute();
+	}
 
 }

@@ -1,5 +1,7 @@
 <?php
 namespace Visol\EasyvoteEducation\Domain\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -110,5 +112,24 @@ class PanelRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             return $query->execute();
         }
     }
+
+	/**
+	 * @param CommunityUser $communityUser
+	 * @param bool $respectStoragePage
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByCommunityUser(CommunityUser $communityUser, $respectStoragePage = true) {
+		$query = $this->createQuery();
+		if (!$respectStoragePage) {
+			$query->getQuerySettings()->setRespectStoragePage(false);
+		}
+		$query->matching(
+			$query->equals('communityUser', $communityUser)
+		);
+		$query->setOrderings([
+			'date' => QueryInterface::ORDER_ASCENDING
+		]);
+		return $query->execute();
+	}
 
 }
