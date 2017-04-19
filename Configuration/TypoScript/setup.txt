@@ -47,12 +47,19 @@ plugin.tx_easyvoteeducation._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 
+	.typo3-messages {
+		padding: 0;
+	}
+
 	.typo3-messages .message-error {
 		color:red;
 	}
 
 	.typo3-messages .message-ok {
-		color:green;
+		color:#3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        padding: 10px 15px;
 	}
 
 )
