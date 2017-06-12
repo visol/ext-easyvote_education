@@ -58,7 +58,7 @@ class PanelService implements \TYPO3\CMS\Core\SingletonInterface
             // panelLimit is either NULL or an integer
             $panelLimitForKanton = $cityOfPanel->getKanton()->getPanelLimit();
             if (is_integer($panelLimitForKanton)) {
-                $existingPanelsInKanton = $this->panelRepository->countPanelsWithInvitationsByKanton($panel->getCity()->getKanton());
+                $existingPanelsInKanton = $this->panelRepository->countPanelsWithInvitationsByKantonInTimeFrame($panel);
                 if ($existingPanelsInKanton >= $panelLimitForKanton) {
                     return false;
                 }

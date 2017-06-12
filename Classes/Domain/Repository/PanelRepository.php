@@ -25,22 +25,40 @@ class PanelRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     );
 
     /**
-     * Count all panels that take place in a given kanton
+     * Count all panels that take place in a given canton
      * Only consider panels that have panelInvitations
-     * This is used to determine if more panels can be created in the same kanton
      *
-     * @param \Visol\Easyvote\Domain\Model\Kanton $kanton
+     * This is used to determine if more panels can be created in the same canton
+     *
+     * @param \Visol\EasyvoteEducation\Domain\Model\Panel $panel
      * @return int
      */
-    public function countPanelsWithInvitationsByKanton(\Visol\Easyvote\Domain\Model\Kanton $kanton)
+    public function countPanelsWithInvitationsByKantonInTimeFrame(\Visol\EasyvoteEducation\Domain\Model\Panel $panel)
     {
         $query = $this->createQuery();
+        
+        $constraints = [];
+
+        // Panels already having invitations 
+        $constraints[] = $query->logicalNot(
+            $query->equals('panelInvitations', 0)
+        );
+
+        $panelHostingCanton = $panel->getCity()->getKanton();
+
+        $constraints[] = $query->equals('city.kanton', $panelHostingCanton);
+
+        if ($panelHostingCanton->getPanelAllowedFrom() instanceof \DateTime) {
+            $constraints[] = $query->greaterThanOrEqual('date', $panelHostingCanton->getPanelAllowedFrom()->format('Y-m-d'));
+        }
+
+        if ($panelHostingCanton->getPanelAllowedTo() instanceof \DateTime) {
+            $constraints[] = $query->lessThanOrEqual('date', $panelHostingCanton->getPanelAllowedTo()->format('Y-m-d'));
+        }
+        
         $query->matching(
             $query->logicalAnd(
-                $query->equals('city.kanton', $kanton),
-                $query->logicalNot(
-                    $query->equals('panelInvitations', 0)
-                )
+                $constraints
             )
         );
         return $query->execute()->count();
