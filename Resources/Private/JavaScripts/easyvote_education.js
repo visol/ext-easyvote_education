@@ -362,6 +362,31 @@ var EasyvoteEducation = {
 	},
 
 	/**
+	 * Load a votingaction and write its result to a container
+	 *
+	 * @param url Name of the action, an URI with the same name must be defined
+	 * @param contentContainerSelector
+	 */
+	loadStaticVotingAction: function(url, contentContainerSelector) {
+		if (typeof(contentContainerSelector) === 'string') {
+			var $container = $(contentContainerSelector);
+		} else {
+			var $container = $('#easyvoteeducation-content');
+		}
+		EasyvoteEducation
+			.loadAjaxContent(url)
+			.done(function(data) {
+				// jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
+				// if (jsonData.hasOwnProperty('content')) {
+					$container.html(data);
+				// 	EasyvoteEducation.disableVotingIfAlreadyVoted();
+				// } else {
+				// 	EasyvoteEducation.handleError(jsonData);
+				// }
+			});
+	},
+
+	/**
 	 * @param objectName
 	 * @param objectUid
 	 * @param uri

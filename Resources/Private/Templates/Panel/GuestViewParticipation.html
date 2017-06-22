@@ -5,29 +5,32 @@
 
 	<div id="panel-votingcontainer"></div>
 
+	<style>
+		#spinner {display: none}
+	</style>
 	<script>
-		var EasyvoteLanguage = {language};
+		var EasyvoteLanguage = '{language}' - 0;
+		var baseUrl = '{directoryPath}';
 		$(function() {
-			var panelUid = {panel.uid};
-			var baseUri = [location.protocol, '//', location.host, location.pathname].join('');
-			var source = new EventSource(baseUri + '/?eID=easyvoteeducation&panelUid=' + panelUid);
+			var panelUid = '{panel.uid}' - 0;
 			var currentState = 'init';
-			source.addEventListener('currentState', function(e) {
-				if (e.data !== currentState) {
-					currentState = e.data;
-					EasyvoteEducation.loadVotingAction('panel-' + panelUid + '-guestViewContent-0', '#panel-votingcontainer');
-				}
-			}, false);
 
-			source.addEventListener('open', function(e) {
-				// Connection was opened.
-			}, false);
-
-			source.addEventListener('error', function(e) {
-				if (e.readyState == EventSource.CLOSED) {
-					// Connection was closed.
-				}
-			}, false);
+			(function poll() {
+				$.ajax({
+					url: [baseUrl, '/state.json'].join(''),
+					type: 'GET',
+					success: function(data) {
+						if (data.state && data.state !== currentState) {
+							currentState = data.state;
+							// We load the new content
+							EasyvoteEducation.loadStaticVotingAction([baseUrl, '/content.html'].join(''), '#panel-votingcontainer');
+						}
+					},
+					dataType: 'json',
+					complete: setTimeout(function() {poll()}, 4000),
+					timeout: 5000
+				})
+			})();
 		});
 	</script>
 

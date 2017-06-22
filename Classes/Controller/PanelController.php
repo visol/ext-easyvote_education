@@ -28,6 +28,9 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
      */
     protected $frontendUserAuthentication;
 
+    /**
+     * PanelController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -412,6 +415,8 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
                     $this->panelRepository->update($panel);
                     $this->persistenceManager->persistAll();
 
+                    $this->getFileCacheService($panel)->changeState($panel->getCurrentState());
+
                     $this->view->assign('votingStepAction', $votingStepAction);
                     $this->view->assign('panel', $panel);
                     return json_encode(array('content' => $this->view->render()));
@@ -503,7 +508,11 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
     {
         /** @var Panel $panel */
         $panel = $this->panelRepository->findOneByPanelId($panelId);
+
+        $fileCacheService = $this->getFileCacheService($panel);
+
         $this->view->assign('panel', $panel);
+        $this->view->assign('directoryPath', $fileCacheService->getRelativePath());
         $this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
     }
 
@@ -639,9 +648,20 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
     /**
      * @return \Visol\EasyvoteEducation\Service\PanelService
      */
-    public function getPanelService()
+    protected function getPanelService()
     {
         return $this->objectManager->get('Visol\EasyvoteEducation\Service\PanelService');
+    }
+
+    /**
+     * @param Panel $panel
+     * @return \Visol\EasyvoteEducation\Service\FileCacheService
+     */
+    protected function getFileCacheService(Panel $panel)
+    {
+        /** @var \Visol\EasyvoteEducation\Service\FileCacheService $fileCacheService */
+        $fileCacheService = $this->objectManager->get('Visol\EasyvoteEducation\Service\FileCacheService', $panel);
+        return $fileCacheService->initialize();
     }
 
 }
