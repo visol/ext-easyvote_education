@@ -84,8 +84,11 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['routing']['globalRoutes'][] = 'EXT:easyv
 // Register EID for EventStream
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['easyvoteeducation'] = 'EXT:easyvote_education/Resources/Private/Eid/EventStream.php';
 
+// Register EID for EventStream
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['castVote'] = 'EXT:easyvote_education/Resources/Private/Eid/CastVote.php';
 
-if (TYPO3_MODE == 'BE') {
+
+if (TYPO3_MODE === 'BE') {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['Fab\\Vidi\\View\\MenuItem\\ExportXlsMenuItem'] = array(
         'className' => 'Visol\\EasyvoteEducation\\Vidi\\Xclass\\View\\MenuItem\\ExportXlsMenuItem'
     );

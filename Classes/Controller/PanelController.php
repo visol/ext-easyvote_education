@@ -427,33 +427,10 @@ class PanelController extends \Visol\EasyvoteEducation\Controller\AbstractContro
                     return json_encode(array('status' => 403, 'reason' => $reason));
                 }
             } elseif (in_array($votingStepAction, $publicActions)) {
-                // action can be performed anonymously, proceed
-                if ($votingStepAction === 'castVote') {
-                    // for this function, $votingUid contains the uid of the chosen votingOption
-                    $votingOption = $this->votingOptionRepository->findByUid((int)$votingUid);
-                    if ($votingOption instanceof \Visol\EasyvoteEducation\Domain\Model\VotingOption) {
-                        if ($votingOption->getVoting()->getIsVotingEnabled()) {
-                            $condensedVotingName = 'panel-' . $panel->getUid() . '-castVote' . $votingOption->getUid();
-                            if ($this->frontendUserAuthentication->getSessionData('easyvoteeducation-castVote') !== $condensedVotingName) {
-                                /** @var \Visol\EasyvoteEducation\Domain\Model\Vote $newVote */
-                                $newVote = $this->objectManager->get('Visol\EasyvoteEducation\Domain\Model\Vote');
-                                $this->voteRepository->add($newVote);
-                                $votingOption->addVote($newVote);
-                                $this->votingOptionRepository->update($votingOption);
-                                $this->persistenceManager->persistAll();
-                                // save information about cast vote to session to prevent double-casting
-                                $this->frontendUserAuthentication->setAndSaveSessionData('easyvoteeducation-castVote',
-                                    $condensedVotingName);
-                            } else {
-                                // Vote was cast before and it is ignored
-                            }
-                        }
-                    }
-                } else {
-                    $this->view->assign('originalVotingStepAction', ucfirst($votingStepAction));
-                    $votingStepAction = $this->votingService->getViewNameForCurrentPanelState($panel,
-                        $votingStepAction);
-                }
+                $this->view->assign('originalVotingStepAction', ucfirst($votingStepAction));
+                $votingStepAction = $this->votingService->getViewNameForCurrentPanelState(
+                    $panel,
+                    $votingStepAction);
                 $this->view->assign('votingStepAction', $votingStepAction);
                 $this->view->assign('panel', $panel);
                 return json_encode(array('content' => $this->view->render()));

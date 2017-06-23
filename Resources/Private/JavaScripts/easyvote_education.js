@@ -63,7 +63,14 @@ $(function() {
 		}
 		// set a cookie about voteCast to prevent double-casting (is checked again on server side, so not security relevant)
 		$.cookie('easyvoteeducation-voteCast', actionarguments);
-		EasyvoteEducation.loadVotingAction(actionarguments, targetContainer);
+
+		$.ajax(
+			{
+				url: ['/?eID=castVote&arguments=', actionarguments].join('')
+			}
+		).done(function(response) {
+
+		});
 	});
 
 	// AJAX-based actions for panels
@@ -376,13 +383,7 @@ var EasyvoteEducation = {
 		EasyvoteEducation
 			.loadAjaxContent(url)
 			.done(function(data) {
-				// jsonData = JSON && JSON.parse(data) || $.parseJSON(data);
-				// if (jsonData.hasOwnProperty('content')) {
-					$container.html(data);
-				// 	EasyvoteEducation.disableVotingIfAlreadyVoted();
-				// } else {
-				// 	EasyvoteEducation.handleError(jsonData);
-				// }
+				$container.html(data);
 			});
 	},
 
