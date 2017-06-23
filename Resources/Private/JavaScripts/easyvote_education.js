@@ -64,13 +64,17 @@ $(function() {
 		// set a cookie about voteCast to prevent double-casting (is checked again on server side, so not security relevant)
 		$.cookie('easyvoteeducation-voteCast', actionarguments);
 
-		$.ajax(
-			{
-				url: ['/?eID=castVote&arguments=', actionarguments].join('')
-			}
-		).done(function(response) {
-
-		});
+		if (actionarguments.indexOf('castVote') === -1) {
+			EasyvoteEducation.loadVotingAction(actionarguments, targetContainer);
+		} else {
+			$.ajax(
+				{
+					url: ['/?eID=castVote&arguments=', actionarguments].join('')
+				}
+			).done(function(response) {
+				//console.log(response);
+			});
+		}
 	});
 
 	// AJAX-based actions for panels

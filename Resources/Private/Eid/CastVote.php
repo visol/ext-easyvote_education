@@ -38,6 +38,7 @@ class CastVote
         $arguments = GeneralUtility::_GET('arguments');
         $explodedArguments = GeneralUtility::trimExplode('-', $arguments);
         $this->arguments['panelUid'] = isset($explodedArguments[1]) ? (int)$explodedArguments[1] : 0;
+        $this->arguments['action'] = isset($explodedArguments[2]) ? $explodedArguments[2] : '';
         $this->arguments['votingOptionUid'] = isset($explodedArguments[3]) ? (int)$explodedArguments[3] : 0;
     }
 
@@ -133,7 +134,10 @@ class CastVote
      */
     public function output()
     {
-        print (int)$this->castVote();
+        $result = ($this->arguments['action'] === 'castVote')
+            ? (int)$this->castVote()
+            : 0;
+        print $result;
     }
 
     /**
@@ -150,14 +154,6 @@ class CastVote
 
 $castVote = new CastVote();
 $castVote->output();
-
-//header('Content-Type: text/event-stream');
-//echo "retry: 2000" . PHP_EOL;
-//echo "id: " . time() . PHP_EOL;
-//$panelUid = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('panelUid');
-//$row = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('current_state', 'tx_easyvoteeducation_domain_model_panel', 'uid = ' . $panelUid);
-//echo "data: " . $row['current_state'] . PHP_EOL;
-//echo "event: currentState" . PHP_EOL;
 echo PHP_EOL;
 ob_flush();
 flush();
