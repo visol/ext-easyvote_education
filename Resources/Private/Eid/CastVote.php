@@ -80,12 +80,8 @@ class CastVote
      */
     protected function increaseVoting(array $voting)
     {
-        $tableName = 'tx_easyvoteeducation_domain_model_voting';
-        $values = [
-            'voting_options' => $voting['voting_options'] + 1,
-        ];
-
-        return (bool)$this->getDatabaseConnection()->exec_UPDATEquery($tableName, 'uid = ' . $voting['uid'], $values);
+        $statement = 'UPDATE tx_easyvoteeducation_domain_model_voting SET voting_options= voting_options + 1 WHERE uid = ' . (int)$voting['uid'];
+        return $this->getDatabaseConnection()->sql_query($statement);
     }
 
     /**
