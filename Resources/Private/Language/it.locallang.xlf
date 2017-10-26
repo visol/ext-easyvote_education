@@ -66,7 +66,6 @@
                     </li><li>
                     Avviare il Polittalk
                     </li></ol>
-                    <p><a href="%s">Quitrovate una Checklist dettagliata</a> per aiutarvi nell’organizzazione.</p>
 				]]></target>
 			</trans-unit>
 			<trans-unit id="panel.managePanels.newPanel">
@@ -533,7 +532,7 @@
 			<trans-unit id="panelInvitation.actions.delete.success">
 				<target>L’invito al Polittalk è stato cancellato.</target>
 			</trans-unit>
-			
+
 			<trans-unit id="panelInvitation.actions.cancel">
 				<target>Indietro</target>
 			</trans-unit>
@@ -687,7 +686,7 @@
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.description">
 				<target>Commento</target>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvoteeducation_domain_model_panel.image">
 				<target>Immagine</target>
 			</trans-unit>
